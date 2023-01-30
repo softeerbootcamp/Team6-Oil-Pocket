@@ -8,18 +8,56 @@
 
     <script src="https://kit.fontawesome.com/53b577849a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/style.css">
+    <script defer type="module" src="./js/main/explainArea.js"></script>
 </head>
 <body>
     <section class="navbar">
-        <div class="navbar--logo">Gas Map</div>
-        <div class="navbar--icons">
+        <div class="navbar__logo">Gas Map</div>
+        <div class="navbar__icons">
             <i class="fa-solid fa-right-to-bracket"></i>
             <i class="fa-solid fa-earth-americas"></i>
             <i class="fa-sharp fa-solid fa-moon"></i>
         </div>
     </section>
     <section class="main">
-        
+        <section class="searchBar">
+            <div class="searchBar__left">
+                <img src="./img/ping.png" alt="ping">
+                <h1>근처 주유소 검색</h1>
+            </div>
+            <div class="searchBar__right">
+                <img src="./img/locationVector.png" alt="locationVector">
+                <h1>출발지/도착지 주유소 검색</h1>
+            </div>
+        </section>
+        <img class="chatBot" src="./img/chatBot.png" alt="chatBot">
+        <section class="explainArea" id="explainArea--1">
+            <div class="explainArea__text">
+                <h1>간단한 회원가입 폼</h1>
+                <h2>ID와 비밀번호만을 통해 가입할 수 있어요.</h2>
+            </div>
+            <img class="explainArea__phone" src="./img/phone_01.png" alt="phone_01">
+        </section>
+        <section class="explainArea" id="explainArea--2">
+            <div class="explainArea__text">
+                <h1>깔끔한 검색 뷰와 편리한 가격 비교</h1>
+                <h2>
+                    현재 위치에서 가격순, 거리순, 인기순을 선택하여 <br>
+                    주유소 기름 가격을 검색할 수 있어요. <br>
+                </h2>
+            </div>
+            <img class="explainArea__phone" src="./img/phone_02.png" alt="phone_02">
+        </section>
+        <section class="explainArea" id="explainArea--3">
+            <div class="explainArea__text">
+                <h1>출발지와 도착지의 경로를 통한 검색</h1>
+                <h2>
+                    출발지와 도착지를 검색하면 경로를 예상해요. <br>
+                    예상된 경로 중 당신에게 알맞은 주유소를 보여줘요. <br>
+                </h2>
+            </div>
+            <img class="explainArea__phone" src="./img/phone_03.png" alt="phone_03">
+        </section>
     </section>
 </body>
 </html>
