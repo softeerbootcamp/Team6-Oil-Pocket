@@ -1,0 +1,23 @@
+{
+  "name": "team6_fe",
+  "version": "1.0.0",
+  "description": "TEAM6_FE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softeerbootcamp/Team6_FE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/softeerbootcamp/Team6_FE/issues"
+  },
+  "homepage": "https://github.com/softeerbootcamp/Team6_FE#readme",
+  "dependencies": {
+    "scss": "^0.2.4"
+  }
+}
