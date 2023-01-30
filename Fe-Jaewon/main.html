@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Map</title>
+
+    <script src="https://kit.fontawesome.com/53b577849a.js" crossorigin="anonymous"></script>
+
+    <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx7250af6176574c63a12302edf09d020c"></script>
+    <script src="./test.js"></script>
+
+
+    <link rel="stylesheet" href="./css-files/style.css">
+</head>
+<body>
+    <section class="navbar">
+        <div class="navbar--logo">KasPi</div>
+        <div class="navbar--icons">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <i class="fa-solid fa-earth-americas"></i>
+            <i class="fa-sharp fa-solid fa-moon"></i>
+        </div>
+    </section>
+    <section class="main">
+        <input class="InputForStartingPoint" placeholder="출발지를 입력하세요">
+            
+        </div>
+        <icon class="StToEndPointer">
+            ->
+        </icon>
+        <input class="InputForEndingPoint" placeholder="도착지를 입력하세요">
+            
+        </div>
+        <body onload="initTmap();">
+		<div>
+		    <button id="btn_select">적용하지마</button>
+	    </div>
+	
+		<div id="map_wrap" class="map_wrap">
+			<div id="map_div"></div>
+		</div>
+		<div class="map_act_btn_wrap clear_box"></div>
+		<p id="result"></p>
+        </body>
+    </section>
+    
+    
+</body>
+</html>
