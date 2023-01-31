@@ -595,24 +595,25 @@ body {
 .registerArea .registerArea__backGround .registerArea__title {
   font-size: 3rem;
   font-weight: 700;
+  margin-bottom: 2vh;
 }
-.registerArea .registerArea__backGround .registerArea__content {
+.registerArea .registerArea__backGround .registerArea__IDArea {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   width: 52%;
-  height: 50%;
+  height: 20%;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox {
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 80%;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input {
-  font-size: 3rem;
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox input {
+  font-size: 2.8rem;
   line-height: 1.5;
   padding: 0.1vh 0;
   background-color: #F2F2F2;
@@ -622,44 +623,87 @@ body {
   border: none;
   width: 80%;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input::-moz-placeholder {
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox input::-moz-placeholder {
   color: #A59F9F;
   font-size: 2rem;
   line-height: 2;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input:-ms-input-placeholder {
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox input:-ms-input-placeholder {
   color: #A59F9F;
   font-size: 2rem;
   line-height: 2;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input::placeholder {
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox input::placeholder {
   color: #A59F9F;
   font-size: 2rem;
   line-height: 2;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input:hover {
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox input:hover {
   outline: none;
 }
-.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input:focus {
+.registerArea .registerArea__backGround .registerArea__IDArea .registerArea__inputBox input:focus {
+  outline: none;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 52%;
+  height: 55%;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox input {
+  font-size: 2.8rem;
+  line-height: 1.5;
+  padding: 0.1vh 0;
+  background-color: #F2F2F2;
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  width: 80%;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox input::-moz-placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox input:-ms-input-placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox input::placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox input:hover {
+  outline: none;
+}
+.registerArea .registerArea__backGround .registerArea__PWArea .registerArea__inputBox input:focus {
   outline: none;
 }
 .registerArea .registerArea__loginBtn {
   cursor: pointer;
   height: 80%;
   width: 25%;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   border: none;
 }
-.registerArea .registerArea__registerLink {
-  font-weight: 700;
-}
-.registerArea .registerArea__registerLink span {
-  color: #746E6E;
-  font-size: 2rem;
-  margin: 0 1vw;
-}
-.registerArea .registerArea__registerLink span.loginArea__registerBtn {
-  color: #000;
+.registerArea .registerArea__validateBtn {
   cursor: pointer;
+  height: 80%;
+  width: 25%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
 }/*# sourceMappingURL=style.css.map */
