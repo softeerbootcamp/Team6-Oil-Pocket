@@ -483,17 +483,18 @@ body {
         & .registerArea__title {
             font-size: 3rem;
             font-weight: 700;
+            margin-bottom: 2vh;
         }
 
-        & .registerArea__content {
+        & .registerArea__IDArea {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
             width: 52%;
-            height: 50%;
+            height: 20%;
 
-            & .registerArea__inputPWBox {
+            & .registerArea__inputBox {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -501,7 +502,50 @@ body {
                 height: 80%;
 
                 & input {
-                    font-size: 3rem;
+                    font-size: 2.8rem;
+                    line-height: 1.5;
+                    padding: 0.1vh 0;
+                    background-color: #F2F2F2;
+                    color: #000;
+                    text-align: center;
+                    font-weight: 700;
+                    border: none;
+                    width: 80%;
+
+                    &::placeholder {
+                        color: #A59F9F;
+                        font-size: 2rem;
+                        line-height: 2;
+                    }
+
+                    &:hover {
+                        outline: none;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        & .registerArea__PWArea {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            width: 52%;
+            height: 55%;
+
+            & .registerArea__inputBox {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                height: 80%;
+
+                & input {
+                    font-size: 2.8rem;
                     line-height: 1.5;
                     padding: 0.1vh 0;
                     background-color: #F2F2F2;
@@ -533,23 +577,17 @@ body {
         cursor: pointer;
         height: 80%;
         width: 25%;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 700;
         border: none;
     }
 
-    & .registerArea__registerLink {
+    & .registerArea__validateBtn {
+        cursor: pointer;
+        height: 80%;
+        width: 25%;
+        font-size: 1.2rem;
         font-weight: 700;
-
-        & span {
-            color: #746E6E;
-            font-size: 2rem;
-            margin: 0 1vw;
-
-            &.loginArea__registerBtn {
-                color: #000;
-                cursor: pointer;
-            }
-        }
+        border: none;
     }
 }
