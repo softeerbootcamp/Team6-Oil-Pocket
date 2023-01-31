@@ -252,16 +252,86 @@ body {
 }
 /* main */
 .main {
-  height: 92vh;
-  margin-top: 8vh;
+  height: 90vh;
+  margin-top: 10vh;
   position: relative;
 }
-.main img.chatBot {
+.main img.chatBotArea__img {
+  transition: 0.5s;
   position: fixed;
   width: 3vw;
   cursor: pointer;
   left: 2vw;
   bottom: 2vw;
+}
+.main img.chatBotArea__img:hover {
+  bottom: 2.5vw;
+}
+.main .chatBotArea {
+  transition: 1.5s;
+  border-radius: 2vh;
+  padding: 2vh;
+  position: fixed;
+  left: 2vw;
+  bottom: 2vw;
+  width: 30vw;
+  height: 60vh;
+  z-index: 1;
+  opacity: 0;
+  background-color: #F8F7F8;
+}
+.main .chatBotArea .chatBotArea__profile {
+  transition: 0.5;
+  height: 5vh;
+  margin: 0 0 1.5vh;
+  padding: 0.5vh 0;
+  transition: 0.5s;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2vh;
+}
+.main .chatBotArea .chatBotArea__profile img {
+  transition: 0.5s;
+  height: 5vh;
+}
+.main .chatBotArea .chatBotArea__profile img:hover {
+  margin-top: -1vh;
+}
+.main .chatBotArea .chatBotArea__profile span {
+  width: 90%;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.main .chatBotArea .chatBotArea__closeArea {
+  padding: 0.75vh 1.5vw;
+  height: 1.5vh;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.main .chatBotArea .chatBotArea__closeArea .chatBotArea__closeBtn {
+  position: absolute;
+  width: 1vw;
+  cursor: pointer;
+  margin-bottom: 1vw;
+}
+.main .chatBotArea .chatBotArea__chat {
+  margin: 1.5vh 0;
+  padding: 0.5vh 1.5vw;
+  height: 5vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-radius: 2vh;
+}
+.main .chatBotArea .chatBotArea__chat span {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 .main section.explainArea#explainArea--1 {
   -webkit-animation-duration: 15s;
@@ -295,9 +365,6 @@ body {
   top: 30vh;
   right: 25vw;
 }
-.main section.explainArea#explainArea--1 img.explainArea__phone:hover {
-  top: 28vh;
-}
 .main section.explainArea#explainArea--2 {
   -webkit-animation-duration: 15s;
           animation-duration: 15s;
@@ -329,9 +396,6 @@ body {
   top: 30vh;
   left: 25vw;
   transition: 0.5s;
-}
-.main section.explainArea#explainArea--2 img.explainArea__phone:hover {
-  top: 28vh;
 }
 .main section.explainArea#explainArea--3 {
   -webkit-animation-duration: 15s;
@@ -365,9 +429,6 @@ body {
   right: 25vw;
   transition: 0.5s;
 }
-.main section.explainArea#explainArea--3 img.explainArea__phone:hover {
-  top: 28vh;
-}
 
 /* search bar */
 .searchBar {
@@ -389,8 +450,12 @@ body {
   cursor: pointer;
 }
 .searchBar .searchBar__left img {
+  transition: 0.5s;
   margin-bottom: 4vh;
   width: 4vw;
+}
+.searchBar .searchBar__left img:hover {
+  margin-bottom: 5.5vh;
 }
 .searchBar .searchBar__left h1 {
   font-size: 1.5rem;
@@ -407,10 +472,194 @@ body {
   cursor: pointer;
 }
 .searchBar .searchBar__right img {
+  transition: 0.5s;
   margin-bottom: 4vh;
   width: 4vw;
+}
+.searchBar .searchBar__right img:hover {
+  margin-bottom: 5.5vh;
 }
 .searchBar .searchBar__right h1 {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+/* loginArea */
+.loginArea {
+  background-color: #FCFCFE;
+  margin: 0 auto;
+  width: 95%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginArea .loginArea__backGround {
+  height: 60%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.loginArea .loginArea__backGround .loginArea__title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.loginArea .loginArea__backGround .loginArea__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 52%;
+  height: 50%;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox input {
+  font-size: 3rem;
+  line-height: 1.5;
+  padding: 0.1vh 0;
+  background-color: #F2F2F2;
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  width: 80%;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox input::-moz-placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox input:-ms-input-placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox input::placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox input:hover {
+  outline: none;
+}
+.loginArea .loginArea__backGround .loginArea__content .loginArea__inputBox input:focus {
+  outline: none;
+}
+.loginArea .loginArea__loginBtn {
+  cursor: pointer;
+  height: 80%;
+  width: 25%;
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+}
+.loginArea .loginArea__registerLink {
+  font-weight: 700;
+}
+.loginArea .loginArea__registerLink span {
+  color: #746E6E;
+  font-size: 2rem;
+  margin: 0 1vw;
+}
+.loginArea .loginArea__registerLink span.loginArea__registerBtn {
+  color: #000;
+  cursor: pointer;
+}
+
+/* registerArea */
+.registerArea {
+  background-color: #FCFCFE;
+  margin: 0 auto;
+  width: 95%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.registerArea .registerArea__backGround {
+  height: 60%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.registerArea .registerArea__backGround .registerArea__title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+.registerArea .registerArea__backGround .registerArea__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 52%;
+  height: 50%;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input {
+  font-size: 3rem;
+  line-height: 1.5;
+  padding: 0.1vh 0;
+  background-color: #F2F2F2;
+  color: #000;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  width: 80%;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input::-moz-placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input:-ms-input-placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input::placeholder {
+  color: #A59F9F;
+  font-size: 2rem;
+  line-height: 2;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input:hover {
+  outline: none;
+}
+.registerArea .registerArea__backGround .registerArea__content .registerArea__inputPWBox input:focus {
+  outline: none;
+}
+.registerArea .registerArea__loginBtn {
+  cursor: pointer;
+  height: 80%;
+  width: 25%;
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+}
+.registerArea .registerArea__registerLink {
+  font-weight: 700;
+}
+.registerArea .registerArea__registerLink span {
+  color: #746E6E;
+  font-size: 2rem;
+  margin: 0 1vw;
+}
+.registerArea .registerArea__registerLink span.loginArea__registerBtn {
+  color: #000;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
