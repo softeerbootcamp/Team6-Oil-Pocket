@@ -58,17 +58,13 @@ public class GasDetail {
 
     public static List<GasDetail> parseListGasDetail(String[] attribute, LocalDate date) {
         List<GasDetail> list = new ArrayList<>();
-        list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, date));
-        list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[GASOLINE]), GasType.GASOLINE, date));
-        list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[DIESEL]), GasType.DIESEL, date));
+        list.add(new GasDetail(attribute[GAS_STATION], Integer.valueOf(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, date));
+        list.add(new GasDetail(attribute[GAS_STATION], Integer.valueOf(attribute[GASOLINE]), GasType.GASOLINE, date));
+        list.add(new GasDetail(attribute[GAS_STATION], Integer.valueOf(attribute[DIESEL]), GasType.DIESEL, date));
         return list;
     }
 
     public static GasDetail parseLpgGasDetail(String[] attribute, LocalDate date) {
-        return new GasDetail(attribute[GAS_STATION], floorPrice(attribute[LPG]), GasType.LPG, date);
-    }
-
-    private static int floorPrice(String price) {
-        return Integer.valueOf(price.substring(0, price.indexOf(".")));
+        return new GasDetail(attribute[GAS_STATION], Integer.valueOf(attribute[LPG]), GasType.LPG, date);
     }
 }
