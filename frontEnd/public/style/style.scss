@@ -59,15 +59,17 @@ body {
     align-items: center;
     font-size: 2rem;
     border-bottom: 0.2vh solid #eeeeee;
-    background-color: #fff;
+    background-color: #12bd7e;
     z-index: 1000;
 
     & .navbar__logo {
         font-weight: 700;
+        color: #ECECEC;
     }
 
     & .navbar__icons {
         & i {
+            color: #ECECEC;
             padding: 0 1vw;
             cursor: pointer;
         }
@@ -122,6 +124,7 @@ body {
         position: fixed;
         width: 3vw;
         cursor: pointer;
+        color: #12BD7E;
         left: 2vw;
         bottom: 2vw;
 
@@ -141,7 +144,8 @@ body {
         height: 60vh;
         z-index: 1;
         opacity: 0;
-        background-color: #F8F7F8;
+        color: #ECECEC;
+        background-color: #ECECEC;
 
         & .chatBotArea__profile {
             transition: 0.5;
@@ -149,7 +153,7 @@ body {
             margin: 0 0 1.5vh;
             padding: 0.5vh 0;
             transition: 0.5s;
-            background-color: #fff;
+            background-color: #12BD7E;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -158,6 +162,7 @@ body {
             & img {
                 transition: 0.5s;
                 height: 5vh;
+                margin-top: 0.5vh;
 
                 &:hover {
                     margin-top: -1vh;
@@ -184,6 +189,8 @@ body {
                 width: 1vw;
                 cursor: pointer;
                 margin-bottom: 1vw;
+                margin-right: -1vw;
+                color: #12BD7E;
             }
         }
 
@@ -191,7 +198,7 @@ body {
             margin: 1.5vh 0;
             padding: 0.5vh 1.5vw;
             height: 5vh;
-            background-color: #fff;
+            background-color: #12BD7E;
             display: flex;
             justify-content: left;
             align-items: center;
@@ -324,22 +331,25 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #FCFCFE;
+        background-color: #12BD7E;
         cursor: pointer;
+
+        &:hover {
+            & img {
+                margin-bottom: 5.2vh;
+            }
+        }
 
         & img {
             transition: 0.5s;
             margin-bottom: 4vh;
-            width: 4vw;
-
-            &:hover {
-                margin-bottom: 5.5vh;
-            }
+            width: 2.5vw;
         }
 
         & h1 {
             font-size: 1.5rem;
             font-weight: 600;
+            color: #ECECEC;
         }
     }
 
@@ -350,244 +360,25 @@ body {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #FCFCFE;
+        background-color: #12BD7E;
         cursor: pointer;
+
+        &:hover {
+            & img {
+                margin-bottom: 5.2vh;
+            }
+        }
 
         & img {
             transition: 0.5s;
             margin-bottom: 4vh;
             width: 4vw;
-
-            &:hover {
-                margin-bottom: 5.5vh;
-            }
         }
 
         & h1 {
             font-size: 1.5rem;
             font-weight: 600;
+            color: #ECECEC;
         }
-    }
-}
-
-/* loginArea */
-.loginArea {
-    background-color: #FCFCFE;
-    margin: 0 auto;
-    width: 95%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    & .loginArea__backGround {
-        height: 60%;
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-
-        & .loginArea__title {
-            font-size: 3rem;
-            font-weight: 700;
-        }
-
-        & .loginArea__content {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            width: 52%;
-            height: 50%;
-
-            & .loginArea__inputBox {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                height: 80%;
-
-                & input {
-                    font-size: 3rem;
-                    line-height: 1.5;
-                    padding: 0.1vh 0;
-                    background-color: #F2F2F2;
-                    color: #000;
-                    text-align: center;
-                    font-weight: 700;
-                    border: none;
-                    width: 80%;
-
-                    &::placeholder {
-                        color: #A59F9F;
-                        font-size: 2rem;
-                        line-height: 2;
-                    }
-
-                    &:hover {
-                        outline: none;
-                    }
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-            }
-        }
-    } 
-
-    & .loginArea__loginBtn {
-        cursor: pointer;
-        height: 80%;
-        width: 25%;
-        font-size: 2rem;
-        font-weight: 700;
-        border: none;
-    }
-
-    & .loginArea__registerLink {
-        font-weight: 700;
-
-        & span {
-            color: #746E6E;
-            font-size: 2rem;
-            margin: 0 1vw;
-
-            &.loginArea__registerBtn {
-                color: #000;
-                cursor: pointer;
-            }
-        }
-    }
-}
-
-/* registerArea */
-.registerArea {
-    background-color: #FCFCFE;
-    margin: 0 auto;
-    width: 95%;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    & .registerArea__backGround {
-        height: 60%;
-        width: 90%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-
-        & .registerArea__title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 2vh;
-        }
-
-        & .registerArea__IDArea {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            width: 52%;
-            height: 20%;
-
-            & .registerArea__inputBox {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                height: 80%;
-
-                & input {
-                    font-size: 2.8rem;
-                    line-height: 1.5;
-                    padding: 0.1vh 0;
-                    background-color: #F2F2F2;
-                    color: #000;
-                    text-align: center;
-                    font-weight: 700;
-                    border: none;
-                    width: 80%;
-
-                    &::placeholder {
-                        color: #A59F9F;
-                        font-size: 2rem;
-                        line-height: 2;
-                    }
-
-                    &:hover {
-                        outline: none;
-                    }
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-            }
-        }
-
-        & .registerArea__PWArea {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            width: 52%;
-            height: 55%;
-
-            & .registerArea__inputBox {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-                height: 80%;
-
-                & input {
-                    font-size: 2.8rem;
-                    line-height: 1.5;
-                    padding: 0.1vh 0;
-                    background-color: #F2F2F2;
-                    color: #000;
-                    text-align: center;
-                    font-weight: 700;
-                    border: none;
-                    width: 80%;
-
-                    &::placeholder {
-                        color: #A59F9F;
-                        font-size: 2rem;
-                        line-height: 2;
-                    }
-
-                    &:hover {
-                        outline: none;
-                    }
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
-            }
-        }
-    } 
-
-    & .registerArea__loginBtn {
-        cursor: pointer;
-        height: 80%;
-        width: 25%;
-        font-size: 1.5rem;
-        font-weight: 700;
-        border: none;
-    }
-
-    & .registerArea__validateBtn {
-        cursor: pointer;
-        height: 80%;
-        width: 25%;
-        font-size: 1.2rem;
-        font-weight: 700;
-        border: none;
     }
 }
