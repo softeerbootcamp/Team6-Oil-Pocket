@@ -55,7 +55,7 @@ public class GasDetail {
         this.date = date;
     }
 
-    public List<GasDetail> parseListGasDetail(String[] attribute, LocalDate date) {
+    public static List<GasDetail> parseListGasDetail(String[] attribute, LocalDate date) {
         List<GasDetail> list = new ArrayList<>();
         list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, date));
         list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[GASOLINE]), GasType.GASOLINE, date));
@@ -63,7 +63,7 @@ public class GasDetail {
         return list;
     }
 
-    private int floorPrice(String price) {
+    private static int floorPrice(String price) {
         return Integer.valueOf(price.substring(0, price.indexOf(".")));
     }
 }
