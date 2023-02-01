@@ -57,11 +57,11 @@ public class GasStation {
         this.brand = brand;
     }
 
-    public GasStation parseGasStation(String[] attribute) {
+    public static GasStation parseGasStation(String[] attribute) {
         return new GasStation(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
     }
 
-    private boolean isSelf(String attribute) {
+    private static boolean isSelf(String attribute) {
         if (attribute.equals("셀프")) {
             return true;
         }
