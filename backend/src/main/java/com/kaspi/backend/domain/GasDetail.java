@@ -11,6 +11,7 @@ public class GasDetail {
     private static final int PREMIUM_GASOLINE = 6;
     private static final int GASOLINE = 7;
     private static final int DIESEL = 8;
+    private static final int LPG = 6;
     private String gasStationNo;
     private int price;
     private GasType gasType;
@@ -61,6 +62,10 @@ public class GasDetail {
         list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[GASOLINE]), GasType.GASOLINE, date));
         list.add(new GasDetail(attribute[GAS_STATION], floorPrice(attribute[DIESEL]), GasType.DIESEL, date));
         return list;
+    }
+
+    public static GasDetail parseLpgGasDetail(String[] attribute, LocalDate date) {
+        return new GasDetail(attribute[GAS_STATION], floorPrice(attribute[LPG]), GasType.LPG, date);
     }
 
     private static int floorPrice(String price) {
