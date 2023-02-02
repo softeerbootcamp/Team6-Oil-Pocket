@@ -5,6 +5,7 @@ Please check if your PR fulfills the following requirements:
 
 ## PR Type
 What kind of change does this PR introduce?
+- [ ] add function / template
 - [ ] Bugfix
 - [ ] Feature
 - [ ] Code style update (formatting, local variables)
