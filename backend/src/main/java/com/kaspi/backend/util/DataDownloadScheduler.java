@@ -1,5 +1,8 @@
 package com.kaspi.backend.util;
 
+import com.kaspi.backend.dao.GasStationDataDao;
+import com.kaspi.backend.domain.GasDetail;
+import com.kaspi.backend.domain.GasStation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -14,11 +17,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 @Component
 public class DataDownloadScheduler {
-    @Scheduled(fixedDelay = 2000)
+    private final GasStationDataDao gasStationDataDao;
+    private final List<String> cache = new ArrayList<>();
+
+    public DataDownloadScheduler(GasStationDataDao gasStationDataDao) {
+        this.gasStationDataDao = gasStationDataDao;
+    }
+
+    @Scheduled(cron = "0 1 1 * * *")
     public void backgroundProcess() {
         try {
             ChromeOptions chromeOptions = new ChromeOptions();
@@ -40,14 +52,21 @@ public class DataDownloadScheduler {
             Thread.sleep(4000);
             File file = new File("/Users/download/현재_판매가격(주유소).csv");
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
-            String line = null;
+            String line = br.readLine();
             LocalDate date = LocalDate.now();
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
                 String[] attribute = line.split(",");
+                if (attribute.length <= 1) break;
+                GasStation gasStation = GasStation.parseGasStation(attribute);
+                if (!cache.contains(gasStation.getGasStationNo())) {
+                    System.out.println(line);
+                    cache.add(gasStation.getGasStationNo());
+                    gasStationDataDao.insertGasStation(gasStation);
+                }
+                List<GasDetail> gasDetailList = GasDetail.parseListGasDetail(attribute, date);
+                gasStationDataDao.insertGasDetails(gasDetailList);
             }
             file.delete();
-            System.out.println("---------------------------");
             WebElement casRadio = driver.findElement(By.xpath("//*[@id=\"rdo2_1\"]"));
             casRadio.click();
             button.sendKeys(Keys.ENTER);
@@ -55,10 +74,18 @@ public class DataDownloadScheduler {
             Thread.sleep(4000);
             File file2 = new File("/Users/download/현재_판매가격(충전소).csv");
             br = new BufferedReader(new InputStreamReader(new FileInputStream(file2), "euc-kr"));
-            line = null;
+            line = br.readLine();
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
                 String[] attribute = line.split(",");
+                if (attribute.length <= 1) break;
+                GasStation gasStation = GasStation.parseGasStation(attribute);
+                if (!cache.contains(gasStation.getGasStationNo())) {
+                    System.out.println(line);
+                    cache.add(gasStation.getGasStationNo());
+                    gasStationDataDao.insertGasStation(gasStation);
+                }
+                GasDetail gasDetail = GasDetail.parseLpgGasDetail(attribute, date);
+                gasStationDataDao.insertGasDetail(gasDetail);
             }
             driver.quit();
         } catch (Exception e) {
