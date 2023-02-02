@@ -88,37 +88,55 @@ button {
 /* explain animation */
 @keyframes fade01 {
     0% { opacity: 0.0; }
-    4% { opacity: 0.25; }
-    8% { opacity: 0.50; }
-    12% { opacity: 0.75; }
+    1.6% { opacity: 0.1; }
+    4.8% { opacity: 0.3; }
+    8% { opacity: 0.5; }
+    11.2% { opacity: 0.7; }
+    14.4% { opacity: 0.9; }
     16% { opacity: 1.00; }
-    20% { opacity: 0.75; }
-    24% { opacity: 0.5; }
-    28% { opacity: 0.25; }
+    17.6% { opacity: 0.9; }
+    20.8% { opacity: 0.7; }
+    24.0% { opacity: 0.5; }
+    27.2% { opacity: 0.3; }
+    30.4% { opacity: 0.1; }
     33% { opacity: 0.0; }
 }
 
 @keyframes fade02 {
     33% { opacity: 0.0; }
+    35% { opacity: 0.125; }
     37% { opacity: 0.25; }
-    41% { opacity: 0.50; }
+    39% { opacity: 0.375; }
+    41% { opacity: 0.5; }
+    43% { opacity: 0.675; }
     45% { opacity: 0.75; }
+    47% { opacity: 0.875; }
     49% { opacity: 1.00; }
+    52% { opacity: 0.875; }
     54% { opacity: 0.75; }
+    56% { opacity: 0.675; }
     58% { opacity: 0.5; }
+    60% { opacity: 0.375; }
     62% { opacity: 0.25; }
     66% { opacity: 0.0; }
 }
 
 @keyframes fade03 {
     67% { opacity: 0.0; }
+    70% { opacity: 0.125; }
     73% { opacity: 0.25; }
+    75% { opacity: 0.375; }
     78% { opacity: 0.50; }
+    81% { opacity: 0.675; }
     83% { opacity: 0.75; }
-    88% { opacity: 1.00; }
+    85% { opacity: 0.875; }
+    87% { opacity: 1.00; }
+    89% { opacity: 0.875; }
     91% { opacity: 0.75; }
+    93% { opacity: 0.675; }
     94% { opacity: 0.5; }
-    97% { opacity: 0.25; }
+    96% { opacity: 0.375; }
+    98% { opacity: 0.20; }
     100% { opacity: 0.0; }
 }
 
@@ -246,7 +264,7 @@ button {
     }
 
     & section.explainArea#explainArea--1 {
-        animation-duration: 15s;
+        animation-duration: 10s;
         animation-name: fade01;
         animation-iteration-count: infinite;
         opacity: 0;
@@ -280,7 +298,7 @@ button {
     }
 
     & section.explainArea#explainArea--2 {
-        animation-duration: 15s;
+        animation-duration: 10s;
         animation-name: fade02;
         animation-iteration-count: infinite;
         opacity: 0;
@@ -314,7 +332,7 @@ button {
     }
 
     & section.explainArea#explainArea--3 {
-        animation-duration: 15s;
+        animation-duration: 10s;
         animation-name: fade03;
         animation-iteration-count: infinite;
         opacity: 0;

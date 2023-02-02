@@ -90,26 +90,38 @@ button {
   0% {
     opacity: 0;
   }
-  4% {
-    opacity: 0.25;
+  1.6% {
+    opacity: 0.1;
+  }
+  4.8% {
+    opacity: 0.3;
   }
   8% {
     opacity: 0.5;
   }
-  12% {
-    opacity: 0.75;
+  11.2% {
+    opacity: 0.7;
+  }
+  14.4% {
+    opacity: 0.9;
   }
   16% {
     opacity: 1;
   }
-  20% {
-    opacity: 0.75;
+  17.6% {
+    opacity: 0.9;
   }
-  24% {
+  20.8% {
+    opacity: 0.7;
+  }
+  24.0% {
     opacity: 0.5;
   }
-  28% {
-    opacity: 0.25;
+  27.2% {
+    opacity: 0.3;
+  }
+  30.4% {
+    opacity: 0.1;
   }
   33% {
     opacity: 0;
@@ -119,26 +131,38 @@ button {
   0% {
     opacity: 0;
   }
-  4% {
-    opacity: 0.25;
+  1.6% {
+    opacity: 0.1;
+  }
+  4.8% {
+    opacity: 0.3;
   }
   8% {
     opacity: 0.5;
   }
-  12% {
-    opacity: 0.75;
+  11.2% {
+    opacity: 0.7;
+  }
+  14.4% {
+    opacity: 0.9;
   }
   16% {
     opacity: 1;
   }
-  20% {
-    opacity: 0.75;
+  17.6% {
+    opacity: 0.9;
   }
-  24% {
+  20.8% {
+    opacity: 0.7;
+  }
+  24.0% {
     opacity: 0.5;
   }
-  28% {
-    opacity: 0.25;
+  27.2% {
+    opacity: 0.3;
+  }
+  30.4% {
+    opacity: 0.1;
   }
   33% {
     opacity: 0;
@@ -148,23 +172,44 @@ button {
   33% {
     opacity: 0;
   }
+  35% {
+    opacity: 0.125;
+  }
   37% {
     opacity: 0.25;
+  }
+  39% {
+    opacity: 0.375;
   }
   41% {
     opacity: 0.5;
   }
+  43% {
+    opacity: 0.675;
+  }
   45% {
     opacity: 0.75;
+  }
+  47% {
+    opacity: 0.875;
   }
   49% {
     opacity: 1;
   }
+  52% {
+    opacity: 0.875;
+  }
   54% {
     opacity: 0.75;
   }
+  56% {
+    opacity: 0.675;
+  }
   58% {
     opacity: 0.5;
+  }
+  60% {
+    opacity: 0.375;
   }
   62% {
     opacity: 0.25;
@@ -177,23 +222,44 @@ button {
   33% {
     opacity: 0;
   }
+  35% {
+    opacity: 0.125;
+  }
   37% {
     opacity: 0.25;
+  }
+  39% {
+    opacity: 0.375;
   }
   41% {
     opacity: 0.5;
   }
+  43% {
+    opacity: 0.675;
+  }
   45% {
     opacity: 0.75;
+  }
+  47% {
+    opacity: 0.875;
   }
   49% {
     opacity: 1;
   }
+  52% {
+    opacity: 0.875;
+  }
   54% {
     opacity: 0.75;
   }
+  56% {
+    opacity: 0.675;
+  }
   58% {
     opacity: 0.5;
+  }
+  60% {
+    opacity: 0.375;
   }
   62% {
     opacity: 0.25;
@@ -206,26 +272,47 @@ button {
   67% {
     opacity: 0;
   }
+  70% {
+    opacity: 0.125;
+  }
   73% {
     opacity: 0.25;
+  }
+  75% {
+    opacity: 0.375;
   }
   78% {
     opacity: 0.5;
   }
+  81% {
+    opacity: 0.675;
+  }
   83% {
     opacity: 0.75;
   }
-  88% {
+  85% {
+    opacity: 0.875;
+  }
+  87% {
     opacity: 1;
+  }
+  89% {
+    opacity: 0.875;
   }
   91% {
     opacity: 0.75;
   }
+  93% {
+    opacity: 0.675;
+  }
   94% {
     opacity: 0.5;
   }
-  97% {
-    opacity: 0.25;
+  96% {
+    opacity: 0.375;
+  }
+  98% {
+    opacity: 0.2;
   }
   100% {
     opacity: 0;
@@ -235,26 +322,47 @@ button {
   67% {
     opacity: 0;
   }
+  70% {
+    opacity: 0.125;
+  }
   73% {
     opacity: 0.25;
+  }
+  75% {
+    opacity: 0.375;
   }
   78% {
     opacity: 0.5;
   }
+  81% {
+    opacity: 0.675;
+  }
   83% {
     opacity: 0.75;
   }
-  88% {
+  85% {
+    opacity: 0.875;
+  }
+  87% {
     opacity: 1;
+  }
+  89% {
+    opacity: 0.875;
   }
   91% {
     opacity: 0.75;
   }
+  93% {
+    opacity: 0.675;
+  }
   94% {
     opacity: 0.5;
   }
-  97% {
-    opacity: 0.25;
+  96% {
+    opacity: 0.375;
+  }
+  98% {
+    opacity: 0.2;
   }
   100% {
     opacity: 0;
@@ -479,8 +587,8 @@ button {
   line-height: 1.2;
 }
 .main section.explainArea#explainArea--1 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
   -webkit-animation-name: fade01;
           animation-name: fade01;
   -webkit-animation-iteration-count: infinite;
@@ -511,8 +619,8 @@ button {
   right: 25vw;
 }
 .main section.explainArea#explainArea--2 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
   -webkit-animation-name: fade02;
           animation-name: fade02;
   -webkit-animation-iteration-count: infinite;
@@ -543,8 +651,8 @@ button {
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--3 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
+  -webkit-animation-duration: 10s;
+          animation-duration: 10s;
   -webkit-animation-name: fade03;
           animation-name: fade03;
   -webkit-animation-iteration-count: infinite;
