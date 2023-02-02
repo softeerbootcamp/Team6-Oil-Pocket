@@ -27,7 +27,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
 	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
-	implementation 'mysql:mysql-connector-java:5.1.6'
+	implementation 'mysql:mysql-connector-java:8.0.23'
+
 
 
 
