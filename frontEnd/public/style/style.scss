@@ -63,8 +63,8 @@ button {
     justify-content: space-between;
     align-items: center;
     font-size: 2rem;
-    border-bottom: 0.2vh solid #eeeeee;
-    background-color: #12bd7e;
+    border-bottom: 0.2vh solid #2C2C2C;
+    background-color: #14BD7E;
     z-index: 1000;
 
     & .navbar__logo {
@@ -153,7 +153,7 @@ button {
         position: fixed;
         width: 3vw;
         cursor: pointer;
-        color: #12BD7E;
+        color: #14BD7E;
         left: 2vw;
         bottom: 2vw;
 
@@ -182,7 +182,7 @@ button {
             margin: 0 0 1.5vh;
             padding: 0.5vh 0;
             transition: 0.5s;
-            background-color: #12BD7E;
+            background-color: #14BD7E;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -219,7 +219,7 @@ button {
                 cursor: pointer;
                 margin-bottom: 1vw;
                 margin-right: -1vw;
-                color: #12BD7E;
+                color: #14BD7E;
             }
         }
 
@@ -227,7 +227,7 @@ button {
             margin: 1.5vh 0;
             padding: 0.5vh 1.5vw;
             height: 5vh;
-            background-color: #12BD7E;
+            background-color: #14BD7E;
             display: flex;
             justify-content: left;
             align-items: center;
@@ -360,7 +360,7 @@ button {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #12BD7E;
+        background-color: #14BD7E;
         cursor: pointer;
 
         &:hover {
@@ -389,7 +389,7 @@ button {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #12BD7E;
+        background-color: #14BD7E;
         cursor: pointer;
 
         &:hover {
@@ -625,6 +625,169 @@ button {
                     background-color: rgba(0, 0, 0, 0);
                     flex-grow: 8;
                     font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+/* myPage Area */
+.myPageArea {
+    width: 65%;
+    height: 100%;
+    margin: 0 auto;
+
+    & .myPageArea__tabArea {
+        height: 10%;
+        width: 100%;
+        display: flex;
+
+        & .myPageArea__tab {
+            width: 15%;
+            height: 100%;
+            border-radius: 2vh 2vh 0 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #14BD7E;
+            color: #fff;
+            border: 0.001vh solid #ECECEC;
+            font-weight: 500;
+            cursor: pointer;
+
+            & span {
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+        }
+
+        & .myPageArea__choosedTab {
+            width: 20%;
+            height: 100%;
+            color: #000;
+            background-color: #fff;
+            box-shadow: 0vh -0.5vh 0.2vh 0 #F5F5F5;
+        }
+    }
+
+    & .myPageArea__contentArea {
+        height: 90%;
+        width: 100%;
+        background-color: #90EE90;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        & .myPageArea__profileTitle {
+            width: 80%;
+            height: 20%;
+            background-color: #fff;
+        }
+
+        & .myPageArea__profileContent {
+            width: 80%;
+            height: 48%;
+            background-color: #fff;
+        }
+
+        & .myPageArea__profileBtnArea {
+            width: 80%;
+            height: 5%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 1vh 0;
+
+            & .myPageArea_btns {
+                display: flex;
+                justify-content: space-around;
+                padding: 1vh 0;
+                width: 25%;
+                height: 100%;
+                background-color: #fff;
+                
+                & button {
+                    margin: 0 0.5vw;
+                    height: 100%;
+                    width: 49%;
+                }
+            }
+        }
+
+        & .myPageArea__oilInfoTitle {
+            width: 80%;
+            height: 20%;
+            background-color: #fff;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0 1vw;
+
+            & h1 {
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            & img {
+                margin-right: 1vw;
+                width: 1.8vw;
+            }
+        }
+
+        & .myPageArea__oilInfoContent {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            height: 48%;
+            padding: 1vh 1vw;
+            background-color: #ECECEC;
+
+            & .myPageArea__oilInputBox {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                width: 50%;
+                height: 100%;
+                background-color: red;
+                padding: 0 1vw;
+
+                & input {
+                    width: 100%;
+                    height: 10%;
+                    margin-bottom: 3vh;
+                    text-align: center;
+                }
+            }
+
+            & .myPageArea__oilEffectBox {
+                width: 50%;
+                height: 100%;
+                background-color: blue;
+            }
+        }
+
+        & .myPageArea__oilInfoBtnArea {
+            width: 80%;
+            height: 5%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 1vh 0;
+
+            & .myPageArea_btns {
+                display: flex;
+                justify-content: space-around;
+                padding: 1vh 0;
+                width: 25%;
+                height: 100%;
+                background-color: #fff;
+                
+                & button {
+                    margin: 0 0.5vw;
+                    height: 100%;
+                    width: 49%;
                 }
             }
         }
