@@ -24,9 +24,12 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation group: 'org.springframework.data', name: 'spring-data-jdbc'
 	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
 	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.8.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation 'mysql:mysql-connector-java:8.0.23'
 }
 
 tasks.named('test') {
