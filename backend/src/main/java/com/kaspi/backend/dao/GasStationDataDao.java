@@ -22,4 +22,14 @@ public class GasStationDataDao {
         jdbcTemplate.update(query, gasStation.getGasStationNo(), gasStation.getArea(), gasStation.getName(),
                 gasStation.getAddress(), gasStation.getBrand(), gasStation.getIsSelf());
     }
+    public void insertGasDetails(List<GasDetail> list) {
+        for (GasDetail gasDetail : list) {
+            insertGasDetail(gasDetail);
+        }
+    }
+    public void insertGasDetail(GasDetail gasDetail) {
+        String query = "INSERT INTO gas_price(station_no, gas_code, price, created_date)" +
+                "values (?, ?, ?, ?)";
+        jdbcTemplate.update(query, gasDetail.getGasStationNo(), gasDetail.getGasType(), gasDetail.getPrice(), gasDetail.getDate());
+    }
 }
