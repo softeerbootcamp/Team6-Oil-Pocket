@@ -118,6 +118,30 @@ button {
     100% { opacity: 0.0; }
 }
 
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    5% { opacity: 0.05; }
+    10% { opacity: 0.1; }
+    15% { opacity: 0.15; }
+    20% { opacity: 0.2; }
+    25% { opacity: 0.25; }
+    30% { opacity: 0.3; }
+    35% { opacity: 0.35; }
+    40% { opacity: 0.4; }
+    45% { opacity: 0.45; }
+    50% { opacity: 0.5; }
+    55% { opacity: 0.55; }
+    60% { opacity: 0.6; }
+    65% { opacity: 0.65; }
+    70% { opacity: 0.7; }
+    75% { opacity: 0.75; }
+    80% { opacity: 0.8; }
+    85% { opacity: 0.85; }
+    90% { opacity: 0.9; }
+    95% { opacity: 0.95; }
+    100% { opacity: 1; }
+}
+
 /* main */
 .main {
     height: 90vh;
@@ -139,7 +163,7 @@ button {
     }
 
     & .chatBotArea {
-        transition: 1.5s;
+        transition: 1s;
         border-radius: 2vh;
         padding: 2vh;
         position: fixed;
@@ -390,6 +414,9 @@ button {
 
 /* login Area */
 .loginArea {
+    opacity: 0;
+    animation-duration: 1s;
+    animation-name: fadeIn;
     position: fixed;
     top: 0;
     left: 0;
@@ -468,6 +495,9 @@ button {
 
 /* register Area */
 .registerArea {
+    opacity: 0;
+    animation-duration: 1s;
+    animation-name: fadeIn;
     position: fixed;
     top: 0;
     left: 0;

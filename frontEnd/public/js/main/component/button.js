@@ -1,4 +1,4 @@
-import { addEvent, changeCSS } from "../../helper/helperFunction.js";
+import { addEvent, changeCSS, replaceChildWithFadeEffect } from "../../helper/helperFunction.js";
 import { getChatBotArea, getLoginArea, getRegisterArea } from "../node.js";
 
 const $explainArea = document.querySelector(".explainArea");
@@ -12,7 +12,8 @@ const eventToChatBotCloseBtn = () => {
         () => {
             changeCSS($chatBotOpenBtn, "display", "block");
             const $chatBotArea = document.querySelector(".chatBotArea");
-            $chatBotArea.remove();
+            $chatBotArea.style.opacity = 0;
+            setTimeout(() => $chatBotArea.remove(), 1000);
         }
     ])
 }
@@ -38,8 +39,8 @@ const eventToLoginBtn = () => {
         },
         () => {
             const $mainSection = document.querySelector("section.main");
-            $mainSection.innerHTML = ""
-            $mainSection.appendChild(getLoginArea());   
+            const $loginArea = getLoginArea();
+            replaceChildWithFadeEffect($mainSection, $loginArea);
         }
     ])
 }
@@ -48,8 +49,8 @@ const eventToRegisterBtn = ($registerBtn) => {
     addEvent($registerBtn, [
         () => {
             const $mainSection = document.querySelector("section.main");
-            $mainSection.innerHTML = ""
-            $mainSection.appendChild(getRegisterArea());
+            const $registerArea = getRegisterArea();
+            replaceChildWithFadeEffect($mainSection, $registerArea);
         }
     ])
 }
