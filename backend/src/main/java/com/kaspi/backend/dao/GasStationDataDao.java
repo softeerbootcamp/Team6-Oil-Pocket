@@ -28,8 +28,8 @@ public class GasStationDataDao {
         }
     }
     public void insertGasDetail(GasDetail gasDetail) {
-        String query = "INSERT INTO gas_price(station_no, gas_code, price, created_date)" +
+        String query = "INSERT INTO gas_detail(station_no, gas_type, price, created_date)" +
                 "values (?, ?, ?, ?)";
-        jdbcTemplate.update(query, gasDetail.getGasStationNo(), gasDetail.getGasType(), gasDetail.getPrice(), gasDetail.getDate());
+        jdbcTemplate.update(query, gasDetail.getGasStationNo(), gasDetail.getGasType().name(), gasDetail.getPrice(), gasDetail.getDate());
     }
 }
