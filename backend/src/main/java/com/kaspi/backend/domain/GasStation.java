@@ -57,6 +57,14 @@ public class GasStation {
         this.brand = brand;
     }
 
+    public boolean getIsSelf() {
+        return self;
+    }
+
+    public void setSelf(boolean self) {
+        this.self = self;
+    }
+
     public static GasStation parseGasStation(String[] attribute) {
         return new GasStation(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
     }
