@@ -40,7 +40,13 @@ const getLoginAreaTemplate = () => `
 const getRegisterAreaTemplate = () => `
     <section class="registerArea__backGround">
         <div class="registerArea__frame">
-            <h1>Oil Defence</h1>
+            <h1>Oil Pocket</h1>
+            <div class="registerArea__TermOfUse">
+                <h2>이용 약관</h2>
+                <div class="registerArea__TermOfUseBox">
+                    Oil Pocket 이용약관, 개인정보 수집 및 이용, 위치기반서비스 이용약관(선택)에 모두 동의하시는 경우, 회원 가입을 진행해주세요.
+                </div>
+            </div>
             <div class="registerArea__dropDownArea">
                 <select name="registerArea__genderBtn" id="registerArea__genderBtn">
                     <option disabled selected value="성별">성별</option>

@@ -511,13 +511,34 @@ button {
         margin: 0 auto;
 
         & .registerArea__frame {
-            height: 50%;
+            height: 70%;
             width: 90%;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             color: #01C787;
+
+            & .registerArea__TermOfUse {
+                background-color: #fff;
+                color: #000;
+                height: 20%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+
+                & h2 {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                }
+
+                & .registerArea__TermOfUseBox {
+                    border: 0.2vh solid black;
+                    font-size: 0.8rem;
+                    padding: 0.5vh 0.5vw;
+                }
+            }
 
             & h1 {
                 display: flex;
