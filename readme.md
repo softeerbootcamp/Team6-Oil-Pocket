@@ -2,4 +2,4 @@
 #### ⛽️ 유류비 절약 플랫폼 - 오일 포켓 ( Oil Pocket )
 
 #### 프로젝트 예상 아키텍쳐
-https://www.notion.so/40c502cb824a41439875670fe3a858c3#a3beb7e122e643bf981207905d1192f6
+![image](https://user-images.githubusercontent.com/35219960/216689583-02c6b5d7-8b2e-4074-9790-51727801b2ee.png)
