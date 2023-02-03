@@ -1,7 +1,7 @@
 package com.kaspi.backend.dao;
 
-import com.kaspi.backend.domain.Age;
-import com.kaspi.backend.domain.Gender;
+import com.kaspi.backend.enums.Age;
+import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.domain.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

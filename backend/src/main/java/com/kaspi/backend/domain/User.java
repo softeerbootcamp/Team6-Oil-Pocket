@@ -1,5 +1,7 @@
 package com.kaspi.backend.domain;
 
+import com.kaspi.backend.enums.Age;
+import com.kaspi.backend.enums.Gender;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
