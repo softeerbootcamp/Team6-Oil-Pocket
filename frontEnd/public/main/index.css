@@ -695,22 +695,20 @@ button {
 .searchBar .searchBar__left {
   width: 45vw;
   height: 20vh;
+  border-radius: 2vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #14BD72;
   box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
   cursor: pointer;
 }
+.searchBar .searchBar__left:hover {
+  outline: 0.1vh solid #14BD72;
+}
 .searchBar .searchBar__left:hover svg {
   margin-bottom: 5.2vh;
-}
-.searchBar .searchBar__left:hover svg path {
-  fill: #14BD7E;
-}
-.searchBar .searchBar__left:hover h1 {
-  color: #14BD7E;
 }
 .searchBar .searchBar__left svg {
   transition: 0.5s;
@@ -720,27 +718,25 @@ button {
 .searchBar .searchBar__left h1 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #000;
+  color: #fff;
 }
 .searchBar .searchBar__right {
   width: 45vw;
   height: 20vh;
+  border-radius: 2vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: #14BD72;
   box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
   cursor: pointer;
 }
+.searchBar .searchBar__right:hover {
+  outline: 0.1vh solid #14BD72;
+}
 .searchBar .searchBar__right:hover svg {
   margin-bottom: 5.2vh;
-}
-.searchBar .searchBar__right:hover svg path {
-  fill: #14BD7E;
-}
-.searchBar .searchBar__right:hover h1 {
-  color: #14BD7E;
 }
 .searchBar .searchBar__right svg {
   transition: 0.5s;
@@ -750,5 +746,5 @@ button {
 .searchBar .searchBar__right h1 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #000;
+  color: #fff;
 }/*# sourceMappingURL=index.css.map */

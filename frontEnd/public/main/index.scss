@@ -378,26 +378,20 @@ button {
     & .searchBar__left {
         width: 45vw;
         height: 20vh;
+        border-radius: 2vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #fff;
+        background-color: #14BD72;
         box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
         cursor: pointer;
 
         &:hover {
+            outline: 0.1vh solid #14BD72;
 
             & svg {
                 margin-bottom: 5.2vh;
-
-                & path {
-                    fill: #14BD7E;
-                }
-            }
-
-            & h1 {
-                color: #14BD7E;
             }
         }
 
@@ -410,32 +404,27 @@ button {
         & h1 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #000;
+            color: #fff;
         }
     }
 
     & .searchBar__right {
         width: 45vw;
         height: 20vh;
+        border-radius: 2vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: #fff;
+        background-color: #14BD72;
         box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
         cursor: pointer;
 
         &:hover {
+            outline: 0.1vh solid #14BD72;
+
             & svg {
                 margin-bottom: 5.2vh;
-
-                & path {
-                    fill: #14BD7E;
-                }
-            }
-
-            & h1 {
-                color: #14BD7E;
             }
         }
 
@@ -448,7 +437,7 @@ button {
         & h1 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #000;
+            color: #fff;
         }
     }
 }
