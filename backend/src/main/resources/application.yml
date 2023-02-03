@@ -4,6 +4,7 @@ spring:
     url: jdbc:mysql://43.200.157.18:3306/oilpocket_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: ${MYSQL_ID}
     password: ${MYSQL_PASSWORD}
+
   redis:
     lettuce:
       pool:
@@ -12,3 +13,10 @@ spring:
         min-idle: 2
     port: 6379
     host: 43.200.157.18
+
+  session:
+    store-type: redis
+    timeout: 3600
+    redis:
+      namespace: session
+
