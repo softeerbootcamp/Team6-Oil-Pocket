@@ -2,7 +2,7 @@ package com.kaspi.backend.util.response.code;
 
 public enum DefaultCode implements Code {
 
-    Sample("S001", "샘플 메세지 입니다.");
+    SUCCESS_SIGNUP("L001", "정상적으로 회원가입이 완료되었습니다.");
 
 
 
@@ -18,11 +18,11 @@ public enum DefaultCode implements Code {
 
     @Override
     public String getCode() {
-        return null;
+        return code;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }
