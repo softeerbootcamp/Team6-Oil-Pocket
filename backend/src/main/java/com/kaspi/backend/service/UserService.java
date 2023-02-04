@@ -22,15 +22,19 @@ public class UserService {
         Optional<Age> age = Age.getAge(signUpRequestDto.getAge());
         Optional<Gender> gender = Gender.getGender(signUpRequestDto.getGender());
 
-        if(age.isEmpty()||gender.isEmpty()){
-            throw new IllegalArgumentException(ErrorCode.PARAMETER_ERROR.getMessage());
-        }
+        checkValidRequest(age, gender);
 
         return userDao.save(User.builder()
                 .id(signUpRequestDto.getId())
                 .password(signUpRequestDto.getPassword())
                 .gender(gender.get())
                 .age(age.get()).build());
+    }
+
+    private void checkValidRequest(Optional<Age> age, Optional<Gender> gender) {
+        if(age.isEmpty()|| gender.isEmpty()){
+            throw new IllegalArgumentException(ErrorCode.PARAMETER_ERROR.getMessage());
+        }
     }
 
 

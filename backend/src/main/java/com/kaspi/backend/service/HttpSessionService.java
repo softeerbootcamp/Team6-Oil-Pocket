@@ -25,12 +25,15 @@ public class HttpSessionService {
     public User getUserFromSession() {
         Long userNo = (Long) httpSession.getAttribute(SESSION_KEY);
         Optional<User> findUser = userDao.findById(userNo);
-        if (findUser.isEmpty()) {
-            throw new NotValidUserException(ErrorCode.NOT_VALID_USER);
-        }
+        checkNotValidUser(findUser);
         return findUser.get();
     }
 
+    private void checkNotValidUser(Optional<User> findUser) {
+        if (findUser.isEmpty()) {
+            throw new NotValidUserException(ErrorCode.NOT_VALID_USER);
+        }
+    }
 
 
 }
