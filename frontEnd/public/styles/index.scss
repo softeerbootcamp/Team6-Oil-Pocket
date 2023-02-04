@@ -501,6 +501,10 @@ a {
                 background-color: #14BD7E;
                 font-size: 1.2rem;
                 font-weight: 700;
+
+                & a:visited { 
+                    color: #14BD7E;
+                }
             }
 
             & label {
@@ -513,6 +517,188 @@ a {
                     font-weight: 500;
                     flex-grow: 2;
                 }
+                & button {
+                    color: #14BD7E;
+                    background-color: rgba(0, 0, 0, 0);
+                    flex-grow: 8;
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}
+
+/* register Area */
+.registerArea {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+    & .registerArea__backGround {
+        background-color: #FCFCFE;
+        height: 100%;
+        width: 20%;
+        margin: 0 auto;
+
+        & .registerArea__frame {
+            height: 90%;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            color: #14BD7E;
+
+            & button {
+                padding: 2vh 0;
+                color: #fff;
+                background-color: #14BD7E;
+                font-size: 1.2rem;
+                font-weight: 600;
+                border-radius: 0.5vh;
+            }
+
+            & .registerArea__termOfUse {
+                height: 40%;
+                margin: 0 auto 1vh;
+                width: 95%;
+                border-radius: 0.5vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                color: #000;
+                padding: 1vh 0.5vw 0;
+                outline: 0.2vh solid #14BD72;
+                box-shadow: 0.2vw 0.2vh 0.5vw 0 gray;
+
+                & h2 {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    height: 15%;
+                }
+
+                & p {
+                    border-radius: 0.5vh;
+                    width: 90%;
+                    height: 60%;
+                    padding: 0.5vh 1vw;
+                    font-size: 0.8rem;
+                    overflow-y: scroll;
+                    background-color: #ECECEC;
+                }
+
+                & .registerArea__btnBox{
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    width: 100%;
+                    height: 20%;
+
+                    & .registerArea__termOfUseContentBtn {
+                        background-color: #9CE0C2;
+                        font-size: 0.6rem;
+                        padding: 0.5vh 0.5vw;
+                        width: 50%;
+                        border-radius: 0.5vh;
+                        margin-right: 0.8vw;
+
+                        &:hover {
+                            background-color:#14BD7E;
+                        }
+                    }
+                }
+            }
+
+            & h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 3.5rem;
+                color: #14BD7E;
+                font-weight: 700;
+                margin: 2vh 0 5vh 0;
+                
+            }
+
+            & .registerArea__dropDownArea {
+                display: flex;
+                justify-content: space-between;
+
+                & select {
+                    font-weight: 600;
+                    border: none;
+                    padding: 2vh 0;
+                    font-size: 1.1rem;
+                    width: 50%;
+                    background-color: #14BD7E;
+                    color: #fff;
+                    appearance: none;
+                    cursor: pointer;
+                    text-align: center;
+
+                    &:nth-child(1) {
+                        background-color: #80E3C3;
+                        border-radius: 0.5vh 0 0 0.5vh;
+                    }
+
+                    &:nth-child(2) {
+                        border-radius: 0 0.5vh 0.5vh 0;
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+
+            & .registerArea__IDArea {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                & button {
+                    padding: 2vh 0.5vw;
+                    color: #fff;
+                    background-color: #14BD7E;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    border-radius: 0.5vh;
+                }
+            }
+
+            & input {
+                color: #14BD7E;
+                background-color: #FAFAFB;
+                font-size: 1.2rem;
+                text-align: center;
+                padding: 2vh 0;
+                font-weight: 600;
+                border-radius: 0.5vh;
+
+                &::placeholder {
+                    color: #D5DDE6;
+                }
+
+                &:focus {
+                    outline: 0.2vh solid #14BD7E;
+                }
+            }
+
+            & label {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                & span {
+                    font-size: 1.2rem;
+                    color: #B6B2B2;
+                    font-weight: 500;
+                    flex-grow: 2;
+                }
+
                 & button {
                     color: #14BD7E;
                     background-color: rgba(0, 0, 0, 0);

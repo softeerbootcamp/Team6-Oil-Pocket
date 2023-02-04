@@ -1,6 +1,7 @@
 import { loginView } from "./views/loginView.js";
 import { mainView } from "./views/mainView.js";
 import { showNotFoundView } from "./views/notFoundView.js";
+import { reigsterView } from "./views/registerView.js";
 
 const $body = document.querySelector("body");
 const basePath = "/frontEnd";
@@ -8,16 +9,17 @@ const basePath = "/frontEnd";
 const router = async () => {
 
     const routes = [
-        { path: basePath + "/", view: mainView }, 
-        { path: basePath + "/index.html", view: mainView },
-        { path: basePath + "/login", view: loginView },
-        { path: basePath + "/404", view: showNotFoundView }
+        { path: "/", view: mainView }, 
+        { path: "/index.html", view: mainView },
+        { path: "/register", view: reigsterView },
+        { path: "/login", view: loginView },
+        { path: "/404", view: showNotFoundView }
     ];
 
     let match = routes.map(route => {
         return {
             route,
-            isMatch: location.pathname === route.path
+            isMatch: location.pathname === basePath + route.path
         };
     }).find((routeObj) => routeObj.isMatch)
 
@@ -44,8 +46,10 @@ window.addEventListener("DOMContentLoaded", () => router());
 // DOM이 렌더링 되면 router 함수 실행
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", (event) => {
-        event.preventDefault();
-        navigateTo((event.target.href));
+        if(event.target.matches("[data-link]")) {
+            event.preventDefault();
+            navigateTo((event.target.href));
+        }
     })
 
     router();
