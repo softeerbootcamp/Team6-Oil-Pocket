@@ -52,6 +52,10 @@ button {
     cursor: pointer;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* nav bar */
 .navbar {
     padding: 0 4vw;
@@ -77,6 +81,10 @@ button {
             color: #14BD7E;
             padding: 0 0.5vw;
             font-weight: 600;
+
+            & a:visited {
+                color:#14BD72;
+            }
         }
 
         & span:nth-child(2n + 1) {
@@ -438,6 +446,80 @@ button {
             font-size: 1.5rem;
             font-weight: 600;
             color: #fff;
+        }
+    }
+}
+
+/* login Area */
+.loginArea {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+
+    & .loginArea__backGround {
+        background-color: #FCFCFE;
+        height: 100%;
+        width: 20%;
+        margin: 0 auto;
+
+        & .loginArea__frame {
+            height: 50%;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            color: #14BD7E;
+            background-color: #fff;
+            
+            & h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 3.5rem;
+                color: #14BD7E;
+                font-weight: 700;
+                margin: 2vh 0 5vh 0;
+            }
+            & input {
+                color: #14BD7E;
+                background-color: #FAFAFB;
+                font-size: 1.2rem;
+                text-align: center;
+                padding: 2vh 0;
+                font-weight: 600;
+
+                &::placeholder {
+                    color: #D5DDE6;
+                }
+            }
+            & button {
+                padding: 2vh 0;
+                color: #fff;
+                background-color: #14BD7E;
+                font-size: 1.2rem;
+                font-weight: 700;
+            }
+
+            & label {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                & span {
+                    font-size: 1.2rem;
+                    color: #B6B2B2;
+                    font-weight: 500;
+                    flex-grow: 2;
+                }
+                & button {
+                    color: #14BD7E;
+                    background-color: rgba(0, 0, 0, 0);
+                    flex-grow: 8;
+                    font-size: 1.2rem;
+                }
+            }
         }
     }
 }

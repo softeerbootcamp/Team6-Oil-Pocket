@@ -57,6 +57,10 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* nav bar */
 .navbar {
   padding: 0 4vw;
@@ -80,6 +84,9 @@ button {
   color: #14BD7E;
   padding: 0 0.5vw;
   font-weight: 600;
+}
+.navbar .navbar__btns span a:visited {
+  color: #14BD72;
 }
 .navbar .navbar__btns span:nth-child(2n+1) {
   cursor: pointer;
@@ -747,4 +754,79 @@ button {
   font-size: 1.5rem;
   font-weight: 600;
   color: #fff;
+}
+
+/* login Area */
+.loginArea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.loginArea .loginArea__backGround {
+  background-color: #FCFCFE;
+  height: 100%;
+  width: 20%;
+  margin: 0 auto;
+}
+.loginArea .loginArea__backGround .loginArea__frame {
+  height: 50%;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: #14BD7E;
+  background-color: #fff;
+}
+.loginArea .loginArea__backGround .loginArea__frame h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.5rem;
+  color: #14BD7E;
+  font-weight: 700;
+  margin: 2vh 0 5vh 0;
+}
+.loginArea .loginArea__backGround .loginArea__frame input {
+  color: #14BD7E;
+  background-color: #FAFAFB;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2vh 0;
+  font-weight: 600;
+}
+.loginArea .loginArea__backGround .loginArea__frame input::-moz-placeholder {
+  color: #D5DDE6;
+}
+.loginArea .loginArea__backGround .loginArea__frame input:-ms-input-placeholder {
+  color: #D5DDE6;
+}
+.loginArea .loginArea__backGround .loginArea__frame input::placeholder {
+  color: #D5DDE6;
+}
+.loginArea .loginArea__backGround .loginArea__frame button {
+  padding: 2vh 0;
+  color: #fff;
+  background-color: #14BD7E;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.loginArea .loginArea__backGround .loginArea__frame label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.loginArea .loginArea__backGround .loginArea__frame label span {
+  font-size: 1.2rem;
+  color: #B6B2B2;
+  font-weight: 500;
+  flex-grow: 2;
+}
+.loginArea .loginArea__backGround .loginArea__frame label button {
+  color: #14BD7E;
+  background-color: rgba(0, 0, 0, 0);
+  flex-grow: 8;
+  font-size: 1.2rem;
 }/*# sourceMappingURL=index.css.map */

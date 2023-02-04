@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gas Map</title>
+import { navBarView } from "./navBarView.js";
 
-    <script src="https://kit.fontawesome.com/53b577849a.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./index.css">
-</head>
-<body>
-    <section class="navbar">
-        <div class="navbar__logo">Gas Pocket</div>
-        <div class="navbar__btns">
-            <span>마이 페이지</span>
-            <span> | </span>
-            <span>한국</span>
-            <span> / </span>
-            <span>영어</span>
-            <span> | </span>
-            <span>다크모드</span>
-        </div>
-    </section>
+const mainView = navBarView + `
     <section class="main">
         <section class="searchBar">
             <div class="searchBar__left">
@@ -36,15 +15,15 @@
                 </svg>
                 <h1>출발지/도착지 주유소 검색</h1>
             </div>
-        </section>
-        <img class="chatBotArea__img" src="../img/chatBot.png" alt="chatBot">
-        <section class="explainAreaArray">
+            </section>
+            <img class="chatBotArea__img" src="./public/img/chatBot.png" alt="chatBot">
+            <section class="explainAreaArray">
             <section class="explainArea" id="explainArea--1">
                 <div class="explainArea__text">
                     <h1>간단한 회원가입 폼</h1>
                     <h2>ID와 비밀번호만을 통해 가입할 수 있어요.</h2>
                 </div>
-                <img class="explainArea__phone" src="../img/phone_01.png" alt="phone_01">
+                <img class="explainArea__phone" src="./public/img/phone_01.png" alt="phone_01">
             </section>
             <section class="explainArea" id="explainArea--2">
                 <div class="explainArea__text">
@@ -54,7 +33,7 @@
                         주유소 기름 가격을 검색할 수 있어요. <br>
                     </h2>
                 </div>
-                <img class="explainArea__phone" src="../img/phone_02.png" alt="phone_02">
+                <img class="explainArea__phone" src="./public/img/phone_02.png" alt="phone_02">
             </section>
             <section class="explainArea" id="explainArea--3">
                 <div class="explainArea__text">
@@ -64,9 +43,10 @@
                         예상된 경로 중 당신에게 알맞은 주유소를 보여줘요. <br>
                     </h2>
                 </div>
-                <img class="explainArea__phone" src="../img/phone_03.png" alt="phone_03">
+                <img class="explainArea__phone" src="./public/img/phone_03.png" alt="phone_03">
             </section>
         </section>
     </section>
-</body>
-</html>
+`;
+
+export { mainView }
