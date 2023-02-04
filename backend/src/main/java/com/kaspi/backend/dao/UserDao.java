@@ -8,15 +8,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface UserDao extends CrudRepository<User, Long> {
-    @Query(value = "INSERT INTO users (id, password, gender, age) VALUES (:id, :password, :gender, :age)")
-    @Modifying
-    Long insertUser(@Param("id") String id, @Param("password") String password, @Param("gender") String gender, @Param("age") String age);
 
-
-    @Query("select * from users where user_no= :userNo")
-    Optional<User> findByUserNo(@Param("userNo") Long userNo);
 
 }

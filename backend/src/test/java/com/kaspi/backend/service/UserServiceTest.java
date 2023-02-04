@@ -1,6 +1,7 @@
 package com.kaspi.backend.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -49,16 +50,12 @@ class UserServiceTest {
         User expectedUser = User.builder().userNo(1L).id("user1").password("password").age(Age.TWENTY)
                 .gender(Gender.MALE)
                 .build();
-        when(userDao.insertUser(anyString(), anyString(), anyString(), anyString()))
-                .thenReturn(expectedUser.getUserNo());
+        when(userDao.save(any(User.class)))
+                .thenReturn(expectedUser);
         //when
-        Long actualUserNo = userService.makeUser(signUpRequestDto);
+        User actualUser = userService.makeUser(signUpRequestDto);
         //then
-        verify(userDao).insertUser(signUpRequestDto.getId(),
-                signUpRequestDto.getPassword(),
-                Gender.getGender(signUpRequestDto.getGender()).get().name(),
-                Age.getAge(signUpRequestDto.getAge()).get().name());
-        assertEquals(expectedUser.getUserNo(), actualUserNo);
+        assertEquals(expectedUser, actualUser);
     }
 
 
@@ -74,31 +71,5 @@ class UserServiceTest {
         });
     }
 
-    @Test
-    @DisplayName("세션을 이용하여 정상적 쿠키 생성 테스트")
-    void makeCookieFromSession() {
-        //given
-        User user = User.builder().userNo(1L).id("user1").password("password").age(Age.TWENTY)
-                .gender(Gender.MALE)
-                .build();
-        ResponseCookie expectedCookie = ResponseCookie.from(SESSION_COOKIE_KEY, "session_id")
-                .httpOnly(true)
-                .secure(true)
-                .path("/")
-                .maxAge(SESSION_COOKIE_VALID_TIME)
-                .build();
-        Session session = mock(Session.class);
 
-        //when
-        when(sessionRepository.createSession()).thenReturn(session);
-        when(session.getId()).thenReturn("session_id");
-        when(cookieFactory.makeResponseCookie(SESSION_COOKIE_KEY, "session_id", SESSION_COOKIE_VALID_TIME))
-                .thenReturn(expectedCookie);
-        ResponseCookie responseCookie = userService.makeCookieFromSession(user.getUserNo());
-
-        //then
-        verify(session).setAttribute(SESSION_KEY, user.getUserNo());
-        verify(cookieFactory).makeResponseCookie(SESSION_COOKIE_KEY, "session_id", SESSION_COOKIE_VALID_TIME);
-        assertEquals(expectedCookie, responseCookie);
-    }
 }
