@@ -20,7 +20,7 @@ class UserDaoTest {
     @DisplayName("유저 insert,select query 테스트")
     public void testInsertUser() {
         //given
-        User user = new User.builder().userNo(1L).age(Age.TWENTY).gender(Gender.MALE).id("test").password("testpwd").build();
+        User user = User.builder().userNo(1L).age(Age.TWENTY).gender(Gender.MALE).id("test").password("testpwd").build();
         //when
         userDao.insertUser(user.getId(), user.getPassword(), user.getGender().name(), user.getAge().name());
         //then
