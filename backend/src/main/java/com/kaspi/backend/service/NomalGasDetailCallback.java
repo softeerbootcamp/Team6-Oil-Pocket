@@ -8,8 +8,9 @@ import java.util.List;
 
 public class NomalGasDetailCallback implements GasDetailCallback{
     @Override
-    public void makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute, LocalDate date) {
+    public List<GasDetail> makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute, LocalDate date) {
         List<GasDetail> gasDetailList = GasDetail.parseListGasDetail(attribute, date);
         gasStationDataDao.insertGasDetails(gasDetailList);
+        return gasDetailList;
     }
 }
