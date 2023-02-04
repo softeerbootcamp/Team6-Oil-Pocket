@@ -28,8 +28,14 @@ public class GasStationDataDao {
         }
     }
     public void insertGasDetail(GasDetail gasDetail) {
-        String query = "INSERT INTO gas_detail(station_no, gas_type, price, created_date)" +
-                "values (?, ?, ?, ?)";
-        jdbcTemplate.update(query, gasDetail.getGasStationNo(), gasDetail.getGasType().name(), gasDetail.getPrice(), gasDetail.getDate());
+        String query = "INSERT INTO gas_detail(address, brand, gas_type, price, created_date)" +
+                "values (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(query, gasDetail.getAddress(), gasDetail.getBrand(), gasDetail.getGasType().name(), gasDetail.getPrice(), gasDetail.getDate());
+    }
+    public List<String> selectAllGasStation() {
+        String query = "SELECT address FROM gas_station";
+        return jdbcTemplate.query(query, (ResultSet rs, int rowNum) -> {
+            return rs.getString(1);
+        });
     }
 }

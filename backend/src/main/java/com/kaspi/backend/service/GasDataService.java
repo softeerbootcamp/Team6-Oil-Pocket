@@ -9,13 +9,10 @@ import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
-import static com.kaspi.backend.util.DataDownloadScheduler.GAS_STATION;
 
 @Service
 public class GasDataService {
@@ -46,15 +43,18 @@ public class GasDataService {
                 gasStationInfos.put(key, gasStation);
                 gasStationDataDao.insertGasStation(gasStation);
             }
+            GasStation gasStation = gasStationInfos.get(key);
             attribute[0] = gasStationInfos.get(key).getGasStationNo();
             List<GasDetail> gasDetails = callback.makeGasDetailAndSaveToDB(gasStationDataDao, attribute, date);
             cacheMap.put(key, GasStationDto.newInstance(gasStationInfos.get(key), GasDetailDto.newDtoList(gasDetails)));
         }
         file.delete();
     }
-    private String makeCacheKey(String[] attribute) {
-        return makeEndAddress(attribute[3]) + ":" + attribute[4];
+
+    public String makeCacheKey(String[] attribute) {
+        return attribute[3] + ":" + attribute[4];
     }
+
     private String makeEndAddress(String address) {
         String[] temp = address.split(" ");
         int idx = 0;
