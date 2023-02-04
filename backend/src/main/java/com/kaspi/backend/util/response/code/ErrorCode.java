@@ -1,7 +1,7 @@
 package com.kaspi.backend.util.response.code;
 
 public enum ErrorCode implements Code {
-    LOGIN_ERROR("E001", "에러 샘플");
+    PARAMETER_ERROR("E001", "요청 데이터 형식이 올바르지 않습니다.");
 
 
     private String code;
