@@ -4,12 +4,19 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public enum Gender {
-    MALE,
-    FEMALE;
+    MALE("M"),
+    FEMALE("F");
+
+    private String initial;
+
+    Gender(String initial) {
+        this.initial = initial;
+    }
+
 
     public static Optional<Gender> getGender(String requestGender) {
         return Arrays.stream(values())
-                .filter(value -> value.name().equals(requestGender))
+                .filter(value -> value.initial.equals(requestGender))
                 .findAny();
     }
 

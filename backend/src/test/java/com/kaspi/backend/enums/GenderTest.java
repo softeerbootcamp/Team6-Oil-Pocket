@@ -13,7 +13,7 @@ class GenderTest {
     @DisplayName("요청데이터에 대한 gender객체 변환 테스트")
     void getGender() {
         //given
-        String requestGender = "MALE";
+        String requestGender = "M";
         //when
         Optional<Gender> gender = Gender.getGender(requestGender);
         //then
