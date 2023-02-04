@@ -11,6 +11,8 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseCookie;
+import org.springframework.session.Session;
+import org.springframework.session.SessionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,12 +22,14 @@ public class UserService {
 
     private final UserDao userDao;
     private final CookieFactory cookieFactory;
+    private final SessionRepository sessionRepository;
 
     private static final String SESSION_KEY = "user_no";
-    private static final String SESSION_COOKIE_KEY = "sid";
+    public static final String SESSION_COOKIE_KEY = "sid";
     private static int SESSION_COOKIE_VALID_TIME = 3600;
 
-    public ResponseCookie makeCookieFromSession(Long userNo,HttpSession session) {
+    public ResponseCookie makeCookieFromSession(Long userNo) {
+        Session session = sessionRepository.createSession();
         session.setAttribute(SESSION_KEY, userNo);
         ResponseCookie responseSessionCookie = cookieFactory.makeResponseCookie(SESSION_COOKIE_KEY, session.getId(), SESSION_COOKIE_VALID_TIME);
         return responseSessionCookie;
