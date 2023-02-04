@@ -70,4 +70,8 @@ public class GasDataService {
         }
         return result;
     }
+
+    public void initCache() {
+        cacheMap.clear();
+    }
 }

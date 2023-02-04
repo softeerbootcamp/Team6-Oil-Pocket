@@ -18,18 +18,20 @@ import java.util.Map;
 
 @Component
 public class DataDownloadScheduler {
-    private static final String GAS_STATION = "/Users/download/현재_판매가격(주유소).csv";
-    private static final String LPG_STATION = "/Users/download/현재_판매가격(충전소).csv";
-    private GasDataService gasDataService;
+    public static final String GAS_STATION = "/Users/download/현재_판매가격(주유소).csv";
+    public static final String LPG_STATION = "/Users/download/현재_판매가격(충전소).csv";
+    private final GasDataService gasDataService;
 
     public DataDownloadScheduler(GasDataService gasDataService) {
         this.gasDataService = gasDataService;
     }
 
+    //@Scheduled(fixedDelay = 300000)
+    @Scheduled(fixedDelay = 3000)
     //@Scheduled(cron = "0 1 1 * * *")
-    @Scheduled(fixedDelay = 300000)
     public void backgroundProcess() {
         try {
+            gasDataService.initCache();
             ChromeOptions chromeOptions = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
             prefs.put("download.default_directory", "/Users/download");
@@ -49,6 +51,7 @@ public class DataDownloadScheduler {
             e.printStackTrace();
         }
     }
+
     public void fileDownload(WebDriver driver) throws IOException, InterruptedException {
         WebElement button = driver.findElement(By.xpath("//*[@id=\"priceInfoVO\"]/div/div[2]/table/tbody/tr/td[2]/a[2]"));
         button.sendKeys(Keys.ENTER);

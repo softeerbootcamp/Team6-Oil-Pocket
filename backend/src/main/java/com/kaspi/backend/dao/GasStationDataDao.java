@@ -5,6 +5,7 @@ import com.kaspi.backend.domain.GasStation;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 @Repository
