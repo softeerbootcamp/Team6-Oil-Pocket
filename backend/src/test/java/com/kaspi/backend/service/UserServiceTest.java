@@ -49,4 +49,17 @@ class UserServiceTest {
                 Age.getAge(signUpRequestDto.getAge()).get().name());
         assertEquals(expectedUser, actualUser);
     }
+
+
+    @Test
+    @DisplayName("유저 비정상 생성 테스트 에러 생성")
+    void makeNoTValidUser() {
+        //given
+        SignUpRequestDto signUpRequestDto = SignUpRequestDto.builder().id("user1").password("password").gender("Male")
+                .age("20대")
+                .build();
+        assertThrows(IllegalArgumentException.class, () -> {
+            userService.makeUser(signUpRequestDto);
+        });
+    }
 }
