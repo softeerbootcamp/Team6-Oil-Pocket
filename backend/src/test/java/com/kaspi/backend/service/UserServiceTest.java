@@ -33,7 +33,7 @@ class UserServiceTest {
     @InjectMocks
     private UserService userService;
 
-    private static final String SESSION_KEY = "User";
+    private static final String SESSION_KEY = "user_no";
     private static final String SESSION_COOKIE_KEY = "sid";
     private static int SESSION_COOKIE_VALID_TIME = 3600;
 
@@ -48,15 +48,15 @@ class UserServiceTest {
                 .gender(Gender.MALE)
                 .build();
         when(userDao.insertUser(anyString(), anyString(), anyString(), anyString()))
-                .thenReturn(expectedUser);
+                .thenReturn(expectedUser.getUserNo());
         //when
-        User actualUser = userService.makeUser(signUpRequestDto);
+        Long actualUserNo = userService.makeUser(signUpRequestDto);
         //then
         verify(userDao).insertUser(signUpRequestDto.getId(),
                 signUpRequestDto.getPassword(),
                 Gender.getGender(signUpRequestDto.getGender()).get().name(),
                 Age.getAge(signUpRequestDto.getAge()).get().name());
-        assertEquals(expectedUser, actualUser);
+        assertEquals(expectedUser.getUserNo(), actualUserNo);
     }
 
 
@@ -90,10 +90,10 @@ class UserServiceTest {
         when(httpSession.getId()).thenReturn("session_id");
         when(cookieFactory.makeResponseCookie(SESSION_COOKIE_KEY, "session_id", SESSION_COOKIE_VALID_TIME))
                 .thenReturn(expectedCookie);
-        ResponseCookie responseCookie = userService.makeCookieFromSession(user, httpSession);
+        ResponseCookie responseCookie = userService.makeCookieFromSession(user.getUserNo(), httpSession);
 
         //then
-        verify(httpSession).setAttribute(SESSION_KEY, user);
+        verify(httpSession).setAttribute(SESSION_KEY, user.getUserNo());
         verify(cookieFactory).makeResponseCookie(SESSION_COOKIE_KEY, "session_id", SESSION_COOKIE_VALID_TIME);
         assertEquals(expectedCookie, responseCookie);
     }
