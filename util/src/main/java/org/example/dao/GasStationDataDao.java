@@ -14,10 +14,20 @@ public class GasStationDataDao {
     private String username;
     private String password;
 
-    public GasStationDataDao() throws IOException {
+    public GasStationDataDao() {
         File file = new File(PATH_PREFIX + "datasource.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
-        String[] info = br.readLine().split(",");
+        BufferedReader br = null;
+        String[] info = null;
+        try {
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
+            info = br.readLine().split(",");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         this.url = info[0];
         this.username = info[1];
         this.password = info[2];
