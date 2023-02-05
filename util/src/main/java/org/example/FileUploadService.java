@@ -16,14 +16,19 @@ public class FileUploadService {
 
     public static final String PATH_PREFIX = "/Users/historyData/";
     private static final String PATH_SUFFIX = ".csv";
-    private static final String OIL_FILE = "과거_판매가격(주유소)";
-    private static final String LPG_FILE = "과거_판매가격(충전소)";
+    private static final String OIL_FILE = "과거_판매가격(주유소)1";
+    private static final String LPG_FILE = "과거_판매가격(충전소)1";
     private final Map<String, GasStation> gasStationInfos = new HashMap<>();
     private GasStationDataDao gasStationDataDao = new GasStationDataDao();
 
     public FileUploadService() {
     }
-
+    public void fileOpen() {
+        File oilFile = new File(PATH_PREFIX + OIL_FILE + PATH_SUFFIX);
+        fileRead(oilFile, new NomalGasDetailCallback());
+        File lpgFile = new File(PATH_PREFIX + LPG_FILE + PATH_SUFFIX);
+        fileRead(lpgFile, new LpgDetailCallback());
+    }
     public void fileRead(File file, GasDetailCallback callback) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
