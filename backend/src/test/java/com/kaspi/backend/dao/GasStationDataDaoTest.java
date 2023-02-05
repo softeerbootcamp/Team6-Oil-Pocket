@@ -1,17 +1,13 @@
 package com.kaspi.backend.dao;
 
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class GasStationDataDaoTest {
@@ -27,20 +23,8 @@ class GasStationDataDaoTest {
         List<String> countList = new ArrayList<>();
         int count = 0;
         for (String s : list) {
-            String[] temp = s.split(" ");
-            int idx = 0;
-            for (int i = 0; i < temp.length; i++) {
-                if (temp[i].contains("로")) {
-                    idx = i;
-                    break;
-                }
-            }
-            String result = "";
-            for (int i = idx; i < temp.length; i++) {
-                result += temp[i] + " ";
-            }
-            hashSet1.add(result);
-            countList.add(result);
+            hashSet1.add(s);
+            countList.add(s);
         }
         for (String s : hashSet1) {
             if (Collections.frequency(countList, s) > 1) {
