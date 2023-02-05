@@ -66,7 +66,7 @@ public class GasStation {
     }
 
     public static GasStation parseGasStation(String[] attribute) {
-        return new GasStation(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
+        return new GasStation(attribute[0], attribute[1], attribute[2], attribute[3], attribute[6], isSelf(attribute[7]));
     }
 
     private static boolean isSelf(String attribute) {
