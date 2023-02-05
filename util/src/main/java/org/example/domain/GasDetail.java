@@ -1,13 +1,14 @@
-package com.kaspi.backend.domain;
+package org.example.domain;
 
-import com.kaspi.backend.enums.GasType;
+import org.example.enums.GasType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GasDetail {
-    private static final int ADDRESS = 4;
+    private static final int ADDRESS = 3;
+    private static final int BRAND = 4;
     private static final int PREMIUM_GASOLINE = 6;
     private static final int GASOLINE = 7;
     private static final int DIESEL = 8;
@@ -68,13 +69,13 @@ public class GasDetail {
 
     public static List<GasDetail> parseListGasDetail(String[] attribute, LocalDate date) {
         List<GasDetail> list = new ArrayList<>();
-        list.add(new GasDetail(attribute[3], attribute[4], Integer.valueOf(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, date));
-        list.add(new GasDetail(attribute[3], attribute[4], Integer.valueOf(attribute[GASOLINE]), GasType.GASOLINE, date));
-        list.add(new GasDetail(attribute[3], attribute[4], Integer.valueOf(attribute[DIESEL]), GasType.DIESEL, date));
+        list.add(new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, date));
+        list.add(new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[GASOLINE]), GasType.GASOLINE, date));
+        list.add(new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[DIESEL]), GasType.DIESEL, date));
         return list;
     }
 
     public static GasDetail parseLpgGasDetail(String[] attribute, LocalDate date) {
-        return new GasDetail(attribute[3], attribute[4], Integer.valueOf(attribute[LPG]), GasType.LPG, date);
+        return new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[LPG]), GasType.LPG, date);
     }
 }

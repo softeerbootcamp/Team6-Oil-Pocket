@@ -1,4 +1,4 @@
-package com.kaspi.backend.domain;
+package org.example.domain;
 
 public class GasStation {
     private String gasStationNo;
