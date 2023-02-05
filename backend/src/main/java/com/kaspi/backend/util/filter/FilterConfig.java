@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 public class FilterConfig {
 
     @Bean
-    public FilterRegistrationBean<AuthorizationFilter> authenticationFilter() {
-        FilterRegistrationBean<AuthorizationFilter> registrationBean = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new AuthorizationFilter());
+    public FilterRegistrationBean<AuthenticationFilter> authenticationFilter() {
+        FilterRegistrationBean<AuthenticationFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new AuthenticationFilter());
         registrationBean.addUrlPatterns("/api/v2/**");
         return registrationBean;
     }

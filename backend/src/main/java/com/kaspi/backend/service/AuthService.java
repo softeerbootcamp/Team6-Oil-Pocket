@@ -4,7 +4,6 @@ import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignInRequestDto;
 import com.kaspi.backend.util.exception.AuthenticationException;
-import com.kaspi.backend.util.exception.AuthorizationException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
