@@ -22,9 +22,9 @@ class GasDetailTest {
         List<GasDetail> gasDetail = GasDetail.parseListGasDetail(input, date);
 
         List<GasDetail> list = new ArrayList<>();
-        list.add(new GasDetail("A0000035", 1899, GasType.PREMIUM_GASOLINE, date));
-        list.add(new GasDetail("A0000035", 1659, GasType.GASOLINE, date));
-        list.add(new GasDetail("A0000035", 1759, GasType.DIESEL, date));
+        list.add(new GasDetail("서울 종로구 평창문화로 135 (평창동)", "현대오일뱅크", 1899, GasType.PREMIUM_GASOLINE, date));
+        list.add(new GasDetail("서울 종로구 평창문화로 135 (평창동)", "현대오일뱅크", 1659, GasType.GASOLINE, date));
+        list.add(new GasDetail("서울 종로구 평창문화로 135 (평창동)", "현대오일뱅크", 1759, GasType.DIESEL, date));
         Assertions.assertThat(gasDetail).usingRecursiveComparison().isEqualTo(list);
     }
 }
