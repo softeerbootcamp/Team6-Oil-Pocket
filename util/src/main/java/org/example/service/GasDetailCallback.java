@@ -1,12 +1,12 @@
-package com.kaspi.backend.service;
+package org.example.service;
 
-import com.kaspi.backend.dao.GasStationDataDao;
-import com.kaspi.backend.domain.GasDetail;
 
-import java.time.LocalDate;
+import org.example.dao.GasStationDataDao;
+import org.example.domain.GasDetail;
+
 import java.util.List;
 
 public interface GasDetailCallback {
 
-    List<GasDetail> makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute, LocalDate date);
+    List<GasDetail> makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute);
 }
