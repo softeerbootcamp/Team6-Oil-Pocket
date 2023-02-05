@@ -103,7 +103,7 @@ a {
             font-weight: 600;
         }
 
-        & span:nth-child(2n + 1) {
+        & span:nth-child(2n) {
             cursor: pointer;
         }
     }
