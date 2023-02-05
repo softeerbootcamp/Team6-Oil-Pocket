@@ -33,7 +33,7 @@ public class GasDataService {
         while ((line = br.readLine()) != null) {
             String[] attribute = line.split(",");
             if (attribute.length <= 1) break;
-
+            attribute[3] = makeEndAddress(attribute[3]);
             String key = makeCacheKey(attribute);
             System.out.println(key);
 
@@ -46,13 +46,18 @@ public class GasDataService {
             GasStation gasStation = gasStationInfos.get(key);
             attribute[0] = gasStationInfos.get(key).getGasStationNo();
             List<GasDetail> gasDetails = callback.makeGasDetailAndSaveToDB(gasStationDataDao, attribute, date);
+            if (cacheMap.containsKey(key)) {
+                GasStationDto gasStationDto = cacheMap.get(key);
+                gasStationDto.addGasDetailList(GasDetailDto.newDtoList(gasDetails));
+                continue;
+            }
             cacheMap.put(key, GasStationDto.newInstance(gasStationInfos.get(key), GasDetailDto.newDtoList(gasDetails)));
         }
         file.delete();
     }
 
     public String makeCacheKey(String[] attribute) {
-        return attribute[3] + ":" + attribute[4];
+        return makeEndAddress(attribute[3]) + ":" + attribute[4];
     }
 
     private String makeEndAddress(String address) {
@@ -66,9 +71,12 @@ public class GasDataService {
         }
         String result = "";
         for (int i = idx; i < temp.length; i++) {
+            if (temp[i].contains("(")) {
+                break;
+            }
             result += temp[i] + " ";
         }
-        return result;
+        return result.trim();
     }
 
     public void initCache() {
