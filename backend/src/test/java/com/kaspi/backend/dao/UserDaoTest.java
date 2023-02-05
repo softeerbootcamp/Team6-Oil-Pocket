@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
+//TODO 내장 redis 연동 후 다시 테스트
 @SpringBootTest
 class UserDaoTest {
 

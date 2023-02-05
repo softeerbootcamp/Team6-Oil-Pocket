@@ -41,7 +41,7 @@ dependencies {
 
 	//test db
 	testImplementation 'com.h2database:h2'
-//	testImplementation 'it.ozimov:embedded-redis:0.7.2'
+	testImplementation 'it.ozimov:embedded-redis:0.7.2'
 
 
 }
