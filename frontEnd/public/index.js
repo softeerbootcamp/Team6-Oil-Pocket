@@ -19,7 +19,7 @@ const router = async () => {
     let match = routes.map(route => {
         return {
             route,
-            isMatch: location.pathname === basePath + route.path
+            isMatch: location.pathname === route.path
         };
     }).find((routeObj) => routeObj.isMatch)
 

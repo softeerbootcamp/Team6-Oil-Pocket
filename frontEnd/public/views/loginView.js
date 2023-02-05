@@ -8,7 +8,7 @@ export const loginView = `
                 <button>로그인</button>
                 <label for="loginArea__registerBtn">
                     <span>새로운 주행자이신가요?</span>
-                    <button id="loginArea__registerBtn"><a href="/frontEnd/register" data-link>회원가입</a></button>
+                    <button id="loginArea__registerBtn"><a href="/register" data-link>회원가입</a></button>
                 </label>
             </div>
         </section>
