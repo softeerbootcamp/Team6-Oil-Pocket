@@ -1,6 +1,6 @@
 const navBarView = `
         <section class="navbar">
-        <div class="navbar__logo">Oil Pocket</div>
+        <div class="navbar__logo"><a href="/">Oil Pocket<a/></div>
         <div class="navbar__btns">
             <span><a href="/userDetail">jaewon님 안녕하세요</a></span>
             <span> / </span>

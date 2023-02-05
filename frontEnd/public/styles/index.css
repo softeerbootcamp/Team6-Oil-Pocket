@@ -79,17 +79,27 @@ a {
   font-weight: 700;
   color: #14BD7E;
 }
+.navbar .navbar__logo a {
+  color: #14BD7E;
+}
+.navbar .navbar__logo a:visited {
+  color: #14BD7E;
+}
+.navbar .navbar__btns a {
+  font-size: 1rem;
+  color: #14BD72;
+  font-weight: 600;
+}
+.navbar .navbar__btns a:visited {
+  font-size: 1rem;
+  color: #14BD72;
+  font-weight: 600;
+}
 .navbar .navbar__btns span {
   font-size: 1rem;
   color: #14BD7E;
   padding: 0 0.5vw;
   font-weight: 600;
-}
-.navbar .navbar__btns span a {
-  color: #14BD72;
-}
-.navbar .navbar__btns span a:visited {
-  color: #14BD72;
 }
 .navbar .navbar__btns span:nth-child(2n+1) {
   cursor: pointer;

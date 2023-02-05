@@ -73,22 +73,34 @@ a {
     & .navbar__logo {
         font-weight: 700;
         color: #14BD7E;
+
+        & a {
+            color: #14BD7E;
+
+            &:visited {
+                color: #14BD7E;
+            }
+        }
     }
 
     & .navbar__btns {
+        & a {
+            font-size: 1rem;
+            color:#14BD72;
+            font-weight: 600;
+        }
+
+        & a:visited {
+            font-size: 1rem;
+            color:#14BD72;
+            font-weight: 600;
+        }
+
         & span {
             font-size: 1rem;
             color: #14BD7E;
             padding: 0 0.5vw;
             font-weight: 600;
-
-            & a {
-                color:#14BD72;
-            }
-
-            & a:visited {
-                color:#14BD72;
-            }
         }
 
         & span:nth-child(2n + 1) {
