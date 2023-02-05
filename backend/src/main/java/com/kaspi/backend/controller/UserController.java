@@ -20,14 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final HttpSessionService httpSessionService;
 
-    @PostMapping("")
+    @PostMapping("/v1/user")
     public ResponseEntity<CommonResponseDto> signUp(@RequestBody SignUpRequestDto signUpRequestDto) {
         User makeUser = userService.makeUser(signUpRequestDto);
         httpSessionService.makeHttpSession(makeUser.getUserNo());
