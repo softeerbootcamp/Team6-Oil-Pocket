@@ -2,8 +2,6 @@ package com.kaspi.backend.service;
 
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
-import com.kaspi.backend.util.exception.NotValidUserException;
-import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -16,24 +14,21 @@ public class HttpSessionService {
 
     private final HttpSession httpSession;
     private final UserDao userDao;
+    private final AuthService authService;
 
 
-    public void makeHttpSession(Long userId) {
-        httpSession.setAttribute(SESSION_KEY, userId);
+    public void makeHttpSession(Long userNo) {
+        httpSession.setAttribute(SESSION_KEY, userNo);
     }
 
     public User getUserFromSession() {
         Long userNo = (Long) httpSession.getAttribute(SESSION_KEY);
         Optional<User> findUser = userDao.findById(userNo);
-        checkNotValidUser(findUser);
+        authService.checkNotValidUser(findUser);
         return findUser.get();
     }
 
-    private void checkNotValidUser(Optional<User> findUser) {
-        if (findUser.isEmpty()) {
-            throw new NotValidUserException(ErrorCode.NOT_VALID_USER);
-        }
-    }
+
 
 
 }

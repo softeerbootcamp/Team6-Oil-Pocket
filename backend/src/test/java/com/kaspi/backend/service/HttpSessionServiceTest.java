@@ -23,6 +23,8 @@ public class HttpSessionServiceTest {
     @Mock
     private HttpSession httpSession;
     @Mock
+    private AuthService authService;
+    @Mock
     private UserDao userDao;
     @InjectMocks
     private HttpSessionService httpSessionService;
