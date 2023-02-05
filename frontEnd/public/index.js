@@ -1,13 +1,14 @@
 import { mainView } from "./main/view.js";
+import { loginView } from "./login/view.js";
+import { registerView } from "./register/view.js";
 
-import { loginView } from "./views/loginView.js";
 import { showNotFoundView } from "./views/notFoundView.js";
-import { registerView } from "./views/registerView.js";
 import { userDetailView } from "./views/mypage/userDetailView.js";
 import { inputOilInfoView } from "./views/mypage/inputOilInfo.js";
 import { chartView } from "./views/mypage/chart.js";
 import { comparisonView } from "./views/mypage/comparison.js";
 import { historyView } from "./views/mypage/history.js";
+
 
 const $body = document.querySelector("body");
 
