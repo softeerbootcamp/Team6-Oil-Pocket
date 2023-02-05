@@ -1,4 +1,4 @@
-import { getRegisterTemplate } from "./template";
+import { getRegisterTemplate } from "./template.js";
 
 const registerView = () => {
     const $registerContainer = document.createElement("section");

@@ -1,4 +1,4 @@
-import { getNavBarTemplate } from "./template";
+import { getNavBarTemplate } from "./template.js";
 
 const navBarView = () => {
     const $navBar = document.createElement("section");
