@@ -61,17 +61,17 @@ public class GasDataService {
     }
 
     private String makeEndAddress(String address) {
-        String[] temp = address.split(" ");
+        String[] temp = address.split(" |\\(");
         int idx = 0;
         for (int i = 0; i < temp.length; i++) {
-            if (temp[i].contains("로") || temp[i].contains("길")) {
+            if (temp[i].matches(".*로$") || temp[i].matches(".*길$")) {
                 idx = i;
                 break;
             }
         }
         String result = "";
         for (int i = idx; i < temp.length; i++) {
-            if (temp[i].contains("(")) {
+            if (temp[i].contains(")")) {
                 break;
             }
             result += temp[i] + " ";
