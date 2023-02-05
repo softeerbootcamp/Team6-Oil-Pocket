@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.domain.GasDetail;
 import org.example.domain.GasStation;
 
 import java.io.*;
@@ -32,6 +33,21 @@ public class GasStationDataDao {
             ps.setString(4, gasStation.getAddress());
             ps.setString(5, gasStation.getBrand());
             ps.setBoolean(6, gasStation.getIsSelf());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void insertGasDetail(GasDetail gasDetail) {
+        try (Connection con = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = con.prepareStatement("INSERT INTO gas_detail(address, brand, gas_type, price, created_date)" +
+                     "values (?, ?, ?, ?, ?)")) {
+            ps.setString(1, gasDetail.getAddress());
+            ps.setString(2, gasDetail.getBrand());
+            ps.setString(3, gasDetail.getGasType().name());
+            ps.setInt(4, gasDetail.getPrice());
+            ps.setObject(5, gasDetail.getDate());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
