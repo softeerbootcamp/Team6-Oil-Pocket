@@ -1,13 +1,16 @@
 package org.example;
 
+import org.example.dao.GasStationDataDao;
+import org.example.domain.GasDetail;
 import org.example.domain.GasStation;
+import org.example.service.GasDetailCallback;
+import org.example.service.LpgDetailCallback;
+import org.example.service.NomalGasDetailCallback;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class FileUploadService {
 
@@ -40,6 +43,6 @@ public class FileUploadService {
         return result.trim();
     }
     public String makeCacheKey(String[] attribute) {
-        return attribute[3] + ":" + attribute[4];
+        return attribute[3] + ":" + attribute[5];
     }
 }
