@@ -39,4 +39,7 @@ public class FileUploadService {
         }
         return result.trim();
     }
+    public String makeCacheKey(String[] attribute) {
+        return attribute[3] + ":" + attribute[4];
+    }
 }
