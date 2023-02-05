@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table(value = "users")
+@Table(value = "USERS")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,9 +22,7 @@ public class User {
     private String id;
     private String password;
 
-    @Column(value = "gender")
     private Gender gender;
 
-    @Column(value = "age")
     private Age age;
 }
