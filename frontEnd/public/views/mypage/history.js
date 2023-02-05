@@ -1,4 +1,4 @@
-import { navBarView } from "../navBarView";
+import { navBarView } from "../../navbar/view";
 
 const historyView = () => {
     const $historyContainer = document.createElement("section");

@@ -1,4 +1,4 @@
-import { navBarView } from "../navBarView";
+import { navBarView } from "../../navbar/view";
 
 const userDetailView = () => {
     const $userDetailContainer = document.createElement("section");

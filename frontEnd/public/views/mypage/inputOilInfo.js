@@ -1,4 +1,4 @@
-import { navBarView } from "../navBarView";
+import { navBarView } from "../../navbar/view";
 
 const inputOilInfoView = () => {
     const $inputOilInputContainer = document.createElement("section");

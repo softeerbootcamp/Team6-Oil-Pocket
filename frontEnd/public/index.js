@@ -1,5 +1,6 @@
+import { mainView } from "./main/view.js";
+
 import { loginView } from "./views/loginView.js";
-import { mainView } from "./views/mainView.js";
 import { showNotFoundView } from "./views/notFoundView.js";
 import { registerView } from "./views/registerView.js";
 import { userDetailView } from "./views/mypage/userDetailView.js";
