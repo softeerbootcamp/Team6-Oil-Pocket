@@ -1,7 +1,11 @@
 import { navBarView } from "../navBarView";
 
-const inputOilInfoView = navBarView + `
-    <section class="main">
+const inputOilInfoView = () => {
+    const $inputOilInputContainer = document.createElement("section");
+    const $inputOilInputContent = document.createElement("section");
+    $inputOilInputContent.classList.add("main");
+
+    $inputOilInputContent.innerHTML = `
         <section class="oilInfoArea">
             <section class="oilInfoArea__background">
                 <div class="oilInfoArea__tabArea">
@@ -37,7 +41,12 @@ const inputOilInfoView = navBarView + `
                 </div>
             </section>
         </section>
-    </section>
-`;
+    `;
+
+    $inputOilInputContainer.appendChild(navBarView());
+    $inputOilInputContainer.appendChild($inputOilInputContent);
+
+    return $inputOilInputContainer;
+}
 
 export { inputOilInfoView }

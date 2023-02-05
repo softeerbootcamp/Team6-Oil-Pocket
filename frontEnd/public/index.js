@@ -1,7 +1,7 @@
 import { loginView } from "./views/loginView.js";
 import { mainView } from "./views/mainView.js";
 import { showNotFoundView } from "./views/notFoundView.js";
-import { reigsterView } from "./views/registerView.js";
+import { registerView } from "./views/registerView.js";
 import { userDetailView } from "./views/mypage/userDetailView.js";
 import { inputOilInfoView } from "./views/mypage/inputOilInfo.js";
 import { chartView } from "./views/mypage/chart.js";
@@ -13,7 +13,7 @@ const $body = document.querySelector("body");
 const router = async () => {
     const routes = [
         { path: "/", view: mainView }, 
-        { path: "/register", view: reigsterView },
+        { path: "/register", view: registerView },
         { path: "/login", view: loginView },
         { path: "/userDetail", view: userDetailView },
         { path: "/inputOilInfo", view: inputOilInfoView },
@@ -37,8 +37,8 @@ const router = async () => {
         }
     }
 
-    const view = match.route.view;
-    $body.innerHTML = view;
+    const getNode = match.route.view;
+    $body.replaceWith(getNode());
 }
 
 // 페이지 전환 함수

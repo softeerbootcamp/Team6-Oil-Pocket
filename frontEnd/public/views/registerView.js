@@ -1,9 +1,12 @@
-const reigsterView = `
-    <section class="main">
+const registerView = () => {
+    const $registerContainer = document.createElement("section");
+    $registerContainer.classList.add("main");
+
+    $registerContainer.innerHTML = `
         <section class="registerArea">
             <section class="registerArea__backGround">
                 <div class="registerArea__frame">
-                    <h1>Oil Pocket</h1>
+                    <h1><a href="/">Oil Pocket</a></h1>
                     <div class="registerArea__termOfUse">
                         <h2 class="registerArea__termOfUseTitle">이용 약관</h2>
                         <p class="registerArea__termOfUseContent">
@@ -39,7 +42,9 @@ const reigsterView = `
                 </div>
             </section>
         </section>
-    </section>
-`;
+    `;
 
-export { reigsterView }
+    return $registerContainer;
+}
+
+export { registerView }

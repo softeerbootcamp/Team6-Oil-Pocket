@@ -1,8 +1,13 @@
-export const loginView = `
-    <section class="loginArea">
+
+
+const loginView = () => { 
+    const $loginContainer = document.createElement("section");
+    $loginContainer.classList.add("loginArea");
+    
+    $loginContainer.innerHTML = `
         <section class="loginArea__backGround">
             <div class="loginArea__frame">
-                <h1>Oil Pocket</h1>
+                <h1><a href="/" data-link>Oil Pocket</a></h1>
                 <input type="text" placeholder="ID를 입력해주세요.">
                 <input type="text" placeholder="PW를 입력해주세요.">
                 <button>로그인</button>
@@ -12,5 +17,9 @@ export const loginView = `
                 </label>
             </div>
         </section>
-    </section>
-`;
+    `;
+
+    return $loginContainer;
+}
+
+export { loginView }

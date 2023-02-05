@@ -802,6 +802,12 @@ a {
   font-weight: 700;
   margin: 2vh 0 5vh 0;
 }
+.loginArea .loginArea__backGround .loginArea__frame h1 a {
+  color: #14BD7E;
+}
+.loginArea .loginArea__backGround .loginArea__frame h1 a:visited {
+  color: #14BD7E;
+}
 .loginArea .loginArea__backGround .loginArea__frame input {
   color: #14BD7E;
   background-color: #FAFAFB;
@@ -932,6 +938,12 @@ a {
   color: #14BD7E;
   font-weight: 700;
   margin: 2vh 0 5vh 0;
+}
+.registerArea .registerArea__backGround .registerArea__frame h1 a {
+  color: #14BD7E;
+}
+.registerArea .registerArea__backGround .registerArea__frame h1 a:visited {
+  color: #14BD7E;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea {
   display: flex;

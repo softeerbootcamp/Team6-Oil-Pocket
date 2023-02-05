@@ -1,7 +1,11 @@
 import { navBarView } from "../navBarView";
 
-const historyView = navBarView + `
-    <section class="main">
+const historyView = () => {
+    const $historyContainer = document.createElement("section");
+    const $historyContent = document.createElement("section");
+    $historyContent.classList.add("main");
+
+    $historyContent.innerHTML = `
         <section class="oilInfoArea">
             <section class="oilInfoArea__background">
                 <div class="oilInfoArea__tabArea">
@@ -48,7 +52,12 @@ const historyView = navBarView + `
                 </div>
             </section>
         </section>
-    </section>
-`;
+    `;
+
+    $historyContainer.appendChild(navBarView());
+    $historyContainer.appendChild($historyContent);
+
+    return $historyContainer;
+}
 
 export { historyView }

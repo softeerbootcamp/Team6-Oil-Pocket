@@ -498,6 +498,14 @@ a {
                 color: #14BD7E;
                 font-weight: 700;
                 margin: 2vh 0 5vh 0;
+
+                & a {
+                    color: #14BD7E;
+
+                    &:visited {
+                        color: #14BD7E;
+                    }
+                }
             }
             & input {
                 color: #14BD7E;
@@ -636,6 +644,14 @@ a {
                 color: #14BD7E;
                 font-weight: 700;
                 margin: 2vh 0 5vh 0;
+
+                & a {
+                    color: #14BD7E;
+
+                    &:visited {
+                        color: #14BD7E;
+                    }
+                }
                 
             }
 

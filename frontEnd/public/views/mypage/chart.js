@@ -1,7 +1,11 @@
 import { navBarView } from "../navBarView";
 
-const chartView = navBarView + `
-    <section class="main">
+const chartView = () => {
+    const $chartContainer = document.createElement("section");
+    const $chartContent = document.createElement("section");
+    $chartContent.classList.add("main");
+
+    $chartContent.innerHTML = `
         <section class="oilInfoArea">
             <section class="oilInfoArea__background">
                 <div class="oilInfoArea__tabArea">
@@ -76,7 +80,12 @@ const chartView = navBarView + `
                 </div>
             </section>
         </section>
-    </section>
-`;
+    `
+
+    $chartContainer.appendChild(navBarView());
+    $chartContainer.appendChild($chartContent);
+
+    return $chartContainer;
+}
 
 export { chartView }

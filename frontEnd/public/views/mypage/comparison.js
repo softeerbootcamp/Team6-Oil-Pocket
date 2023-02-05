@@ -1,7 +1,11 @@
 import { navBarView } from "../navBarView";
 
-const comparisonView = navBarView + `
-    <section class="main">
+const comparisonView = () => {
+    const $comparionContainer = document.createElement("section");
+    const $comparionContent = document.createElement("section");
+    $comparionContent.classList.add("main");
+
+    $comparionContent.innerHTML = `
         <section class="oilInfoArea">
             <section class="oilInfoArea__background">
                 <div class="oilInfoArea__tabArea">
@@ -38,8 +42,13 @@ const comparisonView = navBarView + `
                     </div>
                 </div>
             </section>
-        </section>  
-    </section>
-`;
+        </section>
+    `;
+
+    $comparionContainer.appendChild(navBarView());
+    $comparionContainer.appendChild($comparionContent);
+
+    return $comparionContainer;
+}
 
 export { comparisonView }

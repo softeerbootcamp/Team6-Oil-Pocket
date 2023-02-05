@@ -1,5 +1,8 @@
-const navBarView = `
-        <section class="navbar">
+const navBarView = () => {
+    const $navBar = document.createElement("section");
+    $navBar.classList.add("navbar");
+
+    $navBar.innerHTML = `
         <div class="navbar__logo"><a href="/">Oil Pocket<a/></div>
         <div class="navbar__btns">
             <span><a href="/userDetail">jaewon님 안녕하세요</a></span>
@@ -12,7 +15,9 @@ const navBarView = `
             <span> | </span>
             <span>다크모드</span>
         </div>
-    </section>
-`;
+    `
+
+    return $navBar;
+}
 
 export { navBarView }
