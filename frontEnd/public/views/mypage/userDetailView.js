@@ -1,22 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oil Pocket</title>
+import { navBarView } from "../navBarView";
 
-    <link rel="stylesheet" href="./public/styles/index.css">
-    <script defer type="module" src="./public/index.js"></script>
-</head>
-<body>
+const userDetailView = navBarView + `
     <section class="main">
         <section class="oilInfoArea">
             <section class="oilInfoArea__background">
                 <div class="oilInfoArea__tabArea">
-                    <div class="oilInfoArea__tab">프로필 수정</div>
-                    <div class="oilInfoArea__tab oilInfoArea__choosedTab">주유 기록 입력</div>
-                    <div class="oilInfoArea__tab">주유 기록 열람</div>
+                    <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/userDetail" data-link>프로필 수정</a></div>
+                    <div class="oilInfoArea__tab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
+                    <div class="oilInfoArea__tab"><a href="/comparison" data-link>이번달 비교</a></div>
+                    <div class="oilInfoArea__tab"><a href="/chart" data-link>월별 비교</a></div>
+                    <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
                 </div>
                 <div class="oilInfoArea__contentArea">
                     <div class="oilInfoArea__profileContainer">
@@ -59,5 +52,6 @@
             </section>
         </section>
     </section>
-</body>
-</html>
+`;
+
+export { userDetailView }
