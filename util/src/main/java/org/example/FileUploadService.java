@@ -1,18 +1,24 @@
 package org.example;
 
+import org.example.domain.GasStation;
+
 import java.io.*;
+import java.sql.SQLOutput;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 public class FileUploadService {
 
-    private String url;
-    private String username;
-    private String password;
+    public static final String PATH_PREFIX = "/Users/historyData/";
+    private static final String PATH_SUFFIX = ".csv";
+    private static final String OIL_FILE = "과거_판매가격(주유소)";
+    private static final String LPG_FILE = "과거_판매가격(충전소)";
+    private final Map<String, GasStation> gasStationInfos = new HashMap<>();
+    public FileUploadService() {}
 
-    public FileUploadService() throws IOException {
-        File file = new File("/Users/historyData/datasource.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
-        String[] info = br.readLine().split(",");
-        this.url = info[0];
-        this.username = info[1];
-        this.password = info[2];
+    public String removeDoubleQuotationMarks(String line) {
+        return line.replaceAll("\"", "");
     }
 }
