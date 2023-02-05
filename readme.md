@@ -32,6 +32,7 @@ https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-
 
 <br>
 
+<!-- 기술 스택은 https://simpleicons.org/?q=vite <-- 여기서 찾으세용 -->
 ## 📱 &nbsp; Built With
 
 FE : &nbsp; <img src="https://img.shields.io/badge/html5-e44d26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-f7df1e?style=flat&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/node.JS-73AA63?style=flat&logo=node.JS&logoColor=white"/> <img src="https://img.shields.io/badge/vite-646CFF?style=flat&logo=vite&logoColor=white"/>
