@@ -26,9 +26,7 @@ public class DataDownloadScheduler {
         this.gasDataService = gasDataService;
     }
 
-    //@Scheduled(fixedDelay = 300000)
-    @Scheduled(fixedDelay = 3000)
-    //@Scheduled(cron = "0 1 1 * * *")
+    @Scheduled(cron = "0 1 1 * * *")
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
