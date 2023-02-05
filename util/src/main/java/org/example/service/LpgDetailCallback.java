@@ -1,17 +1,16 @@
-package com.kaspi.backend.service;
+package org.example.service;
 
-import com.kaspi.backend.dao.GasStationDataDao;
-import com.kaspi.backend.domain.GasDetail;
+import org.example.dao.GasStationDataDao;
+import org.example.domain.GasDetail;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LpgDetailCallback implements GasDetailCallback{
+public class LpgDetailCallback implements GasDetailCallback {
     @Override
-    public List<GasDetail> makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute, LocalDate date) {
+    public List<GasDetail> makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute) {
         List<GasDetail> list = new ArrayList<>();
-        GasDetail gasDetail = GasDetail.parseLpgGasDetail(attribute, date);
+        GasDetail gasDetail = GasDetail.parseLpgGasDetail(attribute);
         gasStationDataDao.insertGasDetail(gasDetail);
         list.add(gasDetail);
         return list;
