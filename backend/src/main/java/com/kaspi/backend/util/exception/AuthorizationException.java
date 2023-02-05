@@ -6,6 +6,6 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public class NotAuthException extends RuntimeException {
+public class AuthorizationException extends RuntimeException {
     private final Code code;
 }
