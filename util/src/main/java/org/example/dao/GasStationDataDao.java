@@ -69,4 +69,22 @@ public class GasStationDataDao {
             insertGasDetail(gasDetail);
         }
     }
+    public GasStation selectGasStation(GasStation gasStation) {
+        try (Connection con = DriverManager.getConnection(url, username, password);
+             PreparedStatement ps = con.prepareStatement("SELECT * FROM gas_station where address like ? and " +
+                     "brand like ?");
+             ) {
+            ps.setString(1, '%' + gasStation.getAddress());
+            ps.setString(2, '%' + gasStation.getBrand());
+            try (ResultSet rs = ps.executeQuery();) {
+                if (rs.next()) {
+                    return new GasStation(rs.getString("station_no"), rs.getString("area"),
+                            rs.getString("name"), rs.getString("address"), rs.getString("brand"), rs.getBoolean("is_self"));
+                }
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
