@@ -53,4 +53,10 @@ public class GasStationDataDao {
             throw new RuntimeException(e);
         }
     }
+
+    public void insertGasDetails(List<GasDetail> list) {
+        for (GasDetail gasDetail : list) {
+            insertGasDetail(gasDetail);
+        }
+    }
 }
