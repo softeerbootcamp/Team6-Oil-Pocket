@@ -112,55 +112,121 @@ a {
 /* explain animation */
 @keyframes fade01 {
     0% { opacity: 0.0; }
-    1.6% { opacity: 0.1; }
-    4.8% { opacity: 0.3; }
-    8% { opacity: 0.5; }
-    11.2% { opacity: 0.7; }
-    14.4% { opacity: 0.9; }
-    16% { opacity: 1.00; }
-    17.6% { opacity: 0.9; }
-    20.8% { opacity: 0.7; }
-    24.0% { opacity: 0.5; }
-    27.2% { opacity: 0.3; }
-    30.4% { opacity: 0.1; }
-    33% { opacity: 0.0; }
+    1% { opacity: 0.1; }
+    2% { opacity: 0.2; }
+    3% { opacity: 0.3; }
+    4% { opacity: 0.4; }
+    5% { opacity: 0.5; }
+    6% { opacity: 0.6; }
+    7% { opacity: 0.7; }
+    8% { opacity: 0.8; }
+    9% { opacity: 0.9; }
+    10% { opacity: 1.0; }
+    11% { opacity: 0.9; }
+    12% { opacity: 0.8; }
+    13% { opacity: 0.7; }
+    14% { opacity: 0.6; }
+    15% { opacity: 0.5; }
+    16% { opacity: 0.4; }
+    17% { opacity: 0.3; }
+    18% { opacity: 0.2; }
+    19% { opacity: 0.1; }
+    20% { opacity: 0.0; }
 }
 
 @keyframes fade02 {
-    33% { opacity: 0.0; }
-    35% { opacity: 0.125; }
-    37% { opacity: 0.25; }
-    39% { opacity: 0.375; }
-    41% { opacity: 0.5; }
-    43% { opacity: 0.675; }
-    45% { opacity: 0.75; }
-    47% { opacity: 0.875; }
-    49% { opacity: 1.00; }
-    52% { opacity: 0.875; }
-    54% { opacity: 0.75; }
-    56% { opacity: 0.675; }
-    58% { opacity: 0.5; }
-    60% { opacity: 0.375; }
-    62% { opacity: 0.25; }
-    66% { opacity: 0.0; }
+    20% { opacity: 0.0; }
+    21% { opacity: 0.1; }
+    22% { opacity: 0.2; }
+    23% { opacity: 0.3; }
+    24% { opacity: 0.4; }
+    25% { opacity: 0.5; }
+    26% { opacity: 0.6; }
+    27% { opacity: 0.7; }
+    28% { opacity: 0.8; }
+    29% { opacity: 0.9; }
+    30% { opacity: 1.0; }
+    31% { opacity: 0.9; }
+    32% { opacity: 0.8; }
+    33% { opacity: 0.7; }
+    34% { opacity: 0.6; }
+    35% { opacity: 0.5; }
+    36% { opacity: 0.4; }
+    37% { opacity: 0.3; }
+    38% { opacity: 0.2; }
+    39% { opacity: 0.1; }
+    40% { opacity: 0.0; }
 }
 
 @keyframes fade03 {
-    67% { opacity: 0.0; }
-    70% { opacity: 0.125; }
-    73% { opacity: 0.25; }
-    75% { opacity: 0.375; }
-    78% { opacity: 0.50; }
-    81% { opacity: 0.675; }
-    83% { opacity: 0.75; }
-    85% { opacity: 0.875; }
-    87% { opacity: 1.00; }
-    89% { opacity: 0.875; }
-    91% { opacity: 0.75; }
-    93% { opacity: 0.675; }
-    94% { opacity: 0.5; }
-    96% { opacity: 0.375; }
-    98% { opacity: 0.20; }
+    40% { opacity: 0.0; }
+    41% { opacity: 0.1; }
+    42% { opacity: 0.2; }
+    43% { opacity: 0.3; }
+    44% { opacity: 0.4; }
+    45% { opacity: 0.5; }
+    46% { opacity: 0.6; }
+    47% { opacity: 0.7; }
+    48% { opacity: 0.8; }
+    49% { opacity: 0.9; }
+    50% { opacity: 1.0; }
+    51% { opacity: 0.9; }
+    52% { opacity: 0.8; }
+    53% { opacity: 0.7; }
+    54% { opacity: 0.6; }
+    55% { opacity: 0.5; }
+    56% { opacity: 0.4; }
+    57% { opacity: 0.3; }
+    58% { opacity: 0.2; }
+    59% { opacity: 0.1; }
+    60% { opacity: 0.0; }
+}
+
+@keyframes fade04 {
+    60% { opacity: 0.0; }
+    61% { opacity: 0.1; }
+    62% { opacity: 0.2; }
+    63% { opacity: 0.3; }
+    64% { opacity: 0.4; }
+    65% { opacity: 0.5; }
+    66% { opacity: 0.6; }
+    67% { opacity: 0.7; }
+    68% { opacity: 0.8; }
+    69% { opacity: 0.9; }
+    70% { opacity: 1.0; }
+    71% { opacity: 0.9; }
+    72% { opacity: 0.8; }
+    73% { opacity: 0.7; }
+    74% { opacity: 0.6; }
+    75% { opacity: 0.5; }
+    76% { opacity: 0.4; }
+    77% { opacity: 0.3; }
+    78% { opacity: 0.2; }
+    79% { opacity: 0.1; }
+    80% { opacity: 0.0; }
+}
+
+@keyframes fade05 {
+    80% { opacity: 0.0; }
+    81% { opacity: 0.1; }
+    82% { opacity: 0.2; }
+    83% { opacity: 0.3; }
+    84% { opacity: 0.4; }
+    85% { opacity: 0.5; }
+    86% { opacity: 0.6; }
+    87% { opacity: 0.7; }
+    88% { opacity: 0.8; }
+    89% { opacity: 0.9; }
+    90% { opacity: 1.0; }
+    91% { opacity: 0.9; }
+    92% { opacity: 0.8; }
+    93% { opacity: 0.7; }
+    94% { opacity: 0.6; }
+    95% { opacity: 0.5; }
+    96% { opacity: 0.4; }
+    97% { opacity: 0.3; }
+    98% { opacity: 0.2; }
+    99% { opacity: 0.1; }
     100% { opacity: 0.0; }
 }
 
@@ -288,7 +354,7 @@ a {
     }
 
     & section.explainArea#explainArea--1 {
-        animation-duration: 10s;
+        animation-duration: 15s;
         animation-name: fade01;
         animation-iteration-count: infinite;
         opacity: 0;
@@ -322,7 +388,7 @@ a {
     }
 
     & section.explainArea#explainArea--2 {
-        animation-duration: 10s;
+        animation-duration: 15s;
         animation-name: fade02;
         animation-iteration-count: infinite;
         opacity: 0;
@@ -356,8 +422,76 @@ a {
     }
 
     & section.explainArea#explainArea--3 {
-        animation-duration: 10s;
+        animation-duration: 15s;
         animation-name: fade03;
+        animation-iteration-count: infinite;
+        opacity: 0;
+
+        & div.explainArea__text {
+            position: absolute;
+            top: 50vh;
+            left: 25vw;
+            transition: 1s;
+
+            & h1 {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 2vh;
+            }
+
+            & h2 {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #666666;
+            }
+        }
+
+        & img.explainArea__phone {
+            position: absolute;
+            height: 55vh;
+            top: 30vh;
+            right: 25vw;
+            transition: 0.5s;
+        }
+    }
+
+    & section.explainArea#explainArea--4 {
+        animation-duration: 15s;
+        animation-name: fade04;
+        animation-iteration-count: infinite;
+        opacity: 0;
+
+        & div.explainArea__text {
+            position: absolute;
+            top: 50vh;
+            right: 25vw;
+            transition: 1s;
+
+            & h1 {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 2vh;
+            }
+
+            & h2 {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #666666;
+            }
+        }
+
+        & img.explainArea__phone {
+            position: absolute;
+            height: 55vh;
+            top: 30vh;
+            left: 25vw;
+            transition: 0.5s;
+        }
+    }
+
+    & section.explainArea#explainArea--5 {
+        animation-duration: 15s;
+        animation-name: fade05;
         animation-iteration-count: infinite;
         opacity: 0;
 
