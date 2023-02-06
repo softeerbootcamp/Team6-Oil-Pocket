@@ -992,7 +992,7 @@ a {
 .main section.explainArea#explainArea--1 div.explainArea__text {
   position: absolute;
   top: 50vh;
-  left: 25vw;
+  left: 20vw;
   transition: 1s;
 }
 .main section.explainArea#explainArea--1 div.explainArea__text h1 {
@@ -1010,7 +1010,7 @@ a {
   position: absolute;
   height: 55vh;
   top: 30vh;
-  right: 25vw;
+  right: 20vw;
 }
 .main section.explainArea#explainArea--2 {
   -webkit-animation-duration: 15s;
@@ -1024,7 +1024,7 @@ a {
 .main section.explainArea#explainArea--2 div.explainArea__text {
   position: absolute;
   top: 50vh;
-  right: 25vw;
+  right: 20vw;
   transition: 1s;
 }
 .main section.explainArea#explainArea--2 div.explainArea__text h1 {
@@ -1041,7 +1041,7 @@ a {
   position: absolute;
   height: 55vh;
   top: 30vh;
-  left: 25vw;
+  left: 20vw;
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--3 {
@@ -1056,7 +1056,7 @@ a {
 .main section.explainArea#explainArea--3 div.explainArea__text {
   position: absolute;
   top: 50vh;
-  left: 25vw;
+  left: 20vw;
   transition: 1s;
 }
 .main section.explainArea#explainArea--3 div.explainArea__text h1 {
@@ -1073,7 +1073,7 @@ a {
   position: absolute;
   height: 55vh;
   top: 30vh;
-  right: 25vw;
+  right: 20vw;
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--4 {
@@ -1088,7 +1088,7 @@ a {
 .main section.explainArea#explainArea--4 div.explainArea__text {
   position: absolute;
   top: 50vh;
-  right: 25vw;
+  right: 20vw;
   transition: 1s;
 }
 .main section.explainArea#explainArea--4 div.explainArea__text h1 {
@@ -1105,7 +1105,7 @@ a {
   position: absolute;
   height: 55vh;
   top: 30vh;
-  left: 25vw;
+  left: 20vw;
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--5 {
@@ -1120,7 +1120,7 @@ a {
 .main section.explainArea#explainArea--5 div.explainArea__text {
   position: absolute;
   top: 50vh;
-  left: 25vw;
+  left: 20vw;
   transition: 1s;
 }
 .main section.explainArea#explainArea--5 div.explainArea__text h1 {
@@ -1137,8 +1137,171 @@ a {
   position: absolute;
   height: 55vh;
   top: 30vh;
-  right: 25vw;
+  right: 20vw;
   transition: 0.5s;
+}
+.main .main__ForMap {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+}
+.main .main__ForMap .main__SideSearchBar {
+  z-index: 3;
+  display: flex;
+  flex-direction: row;
+  transition: 0.4s;
+  transition-timing-function: linear;
+  width: 22vw;
+  height: 82vh;
+  background-color: white;
+  border: 2px solid green;
+  border-radius: 0 5px 5px 0;
+  box-sizing: border-box;
+}
+.main .main__ForMap .main__SideSearchBar .main__SearchOption {
+  width: 2vw;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation {
+  display: flex;
+  margin-top: 3vh;
+  height: 5vh;
+  background-color: #14BD7E;
+  box-shadow: 1px 0 3px -1px black;
+  transition: 0.4s;
+  transition-timing-function: linear;
+  align-items: center;
+  justify-content: center;
+}
+.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation #Option1 {
+  transition: 0.5s;
+  transition-timing-function: linear;
+}
+.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromRoute {
+  display: flex;
+  width: 1.3vw;
+  height: 4.6vh;
+  background-color: white;
+  box-shadow: 1px 0 2px -1px;
+  transition: 0.4s;
+  transition-timing-function: linear;
+  align-items: center;
+  justify-content: center;
+}
+.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromRoute #Option2 {
+  transition: 0.5s;
+  transition-timing-function: linear;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar {
+  width: 19vw;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocation {
+  width: 6vw;
+  height: 3vh;
+  margin-left: 2vw;
+  margin-top: 3vh;
+  background-color: #14BD7E;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 20px;
+  line-height: 3vh;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocationAddress {
+  background-color: white;
+  border: 2px solid #14BD7E;
+  border-radius: 5px;
+  width: 15vw;
+  height: 4vh;
+  margin-left: 2vw;
+  margin-top: 2vh;
+  font-size: 13px;
+  padding-top: 3px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup {
+  background-color: white;
+  width: 15vw;
+  height: 3vh;
+  margin-left: 2vw;
+  margin-top: 2vh;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_HH {
+  box-sizing: border-box;
+  width: 4.5vw;
+  height: 3vh;
+  border: 1px solid #14BD7E;
+  border-radius: 5px;
+  margin: 0;
+  background-color: rgba(20, 189, 114, 0.5);
+  opacity: 1;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_GG {
+  box-sizing: border-box;
+  width: 4.5vw;
+  height: 3vh;
+  border: 1px solid #14BD7E;
+  border-radius: 5px;
+  margin: 0;
+  background-color: rgba(20, 189, 114, 0.5);
+  opacity: 0.5;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_LL {
+  box-sizing: border-box;
+  width: 4.5vw;
+  height: 3vh;
+  border: 1px solid #14BD7E;
+  border-radius: 5px;
+  margin: 0;
+  background-color: rgba(20, 189, 114, 0.5);
+  opacity: 0.5;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult {
+  border: 2px solid #14BD7E;
+  border-radius: 5px;
+  width: 15vw;
+  height: 59vh;
+  margin-left: 2vw;
+  margin-top: 3vh;
+  background-color: white;
+  padding: 0;
+}
+.main .main__ForMap .main__SearchBarHideButton {
+  display: flex;
+  z-index: 3;
+  border: 3px solid lightgreen;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+  width: 20px;
+  height: 40px;
+  margin-top: 20vh;
+  margin-right: auto;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+}
+.main .main__ForMap .main__MapDiv {
+  z-index: 2;
+  position: absolute;
+  background-color: #14BD7E;
+  width: 100vw;
+  height: 82vh;
+}
+.main .main__ForMap #main__btn_select {
+  z-index: 5;
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  right: 36vw;
+  top: 74vh;
+  background-color: green;
+  color: white;
+  font-size: 11px;
+  border-radius: 5px;
 }
 
 /* search bar */
@@ -2009,4 +2172,20 @@ a {
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__registerBtn:hover {
   outline: 0.2vh solid #14BD7E;
+}
+
+#searchResultTitle {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 2vh;
+  overflow: scroll;
+}
+
+.GasStationLogo {
+  width: 28px;
+  height: 28px;
+}
+
+.ResultContents {
+  color: grey;
 }/*# sourceMappingURL=index.css.map */
