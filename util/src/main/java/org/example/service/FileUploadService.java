@@ -1,17 +1,21 @@
-package org.example;
+package org.example.service;
 
-import org.example.dao.GasStationDataDao;
-import org.example.domain.GasDetail;
+import org.example.dao.GasDetailDao;
+import org.example.dao.GasStationDao;
 import org.example.domain.GasStation;
 import org.example.service.GasDetailCallback;
 import org.example.service.LpgDetailCallback;
 import org.example.service.NomalGasDetailCallback;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.PostConstruct;
 import java.io.*;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
+import java.util.Optional;
+@Service
 public class FileUploadService {
 
     public static final String PATH_PREFIX = "/Users/historyData/";
@@ -19,16 +23,21 @@ public class FileUploadService {
     private static final String OIL_FILE = "과거_판매가격(주유소)1";
     private static final String LPG_FILE = "과거_판매가격(충전소)1";
     private final Map<String, GasStation> gasStationInfos = new HashMap<>();
-    private GasStationDataDao gasStationDataDao = new GasStationDataDao();
-
-    public FileUploadService() {
+    private final GasStationDao gasStationDao;
+    private final GasDetailDao gasDetailDao;
+    @Autowired
+    public FileUploadService(GasStationDao gasStationDao, GasDetailDao gasDetailDao) {
+        this.gasStationDao = gasStationDao;
+        this.gasDetailDao = gasDetailDao;
     }
+    @PostConstruct
     public void fileOpen() {
         File oilFile = new File(PATH_PREFIX + OIL_FILE + PATH_SUFFIX);
         fileRead(oilFile, new NomalGasDetailCallback());
         File lpgFile = new File(PATH_PREFIX + LPG_FILE + PATH_SUFFIX);
         fileRead(lpgFile, new LpgDetailCallback());
     }
+    @Transactional
     public void fileRead(File file, GasDetailCallback callback) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
@@ -47,13 +56,14 @@ public class FileUploadService {
                 if (!gasStationInfos.containsKey(key)) {
                     GasStation gasStation = GasStation.parseGasStation(attribute);
                     gasStationInfos.put(key, gasStation);
-                    if (gasStationDataDao.selectGasStation(gasStation) == null) {
-                        gasStationDataDao.insertGasStation(gasStation);
+
+                    Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand(gasStation.getAddress(), gasStation.getBrand());
+                    if (optionalGasStation.isEmpty()) {
+                        gasStationDao.save(gasStation);
                     }
                 }
                 GasStation gasStation = gasStationInfos.get(key);
-                attribute[0] = gasStation.getGasStationNo();
-                callback.makeGasDetailAndSaveToDB(gasStationDataDao, attribute);
+                callback.makeGasDetailAndSaveToDB(gasStation, gasDetailDao, attribute);
             }
         } catch (FileNotFoundException e) {
             System.out.println("파일을 찾을 수 없습니다.");
