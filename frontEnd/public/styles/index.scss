@@ -292,7 +292,6 @@ a {
         width: 30vw;
         height: 60vh;
         z-index: 1;
-        opacity: 0;
         color: #ECECEC;
         background-color: #ECECEC;
 
@@ -732,6 +731,11 @@ a {
                 font-size: 1.2rem;
                 font-weight: 600;
                 border-radius: 0.5vh;
+
+                &:disabled {
+                    cursor: not-allowed;
+                    background-color: #80E3C3;
+                }
             }
 
             & .registerArea__termOfUse {

@@ -1,5 +1,6 @@
+import { addEvent } from "../../common/function.js";
 import { navBarView } from "../navbar/view.js";
-import { getMainViewContentTemplate } from "./template.js";
+import { getChatBotTemplate, getMainViewContentTemplate } from "./template.js";
 
 const mainView = () => {
     const $mainViewContainer = document.createElement("section");
@@ -13,4 +14,12 @@ const mainView = () => {
     return $mainViewContainer;
 }
 
-export { mainView }
+const chatBotView = () => {
+    const $chatBotContainer = document.createElement("section");
+    $chatBotContainer.classList.add("chatBotArea");
+    $chatBotContainer.innerHTML = getChatBotTemplate();
+
+    return $chatBotContainer;
+}
+
+export { mainView, chatBotView }
