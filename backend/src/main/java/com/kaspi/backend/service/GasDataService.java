@@ -2,7 +2,6 @@ package com.kaspi.backend.service;
 
 import com.kaspi.backend.dao.GasDetailDao;
 import com.kaspi.backend.dao.GasStationDao;
-import com.kaspi.backend.dao.GasStationDataDao;
 import com.kaspi.backend.domain.GasDetail;
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStation;
@@ -21,15 +20,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class GasDataService {
-    private final GasStationDataDao gasStationDataDao;
     private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
     private final Map<String, GasStation> gasStationInfos = new HashMap<>();
     private final Map<String, GasStationDto> cacheMap = new ConcurrentHashMap<>();
 
     @Autowired
-    public GasDataService(GasStationDataDao gasStationDataDao, GasStationDao gasStationDao, GasDetailDao gasDetailDao) {
-        this.gasStationDataDao = gasStationDataDao;
+    public GasDataService(GasStationDao gasStationDao, GasDetailDao gasDetailDao) {
         this.gasStationDao = gasStationDao;
         this.gasDetailDao = gasDetailDao;
     }

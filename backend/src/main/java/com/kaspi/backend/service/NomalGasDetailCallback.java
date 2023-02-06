@@ -1,6 +1,5 @@
 package com.kaspi.backend.service;
 
-import com.kaspi.backend.dao.GasStationDataDao;
 import com.kaspi.backend.domain.GasDetail;
 import com.kaspi.backend.domain.GasStation;
 import org.springframework.data.repository.CrudRepository;
