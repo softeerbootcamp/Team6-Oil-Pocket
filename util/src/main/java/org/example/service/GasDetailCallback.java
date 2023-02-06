@@ -1,12 +1,13 @@
 package org.example.service;
 
 
-import org.example.dao.GasStationDataDao;
 import org.example.domain.GasDetail;
+import org.example.domain.GasStation;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
 public interface GasDetailCallback {
 
-    List<GasDetail> makeGasDetailAndSaveToDB(GasStationDataDao gasStationDataDao, String[] attribute);
+    List<GasDetail> makeGasDetailAndSaveToDB(GasStation gasStation, CrudRepository crudRepository, String[] attribute);
 }
