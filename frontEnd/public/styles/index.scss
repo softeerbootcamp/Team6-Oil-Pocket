@@ -20,6 +20,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+*:focus {
+    outline: none;
+}
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -685,6 +689,14 @@ a {
                     flex-grow: 8;
                     font-size: 1.2rem;
                 }
+
+                & a {
+                    color: #14BD7E;
+
+                    &:visited {
+                        color: #14BD7E;
+                    }
+                }
             }
         }
     }
@@ -740,6 +752,10 @@ a {
                     font-size: 1.5rem;
                     font-weight: 700;
                     height: 15%;
+
+                    &:focus {
+                        outline: none;
+                    }
                 }
 
                 & p {

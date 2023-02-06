@@ -20,6 +20,10 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+*:focus {
+  outline: none;
+}
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
@@ -1287,6 +1291,12 @@ a {
   flex-grow: 8;
   font-size: 1.2rem;
 }
+.loginArea .loginArea__backGround .loginArea__frame label a {
+  color: #14BD7E;
+}
+.loginArea .loginArea__backGround .loginArea__frame label a:visited {
+  color: #14BD7E;
+}
 
 /* register Area */
 .registerArea {
@@ -1337,6 +1347,9 @@ a {
   font-size: 1.5rem;
   font-weight: 700;
   height: 15%;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse h2:focus {
+  outline: none;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse p {
   border-radius: 0.5vh;
