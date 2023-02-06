@@ -1,15 +1,20 @@
 package com.kaspi.backend.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+
 public class GasStation {
-    private String gasStationNo;
+    @Id
+    private Long stationNo;
     private String area;
     private String name;
     private String address;
     private String brand;
+    @Column("is_self")
     private boolean self;
 
-    public GasStation(String gasStationNo, String area, String name, String address, String brand, boolean self) {
-        this.gasStationNo = gasStationNo;
+    public GasStation(String area, String name, String address, String brand, boolean self) {
         this.area = area;
         this.name = name;
         this.address = address;
@@ -17,12 +22,16 @@ public class GasStation {
         this.self = self;
     }
 
-    public String getGasStationNo() {
-        return gasStationNo;
+    public long getStationNo() {
+        return stationNo;
     }
 
-    public void setGasStationNo(String gasStationNo) {
-        this.gasStationNo = gasStationNo;
+    public void setStationNo(long stationNo) {
+        this.stationNo = stationNo;
+    }
+
+    public boolean isSelf() {
+        return self;
     }
 
     public String getArea() {
@@ -66,7 +75,7 @@ public class GasStation {
     }
 
     public static GasStation parseGasStation(String[] attribute) {
-        return new GasStation(attribute[0], attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
+        return new GasStation(attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
     }
 
     private static boolean isSelf(String attribute) {
