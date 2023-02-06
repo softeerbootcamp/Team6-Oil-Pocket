@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: oil-pocket
+          images: softeerteam6/oilpocket-backend
           tags: "latest"
           
       - name: Copy jar file to Docker context
