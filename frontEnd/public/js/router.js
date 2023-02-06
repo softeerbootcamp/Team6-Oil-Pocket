@@ -69,8 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //     body: JSON.stringify({
 //         "id":"test",
 //         "password":"testpassword"
-//     }),
-//     withCredentials: true
+//     })
 // }).then((res) => {
 //     console.log(res);
 // })
