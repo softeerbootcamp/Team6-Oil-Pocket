@@ -1,26 +1,27 @@
-import { loginView } from "./views/loginView.js";
-import { mainView } from "./views/mainView.js";
-import { showNotFoundView } from "./views/notFoundView.js";
-import { reigsterView } from "./views/registerView.js";
-import { userDetailView } from "./views/mypage/userDetailView.js";
-import { inputOilInfoView } from "./views/mypage/inputOilInfo.js";
-import { chartView } from "./views/mypage/chart.js";
-import { comparisonView } from "./views/mypage/comparison.js";
-import { historyView } from "./views/mypage/history.js";
+import { mainView } from "./main/view.js";
+import { loginView } from "./login/view.js";
+import { registerView } from "./register/view.js";
+import { userDetailView } from "./myPage/userDetail/view.js";
+import { chartView } from "./myPage/chart/view.js";
+import { comparisonView } from "./myPage/comparison/view.js";
+import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
+import { historyView } from "./myPage/history/view.js";
+import { notFoundView } from "./notFound/view.js";
+import { HEADER, METHOD } from "../common/variable.js";
 
 const $body = document.querySelector("body");
 
 const router = async () => {
     const routes = [
         { path: "/", view: mainView }, 
-        { path: "/register", view: reigsterView },
+        { path: "/register", view: registerView },
         { path: "/login", view: loginView },
         { path: "/userDetail", view: userDetailView },
         { path: "/inputOilInfo", view: inputOilInfoView },
         { path: "/chart", view: chartView },
         { path: "/comparison", view: comparisonView },
         { path: "/history", view: historyView },
-        { path: "/404", view: showNotFoundView }
+        { path: "/404", view: notFoundView }
     ];
 
     let match = routes.map(route => {
@@ -37,8 +38,8 @@ const router = async () => {
         }
     }
 
-    const view = match.route.view;
-    $body.innerHTML = view;
+    const getNode = match.route.view;
+    $body.replaceWith(getNode());
 }
 
 // 페이지 전환 함수
@@ -61,3 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     router();
 });
+
+// fetch("http://43.200.157.18:8080/api/v1/auth", {
+//     method: METHOD.POST,
+//     headers: HEADER.POST,
+//     body: JSON.stringify({
+//         "id":"test",
+//         "password":"testpassword"
+//     }),
+//     withCredentials: true
+// }).then((res) => {
+//     console.log(res);
+// })
