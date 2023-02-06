@@ -1,83 +1,47 @@
 package org.example.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.example.enums.AttributeIndex;
 import org.example.enums.GasType;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@NoArgsConstructor
+@Table("gas_detail")
 public class GasDetail {
-    private static final int ADDRESS = 3;
-    private static final int DATE = 4;
-    private static final int BRAND = 5;
-    private static final int PREMIUM_GASOLINE = 7;
-    private static final int GASOLINE = 8;
-    private static final int DIESEL = 9;
-    private static final int LPG = 7;
-    private String address;
-    private String brand;
+
+    @Id
+    private Long detailNo;
+    @Column("station_no")
+    private Long stationNo;
     private int price;
     private GasType gasType;
+    @Column("created_date")
     private LocalDate date;
 
-    public GasDetail(String address, String brand, int price, GasType gasType, LocalDate date) {
-        this.address = address;
-        this.brand = brand;
+    public GasDetail(GasStation gasStation, int price, GasType gasType, LocalDate date) {
+        this.stationNo = gasStation.getStationNo();
         this.price = price;
         this.gasType = gasType;
         this.date = date;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public GasType getGasType() {
-        return gasType;
-    }
-
-    public void setGasType(GasType gasType) {
-        this.gasType = gasType;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public static List<GasDetail> parseListGasDetail(String[] attribute) {
+    public static List<GasDetail> parseListGasDetail(GasStation gasStation, String[] attribute) {
         List<GasDetail> list = new ArrayList<>();
-        list.add(new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, LocalDate.parse(attribute[DATE], DateTimeFormatter.ofPattern("yyyyMMdd"))));
-        list.add(new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[GASOLINE]), GasType.GASOLINE, LocalDate.parse(attribute[DATE], DateTimeFormatter.ofPattern("yyyyMMdd"))));
-        list.add(new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[DIESEL]), GasType.DIESEL, LocalDate.parse(attribute[DATE], DateTimeFormatter.ofPattern("yyyyMMdd"))));
+        list.add(new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.PREMIUM_GASOLINE.getIndex()]), GasType.PREMIUM_GASOLINE, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd"))));
+        list.add(new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.GASOLINE.getIndex()]), GasType.GASOLINE, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd"))));
+        list.add(new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.DIESEL.getIndex()]), GasType.DIESEL, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd"))));
         return list;
     }
 
-    public static GasDetail parseLpgGasDetail(String[] attribute) {
-        return new GasDetail(attribute[ADDRESS], attribute[BRAND], Integer.valueOf(attribute[LPG]), GasType.LPG, LocalDate.parse(attribute[DATE], DateTimeFormatter.ofPattern("yyyyMMdd")));
+    public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute) {
+        return new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.LPG.getIndex()]), GasType.LPG, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd")));
     }
 }

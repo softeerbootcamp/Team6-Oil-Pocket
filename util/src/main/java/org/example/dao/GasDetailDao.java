@@ -1,6 +1,6 @@
-package com.kaspi.backend.dao;
+package org.example.dao;
 
-import com.kaspi.backend.domain.GasDetail;
+import org.example.domain.GasDetail;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

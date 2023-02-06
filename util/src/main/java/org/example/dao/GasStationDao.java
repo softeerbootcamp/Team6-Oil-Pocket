@@ -1,6 +1,6 @@
-package com.kaspi.backend.dao;
+package org.example.dao;
 
-import com.kaspi.backend.domain.GasStation;
+import org.example.domain.GasStation;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
