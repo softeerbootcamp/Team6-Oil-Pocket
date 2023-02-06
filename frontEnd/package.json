@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "description": "TEAM6_FE",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"vite"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,7 +18,6 @@
   },
   "homepage": "https://github.com/softeerbootcamp/Team6_FE#readme",
   "dependencies": {
-    "scss": "^0.2.4",
-    "vite": "^4.1.1"
+    "scss": "^0.2.4"
   }
 }
