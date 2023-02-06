@@ -10,43 +10,68 @@
 
     <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx7250af6176574c63a12302edf09d020c"></script>
-    <script src="./test.js"></script>
+    <script defer src="./template.js"></script>
 
 
     <link rel="stylesheet" href="./css-files/style.css">
 </head>
 <body>
     <section class="navbar">
-        <div class="navbar--logo">KasPi</div>
-        <div class="navbar--icons">
-            <i class="fa-solid fa-right-to-bracket"></i>
-            <i class="fa-solid fa-earth-americas"></i>
-            <i class="fa-sharp fa-solid fa-moon"></i>
+        <div class="navbar__logo">Gas Pocket</div>
+        <div class="navbar__btns">
+            <span>마이 페이지</span>
+            <span> | </span>
+            <span>한국</span>
+            <span> / </span>
+            <span>영어</span>
+            <span> | </span>
+            <span>다크모드</span>
         </div>
     </section>
     <section class="main">
-        <input class="InputForStartingPoint" placeholder="출발지를 입력하세요">
-            
+        <div class="main__ForMap">
+            <div class="main__SideSearchBar">
+                <div class="main__SearchOption">
+                    <button class="main__SearchFromCurrentLocation">
+                        <img id="Option1" src="svg_image/🦆 icon _pin outline_.svg">
+                    </button>
+                    <button class="main__SearchFromRoute">
+                        <img id="Option2" src="/svg_image/🦆 icon _search outline_.svg">
+                    </button>
+                </div>
+                <div class="main__InputandResultinSearchBar">
+                    <div class="main__ShowCurrentLocation">
+                        <div class="main__CurrentLocation">
+                            <span>현재위치</span>
+                        </div>
+                        <div class="main__CurrentLocationAddress">
+                        </div>
+                        <div class="main__SearchOptionButtonGroup">
+                            <button id="sort_HH" onclick = "sortHhPrice()">휘발유</button>
+                            <button id="sort_GG" onclick = "sortGgPrice()">경유</button>
+                            <button id="sort_LL" onclick = "sortLlPrice()">엘피지</button>
+                        </div>
+                    </div>
+                    <div class="main__SearchResult">
+                        <div class="title"></div>
+                        <div class="rst_wrap">
+                            <div class="rst mCustomScrollbar">
+                                <ul id="searchResult" name="searchResult">
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="main__SearchBarHideButton">
+                <img src="svg_image/🦆 icon _chevron left_.svg">
+            </button>
+            <div class="main__MapDiv">
+                <div id="map_div" class="map_wrap" style="float:left"></div>
+            </div>
+            <button id="main__btn_select">적용하기</button>
         </div>
-        <icon class="StToEndPointer">
-            ->
-        </icon>
-        <input class="InputForEndingPoint" placeholder="도착지를 입력하세요">
-            
-        </div>
-        <body onload="initTmap();">
-		<div>
-		    <button id="btn_select">적용하지마</button>
-	    </div>
-	
-		<div id="map_wrap" class="map_wrap">
-			<div id="map_div"></div>
-		</div>
-		<div class="map_act_btn_wrap clear_box"></div>
-		<p id="result"></p>
-        </body>
     </section>
-    
-    
 </body>
 </html>
