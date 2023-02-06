@@ -51,6 +51,7 @@ public class FileUploadService {
                 if (attribute.length <= 1) break;
                 attribute[3] = extractRoadNameAndBuildingNum(attribute[3]);
                 String key = makeCacheKey(attribute);
+                System.out.println(key);
 
                 //키 값이 겹치는 지 확인
                 if (!gasStationInfos.containsKey(key)) {
