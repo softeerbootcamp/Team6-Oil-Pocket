@@ -80,6 +80,10 @@ a {
             &:visited {
                 color: #14BD7E;
             }
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 

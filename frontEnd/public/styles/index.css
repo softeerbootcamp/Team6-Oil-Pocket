@@ -85,6 +85,9 @@ a {
 .navbar .navbar__logo a:visited {
   color: #14BD7E;
 }
+.navbar .navbar__logo a:focus {
+  outline: none;
+}
 .navbar .navbar__btns a {
   font-size: 1rem;
   color: #14BD72;
