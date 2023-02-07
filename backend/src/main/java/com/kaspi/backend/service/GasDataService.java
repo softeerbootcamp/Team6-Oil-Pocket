@@ -6,6 +6,7 @@ import com.kaspi.backend.domain.GasDetail;
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.GasStationDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,17 +20,12 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@RequiredArgsConstructor
 public class GasDataService {
     private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
     private final Map<String, GasStation> gasStationInfos = new HashMap<>();
     private final Map<String, GasStationDto> cacheMap = new ConcurrentHashMap<>();
-
-    @Autowired
-    public GasDataService(GasStationDao gasStationDao, GasDetailDao gasDetailDao) {
-        this.gasStationDao = gasStationDao;
-        this.gasDetailDao = gasDetailDao;
-    }
 
     @Transactional
     public void insertGasInfo(final String fileName, GasDetailCallback callback) throws IOException, InterruptedException {
