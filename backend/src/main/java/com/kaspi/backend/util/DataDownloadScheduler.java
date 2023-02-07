@@ -3,6 +3,7 @@ package com.kaspi.backend.util;
 import com.kaspi.backend.service.GasDataService;
 import com.kaspi.backend.service.LpgDetailCallback;
 import com.kaspi.backend.service.NomalGasDetailCallback;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,16 +18,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component
+@RequiredArgsConstructor
 public class DataDownloadScheduler {
     public static final String GAS_STATION = "/home/download/현재_판매가격(주유소).csv";
     public static final String LPG_STATION = "/home/download/현재_판매가격(충전소).csv";
     private final GasDataService gasDataService;
 
-    public DataDownloadScheduler(GasDataService gasDataService) {
-        this.gasDataService = gasDataService;
-    }
-
-    @Scheduled(cron = "0 12 10 * * *")
+    @Scheduled(cron = "0 12 20 * * *", zone = "Asia/Seoul")
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
