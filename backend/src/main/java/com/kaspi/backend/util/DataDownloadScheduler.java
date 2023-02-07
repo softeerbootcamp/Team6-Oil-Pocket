@@ -1,4 +1,4 @@
-package com.kaspi.backend.util;
+// package com.kaspi.backend.util;
 
 import com.kaspi.backend.service.GasDataService;
 import com.kaspi.backend.service.LpgDetailCallback;
@@ -64,3 +64,4 @@ public class DataDownloadScheduler {
         gasDataService.insertGasInfo(LPG_STATION, new LpgDetailCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
     }
 }
+

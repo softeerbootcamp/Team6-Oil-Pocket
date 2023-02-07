@@ -1,7 +1,11 @@
 package com.kaspi.backend.util.response.code;
 
 public enum ErrorCode implements Code {
-    LOGIN_ERROR("E001", "에러 샘플");
+    PARAMETER_ERROR("E001", "요청 데이터 형식이 올바르지 않습니다."),
+    AUTH_ERROR("E002", "세션이 만료되었습니다"),
+    NOT_VALID_USER("E003", "유저가 존재하지 않습니다.(회원 테이블에 존재하지 않는 유저)"),
+    DUPLICATE_USER("E004", "중복된 아이디를 가진 유저가 존재합니다."),
+    LOGIN_FAIL("E005", "아이디 혹은 패스워드가 다릅니다.");
 
 
     private String code;
@@ -14,11 +18,11 @@ public enum ErrorCode implements Code {
 
     @Override
     public String getCode() {
-        return null;
+        return code;
     }
 
     @Override
     public String getMessage() {
-        return null;
+        return message;
     }
 }
