@@ -32,7 +32,13 @@ public class AuthController {
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_VALID_ID));
     }
 
-    @CrossOrigin("*")
+    @GetMapping("/v1/test")
+    public ResponseEntity<CommonResponseDto> test() {
+        httpSessionService.makeHttpSession(1L);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_VALID_ID));
+    }
+
     @PostMapping("/v1/auth")
     public ResponseEntity<CommonResponseDto> signIn(@RequestBody SignInRequestDto signInRequestDto) {
 
