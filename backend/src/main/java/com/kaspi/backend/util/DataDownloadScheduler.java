@@ -1,4 +1,4 @@
-// package com.kaspi.backend.util;
+package com.kaspi.backend.util;
 
 import com.kaspi.backend.service.GasDataService;
 import com.kaspi.backend.service.LpgDetailCallback;
@@ -18,21 +18,21 @@ import java.util.Map;
 
 @Component
 public class DataDownloadScheduler {
-    public static final String GAS_STATION = "/Users/download/현재_판매가격(주유소).csv";
-    public static final String LPG_STATION = "/Users/download/현재_판매가격(충전소).csv";
+    public static final String GAS_STATION = "/home/download/현재_판매가격(주유소).csv";
+    public static final String LPG_STATION = "/home/download/현재_판매가격(충전소).csv";
     private final GasDataService gasDataService;
 
     public DataDownloadScheduler(GasDataService gasDataService) {
         this.gasDataService = gasDataService;
     }
 
-    @Scheduled(cron = "0 1 1 * * *")
+    @Scheduled(cron = "0 12 10 * * *")
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
             ChromeOptions chromeOptions = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
-            prefs.put("download.default_directory", "/Users/download");
+            prefs.put("download.default_directory", "/home/download");
             prefs.put("download.prompt_for_download", false);
             chromeOptions.setExperimentalOption("prefs", prefs);
             chromeOptions.addArguments("headless");
