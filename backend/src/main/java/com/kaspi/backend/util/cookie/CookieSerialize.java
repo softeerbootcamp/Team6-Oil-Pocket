@@ -16,7 +16,7 @@ public class CookieSerialize {
     @Bean
     public CookieSerializer cookieSerializer() throws MalformedURLException {
         DefaultCookieSerializer serializer = new DefaultCookieSerializer();
-        serializer.setSameSite("");
+        serializer.setDomainName("localhost:5173");
         return serializer;
     }
 }
