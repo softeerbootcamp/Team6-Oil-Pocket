@@ -3,7 +3,7 @@ name: Backend CI Test
 on:
   push:
     branches:
-      - feature/*
+      - main
 
 jobs:
   build:
