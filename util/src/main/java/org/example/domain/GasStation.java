@@ -1,9 +1,8 @@
-package com.kaspi.backend.domain;
+package org.example.domain;
 
+import org.example.enums.AttributeIndex;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 public class GasStation {
     @Id
     private Long stationNo;
@@ -75,7 +74,11 @@ public class GasStation {
     }
 
     public static GasStation parseGasStation(String[] attribute) {
-        return new GasStation(attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
+        return new GasStation(attribute[AttributeIndex.AREA.getIndex()],
+                attribute[AttributeIndex.NAME.getIndex()],
+                attribute[AttributeIndex.ADDRESS.getIndex()],
+                attribute[AttributeIndex.BRAND.getIndex()],
+                isSelf(attribute[AttributeIndex.SELF.getIndex()]));
     }
 
     private static boolean isSelf(String attribute) {
@@ -85,3 +88,4 @@ public class GasStation {
         return false;
     }
 }
+

@@ -1,37 +1,30 @@
 package com.kaspi.backend.domain;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import java.util.List;
 
-public class GasStation {
-    @Id
-    private Long stationNo;
+public class GasStationDto {
     private String area;
     private String name;
     private String address;
     private String brand;
-    @Column("is_self")
     private boolean self;
+    private List<GasDetailDto> details;
 
-    public GasStation(String area, String name, String address, String brand, boolean self) {
+    public GasStationDto(String area, String name, String address, String brand, boolean self, List<GasDetailDto> details) {
         this.area = area;
         this.name = name;
         this.address = address;
         this.brand = brand;
         this.self = self;
+        this.details = details;
     }
-
-    public long getStationNo() {
-        return stationNo;
+    public static GasStationDto newInstance(GasStation gasStation, List<GasDetailDto> list) {
+        return new GasStationDto(gasStation.getArea(), gasStation.getName(), gasStation.getAddress(), gasStation.getBrand(), gasStation.getIsSelf(), list);
     }
-
-    public void setStationNo(long stationNo) {
-        this.stationNo = stationNo;
-    }
-
-    public boolean isSelf() {
-        return self;
+    public void addGasDetailList(List<GasDetailDto> gasDetaillist) {
+        for (GasDetailDto gasDetailDto : gasDetaillist) {
+            this.details.add(gasDetailDto);
+        }
     }
 
     public String getArea() {
@@ -66,7 +59,7 @@ public class GasStation {
         this.brand = brand;
     }
 
-    public boolean getIsSelf() {
+    public boolean isSelf() {
         return self;
     }
 
@@ -74,14 +67,11 @@ public class GasStation {
         this.self = self;
     }
 
-    public static GasStation parseGasStation(String[] attribute) {
-        return new GasStation(attribute[1], attribute[2], attribute[3], attribute[4], isSelf(attribute[5]));
+    public List<GasDetailDto> getDetails() {
+        return details;
     }
 
-    private static boolean isSelf(String attribute) {
-        if (attribute.equals("셀프")) {
-            return true;
-        }
-        return false;
+    public void setDetails(List<GasDetailDto> details) {
+        this.details = details;
     }
 }
