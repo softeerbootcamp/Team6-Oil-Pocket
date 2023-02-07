@@ -1091,7 +1091,7 @@ a {
             
             & .oilInfoArea__tab {
                 height: 80%;
-                width: 12%;
+                width: 13%;
                 border-radius: 1vh 1vh 0 0;
                 background-color: #14BD7E;
                 display: flex;
@@ -1119,7 +1119,7 @@ a {
                 &.oilInfoArea__choosedTab {
                     color:#000;
                     height: 90%;
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     margin: 0 -0.25vw;
                     background-color: #fff;
                     box-shadow: 0 -0.5vh 0.5vw 0 #D4D4D4;
@@ -1324,6 +1324,11 @@ a {
                             &:hover {
                                 margin-top: -0.5vh;
                                 margin-bottom: 0.5vh;
+                            }
+
+                            & img {
+                                width: 90%;
+                                height: 90%;
                             }
                         }
                     }
