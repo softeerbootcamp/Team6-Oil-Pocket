@@ -3,7 +3,7 @@ name: Backend CI Test
 on:
   push:
     branches:
-      - feautre/*
+      - feature/#40_cors_setting
 
 jobs:
   build:
