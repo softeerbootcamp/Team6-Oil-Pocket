@@ -34,12 +34,9 @@ public class DataDownloadScheduler {
             prefs.put("download.default_directory", "/home/download");
             prefs.put("download.prompt_for_download", false);
             chromeOptions.setExperimentalOption("prefs", prefs);
-            chromeOptions.addArguments("--headless");
-            chromeOptions.addArguments("--disable-dev-shm-usage");
-            chromeOptions.addArguments("--no-sandbox");
-            chromeOptions.addArguments("--disable-gpu");
-            chromeOptions.addArguments("--disable-setuid-sandbox");
-            chromeOptions.addArguments("--disable-extensions");
+            chromeOptions.addArguments("headless");
+            chromeOptions.addArguments("no-sandbox");
+            chromeOptions.addArguments("disable-dev-shm-usage");
             chromeOptions.addArguments("lang=ko");
             // 크롬을 사용하기 위한 환경 설정
             System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
