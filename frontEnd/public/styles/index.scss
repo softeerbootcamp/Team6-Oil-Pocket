@@ -340,7 +340,7 @@ a {
     
                 & span {
                     width: 90%;
-                    text-align: center;
+                    text-align: left;
                     font-size: 1rem;
                     font-weight: 600;
                 }
@@ -369,9 +369,10 @@ a {
                 padding: 0.5vh 1.5vw;
                 width: 80%;
                 height: 5vh;
-                background-color: #14BD7E;
+                background-color: #fff;
+                color: #14BD7E;
                 display: flex;
-                justify-content: left;
+                justify-content: right;
                 align-items: center;
                 border-radius: 2vh;
                 cursor: pointer;
@@ -380,11 +381,6 @@ a {
                     font-size: 1rem;
                     font-weight: 600;
                     line-height: 1.2;
-                }
-    
-                &:hover {
-                    color: #14BD7E;
-                    background-color: #fff;
                 }
             }
         }

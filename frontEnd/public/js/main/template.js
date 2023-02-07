@@ -77,13 +77,10 @@ const getChatBotTemplate = () => `
             <span>안녕하세요 주행자님. 어떤 것을 도와드릴까요?</span>
         </div>
         <div class="chatBotArea__chat">
-            <span>나의 절약 현황은 어떻게 확인하나요?</span>
+            <span>마이 페이지는 어떻게 활용하나요?</span>
         </div>
         <div class="chatBotArea__chat">
             <span>주변 주유소 검색은 어떻게 사용하나요?</span>
-        </div>
-        <div class="chatBotArea__chat">
-            <span>다국어 제안을 하고 싶어요.</span>
         </div>
         <div class="chatBotArea__chat">
             <span>그 밖에 문의를 하고 싶어요.</span>
@@ -91,4 +88,6 @@ const getChatBotTemplate = () => `
     </div>
 `;
 
-export { getMainViewContentTemplate, getChatBotTemplate }
+export { 
+    getMainViewContentTemplate, getChatBotTemplate 
+}
