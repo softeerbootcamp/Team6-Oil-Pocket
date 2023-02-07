@@ -20,9 +20,9 @@
 ## 📑 &nbsp; About The Project
 
 https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-bcd2-d206ad04ae5d.mov
-<img src="https://user-images.githubusercontent.com/92264609/217170500-849ef0c0-5dce-4a68-b6a5-a9343be0ad45.png" alt="">
 
 ##### 5주차 결과물
+<img src="https://user-images.githubusercontent.com/92264609/217170500-849ef0c0-5dce-4a68-b6a5-a9343be0ad45.png" alt="">
 ##### 🔥 열심히 완성도를 높여가는 중!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
