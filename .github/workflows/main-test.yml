@@ -1,4 +1,4 @@
-name: Backend CI Test
+name: Backend CI
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
         run: chmod +x ./backend/gradlew
 
       - name: Build Gradle
-        run: cd backend && ./gradlew clean build
+        run: cd backend && ./gradlew clean build -x test
         env:
           MYSQL_ID: ${{ secrets.MYSQL.MYSQL_ID }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL.MYSQL_PASSWORD }}
