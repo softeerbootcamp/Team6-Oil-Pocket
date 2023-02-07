@@ -24,7 +24,8 @@ public class DataDownloadScheduler {
     public static final String LPG_STATION = "/home/download/현재_판매가격(충전소).csv";
     private final GasDataService gasDataService;
 
-    @Scheduled(cron = "0 25 18 * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 37 19 * * *", zone = "Asia/Seoul")
+    //@Scheduled(fixedDelay = 3000)
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
@@ -33,7 +34,13 @@ public class DataDownloadScheduler {
             prefs.put("download.default_directory", "/home/download");
             prefs.put("download.prompt_for_download", false);
             chromeOptions.setExperimentalOption("prefs", prefs);
-            chromeOptions.addArguments("headless");
+            chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--disable-dev-shm-usage");
+            chromeOptions.addArguments("--no-sandbox");
+            chromeOptions.addArguments("--disable-gpu");
+            chromeOptions.addArguments("--disable-setuid-sandbox");
+            chromeOptions.addArguments("--disable-extensions");
+            chromeOptions.addArguments("lang=ko");
             // 크롬을 사용하기 위한 환경 설정
             System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
             // 크롬실행 객체 만들기
