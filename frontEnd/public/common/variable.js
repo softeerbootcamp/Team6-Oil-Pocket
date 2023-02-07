@@ -10,7 +10,7 @@ const METHOD = {
 
 // fetch header
 const HEADER = {
-    POST : { 'Content-Type': 'application/json' }
+    POST : { 'Content-Type': 'application/json' },
 }
 
 export {
