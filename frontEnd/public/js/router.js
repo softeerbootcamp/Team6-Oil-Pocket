@@ -65,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
     router();
 });
 
-// fetch("http://43.200.157.18:8080/api/v1/auth", {
-//     method: METHOD.POST,
-//     headers: HEADER.POST,
-//     body: JSON.stringify({
-//         "id":"test",
-//         "password":"testpassword",
-//     }),
-//     credentials: "include"
-// }).then((res) => {
-//     console.log(res);
-// })
+fetch("http://43.200.157.18:8080/api/v1/auth", {
+    method: METHOD.POST,
+    headers: HEADER.POST,
+    body: JSON.stringify({
+        "id":"test",
+        "password":"testpassword",
+    }),
+    credentials: "include"
+}).then((res) => {
+    console.log(res);
+})
