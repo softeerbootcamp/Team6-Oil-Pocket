@@ -24,7 +24,8 @@ https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-
 ##### 5주차 결과물
 ##### 🔥 열심히 완성도를 높여가는 중!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-![Group 43](https://user-images.githubusercontent.com/92264609/217170323-518ac51a-1419-4a2d-be18-63855a8a312d.png)
+![Group 43](https://user-images.githubusercontent.com/92264609/217170500-849ef0c0-5dce-4a68-b6a5-a9343be0ad45.png)
+
 
 <br>
 
