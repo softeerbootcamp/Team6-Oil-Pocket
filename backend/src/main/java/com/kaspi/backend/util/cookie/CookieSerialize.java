@@ -19,6 +19,7 @@ public class CookieSerialize {
     public CookieSerializer cookieSerializer() throws MalformedURLException {
         DefaultCookieSerializer serializer = new DefaultCookieSerializer();
         serializer.setSameSite("None");
+        serializer.setDomainName("localhost");
         return serializer;
     }
 }
