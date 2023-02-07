@@ -7,10 +7,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
     public static final String ALLOWED_METHOD_NAMES = "GET,POST,PATCH,PUT,DELETE,OPTIONS";
+
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:8080","http://localhost:5173",
+                .allowedOrigins("http://localhost:8080", "http://localhost:5173",
                         "https://hyundai-bootcamp-gdgm.netlify.app/",
                         "https://moon-gd.github.io/") // 허용할 출처
                 .allowedMethods(ALLOWED_METHOD_NAMES.split(",")) // 허용할 HTTP method
