@@ -19,7 +19,7 @@ public class GasStationDto {
         this.details = details;
     }
     public static GasStationDto newInstance(GasStation gasStation, List<GasDetailDto> list) {
-        return new GasStationDto(gasStation.getArea(), gasStation.getName(), gasStation.getAddress(), gasStation.getBrand(), gasStation.getIsSelf(), list);
+        return new GasStationDto(gasStation.getArea(), gasStation.getName(), gasStation.getAddress(), gasStation.getBrand(), gasStation.isSelf(), list);
     }
     public void addGasDetailList(List<GasDetailDto> gasDetaillist) {
         for (GasDetailDto gasDetailDto : gasDetaillist) {
