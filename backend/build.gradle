@@ -24,7 +24,26 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation group: 'org.springframework.data', name: 'spring-data-jdbc'
+	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+	implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.8.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	implementation 'mysql:mysql-connector-java:8.0.23'
+
+	//redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'org.springframework.session:spring-session-data-redis'
+
+	//lombok
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+
+	//test db
+	testImplementation 'com.h2database:h2'
+	testImplementation 'it.ozimov:embedded-redis:0.7.2'
+
+
 }
 
 tasks.named('test') {

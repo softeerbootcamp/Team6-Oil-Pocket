@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.200.157.18:3306/oilpocket_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${MYSQL_ID}
+    password: ${MYSQL_PASSWORD}
+
+  redis:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+    port: 6379
+    host: 43.200.157.18
+
+  session:
+    cookie:
+      domain: localhost:5173
+    store-type: redis
+    timeout: 3600
+    redis:
+      namespace: session
+
