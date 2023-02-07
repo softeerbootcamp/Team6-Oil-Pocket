@@ -15,6 +15,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table("gas_detail")
 public class GasDetail {
     private static final int ADDRESS = 4;

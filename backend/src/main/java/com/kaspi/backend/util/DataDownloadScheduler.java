@@ -24,7 +24,7 @@ public class DataDownloadScheduler {
     public static final String LPG_STATION = "/home/download/현재_판매가격(충전소).csv";
     private final GasDataService gasDataService;
 
-    @Scheduled(cron = "0 12 20 * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 16 30 * * *", zone = "Asia/Seoul")
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
