@@ -24,7 +24,7 @@ public class DataDownloadScheduler {
     public static final String LPG_STATION = "/home/download/현재_판매가격(충전소).csv";
     private final GasDataService gasDataService;
 
-    @Scheduled(cron = "0 40 17 * * *", zone = "Asia/Seoul")
+    @Scheduled(cron = "0 25 18 * * *", zone = "Asia/Seoul")
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
@@ -35,7 +35,7 @@ public class DataDownloadScheduler {
             chromeOptions.setExperimentalOption("prefs", prefs);
             chromeOptions.addArguments("headless");
             // 크롬을 사용하기 위한 환경 설정
-            System.setProperty("webdriver.chrome.driver", "/home/ubuntu/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
             // 크롬실행 객체 만들기
             WebDriver driver = new ChromeDriver(chromeOptions);
             driver.get("https://www.opinet.co.kr/user/opdown/opDownload.do");
