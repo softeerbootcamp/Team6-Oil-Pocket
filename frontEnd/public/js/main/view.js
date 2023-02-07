@@ -1,5 +1,5 @@
-import { addEvent } from "../../common/function.js";
 import { navBarView } from "../navbar/view.js";
+import { eventToChatBot } from "./event.js";
 import { getChatBotTemplate, getMainViewContentTemplate } from "./template.js";
 
 const mainView = () => {
@@ -7,6 +7,9 @@ const mainView = () => {
     const $mainViewContent = document.createElement("section");
 
     $mainViewContent.innerHTML = getMainViewContentTemplate();
+
+    const $chatBotImg = $mainViewContent.querySelector(".chatBotArea__img");
+    eventToChatBot($chatBotImg);
 
     $mainViewContainer.appendChild(navBarView());
     $mainViewContainer.appendChild($mainViewContent);

@@ -8,8 +8,6 @@ import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
 import { mapView } from "./mapView/view.js";
-import { HEADER, METHOD } from "../common/variable.js";
-import { default as axios } from 'axios';
 
 const $body = document.querySelector("body");
 
@@ -65,25 +63,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     router();
 });
-
-fetch("http://43.200.157.18:8080/api/v1/auth", {
-    method: METHOD.POST,
-    headers: HEADER.POST,
-    body: JSON.stringify({
-        "id":"test",
-        "password":"testpassword",
-    }),
-    credentials: "include"
-}).then((res) => {
-    console.log(res);
-})
-
-axios.defaults.withCredentials = true
-axios.post("http://43.200.157.18:8080/api/v1/auth", {
-    "id":"test",
-    "password":"testpassword",
-    }, 
-    { withCredentials: true }
-).then((res) => {
-    console.log(res)
-})

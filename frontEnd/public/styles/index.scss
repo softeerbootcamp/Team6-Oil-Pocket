@@ -295,67 +295,97 @@ a {
         color: #ECECEC;
         background-color: #ECECEC;
 
-        & .chatBotArea__profile {
-            transition: 0.5;
-            height: 5vh;
-            margin: 0 0 1.5vh;
-            padding: 0.5vh 0;
-            transition: 0.5s;
-            background-color: #14BD7E;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 2vh;
+        & .chatBotArea__background {
+            overflow-y: scroll;
+            width: 100%;
+            height: 100%;
 
-            & img {
-                transition: 0.5s;
+            &::-webkit-scrollbar {
+                background-color: #14BD72;
+                width: 0.2vw;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                width: 0.4vw;
+                background-color: #14BD72;
+            }
+
+            &::-webkit-scrollbar-track {
+                width: 4vw;
+                background-color: #ECECEC;
+            }
+
+            & .chatBotArea__profile {
+                transition: 0.5;
+                width: 90%;
                 height: 5vh;
-                margin-top: 0.5vh;
-
-                &:hover {
-                    margin-top: -1vh;
+                margin: 0 0 1.5vh;
+                padding: 0.5vh 0;
+                transition: 0.5s;
+                background-color: #14BD7E;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 2vh;
+    
+                & img {
+                    transition: 0.5s;
+                    height: 5vh;
+                    margin-top: 0.5vh;
+    
+                    &:hover {
+                        margin-top: -1vh;
+                    }
+                }
+    
+                & span {
+                    width: 90%;
+                    text-align: center;
+                    font-size: 1rem;
+                    font-weight: 600;
                 }
             }
-
-            & span {
-                width: 90%;
-                text-align: center;
-                font-size: 1rem;
-                font-weight: 600;
+    
+            & .chatBotArea__closeArea {
+                padding: 0.75vh 1.5vw;
+                height: 1.5vh;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+    
+                & .chatBotArea__closeBtn {
+                    position: absolute;
+                    width: 1vw;
+                    cursor: pointer;
+                    margin-bottom: 1vw;
+                    margin-right: -1vw;
+                    color: #14BD7E;
+                }
             }
-        }
-
-        & .chatBotArea__closeArea {
-            padding: 0.75vh 1.5vw;
-            height: 1.5vh;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-
-            & .chatBotArea__closeBtn {
-                position: absolute;
-                width: 1vw;
+    
+            & .chatBotArea__chat {
+                transition: 0.2s;
+                margin: 1.5vh 0;
+                padding: 0.5vh 1.5vw;
+                width: 80%;
+                height: 5vh;
+                background-color: #14BD7E;
+                display: flex;
+                justify-content: left;
+                align-items: center;
+                border-radius: 2vh;
                 cursor: pointer;
-                margin-bottom: 1vw;
-                margin-right: -1vw;
-                color: #14BD7E;
-            }
-        }
-
-        & .chatBotArea__chat {
-            margin: 1.5vh 0;
-            padding: 0.5vh 1.5vw;
-            height: 5vh;
-            background-color: #14BD7E;
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            border-radius: 2vh;
-
-            & span {
-                font-size: 1rem;
-                font-weight: 600;
-                line-height: 1.2;
+    
+                & span {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.2;
+                }
+    
+                &:hover {
+                    color: #14BD7E;
+                    background-color: #fff;
+                }
             }
         }
     }

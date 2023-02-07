@@ -1,4 +1,4 @@
-import { addEvent } from "../../common/function"
+import { addEvent } from "../common/function"
 import { fetchValidateID, fetchRegisterID } from "./fetch";
 
 const eventToIDValidateBtn = ($registerContainer) => {

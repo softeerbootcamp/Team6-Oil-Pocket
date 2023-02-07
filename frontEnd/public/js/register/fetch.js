@@ -1,4 +1,4 @@
-import { BASE_COMMON_URL, HEADER, METHOD } from "../../common/variable";
+import { BASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
 
 const ID_VALIDATION_URL = BASE_COMMON_URL + "auth";
 const REGISTER_URL = BASE_COMMON_URL + "user";

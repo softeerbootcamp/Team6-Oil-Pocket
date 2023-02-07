@@ -924,8 +924,26 @@ a {
   color: #ECECEC;
   background-color: #ECECEC;
 }
-.main .chatBotArea .chatBotArea__profile {
+.main .chatBotArea .chatBotArea__background {
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+}
+.main .chatBotArea .chatBotArea__background::-webkit-scrollbar {
+  background-color: #14BD72;
+  width: 0.2vw;
+}
+.main .chatBotArea .chatBotArea__background::-webkit-scrollbar-thumb {
+  width: 0.4vw;
+  background-color: #14BD72;
+}
+.main .chatBotArea .chatBotArea__background::-webkit-scrollbar-track {
+  width: 4vw;
+  background-color: #ECECEC;
+}
+.main .chatBotArea .chatBotArea__background .chatBotArea__profile {
   transition: 0.5;
+  width: 90%;
   height: 5vh;
   margin: 0 0 1.5vh;
   padding: 0.5vh 0;
@@ -936,28 +954,28 @@ a {
   align-items: center;
   border-radius: 2vh;
 }
-.main .chatBotArea .chatBotArea__profile img {
+.main .chatBotArea .chatBotArea__background .chatBotArea__profile img {
   transition: 0.5s;
   height: 5vh;
   margin-top: 0.5vh;
 }
-.main .chatBotArea .chatBotArea__profile img:hover {
+.main .chatBotArea .chatBotArea__background .chatBotArea__profile img:hover {
   margin-top: -1vh;
 }
-.main .chatBotArea .chatBotArea__profile span {
+.main .chatBotArea .chatBotArea__background .chatBotArea__profile span {
   width: 90%;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
 }
-.main .chatBotArea .chatBotArea__closeArea {
+.main .chatBotArea .chatBotArea__background .chatBotArea__closeArea {
   padding: 0.75vh 1.5vw;
   height: 1.5vh;
   display: flex;
   justify-content: right;
   align-items: center;
 }
-.main .chatBotArea .chatBotArea__closeArea .chatBotArea__closeBtn {
+.main .chatBotArea .chatBotArea__background .chatBotArea__closeArea .chatBotArea__closeBtn {
   position: absolute;
   width: 1vw;
   cursor: pointer;
@@ -965,20 +983,27 @@ a {
   margin-right: -1vw;
   color: #14BD7E;
 }
-.main .chatBotArea .chatBotArea__chat {
+.main .chatBotArea .chatBotArea__background .chatBotArea__chat {
+  transition: 0.2s;
   margin: 1.5vh 0;
   padding: 0.5vh 1.5vw;
+  width: 80%;
   height: 5vh;
   background-color: #14BD7E;
   display: flex;
   justify-content: left;
   align-items: center;
   border-radius: 2vh;
+  cursor: pointer;
 }
-.main .chatBotArea .chatBotArea__chat span {
+.main .chatBotArea .chatBotArea__background .chatBotArea__chat span {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.2;
+}
+.main .chatBotArea .chatBotArea__background .chatBotArea__chat:hover {
+  color: #14BD7E;
+  background-color: #fff;
 }
 .main section.explainArea#explainArea--1 {
   -webkit-animation-duration: 15s;

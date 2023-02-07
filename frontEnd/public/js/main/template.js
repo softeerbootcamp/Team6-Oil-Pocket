@@ -77,10 +77,10 @@ const getChatBotTemplate = () => `
             <span>안녕하세요 주행자님. 어떤 것을 도와드릴까요?</span>
         </div>
         <div class="chatBotArea__chat">
-            <span>근처 주유소 검색은 어떻게 사용하나요?</span>
+            <span>나의 절약 현황은 어떻게 확인하나요?</span>
         </div>
         <div class="chatBotArea__chat">
-            <span>출발지/도착지 주유소 검색은 어떻게 사용하나요?</span>
+            <span>주변 주유소 검색은 어떻게 사용하나요?</span>
         </div>
         <div class="chatBotArea__chat">
             <span>다국어 제안을 하고 싶어요.</span>
