@@ -1,9 +1,12 @@
 package com.kaspi.backend.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class GasStation {
     @Id
     private Long stationNo;
