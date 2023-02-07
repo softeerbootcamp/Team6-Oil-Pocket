@@ -42,7 +42,7 @@ public class DataDownloadScheduler {
             chromeOptions.addArguments("--disable-extensions");
             chromeOptions.addArguments("lang=ko");
             // 크롬을 사용하기 위한 환경 설정
-            System.setProperty("webdriver.chrome.driver", "/opt/google/chrome/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
             // 크롬실행 객체 만들기
             WebDriver driver = new ChromeDriver(chromeOptions);
             driver.get("https://www.opinet.co.kr/user/opdown/opDownload.do");
