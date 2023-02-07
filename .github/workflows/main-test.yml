@@ -3,7 +3,7 @@ name: Backend CI Test
 on:
   push:
     branches:
-      - feature/#40_cors_setting
+      - feature/*
 
 jobs:
   build:
