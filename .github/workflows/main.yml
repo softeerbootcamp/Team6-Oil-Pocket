@@ -3,7 +3,7 @@ name: Backend CI
 on:
   push:
     branches:
-      - feautre/#40_cors_setting
+      - main
 
 jobs:
   build:
