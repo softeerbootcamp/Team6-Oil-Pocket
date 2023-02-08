@@ -32,7 +32,7 @@ https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-
 <br>
 
 ## 🏗 &nbsp; Architecture
-![image](https://user-images.githubusercontent.com/35219960/216689583-02c6b5d7-8b2e-4074-9790-51727801b2ee.png)
+![image](https://user-images.githubusercontent.com/87477702/217545522-9ee07a90-7011-4591-a2e7-c10499eb90f6.png)
 
 <br>
 
