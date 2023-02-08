@@ -12,22 +12,22 @@ import com.kaspi.backend.util.config.RedisConfiguration;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import redis.embedded.RedisServer;
+import org.springframework.transaction.annotation.Transactional;
 
-//TODO 내장 redis 연동 후 다시 테스트
+
 @DataJdbcTest
 @ContextConfiguration(classes = {RedisConfiguration.class, TestRedisConfiguration.class})
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Transactional
 class UserDaoTest {
-
-
     @Autowired
-    private UserDao userDao;
+    UserDao userDao;
 
 
     @Test
