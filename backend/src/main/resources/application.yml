@@ -15,10 +15,17 @@ spring:
     host: 43.200.157.18
 
   session:
-    cookie:
-      domain: localhost:5173
     store-type: redis
     timeout: 3600
     redis:
       namespace: session
+
+#server:
+#  ssl:
+#    enabled: true
+#    key-store: classpath:keystore.p12
+#    key-store-password: 123456
+#    key-store-type: PKCS12
+#    key-alias: bns-ssl
+# 추후 SSL 설정 예쩡
 
