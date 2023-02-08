@@ -7,15 +7,18 @@ import com.kaspi.backend.util.exception.AuthenticationException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class AuthService {
     private final UserDao userDao;
 
     public boolean checkValidUserId(String id) {
         Optional<User> findUser = userDao.findByUserId(id);
+        log.info("중복유저 체크 ID:{}",id);
         return findUser.isEmpty();
     }
 
