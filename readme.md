@@ -83,7 +83,7 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 #### <a href="https://github.com/softeerbootcamp/Team6/wiki">Github Wiki</a>
 #### <a href="https://github.com/softeerbootcamp/Team6/issues">Github Issues</a> <br>
 #### <a href="https://github.com/orgs/softeerbootcamp/projects/14">Github Project 간판보드</a> <br>
-#### <a href="https://www.figma.com/file/HNqNdLbIeWnWxMnB94uHwJ/User-Flow?node-id=366%3A596&t=xycFfE7TcGXamIa1-1">Design & User Flow</a> <br>
+#### <a href="https://www.figma.com/file/HNqNdLbIeWnWxMnB94uHwJ/User-Flow?node-id=366%3A596&t=xycFfE7TcGXamIa1-1">Design Detail</a> <br>
 
 <a href=""></a>
 
