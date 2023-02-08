@@ -1,25 +1,29 @@
-## PR Checklist
-Please check if your PR fulfills the following requirements:
-- [ ] Tests for the changes have been added (for bug fixes / features)
-- [ ] Docs have been added / updated (for bug fixes / features)
+## 🌿 이슈 번호 : #1 
 
-## PR Type
-What kind of change does this PR introduce?
-- [ ] add function / template
-- [ ] Bugfix
-- [ ] Feature
-- [ ] Code style update (formatting, local variables)
-- [ ] Refactoring (no functional changes, no api changes)
-- [ ] Build related changes
-- [ ] CI related changes
-- [ ] Documentation content changes
-- [ ] angular.io application / infrastructure changes
+<br>
 
-## What is the current behavior?
-Issue Number: 
-## What is the new behavior?
+## 📝 PR 유형 
+- [ ] 새로운 feature 추가
+- [ ] feature 수정 (기능 업데이트, 버그 수정 등)
+- [ ] 관련 문서 추가
+- [ ] 관련 문서 수정
 
-## Other information
+<br>
 
+## 🧑‍💻 작업 내용 
+템플릿 형식을 수정하였습니다.
 
+<br>
 
+## ❗️ 리뷰어는 여기에 집중해주세요!   
+- 템플릿 오타가 없는지 확인해주세요.
+
+<br>
+
+## 🏃‍♂️ 다음 작업 계획 
+- 노션 정리 및 개발 작업 문서화
+
+<br>
+
+## 기타 사항 
+- 언제든 의논 후 PR template 양식을 수정하고 싶어요.
