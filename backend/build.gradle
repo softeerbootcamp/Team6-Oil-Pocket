@@ -40,8 +40,7 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	//test db
-	testImplementation 'com.h2database:h2'
+	//test
 	testImplementation 'it.ozimov:embedded-redis:0.7.2'
 
 
