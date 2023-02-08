@@ -1,10 +1,12 @@
+#추가
+
+
 HELP.md
 .gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
-
-#!**/src/test/**/build/
+!**/src/test/**/build/
 
 
 ### STS ###
@@ -17,9 +19,7 @@ build/
 .sts4-cache
 bin/
 !**/src/main/**/bin/
-
-#!**/src/test/**/bin/
-
+!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
@@ -28,9 +28,7 @@ bin/
 *.ipr
 out/
 !**/src/main/**/out/
-
-#!**/src/test/**/out/
-
+!**/src/test/**/out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -41,34 +39,3 @@ out/
 
 ### VS Code ###
 .vscode/
-
-### properties files ###
-
-#*.properties
-#*.yml
-
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?

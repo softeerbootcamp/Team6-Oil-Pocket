@@ -19,12 +19,13 @@ class GasDetailTest {
                 , "현대오일뱅크", "셀프", "1899", "1659", "1759", "0"};
         System.out.println(input.length);
         LocalDate date = LocalDate.now();
-        List<GasDetail> gasDetail = GasDetail.parseListGasDetail(input, date);
+        GasStation gasStation = GasStation.parseGasStation(input);
+        List<GasDetail> gasDetail = GasDetail.parseListGasDetail(gasStation, input, date);
 
         List<GasDetail> list = new ArrayList<>();
-        list.add(new GasDetail("A0000035", 1899, GasType.PREMIUM_GASOLINE, date));
-        list.add(new GasDetail("A0000035", 1659, GasType.GASOLINE, date));
-        list.add(new GasDetail("A0000035", 1759, GasType.DIESEL, date));
+        list.add(new GasDetail(gasStation, 1899, GasType.PREMIUM_GASOLINE, date));
+        list.add(new GasDetail(gasStation, 1659, GasType.GASOLINE, date));
+        list.add(new GasDetail(gasStation, 1759, GasType.DIESEL, date));
         Assertions.assertThat(gasDetail).usingRecursiveComparison().isEqualTo(list);
     }
 }
