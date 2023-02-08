@@ -10,4 +10,11 @@ const replaceChildWithFadeEffect = ($parent, $child) => {
     $child.style.opacity = 1;
 }
 
-export { addEvent, changeCSS, replaceChildWithFadeEffect }
+const pipe = (...functionList) => (firstParam) => 
+    functionList.reduce((curValue, curFunc) => { 
+        return curFunc(curValue);
+    }, firstParam);
+
+const makeLighter = ($target) => $target.style.opacity = 1;
+
+export { addEvent, changeCSS, replaceChildWithFadeEffect, pipe, makeLighter }
