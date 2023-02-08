@@ -6,7 +6,7 @@ RUN apt-get install -y \
     libglib2.0-0 \
     libnss3 \
     libx11-6
-RUN mkdir -p /home/download
+RUN mkdir -p /home/ubuntu/download
 EXPOSE 8080
 ARG JAR_FILE=./build/libs/backend-0.0.1-SNAPSHOT.war
 COPY ${JAR_FILE} app.war
