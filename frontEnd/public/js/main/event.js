@@ -1,6 +1,8 @@
 import { addEvent, pipe } from "../common/function.js";
 import { deleteOtherChatNode, getChatTextArray } from "./helperFunction.js";
-import { chatBotView } from "./view.js";
+import { chatBotAnswerView__myPage01, chatBotView } from "./view.js";
+
+let chatBotArea = "";
 
 const eventToChatBot = ($chatBotImg) => pipe(
     () => chatBotView(),
@@ -17,31 +19,23 @@ const eventToChatBot = ($chatBotImg) => pipe(
 
 const eventToChatBotText = ($chatBotContent) => pipe(
     () => getChatTextArray($chatBotContent),
-    ([$saveChat, $searchChat, $languageSuggestText, $clientChat]) => {
+    ([$saveChat, $searchChat, $clientChat]) => {
         eventToSaveChat($saveChat);
         eventToSearchChat($searchChat);
-        eventToLanguageChat($languageSuggestText);
         eventToClientChat($clientChat);
     }
 )();
 
 const eventToSaveChat = ($saveChat) => addEvent($saveChat, [
-    () => deleteOtherChatNode($saveChat)
+    () => chatBotArea = document.querySelector(".chatBotArea"),
+    () => deleteOtherChatNode($saveChat),
+    () => chatBotArea.appendChild(chatBotAnswerView__myPage01()),
 ]);
 
-const eventToSearchChat = ($searchChat) => addEvent($searchChat, [
-    () => deleteOtherChatNode($searchChat)
-]);
+const eventToSearchChat = ($searchChat) => addEvent($searchChat, 
+    [() => deleteOtherChatNode($searchChat)]);
 
-
-const eventToLanguageChat = ($languageChat) => addEvent($languageChat, [
-    () => deleteOtherChatNode($languageChat)
-]);
-
-
-const eventToClientChat = ($clientChat) => addEvent($clientChat, [
-    () => deleteOtherChatNode($clientChat)
-]);
-
+const eventToClientChat = ($clientChat) => addEvent($clientChat, 
+    [() => deleteOtherChatNode($clientChat)]);
 
 export { eventToChatBot }
