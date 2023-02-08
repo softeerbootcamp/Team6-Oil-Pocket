@@ -66,4 +66,3 @@ public class DataDownloadScheduler {
         gasDataService.insertGasInfo(LPG_STATION, new LpgDetailCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
     }
 }
-

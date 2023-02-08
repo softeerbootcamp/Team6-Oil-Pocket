@@ -29,11 +29,11 @@ const getRegisterTemplate = () => `
                     </select>
                 </div>
                 <div class="registerArea__IDArea">
-                    <input type="text" placeholder="ID를 입력해주세요.">
-                    <button class="IDValidateBtn">중복 확인</button>            
+                    <input type="text" placeholder="ID를 입력해주세요." minlength="6" maxlength="20">
+                    <button class="IDValidateBtn">중복 확인</button>          
                 </div>
-                <input type="text" placeholder="PW를 입력해주세요." id="registerArea__pwInput">
-                <input type="text" placeholder="PW를 다시 입력해주세요." id="registerArea__pwReInput">
+                <input type="password" minlength="6" maxlength="12" placeholder="PW를 입력해주세요." id="registerArea__pwInput">
+                <input type="password" minlength="6" maxlength="12" placeholder="PW를 다시 입력해주세요." id="registerArea__pwReInput">
                 <button class="registerBtn" disabled>회원가입</button>
             </div>
         </section>

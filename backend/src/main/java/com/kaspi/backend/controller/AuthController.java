@@ -12,7 +12,12 @@ import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
@@ -28,13 +33,6 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(CommonResponseDto.toResponse(ErrorCode.DUPLICATE_USER));
         }
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_VALID_ID));
-    }
-
-    @GetMapping("/v1/cookie")
-    public ResponseEntity<CommonResponseDto> test() {
-        httpSessionService.makeHttpSession(1L);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_VALID_ID));
     }
