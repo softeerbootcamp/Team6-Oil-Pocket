@@ -20,6 +20,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+* {
+    transition: 0.4s;
+}
+
 *:focus {
     outline: none;
 }
@@ -734,6 +738,7 @@ a {
             width:100vw;
             height:82vh;
         }    
+
         & #main__btn_select{
             z-index:5;
             position:absolute;
@@ -744,7 +749,6 @@ a {
             background-color: green;
             color:white;
             font-size:11px;
-            // border:2px solid blue;
             border-radius: 5px;
         }
     }
@@ -958,13 +962,14 @@ a {
             }
 
             & .registerArea__termOfUse {
+                transition: .5s;
                 height: 40%;
                 margin: 0 auto 1vh;
                 width: 95%;
                 border-radius: 0.5vh;
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-start;
+                justify-content: space-around;
                 align-items: center;
                 color: #000;
                 padding: 1vh 0.5vw 0;
@@ -982,6 +987,7 @@ a {
                 }
 
                 & p {
+                    transition: 0.5s;
                     border-radius: 0.5vh;
                     width: 90%;
                     height: 60%;
@@ -989,6 +995,21 @@ a {
                     font-size: 0.8rem;
                     overflow-y: scroll;
                     background-color: #ECECEC;
+
+                    &::-webkit-scrollbar {
+                        background-color: #14BD72;
+                        width: 0.2vw;
+                    }
+                    
+                    &::-webkit-scrollbar-thumb {
+                        width: 0.4vw;
+                        background-color: #14BD72;
+                    }
+        
+                    &::-webkit-scrollbar-track {
+                        width: 4vw;
+                        background-color: #ECECEC;
+                    }
                 }
 
                 & .registerArea__btnBox{
@@ -1007,6 +1028,10 @@ a {
                         margin-right: 0.8vw;
 
                         &:hover {
+                            background-color:#14BD7E;
+                        }
+
+                        &.clicked {
                             background-color:#14BD7E;
                         }
                     }
@@ -1037,28 +1062,29 @@ a {
                 justify-content: space-between;
 
                 & select {
+                    transition: .5s;
                     font-weight: 600;
                     border: none;
                     padding: 2vh 0;
                     font-size: 1.1rem;
-                    width: 50%;
-                    background-color: #14BD7E;
+                    width: 45%;
+                    background-color: #80E3C3;
                     color: #fff;
                     appearance: none;
                     cursor: pointer;
                     text-align: center;
-
-                    &:nth-child(1) {
-                        background-color: #80E3C3;
-                        border-radius: 0.5vh 0 0 0.5vh;
-                    }
-
-                    &:nth-child(2) {
-                        border-radius: 0 0.5vh 0.5vh 0;
-                    }
+                    border-radius: 0.5vh;
 
                     &:focus {
                         outline: none;
+                    }
+
+                    &:checked {
+                        background-color: #14BD7E;
+                    }
+
+                    &::selection {
+                        background-color: #14BD7E;
                     }
                 }
             }
@@ -1075,6 +1101,22 @@ a {
                     font-size: 1rem;
                     font-weight: 600;
                     border-radius: 0.5vh;
+
+                    &:disabled {
+                        cursor: not-allowed;
+                        background-color: #80E3C3;
+                    }
+                }
+
+                & input:disabled {
+                    cursor: not-allowed;
+                    color: #A1E5CB;
+                    background-color: #FAFAFB;
+
+                    &::placeholder {
+                        color: #A1E5CB;
+                        background-color: #FAFAFB;
+                    }
                 }
             }
 

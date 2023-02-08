@@ -10,21 +10,26 @@ import { notFoundView } from "./notFound/view.js";
 import { mapView } from "./mapView/view.js";
 
 const $body = document.querySelector("body");
+const routes = [
+    { path: "/", view: mainView }, 
+    { path: "/register", view: registerView },
+    { path: "/login", view: loginView },
+    { path: "/userDetail", view: userDetailView },
+    { path: "/inputOilInfo", view: inputOilInfoView },
+    { path: "/chart", view: chartView },
+    { path: "/comparison", view: comparisonView },
+    { path: "/history", view: historyView },
+    { path: "/mapView", view: mapView },
+    { path: "/404", view: notFoundView }
+];
+
+const moveTo = url => {
+    let viewFunction = routes.find((route) => route.path === url).view;
+    history.pushState(null, null, url);
+    $body.replaceWith(viewFunction());
+}
 
 const router = async () => {
-    const routes = [
-        { path: "/", view: mainView }, 
-        { path: "/register", view: registerView },
-        { path: "/login", view: loginView },
-        { path: "/userDetail", view: userDetailView },
-        { path: "/inputOilInfo", view: inputOilInfoView },
-        { path: "/chart", view: chartView },
-        { path: "/comparison", view: comparisonView },
-        { path: "/history", view: historyView },
-        { path: "/mapView", view: mapView },
-        { path: "/404", view: notFoundView }
-    ];
-
     let match = routes.map(route => {
         return {
             route,

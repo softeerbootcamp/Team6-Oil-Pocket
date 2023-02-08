@@ -20,6 +20,10 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
+* {
+  transition: 0.4s;
+}
+
 *:focus {
   outline: none;
 }
@@ -1002,6 +1006,25 @@ a {
   font-weight: 600;
   line-height: 1.2;
 }
+.main .chatBotArea .chatBotArea__background .chatBotArea__answer {
+  transition: 0.2s;
+  margin: 1.5vh 0;
+  padding: 0.5vh 1.5vw;
+  width: 80%;
+  height: 5vh;
+  background-color: #fff;
+  color: #14BD7E;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  border-radius: 2vh;
+  cursor: pointer;
+}
+.main .chatBotArea .chatBotArea__background .chatBotArea__answer span {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
 .main section.explainArea#explainArea--1 {
   -webkit-animation-duration: 15s;
           animation-duration: 15s;
@@ -1518,13 +1541,14 @@ a {
   background-color: #80E3C3;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse {
+  transition: 0.5s;
   height: 40%;
   margin: 0 auto 1vh;
   width: 95%;
   border-radius: 0.5vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: center;
   color: #000;
   padding: 1vh 0.5vw 0;
@@ -1540,12 +1564,25 @@ a {
   outline: none;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse p {
+  transition: 0.5s;
   border-radius: 0.5vh;
   width: 90%;
   height: 60%;
   padding: 0.5vh 1vw;
   font-size: 0.8rem;
   overflow-y: scroll;
+  background-color: #ECECEC;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse p::-webkit-scrollbar {
+  background-color: #14BD72;
+  width: 0.2vw;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse p::-webkit-scrollbar-thumb {
+  width: 0.4vw;
+  background-color: #14BD72;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse p::-webkit-scrollbar-track {
+  width: 4vw;
   background-color: #ECECEC;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse .registerArea__btnBox {
@@ -1564,6 +1601,9 @@ a {
   margin-right: 0.8vw;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse .registerArea__btnBox .registerArea__termOfUseContentBtn:hover {
+  background-color: #14BD7E;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse .registerArea__btnBox .registerArea__termOfUseContentBtn.clicked {
   background-color: #14BD7E;
 }
 .registerArea .registerArea__backGround .registerArea__frame h1 {
@@ -1586,28 +1626,32 @@ a {
   justify-content: space-between;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select {
+  transition: 0.5s;
   font-weight: 600;
   border: none;
   padding: 2vh 0;
   font-size: 1.1rem;
-  width: 50%;
-  background-color: #14BD7E;
+  width: 45%;
+  background-color: #80E3C3;
   color: #fff;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
   cursor: pointer;
   text-align: center;
-}
-.registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select:nth-child(1) {
-  background-color: #80E3C3;
-  border-radius: 0.5vh 0 0 0.5vh;
-}
-.registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select:nth-child(2) {
-  border-radius: 0 0.5vh 0.5vh 0;
+  border-radius: 0.5vh;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select:focus {
   outline: none;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select:checked {
+  background-color: #14BD7E;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select::-moz-selection {
+  background-color: #14BD7E;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select::selection {
+  background-color: #14BD7E;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea {
   display: flex;
@@ -1621,6 +1665,27 @@ a {
   font-size: 1rem;
   font-weight: 600;
   border-radius: 0.5vh;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea button:disabled {
+  cursor: not-allowed;
+  background-color: #80E3C3;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input:disabled {
+  cursor: not-allowed;
+  color: #A1E5CB;
+  background-color: #FAFAFB;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input:disabled::-moz-placeholder {
+  color: #A1E5CB;
+  background-color: #FAFAFB;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input:disabled:-ms-input-placeholder {
+  color: #A1E5CB;
+  background-color: #FAFAFB;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input:disabled::placeholder {
+  color: #A1E5CB;
+  background-color: #FAFAFB;
 }
 .registerArea .registerArea__backGround .registerArea__frame input {
   color: #14BD7E;
