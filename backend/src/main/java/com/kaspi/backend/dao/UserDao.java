@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserDao extends CrudRepository<User, Long> {
 
-    @Query("SELECT * FROM USERS WHERE id= :user_id")
+    @Query("SELECT * FROM users WHERE id= :user_id")
     Optional<User> findByUserId(@Param("user_id") String userId);
 
 }

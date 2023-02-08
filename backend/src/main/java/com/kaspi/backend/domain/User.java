@@ -12,11 +12,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table(value = "USERS")
+
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(value = "users")
 public class User {
 
     @Id
