@@ -32,7 +32,7 @@ public class AuthController {
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_VALID_ID));
     }
 
-    @GetMapping("/v1/test")
+    @GetMapping("/v1/cookie")
     public ResponseEntity<CommonResponseDto> test() {
         httpSessionService.makeHttpSession(1L);
         return ResponseEntity.status(HttpStatus.OK)
