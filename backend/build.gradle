@@ -40,8 +40,6 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 
-	//test
-	testImplementation 'it.ozimov:embedded-redis:0.7.2'
 
 
 }
