@@ -1,11 +1,7 @@
 package com.kaspi.backend.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaspi.backend.dto.FindGasStationReqDto;
 import com.kaspi.backend.service.GasStationService;
-import com.kaspi.backend.service.HttpSessionService;
-import com.kaspi.backend.service.UserService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import org.junit.jupiter.api.DisplayName;
@@ -25,13 +21,13 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-@WebMvcTest(controllers = UserRecordController.class)
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+@WebMvcTest(controllers = GasStationController.class)
 @ContextConfiguration(classes = {TestRedisConfiguration.class})
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-class UserRecordControllerTest {
+class GasStationControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -58,5 +54,4 @@ class UserRecordControllerTest {
                 .andExpect(jsonPath("code").value(DefaultCode.CHECK_MATCH_GAS_STATION.getCode()))
                 .andExpect(jsonPath("message").value(DefaultCode.CHECK_MATCH_GAS_STATION.getMessage()));
     }
-
 }

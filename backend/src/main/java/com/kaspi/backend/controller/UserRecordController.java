@@ -20,13 +20,10 @@ import java.util.List;
 @RequestMapping("/api/v2")
 @RequiredArgsConstructor
 public class UserRecordController {
-    private final GasStationService gasStationService;
 
-    @GetMapping("/gas-station")
-    public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name) {
-        List<FindGasStationReqDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION,matchingGasStations));
-    }
+
+
+
+
 
 }

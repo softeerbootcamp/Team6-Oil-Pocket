@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -20,9 +21,11 @@ public class GasStationService {
     public List<FindGasStationReqDto> getGasStationByContainingName(String reqGasStationName) {
         List<FindGasStationReqDto> matchingGasStations = new ArrayList<>();
         Iterable<GasStation> gasStations = gasStationDao.findAll();
+        log.info("주유소 이름 검색 요청 name:{}", reqGasStationName);
         for (GasStation gasStation : gasStations) {
             insertMatchingGasStation(reqGasStationName, gasStation, matchingGasStations);
         }
+        log.info("matching된 주유소 name:{}", matchingGasStations.stream().map(FindGasStationReqDto::getName).collect(Collectors.toList()));
         return matchingGasStations;
     }
 
