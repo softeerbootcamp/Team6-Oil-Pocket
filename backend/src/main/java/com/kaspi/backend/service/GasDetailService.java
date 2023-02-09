@@ -21,6 +21,16 @@ public class GasDetailService {
     private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
 
+    public List<GasDetailDto> findGasDetailList(String name, String roadNum, String buildNum, String brand) {
+        GasStation gasStation = findGasStation(roadNum, buildNum, brand);
+        Long gasStationNo = gasStation.getStationNo();
+        Optional<List<GasDetail>> optionalGasDetailList = gasDetailDao.findByStationNoAndDate(gasStationNo, LocalDate.now());
+        if (optionalGasDetailList.isEmpty()) {
+            throw new RuntimeException("가격 정보가 존재하지 않습니다.");
+        }
+        return convertToGasDetailDtoList(optionalGasDetailList.get());
+    }
+
     private List<GasDetailDto> convertToGasDetailDtoList(List<GasDetail> gasDetailList) {
         List<GasDetailDto> gasDetailDtoList;
         // 오일이 리스트에 있는 경우, LPG empty 상세정보 추가
