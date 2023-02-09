@@ -20,6 +20,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+*:focus {
+    outline: none;
+}
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -79,6 +83,10 @@ a {
 
             &:visited {
                 color: #14BD7E;
+            }
+
+            &:focus {
+                outline: none;
             }
         }
     }
@@ -284,7 +292,6 @@ a {
         width: 30vw;
         height: 60vh;
         z-index: 1;
-        opacity: 0;
         color: #ECECEC;
         background-color: #ECECEC;
 
@@ -362,7 +369,7 @@ a {
         & div.explainArea__text {
             position: absolute;
             top: 50vh;
-            left: 25vw;
+            left: 20vw;
             transition: 1s;
 
             & h1 {
@@ -383,7 +390,7 @@ a {
             position: absolute;
             height: 55vh;
             top: 30vh;
-            right: 25vw;
+            right: 20vw;
         }
     }
 
@@ -396,7 +403,7 @@ a {
         & div.explainArea__text {
             position: absolute;
             top: 50vh;
-            right: 25vw;
+            right: 20vw;
             transition: 1s;
 
             & h1 {
@@ -416,7 +423,7 @@ a {
             position: absolute;
             height: 55vh;
             top: 30vh;
-            left: 25vw;
+            left: 20vw;
             transition: 0.5s;
         }
     }
@@ -430,7 +437,7 @@ a {
         & div.explainArea__text {
             position: absolute;
             top: 50vh;
-            left: 25vw;
+            left: 20vw;
             transition: 1s;
 
             & h1 {
@@ -450,7 +457,7 @@ a {
             position: absolute;
             height: 55vh;
             top: 30vh;
-            right: 25vw;
+            right: 20vw;
             transition: 0.5s;
         }
     }
@@ -464,7 +471,7 @@ a {
         & div.explainArea__text {
             position: absolute;
             top: 50vh;
-            right: 25vw;
+            right: 20vw;
             transition: 1s;
 
             & h1 {
@@ -484,7 +491,7 @@ a {
             position: absolute;
             height: 55vh;
             top: 30vh;
-            left: 25vw;
+            left: 20vw;
             transition: 0.5s;
         }
     }
@@ -498,7 +505,7 @@ a {
         & div.explainArea__text {
             position: absolute;
             top: 50vh;
-            left: 25vw;
+            left: 20vw;
             transition: 1s;
 
             & h1 {
@@ -518,8 +525,181 @@ a {
             position: absolute;
             height: 55vh;
             top: 30vh;
-            right: 25vw;
+            right: 20vw;
             transition: 0.5s;
+        }
+    }
+
+    // 지도 상세 페이지
+    & .main__ForMap{
+        margin-top:auto;
+        display:flex;
+        flex-direction: row;
+        & .main__SideSearchBar {
+            z-index:3;
+            display:flex;
+            flex-direction:row;
+            transition: 0.4s;
+            transition-timing-function: linear;
+            width:22vw;
+            height:82vh;
+            background-color:white;
+            border:2px solid green;
+            border-radius: 0 5px 5px 0;
+            box-sizing: border-box;
+            & .main__SearchOption {
+                width:2vw;
+                display:flex;
+                flex-direction: column;
+                background-color: transparent;
+                
+                & .main__SearchFromCurrentLocation {
+                    display:flex;
+                    margin-top: 3vh;
+                    height:5vh;
+                    background-color: #14BD7E;
+                    box-shadow: 1px 0 3px -1px black;
+                    transition: 0.4s;
+                    transition-timing-function: linear;
+                    align-items: center;
+                    justify-content: center;
+
+                    & #Option1 {
+                        transition: 0.5s;
+                        transition-timing-function: linear;
+                    }
+                }
+                & .main__SearchFromRoute {
+                    display:flex;
+                    width:1.3vw;
+                    height:4.6vh;
+                    background-color: white;
+                    box-shadow: 1px 0 2px -1px ;
+                    transition: 0.4s;
+                    transition-timing-function: linear;
+                    align-items: center;
+                    justify-content: center;
+
+                    & #Option2 {
+                        transition: 0.5s;
+                        transition-timing-function: linear;
+                    }
+                }
+            }
+            & .main__InputandResultinSearchBar {
+                width:19vw;
+                display:flex;
+                flex-direction:column;
+                font-size:14px;
+                
+                & .main__CurrentLocation {
+                    width:6vw;
+                    height:3vh;
+                    margin-left:2vw;
+                    margin-top:3vh;
+                    background-color: #14BD7E;
+                    color:white;
+                    font-size:20px;
+                    text-align: center;
+                    border-radius: 20px;
+                    line-height: 3vh;
+                }
+                & .main__CurrentLocationAddress {
+                    background-color:white;
+                    border: 2px solid #14BD7E;
+                    border-radius: 5px;
+                    width:15vw;
+                    height:4vh;
+                    margin-left:2vw;
+                    margin-top:2vh;
+                    font-size:13px;
+                    padding-top:3px;
+                }
+                & .main__SearchOptionButtonGroup{
+                    background-color:white;
+                    // border: 1px solid #14BD7E;
+                    // border-radius: 5px;
+                    width:15vw;
+                    height:3vh;
+                    margin-left:2vw;
+                    margin-top:2vh;
+                    & #sort_HH {
+                        box-sizing: border-box;
+                        width:4.5vw;
+                        height:3vh;
+                        border:1px solid #14BD7E;
+                        border-radius: 5px;
+                        margin:0;
+                        background-color: rgba(20, 189, 114, 0.5);
+                        opacity:1;
+                    }
+                    & #sort_GG {
+                        box-sizing: border-box;
+                        width:4.5vw;
+                        height:3vh;
+                        border:1px solid #14BD7E;
+                        border-radius: 5px;
+                        margin:0;
+                        background-color: rgba(20, 189, 114, 0.5);
+                        opacity:0.5;
+                    }
+                    & #sort_LL {
+                        box-sizing: border-box;
+                        width:4.5vw;
+                        height:3vh;
+                        border:1px solid #14BD7E;
+                        border-radius: 5px;
+                        margin:0;
+                        background-color: rgba(20, 189, 114, 0.5);
+                        opacity:0.5;
+                    }
+                }
+                & .main__SearchResult {
+                    border:2px solid #14BD7E;
+                    border-radius: 5px;
+                    width:15vw;
+                    height:59vh;
+                    margin-left:2vw;
+                    margin-top:3vh;
+                    background-color: white;
+                    // overflow: scroll;
+                    padding:0;
+                }
+            }
+        }
+        & .main__SearchBarHideButton {
+            display:flex;
+            z-index:3;
+            border:3px solid lightgreen;
+            border-radius: 0 5px 5px 0;
+            border-left:none;
+            width:20px;
+            height:40px;
+            margin-top:20vh;
+            margin-right:auto;
+            background-color:white;
+            align-items: center;
+            justify-content: center;
+        }
+        & .main__MapDiv {
+            z-index:2;
+            position:absolute;
+            background-color: #14BD7E;
+            width:100vw;
+            height:82vh;
+        }    
+        & #main__btn_select{
+            z-index:5;
+            position:absolute;
+            width:60px;
+            height:35px;
+            right:36vw;
+            top:74vh;
+            background-color: green;
+            color:white;
+            font-size:11px;
+            // border:2px solid blue;
+            border-radius: 5px;
         }
     }
 }
@@ -681,6 +861,14 @@ a {
                     flex-grow: 8;
                     font-size: 1.2rem;
                 }
+
+                & a {
+                    color: #14BD7E;
+
+                    &:visited {
+                        color: #14BD7E;
+                    }
+                }
             }
         }
     }
@@ -716,6 +904,11 @@ a {
                 font-size: 1.2rem;
                 font-weight: 600;
                 border-radius: 0.5vh;
+
+                &:disabled {
+                    cursor: not-allowed;
+                    background-color: #80E3C3;
+                }
             }
 
             & .registerArea__termOfUse {
@@ -736,6 +929,10 @@ a {
                     font-size: 1.5rem;
                     font-weight: 700;
                     height: 15%;
+
+                    &:focus {
+                        outline: none;
+                    }
                 }
 
                 & p {
@@ -1716,4 +1913,20 @@ a {
             }
         }
     }
+}
+
+#searchResultTitle {
+    font-size:16px;
+    font-weight: bold;
+    line-height: 2vh;
+    overflow: scroll;
+}
+
+.GasStationLogo{
+    width:28px;
+    height:28px;
+}
+
+.ResultContents {
+    color:grey;
 }

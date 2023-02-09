@@ -7,6 +7,8 @@ import { comparisonView } from "./myPage/comparison/view.js";
 import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
+import { mapView } from "./mapView/view.js";
+import { HEADER, METHOD } from "../common/variable.js";
 
 const $body = document.querySelector("body");
 
@@ -20,6 +22,7 @@ const router = async () => {
         { path: "/chart", view: chartView },
         { path: "/comparison", view: comparisonView },
         { path: "/history", view: historyView },
+        { path: "/mapView", view: mapView },
         { path: "/404", view: notFoundView }
     ];
 
@@ -61,3 +64,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     router();
 });
+
+fetch("http://43.200.157.18:8080/api/v1/user", {
+    method: METHOD.POST,
+    headers: HEADER.POST,
+    body: JSON.stringify({
+        "id":"test3",
+        "password":"testpassword",
+        "gender":"M",
+        "age": "20대"
+    }),
+    withCredentials: true
+}).then((res) => {
+    console.log(res);
+})
