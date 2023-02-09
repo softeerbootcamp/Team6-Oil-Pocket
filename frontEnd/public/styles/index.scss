@@ -20,6 +20,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+* {
+    transition: 0.4s;
+}
+
 *:focus {
     outline: none;
 }
@@ -295,67 +299,113 @@ a {
         color: #ECECEC;
         background-color: #ECECEC;
 
-        & .chatBotArea__profile {
-            transition: 0.5;
-            height: 5vh;
-            margin: 0 0 1.5vh;
-            padding: 0.5vh 0;
-            transition: 0.5s;
-            background-color: #14BD7E;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 2vh;
+        & .chatBotArea__background {
+            overflow-y: scroll;
+            width: 100%;
+            height: 100%;
 
-            & img {
-                transition: 0.5s;
+            &::-webkit-scrollbar {
+                background-color: #14BD72;
+                width: 0.2vw;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+                width: 0.4vw;
+                background-color: #14BD72;
+            }
+
+            &::-webkit-scrollbar-track {
+                width: 4vw;
+                background-color: #ECECEC;
+            }
+
+            & .chatBotArea__profile {
+                transition: 0.5;
+                width: 90%;
                 height: 5vh;
-                margin-top: 0.5vh;
-
-                &:hover {
-                    margin-top: -1vh;
+                margin: 0 0 1.5vh;
+                padding: 0.5vh 0;
+                transition: 0.5s;
+                background-color: #14BD7E;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 2vh;
+                & img {
+                    transition: 0.5s;
+                    height: 5vh;
+                    margin-top: 0.5vh;
+    
+                    &:hover {
+                        margin-top: -1vh;
+                    }
+                }
+    
+                & span {
+                    width: 90%;
+                    text-align: left;
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+            }
+    
+            & .chatBotArea__closeArea {
+                padding: 0.75vh 1.5vw;
+                height: 1.5vh;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+    
+                & .chatBotArea__closeBtn {
+                    position: absolute;
+                    width: 1vw;
+                    cursor: pointer;
+                    margin-bottom: 1vw;
+                    margin-right: -1vw;
+                    color: #14BD7E;
+                }
+            }
+    
+            & .chatBotArea__chat {
+                transition: 0.2s;
+                margin: 1.5vh 0;
+                padding: 0.5vh 1.5vw;
+                width: 80%;
+                height: 5vh;
+                background-color: #fff;
+                color: #14BD7E;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                border-radius: 2vh;
+                cursor: pointer;
+    
+                & span {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.2;
                 }
             }
 
-            & span {
-                width: 90%;
-                text-align: center;
-                font-size: 1rem;
-                font-weight: 600;
-            }
-        }
-
-        & .chatBotArea__closeArea {
-            padding: 0.75vh 1.5vw;
-            height: 1.5vh;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-
-            & .chatBotArea__closeBtn {
-                position: absolute;
-                width: 1vw;
-                cursor: pointer;
-                margin-bottom: 1vw;
-                margin-right: -1vw;
+            & .chatBotArea__answer {
+                transition: 0.2s;
+                margin: 1.5vh 0;
+                padding: 0.5vh 1.5vw;
+                width: 80%;
+                height: 5vh;
+                background-color: #fff;
                 color: #14BD7E;
-            }
-        }
-
-        & .chatBotArea__chat {
-            margin: 1.5vh 0;
-            padding: 0.5vh 1.5vw;
-            height: 5vh;
-            background-color: #14BD7E;
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            border-radius: 2vh;
-
-            & span {
-                font-size: 1rem;
-                font-weight: 600;
-                line-height: 1.2;
+                display: flex;
+                justify-content: right;
+                align-items: center;
+                border-radius: 2vh;
+                cursor: pointer;
+    
+                & span {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.2;
+                }
             }
         }
     }
@@ -698,7 +748,6 @@ a {
             background-color: green;
             color:white;
             font-size:11px;
-            // border:2px solid blue;
             border-radius: 5px;
         }
     }
@@ -912,13 +961,14 @@ a {
             }
 
             & .registerArea__termOfUse {
+                transition: .5s;
                 height: 40%;
                 margin: 0 auto 1vh;
                 width: 95%;
                 border-radius: 0.5vh;
                 display: flex;
                 flex-direction: column;
-                justify-content: flex-start;
+                justify-content: space-around;
                 align-items: center;
                 color: #000;
                 padding: 1vh 0.5vw 0;
@@ -936,6 +986,7 @@ a {
                 }
 
                 & p {
+                    transition: 0.5s;
                     border-radius: 0.5vh;
                     width: 90%;
                     height: 60%;
@@ -943,6 +994,21 @@ a {
                     font-size: 0.8rem;
                     overflow-y: scroll;
                     background-color: #ECECEC;
+
+                    &::-webkit-scrollbar {
+                        background-color: #14BD72;
+                        width: 0.2vw;
+                    }
+                    
+                    &::-webkit-scrollbar-thumb {
+                        width: 0.4vw;
+                        background-color: #14BD72;
+                    }
+        
+                    &::-webkit-scrollbar-track {
+                        width: 4vw;
+                        background-color: #ECECEC;
+                    }
                 }
 
                 & .registerArea__btnBox{
@@ -961,6 +1027,10 @@ a {
                         margin-right: 0.8vw;
 
                         &:hover {
+                            background-color:#14BD7E;
+                        }
+
+                        &.clicked {
                             background-color:#14BD7E;
                         }
                     }
@@ -991,28 +1061,29 @@ a {
                 justify-content: space-between;
 
                 & select {
+                    transition: .5s;
                     font-weight: 600;
                     border: none;
                     padding: 2vh 0;
                     font-size: 1.1rem;
-                    width: 50%;
-                    background-color: #14BD7E;
+                    width: 45%;
+                    background-color: #80E3C3;
                     color: #fff;
                     appearance: none;
                     cursor: pointer;
                     text-align: center;
-
-                    &:nth-child(1) {
-                        background-color: #80E3C3;
-                        border-radius: 0.5vh 0 0 0.5vh;
-                    }
-
-                    &:nth-child(2) {
-                        border-radius: 0 0.5vh 0.5vh 0;
-                    }
+                    border-radius: 0.5vh;
 
                     &:focus {
                         outline: none;
+                    }
+
+                    &:checked {
+                        background-color: #14BD7E;
+                    }
+
+                    &::selection {
+                        background-color: #14BD7E;
                     }
                 }
             }
@@ -1029,6 +1100,22 @@ a {
                     font-size: 1rem;
                     font-weight: 600;
                     border-radius: 0.5vh;
+
+                    &:disabled {
+                        cursor: not-allowed;
+                        background-color: #80E3C3;
+                    }
+                }
+
+                & input:disabled {
+                    cursor: not-allowed;
+                    color: #A1E5CB;
+                    background-color: #FAFAFB;
+
+                    &::placeholder {
+                        color: #A1E5CB;
+                        background-color: #FAFAFB;
+                    }
                 }
             }
 
@@ -1091,7 +1178,7 @@ a {
             
             & .oilInfoArea__tab {
                 height: 80%;
-                width: 12%;
+                width: 13%;
                 border-radius: 1vh 1vh 0 0;
                 background-color: #14BD7E;
                 display: flex;
@@ -1119,7 +1206,7 @@ a {
                 &.oilInfoArea__choosedTab {
                     color:#000;
                     height: 90%;
-                    font-size: 1.2rem;
+                    font-size: 1.1rem;
                     margin: 0 -0.25vw;
                     background-color: #fff;
                     box-shadow: 0 -0.5vh 0.5vw 0 #D4D4D4;
@@ -1324,6 +1411,11 @@ a {
                             &:hover {
                                 margin-top: -0.5vh;
                                 margin-bottom: 0.5vh;
+                            }
+
+                            & img {
+                                width: 90%;
+                                height: 90%;
                             }
                         }
                     }

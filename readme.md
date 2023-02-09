@@ -64,6 +64,11 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 
 <br>
 
+## 🛠 ERD
+<img width="915" alt="스크린샷 2023-02-06 오후 6 27 56" src="https://user-images.githubusercontent.com/87477702/216935196-200bc078-a180-4ae7-971e-91d6af834c0d.png">
+
+<br>
+
 ## 🔗 &nbsp; Project ManageMent
 #### <a href="https://github.com/softeerbootcamp/Team6/wiki">Github Wiki</a>
 #### <a href="https://github.com/softeerbootcamp/Team6/issues">Github Issues</a> <br>

@@ -1,6 +1,6 @@
 // fetch URL
-const BASE_COMMON_URL = "http://43.200.157.18:8080/api/v1/";
-const BASE_COOKIE_URL = "http://43.200.157.18:8080/api/v2/"
+const BASE_COMMON_URL = "http://localhost:8080/api/v1";
+const BASE_COOKIE_URL = "http://localhost:8080/api/v2"
 
 // fetch method
 const METHOD = {
@@ -10,7 +10,7 @@ const METHOD = {
 
 // fetch header
 const HEADER = {
-    POST : { 'Content-Type': 'application/json' }
+    POST : { 'Content-Type': 'application/json' },
 }
 
 export {

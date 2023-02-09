@@ -19,17 +19,19 @@ const getComparisonTemplate = () => `
                 </h1>
                 <div class="oilInfoArea__contentBody">
                     <div class="oilInfoArea__compareArea">
-                        <h2 class="oilInfoArea__compareTitle">이번 달은 <span>아이스크림</span> 하나 만큼의 기름 값을 절약했어요!</h2>
+                        <h2 class="oilInfoArea__compareTitle">이번 달은 <span>커피</span> 하나 만큼의 기름 값을 절약했어요!</h2>
                         <div class="oilInfoArea__compareContent">
                             <div class="oilInfoArea__compareMyBox">
                                 <h3>이번 달 <span>나</span>의 지출액</h3>
-                                <h1>330,000</h1>
+                                <h1>329,000</h1>
                             </div>
                             <div class="oilInfoArea__compareCommonBox">
                                 <h3>이번 달 <span>평균</span> 지출액</h3>
                                 <h1>330,000</h1>
                             </div>
-                            <div class="oilInfoArea__compareImgBox">img</div>
+                            <div class="oilInfoArea__compareImgBox">
+                                <img src="./public/img/myProfile_Image/coffee.png" alt="비교 이미지">
+                            </div>
                         </div>
                     </div>
                 </div>
