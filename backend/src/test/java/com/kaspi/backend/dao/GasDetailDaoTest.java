@@ -43,4 +43,19 @@ class GasDetailDaoTest {
             gasDetailDao.save(gasDetail);
         }
     }
+
+    @Test
+    @DisplayName("현재 날짜 기준 findByStationNoAndDate() 성공 테스트")
+    void findByStationNoAndDateTest() {
+        //1	서울 종로구	㈜지에스이앤알 평창주유소	평창문화로 135	현대오일뱅크	1
+        Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand("평창문화로 135", "현대오일뱅크");
+        GasStation gasStation = optionalGasStation.get();
+
+        Optional<GasDetail> optionalGasDetail = gasDetailDao.findByStationNoAndDate(gasStation.getStationNo(), LocalDate.now());
+        GasDetail gasDetail = optionalGasDetail.get();
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(gasDetail.getDetailNo()).isEqualTo(1);
+        softAssertions.assertThat(gasDetail.getDate()).isEqualTo(LocalDate.now());
+        softAssertions.assertAll();
+    }
 }
