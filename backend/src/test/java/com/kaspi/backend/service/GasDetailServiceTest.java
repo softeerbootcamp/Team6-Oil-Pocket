@@ -94,4 +94,18 @@ class GasDetailServiceTest {
         });
         assertEquals(ErrorCode.NOT_FOUND_GAS_STATION.getMessage(), exception.getErrorMessage());
     }
+
+    @Test
+    @DisplayName("findGasDetailList 주유소 정보 not found 실패 테스트")
+    void findGasDetailListFailGasDetail() {
+        when(gasStationDao.findByAddressAndBrand("평창문화로 135", "현대오일뱅크"))
+                .thenReturn(Optional.of(new GasStation(1L, "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true)));
+        when(gasDetailDao.findByStationNoAndDate(1L, date))
+                .thenReturn(Optional.empty());
+
+        SqlNotFoundException exception = assertThrows(SqlNotFoundException.class, () -> {
+            gasDetailService.findGasDetailList("평창문화로", "135", "현대오일뱅크");
+        });
+        assertEquals(ErrorCode.NOT_FOUND_GAS_DETAIL.getMessage(), exception.getErrorMessage());
+    }
 }
