@@ -15,10 +15,12 @@ spring:
     host: 43.200.157.18
 
   session:
-    cookie:
-      domain: localhost:5173
     store-type: redis
     timeout: 3600
     redis:
       namespace: session
+
+  output:
+    ansi:
+      enabled: always
 
