@@ -3,10 +3,10 @@ const getMapViewContentTemplate = () => `
         <div class="main__SideSearchBar">
             <div class="main__SearchOption">
                 <button class="main__SearchFromCurrentLocation">
-                    <img id="Option1" src="./public/img/🦆 icon _pin outline_.svg">
+                    <img id="Option1" src="svg_image/🦆 icon _pin outline_.svg">
                 </button>
                 <button class="main__SearchFromRoute">
-                    <img id="Option2" src="./public/img/🦆 icon _search outline_.svg">
+                    <img id="Option2" src="svg_image/🦆 icon _search outline_.svg">
                 </button>
             </div>
             <div class="main__InputandResultinSearchBar">
@@ -23,19 +23,13 @@ const getMapViewContentTemplate = () => `
                     </div>
                 </div>
                 <div class="main__SearchResult">
-                    <div class="title"></div>
-                    <div class="rst_wrap">
-                        <div class="rst mCustomScrollbar">
-                            <ul id="searchResult" name="searchResult">
-                                <li></li>
-                            </ul>
-                        </div>
+                    <div class="main__ResultList">
                     </div>
                 </div>
             </div>
         </div>
         <button class="main__SearchBarHideButton">
-            <img src="./public/img/🦆 icon _chevron left_.svg">
+            <img src="svg_image/🦆 icon _chevron left_.svg">
         </button>
         <div class="main__MapDiv">
             <div id="map_div" class="map_wrap" style="float:left"></div>

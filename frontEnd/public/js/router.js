@@ -8,6 +8,7 @@ import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
 import { mapView } from "./mapView/view.js";
+import { gasSTDView } from "./gasStationDetail/view.js";
 import { HEADER, METHOD } from "../common/variable.js";
 
 const $body = document.querySelector("body");
@@ -23,6 +24,7 @@ const router = async () => {
         { path: "/comparison", view: comparisonView },
         { path: "/history", view: historyView },
         { path: "/mapView", view: mapView },
+        { path: "/gasSTDView", view: gasSTDView},
         { path: "/404", view: notFoundView }
     ];
 
@@ -39,7 +41,6 @@ const router = async () => {
             isMatch: true
         }
     }
-
     const getNode = match.route.view;
     $body.replaceWith(getNode());
 }
