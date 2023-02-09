@@ -51,11 +51,13 @@ class GasDetailDaoTest {
         Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand("평창문화로 135", "현대오일뱅크");
         GasStation gasStation = optionalGasStation.get();
 
-        Optional<GasDetail> optionalGasDetail = gasDetailDao.findByStationNoAndDate(gasStation.getStationNo(), LocalDate.now());
-        GasDetail gasDetail = optionalGasDetail.get();
+        Optional<List<GasDetail>> optionalGasDetails = gasDetailDao.findByStationNoAndDate(gasStation.getStationNo(), LocalDate.now());
+        List<GasDetail> gasDetails = optionalGasDetails.get();
         SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(gasDetail.getDetailNo()).isEqualTo(1);
-        softAssertions.assertThat(gasDetail.getDate()).isEqualTo(LocalDate.now());
+        for (GasDetail gasDetail : gasDetails) {
+            softAssertions.assertThat(gasDetail.getStationNo()).isEqualTo(1);
+            softAssertions.assertThat(gasDetail.getDate()).isEqualTo(LocalDate.now());
+        }
         softAssertions.assertAll();
     }
 }
