@@ -53,7 +53,7 @@ public class GasDetailService {
         if (optionalGasStation.isEmpty()) {
             optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand);
             if (optionalGasStation.isEmpty()) {
-                throw new RuntimeException("존재하지 않는 주유소 입니다."); //TODO Exception 생성작업 해야함
+                throw new SqlNotFoundException(this.getClass().getSimpleName(), ErrorCode.NOT_FOUND_GAS_STATION);
             }
         }
         return optionalGasStation.get();
