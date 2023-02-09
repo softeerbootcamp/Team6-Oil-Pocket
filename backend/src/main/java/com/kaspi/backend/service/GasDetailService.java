@@ -6,6 +6,8 @@ import com.kaspi.backend.domain.GasDetail;
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.enums.GasType;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
+import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +28,7 @@ public class GasDetailService {
         Long gasStationNo = gasStation.getStationNo();
         Optional<List<GasDetail>> optionalGasDetailList = gasDetailDao.findByStationNoAndDate(gasStationNo, LocalDate.now());
         if (optionalGasDetailList.isEmpty()) {
-            throw new RuntimeException("가격 정보가 존재하지 않습니다.");
+            throw new SqlNotFoundException(this.getClass().getSimpleName(), ErrorCode.NOT_FOUND_GAS_DETAIL);
         }
         return convertToGasDetailDtoList(optionalGasDetailList.get());
     }
