@@ -24,7 +24,7 @@ public class GasDetailService {
     private final GasDetailDao gasDetailDao;
 
     // 도로명, 건물번호, 브랜드로 주유소 가격 상세정보 리스트를 찾는 메소드 입니다
-    public List<GasDetailDto> findGasDetailList(String name, String roadNum, String buildNum, String brand) {
+    public List<GasDetailDto> findGasDetailList(String roadNum, String buildNum, String brand) {
         GasStation gasStation = findGasStation(roadNum, buildNum, brand);
         Long gasStationNo = gasStation.getStationNo();
         Optional<List<GasDetail>> optionalGasDetailList = gasDetailDao.findByStationNoAndDate(gasStationNo, LocalDate.now());
