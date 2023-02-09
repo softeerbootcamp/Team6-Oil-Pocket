@@ -1,7 +1,10 @@
 package com.kaspi.backend.domain;
 
+import lombok.Data;
+
 import java.util.List;
 
+@Data
 public class GasStationDto {
     private String area;
     private String name;
@@ -21,60 +24,12 @@ public class GasStationDto {
     public static GasStationDto newInstance(GasStation gasStation, List<GasDetailDto> list) {
         return new GasStationDto(gasStation.getArea(), gasStation.getName(), gasStation.getAddress(), gasStation.getBrand(), gasStation.isSelf(), list);
     }
+    public static GasStationDto newInstance(String name, GasStation gasStation, List<GasDetailDto> list) {
+        return new GasStationDto(gasStation.getArea(), name, gasStation.getAddress(), gasStation.getBrand(), gasStation.isSelf(), list);
+    }
     public void addGasDetailDtoList(List<GasDetailDto> gasDetailDtolist) {
         for (GasDetailDto gasDetailDto : gasDetailDtolist) {
             this.details.add(gasDetailDto);
         }
-    }
-    public void addGasDetailDto(GasDetailDto gasDetaildto) {
-        this.details.add(gasDetaildto);
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public boolean isSelf() {
-        return self;
-    }
-
-    public void setSelf(boolean self) {
-        this.self = self;
-    }
-
-    public List<GasDetailDto> getDetails() {
-        return details;
-    }
-
-    public void setDetails(List<GasDetailDto> details) {
-        this.details = details;
     }
 }
