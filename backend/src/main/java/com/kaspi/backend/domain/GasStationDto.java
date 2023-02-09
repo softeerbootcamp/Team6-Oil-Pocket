@@ -26,6 +26,9 @@ public class GasStationDto {
             this.details.add(gasDetailDto);
         }
     }
+    public void addGasDetailDto(GasDetailDto gasDetaildto) {
+        this.details.add(gasDetaildto);
+    }
 
     public String getArea() {
         return area;
