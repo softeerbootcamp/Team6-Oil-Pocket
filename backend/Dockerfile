@@ -1,16 +1,5 @@
-FROM ubuntu:20.04
-
-ENV TZ=Asia/Seoul
-
-RUN apt-get update -y
-RUN apt-get install chromium-browser -y
-
-
-RUN apt-get install openjdk-11-jdk -y
-
-RUN mkdir -p /home/download
-
+FROM openjdk:11-jdk
 EXPOSE 8080
-COPY ./build/libs/backend-0.0.1-SNAPSHOT.war app.war
-COPY chromedriver /chromedriver
-ENTRYPOINT [ "java", "-jar", "/app.war" ]
+ARG JAR_FILE=build/libs/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
