@@ -18,14 +18,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class GasDetailService {
-    private static final String SPACE = " ";
-    private static final String WILDCARD = "%";
-    private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
-
     // 도로명, 건물번호, 브랜드로 주유소 가격 상세정보 리스트를 찾는 메소드 입니다
-    public List<GasDetailDto> findGasDetailList(String roadNum, String buildNum, String brand) {
-        GasStation gasStation = findGasStation(roadNum, buildNum, brand);
+    public List<GasDetailDto> findGasDetailList(GasStation gasStation, String roadNum, String buildNum, String brand) {
         Long gasStationNo = gasStation.getStationNo();
         Optional<List<GasDetail>> optionalGasDetailList = gasDetailDao.findByStationNoAndDate(gasStationNo, LocalDate.now());
         if (optionalGasDetailList.isEmpty()) {
@@ -47,23 +42,5 @@ public class GasDetailService {
         gasDetailDtoList = GasDetailDto.makeEmptyOilDetailDtoList();
         gasDetailDtoList.add(gasDetailDtoList.get(0));
         return gasDetailDtoList;
-    }
-
-    // 도로명, 건물번호, 브랜드로 주유소를 찾는 메소드 입니다
-    public GasStation findGasStation(String roadNum, String buildNum, String brand) {
-        String address = roadNum + SPACE + buildNum;
-        Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand(address, brand);
-        if (optionalGasStation.isEmpty()) {
-            optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand);
-            if (optionalGasStation.isEmpty()) {
-                throw new SqlNotFoundException(this.getClass().getSimpleName(), ErrorCode.NOT_FOUND_GAS_STATION);
-            }
-        }
-        return optionalGasStation.get();
-    }
-
-    // 도로명 주소와 건물번호로 Like를 위한 와일드카드(%)를 설정해주는 메소드 입니다
-    private String getLikeAddress(String roadNum, String buildNum) {
-        return WILDCARD + roadNum + WILDCARD + buildNum;
     }
 }
