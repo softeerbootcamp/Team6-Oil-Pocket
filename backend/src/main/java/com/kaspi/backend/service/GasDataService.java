@@ -7,6 +7,7 @@ import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.GasStationDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class GasDataService {
@@ -50,7 +51,7 @@ public class GasDataService {
                     saveGasStationIfNotExists(key, gasStation, optionalGasStation);
                 }
                 GasStation gasStation = gasStationInfos.get(key);
-
+                System.out.println("sataion_no: " + gasStation.getStationNo());
                 List<GasDetail> gasDetails = callback.makeGasDetailAndSaveToDB(gasStation, gasDetailDao, attribute, date);
                 if (cacheMap.containsKey(key)) {
                     GasStationDto gasStationDto = cacheMap.get(key);
@@ -61,6 +62,7 @@ public class GasDataService {
             }
             file.delete();
         } catch (FileNotFoundException e) {
+            log.debug("FiilNotFoundExeption");
             insertGasInfo(fileName, callback);
         }
 
