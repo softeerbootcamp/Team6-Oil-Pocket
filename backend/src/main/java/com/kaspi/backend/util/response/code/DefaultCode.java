@@ -4,7 +4,8 @@ public enum DefaultCode implements Code {
 
     SUCCESS_SIGNUP("L001", "정상적으로 회원가입이 완료되었습니다."),
     SUCCESS_VALID_ID("L002", "사용가능한 아이디입니다."),
-    SUCCESS_SIGN_IN("L003", "로그인 성공(세션 생성)");
+    SUCCESS_SIGN_IN("L003", "로그인 성공(세션 생성)"),
+    CHECK_MATCH_GAS_STATION("M001", "사용자 요청과 일치하는 데이터 조회 성공");
 
 
 
