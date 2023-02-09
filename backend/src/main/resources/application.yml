@@ -19,3 +19,8 @@ spring:
     timeout: 3600
     redis:
       namespace: session
+
+  output:
+    ansi:
+      enabled: always
+

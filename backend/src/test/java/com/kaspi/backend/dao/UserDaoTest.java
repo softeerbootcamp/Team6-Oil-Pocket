@@ -5,18 +5,28 @@ import static org.assertj.core.api.Assertions.*;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
+
 import java.util.Optional;
+
+import com.kaspi.backend.util.config.TestRedisConfiguration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
-//TODO 내장 redis 연동 후 다시 테스트
-@SpringBootTest
+
+@DataJdbcTest
+@ContextConfiguration(classes = {TestRedisConfiguration.class})
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Transactional
 class UserDaoTest {
-
     @Autowired
-    private UserDao userDao;
+    UserDao userDao;
 
 
     @Test
