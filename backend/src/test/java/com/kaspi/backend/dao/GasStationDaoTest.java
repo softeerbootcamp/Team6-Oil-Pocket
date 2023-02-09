@@ -1,7 +1,6 @@
 package com.kaspi.backend.dao;
 
 import com.kaspi.backend.domain.GasStation;
-import com.kaspi.backend.util.config.RedisConfiguration;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @DataJdbcTest
-@ContextConfiguration(classes = {RedisConfiguration.class, TestRedisConfiguration.class})
+@ContextConfiguration(classes = {TestRedisConfiguration.class})
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Transactional

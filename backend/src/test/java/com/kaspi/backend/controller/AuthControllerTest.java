@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.kaspi.backend.service.HttpSessionService;
-import com.kaspi.backend.util.config.RedisConfiguration;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import org.junit.jupiter.api.DisplayName;
@@ -37,9 +36,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 @WebMvcTest(controllers = AuthController.class)
+@ContextConfiguration(classes = {TestRedisConfiguration.class})
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = {RedisConfiguration.class, TestRedisConfiguration.class})
 class AuthControllerTest {
     @Autowired
     MockMvc mockMvc;

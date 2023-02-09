@@ -8,7 +8,6 @@ import com.kaspi.backend.enums.Gender;
 
 import java.util.Optional;
 
-import com.kaspi.backend.util.config.RedisConfiguration;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @DataJdbcTest
-@ContextConfiguration(classes = {RedisConfiguration.class, TestRedisConfiguration.class})
+@ContextConfiguration(classes = {TestRedisConfiguration.class})
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Transactional

@@ -15,7 +15,6 @@ import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.service.AuthService;
 import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.service.UserService;
-import com.kaspi.backend.util.config.RedisConfiguration;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +32,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(controllers = UserController.class)
+@ContextConfiguration(classes = {TestRedisConfiguration.class})
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
-@ContextConfiguration(classes = {RedisConfiguration.class, TestRedisConfiguration.class})
 class UserControllerTest {
 
     @Autowired
