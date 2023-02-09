@@ -24,6 +24,9 @@ public class GasDetailDto {
         }
         return list;
     }
+    public static GasDetailDto makeEmptyDetailDto(GasType gasType) {
+        return new GasDetailDto(gasType, 0, LocalDate.now());
+    }
 
     public int getPrice() {
         return price;
