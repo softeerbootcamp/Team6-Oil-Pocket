@@ -20,18 +20,18 @@ import java.util.Map;
 @Component
 @RequiredArgsConstructor
 public class DataDownloadScheduler {
-    public static final String GAS_STATION = "/home/download/현재_판매가격(주유소).csv";
-    public static final String LPG_STATION = "/home/download/현재_판매가격(충전소).csv";
+    public static final String GAS_STATION = "/home/ubuntu/download/현재_판매가격(주유소).csv";
+    public static final String LPG_STATION = "/home/ubuntu/download/현재_판매가격(충전소).csv";
     private final GasDataService gasDataService;
 
     //@Scheduled(cron = "0 37 19 * * *", zone = "Asia/Seoul")
-    @Scheduled(fixedDelay = 3000)
+    @Scheduled(fixedDelay = 300000)
     public void backgroundProcess() {
         try {
             gasDataService.initCache();
             ChromeOptions chromeOptions = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
-            prefs.put("download.default_directory", "/home/download");
+            prefs.put("download.default_directory", "/home/ubuntu/download");
             prefs.put("download.prompt_for_download", false);
             chromeOptions.setExperimentalOption("prefs", prefs);
             chromeOptions.addArguments("headless");
@@ -39,7 +39,7 @@ public class DataDownloadScheduler {
             chromeOptions.addArguments("disable-dev-shm-usage");
             chromeOptions.addArguments("lang=ko");
             // 크롬을 사용하기 위한 환경 설정
-            System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
             // 크롬실행 객체 만들기
             WebDriver driver = new ChromeDriver(chromeOptions);
             driver.get("https://www.opinet.co.kr/user/opdown/opDownload.do");
@@ -66,4 +66,3 @@ public class DataDownloadScheduler {
         gasDataService.insertGasInfo(LPG_STATION, new LpgDetailCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
     }
 }
-
