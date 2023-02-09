@@ -1,4 +1,4 @@
-import { eventToIDRegisterBtn, eventToIDValidateBtn } from "./event.js";
+import { eventToIDValidateBtn, eventToTermOfUseBtn, eventToSelects, eventToRegisterBtn } from "./event.js";
 import { getRegisterTemplate } from "./template.js";
 
 const registerView = () => {
@@ -6,8 +6,10 @@ const registerView = () => {
     $registerContainer.classList.add("main");
     $registerContainer.innerHTML = getRegisterTemplate();
 
+    eventToTermOfUseBtn($registerContainer);
+    eventToSelects($registerContainer);
     eventToIDValidateBtn($registerContainer);
-    eventToIDRegisterBtn($registerContainer)
+    eventToRegisterBtn($registerContainer);
 
     return $registerContainer;
 }
