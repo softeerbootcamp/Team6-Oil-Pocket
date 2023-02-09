@@ -23,6 +23,7 @@ public class GasDetailService {
     private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
 
+    // 도로명, 건물번호, 브랜드로 주유소 가격 상세정보 리스트를 찾는 메소드 입니다
     public List<GasDetailDto> findGasDetailList(String name, String roadNum, String buildNum, String brand) {
         GasStation gasStation = findGasStation(roadNum, buildNum, brand);
         Long gasStationNo = gasStation.getStationNo();
@@ -33,6 +34,7 @@ public class GasDetailService {
         return convertToGasDetailDtoList(optionalGasDetailList.get());
     }
 
+    //GasDetail 리스트를 GasDetailDto 리스트로 전환하는 메소드 입니다
     private List<GasDetailDto> convertToGasDetailDtoList(List<GasDetail> gasDetailList) {
         List<GasDetailDto> gasDetailDtoList;
         // 오일이 리스트에 있는 경우, LPG empty 상세정보 추가
@@ -47,6 +49,7 @@ public class GasDetailService {
         return gasDetailDtoList;
     }
 
+    // 도로명, 건물번호, 브랜드로 주유소를 찾는 메소드 입니다
     public GasStation findGasStation(String roadNum, String buildNum, String brand) {
         String address = roadNum + SPACE + buildNum;
         Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand(address, brand);
@@ -59,6 +62,7 @@ public class GasDetailService {
         return optionalGasStation.get();
     }
 
+    // 도로명 주소와 건물번호로 Like를 위한 와일드카드(%)를 설정해주는 메소드 입니다
     private String getLikeAddress(String roadNum, String buildNum) {
         return WILDCARD + roadNum + WILDCARD + buildNum;
     }
