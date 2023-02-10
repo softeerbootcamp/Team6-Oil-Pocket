@@ -22,7 +22,7 @@ public class GasStationService {
 
     public GasStationDto findGasStationDto(String name, String roadNum, String buildNum, String brand) {
         GasStation gasStation = findGasStation(roadNum, buildNum, brand);
-        List<GasDetailDto> gasDetailDtoList = gasDetailService.findGasDetailList(gasStation, roadNum, buildNum, brand);
+        List<GasDetailDto> gasDetailDtoList = gasDetailService.findGasDetailList(gasStation);
         return GasStationDto.newInstance(name, gasStation, gasDetailDtoList);
     }
 
@@ -33,7 +33,7 @@ public class GasStationService {
         if (optionalGasStation.isEmpty()) {
             optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand);
             if (optionalGasStation.isEmpty()) {
-                throw new SqlNotFoundException(this.getClass().getSimpleName(), ErrorCode.NOT_FOUND_GAS_STATION);
+                throw new SqlNotFoundException(SqlNotFoundException.class.getSimpleName(), ErrorCode.NOT_FOUND_GAS_STATION);
             }
         }
         return optionalGasStation.get();
