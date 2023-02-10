@@ -187,11 +187,9 @@ function FindAddressofSearchCoords(lon, lat) {
 function SelectStIdLogo(stId, name){
     return `
         <div class='main__ResultList'> 
-            <a href='./gasSTDView' data-link>
             <div class='main__ResultList__Title'>
         <img class='main__ResultList__Title_Logo' src = 'img/GasStation_Image/${stId}.png'>
             <span>${name}</span>
-            </a>
         </div>
     `;
 }
