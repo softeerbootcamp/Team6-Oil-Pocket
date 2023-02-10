@@ -927,17 +927,19 @@ a {
   justify-content: center;
   flex-direction: column;
   width: 15vw;
-  height: 5.7vh;
+  height: 10vh;
   margin-bottom: 20px;
+  padding: 0.5vh 0;
 }
 .main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title {
+  transition: 0.1s;
   padding: 0 1vw;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
   width: 15vw;
-  height: 2vh;
+  height: 1.5vh;
   font-size: 15px;
   font-weight: bold;
   padding-bottom: 10px;
@@ -956,7 +958,7 @@ a {
 .main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a span {
   flex-grow: 2;
   margin-left: 0.25vw;
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 .main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:visited {
   color: #000;
@@ -966,13 +968,17 @@ a {
   color: blue;
 }
 .main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents {
+  padding: 0.1vh 0;
   width: 15vw;
-  height: 3vh;
-  font-size: 13px;
-  font-weight: lighter;
-  color: grey;
+  height: 2vh;
+  font-size: 0.85rem;
+  color: gray;
   line-height: 20px;
   padding-left: 10px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents span {
+  color: #000;
+  font-weight: 700;
 }
 .main .main__ForMap .main__SearchBarHideButton {
   display: flex;
@@ -1056,9 +1062,6 @@ a {
   background-color: #14BD72;
   box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
   cursor: pointer;
-}
-.searchBar .searchBar__right a {
-  color: #fff;
 }
 .searchBar .searchBar__right:hover {
   outline: 0.1vh solid #14BD72;
@@ -1468,6 +1471,7 @@ a {
   width: 90%;
   margin-bottom: 4vh;
   font-size: 1.5rem;
+  border-radius: 0.5vh;
   background-color: #FAFAFB;
   color: #14BD7E;
   padding: 1vh 0.5vw;
@@ -1792,6 +1796,7 @@ a {
   text-align: center;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable tbody tr {
+  height: 20%;
   padding: 0.5vh 0;
   display: flex;
   justify-content: space-around;
@@ -1800,9 +1805,12 @@ a {
   font-weight: 600;
   border-bottom: 1px solid #F5F5F5;
 }
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable tbody tr td {
+  font-size: 1rem;
+}
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable tbody tr img {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable tbody tr:nth-child(2n+1) :last-child {
   color: #3181F6;
@@ -1900,7 +1908,7 @@ a {
   font-weight: 600;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__cancelBtn {
-  color: #D5DDE6;
+  color: #000;
   background-color: #FAFAFB;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__cancelBtn:hover {
