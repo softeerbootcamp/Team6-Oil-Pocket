@@ -8,11 +8,13 @@ import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class UserService {
 
     private final UserDao userDao;
@@ -23,6 +25,8 @@ public class UserService {
         Optional<Gender> gender = Gender.getGender(signUpRequestDto.getGender());
 
         checkValidRequest(age, gender);
+
+        log.info("회원가입 신청 유저:{}",signUpRequestDto);
 
         return userDao.save(User.builder()
                 .id(signUpRequestDto.getId())

@@ -25,7 +25,7 @@ jobs:
         run: chmod +x ./backend/gradlew
 
       - name: Build Gradle
-        run: cd backend && ./gradlew clean build -x test
+        run: cd backend &&  ./gradlew clean bootJar -x test
         env:
           MYSQL_ID: ${{ secrets.MYSQL.MYSQL_ID }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL.MYSQL_PASSWORD }}
@@ -44,7 +44,7 @@ jobs:
           tags: "dev"
           
       - name: Copy jar file to Docker context
-        run: cp ./backend/build/libs/backend-0.0.1-SNAPSHOT.war ./
+        run: cp ./backend/build/libs/backend-0.0.1-SNAPSHOT.jar ./
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc

@@ -5,5 +5,4 @@ public enum GasType {
     GASOLINE,
     DIESEL,
     LPG;
-
 }

@@ -5,10 +5,12 @@ import com.kaspi.backend.domain.User;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class HttpSessionService {
     public static final String SESSION_KEY = "userNo";
 
@@ -19,6 +21,7 @@ public class HttpSessionService {
 
     public void makeHttpSession(Long userNo) {
         httpSession.setAttribute(SESSION_KEY, userNo);
+        log.info("세션 생성 - 요청 userNO:{}",userNo);
     }
 
     public User getUserFromSession() {

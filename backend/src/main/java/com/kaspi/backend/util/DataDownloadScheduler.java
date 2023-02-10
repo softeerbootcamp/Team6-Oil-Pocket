@@ -21,7 +21,7 @@
 //@RequiredArgsConstructor
 //public class DataDownloadScheduler {
 //    public static final String GAS_STATION = "/home/ubuntu/download/현재_판매가격(주유소).csv";
-//    public static final String LPG_STATION = "/home/ubuntu/download/현재_판매가격(충전소).csv";
+//    public static final String LPG_STATION = "/home/ubuntu/download/현재_판매가격(충전소).csv";
 //    private final GasDataService gasDataService;
 //
 //    //@Scheduled(cron = "0 37 19 * * *", zone = "Asia/Seoul")
@@ -42,9 +42,7 @@
 //            System.setProperty("webdriver.chrome.driver", "chromedriver");
 //            // 크롬실행 객체 만들기
 //            WebDriver driver = new ChromeDriver(chromeOptions);
-//            driver.get("
-https://www.opinet.co.kr/user/opdown/opDownload.do
-");
+//            driver.get("https://www.opinet.co.kr/user/opdown/opDownload.do");
 //            fileDownload(driver);
 //            driver.quit();
 //        } catch (Exception e) {
