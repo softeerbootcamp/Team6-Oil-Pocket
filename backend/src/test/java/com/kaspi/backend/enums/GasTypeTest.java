@@ -15,7 +15,7 @@ class GasTypeTest {
         //given
         String opinetGasTypeLPG = GasType.LPG.getOpinetGasType();
         //when
-        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG);
+        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG).get();
         //then
         assertThat(gasType).isEqualTo(GasType.LPG);
     }
