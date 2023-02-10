@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-public class FindGasStationReqDto {
+public class FindGasStationResDto {
     private Long stationNo;
     private String area;
     private String name;
