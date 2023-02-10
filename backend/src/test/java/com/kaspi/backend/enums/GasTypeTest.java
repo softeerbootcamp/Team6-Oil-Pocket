@@ -26,7 +26,7 @@ class GasTypeTest {
         //given
         String opinetGasTypeLPG = GasType.GASOLINE.getOpinetGasType();
         //when
-        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG);
+        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG).get();
         //then
         assertThat(gasType).isEqualTo(GasType.GASOLINE);
     }
@@ -37,7 +37,7 @@ class GasTypeTest {
         //given
         String opinetGasTypeLPG = GasType.PREMIUM_GASOLINE.getOpinetGasType();
         //when
-        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG);
+        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG).get();
         //then
         assertThat(gasType).isEqualTo(GasType.PREMIUM_GASOLINE);
     }
@@ -48,7 +48,7 @@ class GasTypeTest {
         //given
         String opinetGasTypeLPG = GasType.DIESEL.getOpinetGasType();
         //when
-        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG);
+        GasType gasType = GasType.getTypeFromOpinetData(opinetGasTypeLPG).get();
         //then
         assertThat(gasType).isEqualTo(GasType.DIESEL);
     }

@@ -3,6 +3,7 @@ package com.kaspi.backend.enums;
 import lombok.Getter;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 @Getter
 public enum GasType {
@@ -17,10 +18,10 @@ public enum GasType {
         this.opinetGasType = opinetGasType;
     }
 
-    public static GasType getTypeFromOpinetData(String opinetdata) {
+    public static Optional<GasType> getTypeFromOpinetData(String opinetdata) {
         return Arrays.stream(values())
                 .filter(value -> value.opinetGasType.equals(opinetdata))
-                .findAny().get();
+                .findAny();
     }
 
 }
