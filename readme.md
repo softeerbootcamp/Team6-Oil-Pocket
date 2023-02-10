@@ -12,6 +12,8 @@
     <a href="https://youtu.be/D2eJQR__sO4">View 1st Demo</a>
     ·
     <a href="https://github.com/softeerbootcamp/Team6/discussions/landing">Report Bug</a>
+    ·
+    <a href="https://hyundaibootcamp06.notion.site/6-Oil-Pocket-c7076bc7e7e64e51aeee7f10237f37a0">Team Notion</a>
   </p>
 </div>
 
@@ -22,13 +24,20 @@
 https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-bcd2-d206ad04ae5d.mov
 
 ##### 5주차 결과물
+
+<br>
+
+## 👉 &nbsp; User Flow
+<img src="https://user-images.githubusercontent.com/92264609/217170500-849ef0c0-5dce-4a68-b6a5-a9343be0ad45.png" alt="">
+
 ##### 🔥 열심히 완성도를 높여가는 중!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <br>
 
 ## 🏗 &nbsp; Architecture
-![image](https://user-images.githubusercontent.com/35219960/216689583-02c6b5d7-8b2e-4074-9790-51727801b2ee.png)
+![image](https://user-images.githubusercontent.com/87477702/217545522-9ee07a90-7011-4591-a2e7-c10499eb90f6.png)
 
 <br>
 
@@ -64,11 +73,19 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 
 <br>
 
+
+<br>
+
+## 🛠 ERD
+<img width="915" alt="스크린샷 2023-02-06 오후 6 27 56" src="https://user-images.githubusercontent.com/87477702/216935196-200bc078-a180-4ae7-971e-91d6af834c0d.png">
+
+<br>
+
 ## 🔗 &nbsp; Project ManageMent
 #### <a href="https://github.com/softeerbootcamp/Team6/wiki">Github Wiki</a>
 #### <a href="https://github.com/softeerbootcamp/Team6/issues">Github Issues</a> <br>
 #### <a href="https://github.com/orgs/softeerbootcamp/projects/14">Github Project 간판보드</a> <br>
-#### <a href="https://www.figma.com/file/HNqNdLbIeWnWxMnB94uHwJ/User-Flow?node-id=366%3A596&t=xycFfE7TcGXamIa1-1">Design & User Flow</a> <br>
+#### <a href="https://www.figma.com/file/HNqNdLbIeWnWxMnB94uHwJ/User-Flow?node-id=366%3A596&t=xycFfE7TcGXamIa1-1">Design Detail</a> <br>
 
 <a href=""></a>
 

@@ -6,57 +6,46 @@ import { chartView } from "./myPage/chart/view.js";
 import { comparisonView } from "./myPage/comparison/view.js";
 import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
+import { gasSTDView } from "./GSTdetail/view.js";
 import { notFoundView } from "./notFound/view.js";
-import { mapView } from "./mapView/view.js";
 
 const $body = document.querySelector("body");
-const routes = [
-    { path: "/", view: mainView }, 
-    { path: "/register", view: registerView },
-    { path: "/login", view: loginView },
-    { path: "/userDetail", view: userDetailView },
-    { path: "/inputOilInfo", view: inputOilInfoView },
-    { path: "/chart", view: chartView },
-    { path: "/comparison", view: comparisonView },
-    { path: "/history", view: historyView },
-    { path: "/mapView", view: mapView },
-    { path: "/404", view: notFoundView }
-];
-
-const moveTo = url => {
-    let viewFunction = routes.find((route) => route.path === url).view;
-    history.pushState(null, null, url);
-    $body.replaceWith(viewFunction());
-}
-
 const router = async () => {
+    const routes = [
+        { path: "/", view: mainView },
+        { path: "/register", view: registerView },
+        { path: "/login", view: loginView },
+        { path: "/userDetail", view: userDetailView },
+        { path: "/inputOilInfo", view: inputOilInfoView },
+        { path: "/chart", view: chartView },
+        { path: "/comparison", view: comparisonView },
+        { path: "/history", view: historyView },
+        { path: "/gasSTDView", view: gasSTDView},
+        { path: "/404", view: notFoundView }
+    ];
     let match = routes.map(route => {
         return {
             route,
             isMatch: location.pathname === route.path
-        };  
+        };
     }).find((routeObj) => routeObj.isMatch)
-
     if(!match) {
         match = {
             route: routes[routes.length - 1],
             isMatch: true
         }
     }
-
     const getNode = match.route.view;
-    $body.replaceWith(getNode());
+    const $container = getNode();
+    $body.replaceWith($container);
 }
-
 // 페이지 전환 함수
 const navigateTo = url => {
     history.pushState(null, null, url);
     router();
 }
-
 window.addEventListener("popstate", () => router());
-window.addEventListener("DOMContentLoaded", () => router());
-
+// window.addEventListener("DOMContentLoaded", () => router());
 // DOM이 렌더링 되면 router 함수 실행
 document.addEventListener("DOMContentLoaded", () => {
     document.body.addEventListener("click", (event) => {
@@ -65,6 +54,5 @@ document.addEventListener("DOMContentLoaded", () => {
             navigateTo((event.target.href));
         }
     })
-
     router();
 });

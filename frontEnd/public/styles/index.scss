@@ -585,6 +585,7 @@ a {
         margin-top:auto;
         display:flex;
         flex-direction: row;
+
         & .main__SideSearchBar {
             z-index:3;
             display:flex;
@@ -597,12 +598,12 @@ a {
             border:2px solid green;
             border-radius: 0 5px 5px 0;
             box-sizing: border-box;
+
             & .main__SearchOption {
                 width:2vw;
                 display:flex;
                 flex-direction: column;
                 background-color: transparent;
-                
                 & .main__SearchFromCurrentLocation {
                     display:flex;
                     margin-top: 3vh;
@@ -613,12 +614,12 @@ a {
                     transition-timing-function: linear;
                     align-items: center;
                     justify-content: center;
-
                     & #Option1 {
                         transition: 0.5s;
                         transition-timing-function: linear;
                     }
                 }
+
                 & .main__SearchFromRoute {
                     display:flex;
                     width:1.3vw;
@@ -629,19 +630,18 @@ a {
                     transition-timing-function: linear;
                     align-items: center;
                     justify-content: center;
-
                     & #Option2 {
                         transition: 0.5s;
                         transition-timing-function: linear;
                     }
                 }
             }
+
             & .main__InputandResultinSearchBar {
                 width:19vw;
                 display:flex;
                 flex-direction:column;
                 font-size:14px;
-                
                 & .main__CurrentLocation {
                     width:6vw;
                     height:3vh;
@@ -667,8 +667,6 @@ a {
                 }
                 & .main__SearchOptionButtonGroup{
                     background-color:white;
-                    // border: 1px solid #14BD7E;
-                    // border-radius: 5px;
                     width:15vw;
                     height:3vh;
                     margin-left:2vw;
@@ -705,6 +703,9 @@ a {
                     }
                 }
                 & .main__SearchResult {
+                    display: flex;
+                    flex-direction: column;
+                    box-sizing: content-box;
                     border:2px solid #14BD7E;
                     border-radius: 5px;
                     width:15vw;
@@ -712,8 +713,77 @@ a {
                     margin-left:2vw;
                     margin-top:3vh;
                     background-color: white;
-                    // overflow: scroll;
                     padding:0;
+                    overflow-x: hidden;
+                    overflow-y:scroll;
+
+                    &::-webkit-scrollbar {
+                        width: 0.5vw;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        border-radius: 0.2vh 0 0 0.2vh;
+                        background-color: #12BD7E;
+                    }
+
+                    & .main__ResultList { // 결과를 카드 형식으로 출력
+                        display: inherit;
+                        justify-content: center;
+                        flex-direction: column;
+                        width:15vw ;
+                        height:5.7vh;
+                        margin-bottom: 20px;
+                        
+                        & .main__ResultList__Title {
+                            padding: 0 1vw;
+                            display: flex;
+                            justify-content: flex-start;
+                            flex-direction: row;
+                            align-items: center;
+                            width:15vw;
+                            height:2vh;
+                            font-size: 15px;
+                            font-weight: bold;
+                            padding-bottom: 10px;
+
+                            & a {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+
+                                & img {
+                                    flex-grow: 1;
+                                    width: 2%;
+                                    height: 2%;
+                                    margin-right: 0.25vw;
+                                }
+
+                                & span {
+                                    flex-grow: 2;
+                                    margin-left: 0.25vw;
+                                    font-size: 0.8rem;
+                                }
+
+                                &:visited {
+                                    color: #000;
+                                }
+
+                                &:hover {
+                                    cursor:pointer;
+                                    color: blue;
+                                }
+                            }
+                        }
+                        & .main__ResultList__Contents {
+                            width:15vw;
+                            height:3vh;
+                            font-size: 13px;
+                            font-weight: lighter;
+                            color: grey;
+                            line-height: 20px;
+                            padding-left: 10px;
+                        }
+                    }
                 }
             }
         }
@@ -727,7 +797,7 @@ a {
             height:40px;
             margin-top:20vh;
             margin-right:auto;
-            background-color:white;
+            background-color:#14bd72;
             align-items: center;
             justify-content: center;
         }
@@ -737,8 +807,7 @@ a {
             background-color: #14BD7E;
             width:100vw;
             height:82vh;
-        }    
-
+        }
         & #main__btn_select{
             z-index:5;
             position:absolute;
@@ -807,6 +876,10 @@ a {
         background-color: #14BD72;
         box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
         cursor: pointer;
+
+        & a {
+            color: #fff;
+        }
 
         &:hover {
             outline: 0.1vh solid #14BD72;
@@ -1794,6 +1867,215 @@ a {
                 &:hover {
                     outline: 0.2vh solid #14BD7E;
                 }
+            }
+        }
+    }
+}
+
+/* gas Detail */
+.gasDetailContainer {
+    width: 100%;
+    height: 100%;
+
+    & .gasDetailContainer__background {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 0 auto;
+        width: 80%;
+        height: 90%;
+
+        & .gasDetailContainer__infoArea {
+            display: flex;
+            flex-direction: column;
+            height: 90%;
+            width: 40%;
+
+            & .gasDetailContainer__brandInfoCard {
+                width: 100%;
+                height: 50%;
+                margin-bottom: 5%;
+                box-shadow: -0.15vw -0.25vh 0.5vw 0 gray;
+                border-radius: 0.5vh;
+
+                & .gasDetailContainer__brandInfoBox {
+                    width: 100%;
+                    height: 70%;
+                    padding: 1vw 0;
+                    display: flex;
+
+                    & .gasDetailContainer__imageBox {
+                        width: 30%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        & img {
+                            width: 70%;
+                        }
+                    }
+
+                    & .gasDetailContainer__textBox {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        align-items: center;
+                        width: 70%;
+                        height: 100%;
+
+                        & #brandName {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 90%;
+                            height: 30%;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            border-bottom: 0.2vh solid #ECECEC;
+                        }
+
+                        & #brandNumber {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 90%;
+                            height: 30%;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            text-align: center;
+                            border-bottom: 0.2vh solid #ECECEC;
+                        }
+
+                        & #brandAddress {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 90%;
+                            height: 30%;
+                            font-size: 1rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+
+                & .gasDetailContainer__btnBox {
+                    width: 100%;
+                    height: 15%;
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+
+                    & button {
+                        transition: 0.1s;
+                        display: block;
+                        width: 25%;
+                        height: 100%;
+                        border-radius: 0.8vh;
+                        background-color: rgba(20, 189, 114, 0.6);
+                        color: #fff;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        height: 100%;
+
+                        &:hover {
+                            background-color: #14BD72;
+                        }
+                    }
+                }
+            }
+
+            & .gasDetailContainer__gasPriceTable {
+                width: 100%;
+                height: 45%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: -0.15vw -0.25vh 0.5vw 0 gray;
+
+                & .gasDetailContainer__gasPriceHeader{
+                    width: 100%;
+                    height: 20%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    border-radius: 0.5vh;
+                }
+
+                & .gasDetailContainer__gasPriceBody {
+                    height: 77%;
+                    width: 100%;
+                    font-size: 1rem;
+                    font-weight: 600;
+
+                    & .gasDetailContainer__gasolineBox {
+                        margin: 0 auto;
+                        width: 90%;
+                        height: 20%;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+
+                        & span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 33.33%;
+                            height: 100%;
+                            text-align: center;
+                            outline: 0.1vh solid #DDDDDE;
+
+                            &:first-child {
+                                color: #fff;
+                                background-color: #14BD72;
+                            }
+                        }
+                    }
+
+                    & .gasDetailContainer__dieselBox {
+                        margin: 0 auto;
+                        width: 90%;
+                        height: 20%;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+
+                        & span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 33.33%;
+                            height: 100%;
+                            text-align: center;
+                            outline: 0.1vh solid #DDDDDE;
+
+                            &:first-child {
+                                color: #fff;
+                                background-color: #14BD72;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        & .gasDetailContainer__chartArea {
+            height: 90%;
+            width: 50%;
+            box-shadow: -0.15vw -0.25vh 0.5vw 0 gray;
+            border-radius: 0.5vh;
+
+            & .gasDetailContainer__chartBox {
+                width: 90%;
+                height: 100%;
+                background-color: red;
+                margin: 0 auto;
             }
         }
     }
