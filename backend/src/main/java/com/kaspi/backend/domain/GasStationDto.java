@@ -1,10 +1,13 @@
 package com.kaspi.backend.domain;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.List;
 
 @Data
+@Builder
 public class GasStationDto {
     private String area;
     private String name;
