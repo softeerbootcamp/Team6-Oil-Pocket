@@ -187,11 +187,9 @@ function FindAddressofSearchCoords(lon, lat) {
 function SelectStIdLogo(stId, name){
     return `
         <div class='main__ResultList'> 
-            <a href='./gasSTDView' data-link>
             <div class='main__ResultList__Title'>
         <img class='main__ResultList__Title_Logo' src = 'img/GasStation_Image/${stId}.png'>
             <span>${name}</span>
-            </a>
         </div>
     `;
 }
@@ -224,8 +222,9 @@ function ShowResult(ResultArray, positionBounds){
         }
 
         else {
-            innerHtml += "<div class='main__ResultList__Contents'> 휘발유: " + ResultArray[k].hhPrice
-                     + "<br>경유: " + ResultArray[k].ggPrice + "</div> </div>";
+            innerHtml += "<div class='main__ResultList__Contents'> 휘발유: " + "<span>" + ResultArray[k].hhPrice + "</span>"
+                     + "&nbsp;&nbsp;경유: " + "<span>" + ResultArray[k].ggPrice + "</span>"
+                     + "&nbsp;&nbsp;LPG: <span>" + ResultArray[k].llPrice + " </span></div> </div>";
         }
 
         markerArr.push(marker);

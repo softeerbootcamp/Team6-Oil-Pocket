@@ -6,7 +6,6 @@ import { chartView } from "./myPage/chart/view.js";
 import { comparisonView } from "./myPage/comparison/view.js";
 import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
-import { gasSTDView } from "./GSTdetail/view.js";
 import { notFoundView } from "./notFound/view.js";
 
 const $body = document.querySelector("body");
@@ -21,7 +20,6 @@ const router = async () => {
         { path: "/chart", view: chartView },
         { path: "/comparison", view: comparisonView },
         { path: "/history", view: historyView },
-        { path: "/gasSTDView", view: gasSTDView},
         { path: "/404", view: notFoundView }
     ];
     let match = routes.map(route => {
