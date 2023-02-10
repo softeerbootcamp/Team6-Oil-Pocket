@@ -117,71 +117,6 @@ a {
 }
 
 /* explain animation */
-@-webkit-keyframes fade01 {
-  0% {
-    opacity: 0;
-  }
-  1% {
-    opacity: 0.1;
-  }
-  2% {
-    opacity: 0.2;
-  }
-  3% {
-    opacity: 0.3;
-  }
-  4% {
-    opacity: 0.4;
-  }
-  5% {
-    opacity: 0.5;
-  }
-  6% {
-    opacity: 0.6;
-  }
-  7% {
-    opacity: 0.7;
-  }
-  8% {
-    opacity: 0.8;
-  }
-  9% {
-    opacity: 0.9;
-  }
-  10% {
-    opacity: 1;
-  }
-  11% {
-    opacity: 0.9;
-  }
-  12% {
-    opacity: 0.8;
-  }
-  13% {
-    opacity: 0.7;
-  }
-  14% {
-    opacity: 0.6;
-  }
-  15% {
-    opacity: 0.5;
-  }
-  16% {
-    opacity: 0.4;
-  }
-  17% {
-    opacity: 0.3;
-  }
-  18% {
-    opacity: 0.2;
-  }
-  19% {
-    opacity: 0.1;
-  }
-  20% {
-    opacity: 0;
-  }
-}
 @keyframes fade01 {
   0% {
     opacity: 0;
@@ -244,71 +179,6 @@ a {
     opacity: 0.1;
   }
   20% {
-    opacity: 0;
-  }
-}
-@-webkit-keyframes fade02 {
-  20% {
-    opacity: 0;
-  }
-  21% {
-    opacity: 0.1;
-  }
-  22% {
-    opacity: 0.2;
-  }
-  23% {
-    opacity: 0.3;
-  }
-  24% {
-    opacity: 0.4;
-  }
-  25% {
-    opacity: 0.5;
-  }
-  26% {
-    opacity: 0.6;
-  }
-  27% {
-    opacity: 0.7;
-  }
-  28% {
-    opacity: 0.8;
-  }
-  29% {
-    opacity: 0.9;
-  }
-  30% {
-    opacity: 1;
-  }
-  31% {
-    opacity: 0.9;
-  }
-  32% {
-    opacity: 0.8;
-  }
-  33% {
-    opacity: 0.7;
-  }
-  34% {
-    opacity: 0.6;
-  }
-  35% {
-    opacity: 0.5;
-  }
-  36% {
-    opacity: 0.4;
-  }
-  37% {
-    opacity: 0.3;
-  }
-  38% {
-    opacity: 0.2;
-  }
-  39% {
-    opacity: 0.1;
-  }
-  40% {
     opacity: 0;
   }
 }
@@ -377,71 +247,6 @@ a {
     opacity: 0;
   }
 }
-@-webkit-keyframes fade03 {
-  40% {
-    opacity: 0;
-  }
-  41% {
-    opacity: 0.1;
-  }
-  42% {
-    opacity: 0.2;
-  }
-  43% {
-    opacity: 0.3;
-  }
-  44% {
-    opacity: 0.4;
-  }
-  45% {
-    opacity: 0.5;
-  }
-  46% {
-    opacity: 0.6;
-  }
-  47% {
-    opacity: 0.7;
-  }
-  48% {
-    opacity: 0.8;
-  }
-  49% {
-    opacity: 0.9;
-  }
-  50% {
-    opacity: 1;
-  }
-  51% {
-    opacity: 0.9;
-  }
-  52% {
-    opacity: 0.8;
-  }
-  53% {
-    opacity: 0.7;
-  }
-  54% {
-    opacity: 0.6;
-  }
-  55% {
-    opacity: 0.5;
-  }
-  56% {
-    opacity: 0.4;
-  }
-  57% {
-    opacity: 0.3;
-  }
-  58% {
-    opacity: 0.2;
-  }
-  59% {
-    opacity: 0.1;
-  }
-  60% {
-    opacity: 0;
-  }
-}
 @keyframes fade03 {
   40% {
     opacity: 0;
@@ -504,71 +309,6 @@ a {
     opacity: 0.1;
   }
   60% {
-    opacity: 0;
-  }
-}
-@-webkit-keyframes fade04 {
-  60% {
-    opacity: 0;
-  }
-  61% {
-    opacity: 0.1;
-  }
-  62% {
-    opacity: 0.2;
-  }
-  63% {
-    opacity: 0.3;
-  }
-  64% {
-    opacity: 0.4;
-  }
-  65% {
-    opacity: 0.5;
-  }
-  66% {
-    opacity: 0.6;
-  }
-  67% {
-    opacity: 0.7;
-  }
-  68% {
-    opacity: 0.8;
-  }
-  69% {
-    opacity: 0.9;
-  }
-  70% {
-    opacity: 1;
-  }
-  71% {
-    opacity: 0.9;
-  }
-  72% {
-    opacity: 0.8;
-  }
-  73% {
-    opacity: 0.7;
-  }
-  74% {
-    opacity: 0.6;
-  }
-  75% {
-    opacity: 0.5;
-  }
-  76% {
-    opacity: 0.4;
-  }
-  77% {
-    opacity: 0.3;
-  }
-  78% {
-    opacity: 0.2;
-  }
-  79% {
-    opacity: 0.1;
-  }
-  80% {
     opacity: 0;
   }
 }
@@ -637,71 +377,6 @@ a {
     opacity: 0;
   }
 }
-@-webkit-keyframes fade05 {
-  80% {
-    opacity: 0;
-  }
-  81% {
-    opacity: 0.1;
-  }
-  82% {
-    opacity: 0.2;
-  }
-  83% {
-    opacity: 0.3;
-  }
-  84% {
-    opacity: 0.4;
-  }
-  85% {
-    opacity: 0.5;
-  }
-  86% {
-    opacity: 0.6;
-  }
-  87% {
-    opacity: 0.7;
-  }
-  88% {
-    opacity: 0.8;
-  }
-  89% {
-    opacity: 0.9;
-  }
-  90% {
-    opacity: 1;
-  }
-  91% {
-    opacity: 0.9;
-  }
-  92% {
-    opacity: 0.8;
-  }
-  93% {
-    opacity: 0.7;
-  }
-  94% {
-    opacity: 0.6;
-  }
-  95% {
-    opacity: 0.5;
-  }
-  96% {
-    opacity: 0.4;
-  }
-  97% {
-    opacity: 0.3;
-  }
-  98% {
-    opacity: 0.2;
-  }
-  99% {
-    opacity: 0.1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
 @keyframes fade05 {
   80% {
     opacity: 0;
@@ -765,71 +440,6 @@ a {
   }
   100% {
     opacity: 0;
-  }
-}
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  5% {
-    opacity: 0.05;
-  }
-  10% {
-    opacity: 0.1;
-  }
-  15% {
-    opacity: 0.15;
-  }
-  20% {
-    opacity: 0.2;
-  }
-  25% {
-    opacity: 0.25;
-  }
-  30% {
-    opacity: 0.3;
-  }
-  35% {
-    opacity: 0.35;
-  }
-  40% {
-    opacity: 0.4;
-  }
-  45% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  55% {
-    opacity: 0.55;
-  }
-  60% {
-    opacity: 0.6;
-  }
-  65% {
-    opacity: 0.65;
-  }
-  70% {
-    opacity: 0.7;
-  }
-  75% {
-    opacity: 0.75;
-  }
-  80% {
-    opacity: 0.8;
-  }
-  85% {
-    opacity: 0.85;
-  }
-  90% {
-    opacity: 0.9;
-  }
-  95% {
-    opacity: 0.95;
-  }
-  100% {
-    opacity: 1;
   }
 }
 @keyframes fadeIn {
@@ -1026,12 +636,9 @@ a {
   line-height: 1.2;
 }
 .main section.explainArea#explainArea--1 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
-  -webkit-animation-name: fade01;
-          animation-name: fade01;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-name: fade01;
+  animation-iteration-count: infinite;
   opacity: 0;
 }
 .main section.explainArea#explainArea--1 div.explainArea__text {
@@ -1058,12 +665,9 @@ a {
   right: 20vw;
 }
 .main section.explainArea#explainArea--2 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
-  -webkit-animation-name: fade02;
-          animation-name: fade02;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-name: fade02;
+  animation-iteration-count: infinite;
   opacity: 0;
 }
 .main section.explainArea#explainArea--2 div.explainArea__text {
@@ -1090,12 +694,9 @@ a {
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--3 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
-  -webkit-animation-name: fade03;
-          animation-name: fade03;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-name: fade03;
+  animation-iteration-count: infinite;
   opacity: 0;
 }
 .main section.explainArea#explainArea--3 div.explainArea__text {
@@ -1122,12 +723,9 @@ a {
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--4 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
-  -webkit-animation-name: fade04;
-          animation-name: fade04;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-name: fade04;
+  animation-iteration-count: infinite;
   opacity: 0;
 }
 .main section.explainArea#explainArea--4 div.explainArea__text {
@@ -1154,12 +752,9 @@ a {
   transition: 0.5s;
 }
 .main section.explainArea#explainArea--5 {
-  -webkit-animation-duration: 15s;
-          animation-duration: 15s;
-  -webkit-animation-name: fade05;
-          animation-name: fade05;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
+  animation-duration: 15s;
+  animation-name: fade05;
+  animation-iteration-count: infinite;
   opacity: 0;
 }
 .main section.explainArea#explainArea--5 div.explainArea__text {
@@ -1306,6 +901,9 @@ a {
   opacity: 0.5;
 }
 .main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
   border: 2px solid #14BD7E;
   border-radius: 5px;
   width: 15vw;
@@ -1314,6 +912,67 @@ a {
   margin-top: 3vh;
   background-color: white;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar {
+  width: 0.5vw;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar-thumb {
+  border-radius: 0.2vh 0 0 0.2vh;
+  background-color: #12BD7E;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList {
+  display: inherit;
+  justify-content: center;
+  flex-direction: column;
+  width: 15vw;
+  height: 5.7vh;
+  margin-bottom: 20px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title {
+  padding: 0 1vw;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  width: 15vw;
+  height: 2vh;
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a img {
+  flex-grow: 1;
+  width: 2%;
+  height: 2%;
+  margin-right: 0.25vw;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a span {
+  flex-grow: 2;
+  margin-left: 0.25vw;
+  font-size: 0.8rem;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:visited {
+  color: #000;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:hover {
+  cursor: pointer;
+  color: blue;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents {
+  width: 15vw;
+  height: 3vh;
+  font-size: 13px;
+  font-weight: lighter;
+  color: grey;
+  line-height: 20px;
+  padding-left: 10px;
 }
 .main .main__ForMap .main__SearchBarHideButton {
   display: flex;
@@ -1325,7 +984,7 @@ a {
   height: 40px;
   margin-top: 20vh;
   margin-right: auto;
-  background-color: white;
+  background-color: #14bd72;
   align-items: center;
   justify-content: center;
 }
@@ -1398,6 +1057,9 @@ a {
   box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
   cursor: pointer;
 }
+.searchBar .searchBar__right a {
+  color: #fff;
+}
 .searchBar .searchBar__right:hover {
   outline: 0.1vh solid #14BD72;
 }
@@ -1463,9 +1125,6 @@ a {
   font-weight: 600;
 }
 .loginArea .loginArea__backGround .loginArea__frame input::-moz-placeholder {
-  color: #D5DDE6;
-}
-.loginArea .loginArea__backGround .loginArea__frame input:-ms-input-placeholder {
   color: #D5DDE6;
 }
 .loginArea .loginArea__backGround .loginArea__frame input::placeholder {
@@ -1679,10 +1338,6 @@ a {
   color: #A1E5CB;
   background-color: #FAFAFB;
 }
-.registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input:disabled:-ms-input-placeholder {
-  color: #A1E5CB;
-  background-color: #FAFAFB;
-}
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input:disabled::placeholder {
   color: #A1E5CB;
   background-color: #FAFAFB;
@@ -1697,9 +1352,6 @@ a {
   border-radius: 0.5vh;
 }
 .registerArea .registerArea__backGround .registerArea__frame input::-moz-placeholder {
-  color: #D5DDE6;
-}
-.registerArea .registerArea__backGround .registerArea__frame input:-ms-input-placeholder {
   color: #D5DDE6;
 }
 .registerArea .registerArea__backGround .registerArea__frame input::placeholder {
@@ -1822,9 +1474,6 @@ a {
   font-weight: 600;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input ::-moz-placeholder {
-  color: #D5DDE6;
-}
-.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input :-ms-input-placeholder {
   color: #D5DDE6;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input ::placeholder {
@@ -2263,6 +1912,191 @@ a {
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__registerBtn:hover {
   outline: 0.2vh solid #14BD7E;
+}
+
+/* gas Detail */
+.gasDetailContainer {
+  width: 100%;
+  height: 100%;
+}
+.gasDetailContainer .gasDetailContainer__background {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  height: 90%;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 40%;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard {
+  width: 100%;
+  height: 50%;
+  margin-bottom: 5%;
+  box-shadow: -0.15vw -0.25vh 0.5vw 0 gray;
+  border-radius: 0.5vh;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox {
+  width: 100%;
+  height: 70%;
+  padding: 1vw 0;
+  display: flex;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox .gasDetailContainer__imageBox {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox .gasDetailContainer__imageBox img {
+  width: 70%;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox .gasDetailContainer__textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox .gasDetailContainer__textBox #brandName {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  height: 30%;
+  font-size: 1rem;
+  font-weight: 600;
+  border-bottom: 0.2vh solid #ECECEC;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox .gasDetailContainer__textBox #brandNumber {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  height: 30%;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 0.2vh solid #ECECEC;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__brandInfoBox .gasDetailContainer__textBox #brandAddress {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 90%;
+  height: 30%;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__btnBox {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__btnBox button {
+  transition: 0.1s;
+  display: block;
+  width: 25%;
+  height: 100%;
+  border-radius: 0.8vh;
+  background-color: rgba(20, 189, 114, 0.6);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 100%;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__brandInfoCard .gasDetailContainer__btnBox button:hover {
+  background-color: #14BD72;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: -0.15vw -0.25vh 0.5vw 0 gray;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceHeader {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 0.5vh;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody {
+  height: 77%;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody .gasDetailContainer__gasolineBox {
+  margin: 0 auto;
+  width: 90%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody .gasDetailContainer__gasolineBox span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 100%;
+  text-align: center;
+  outline: 0.1vh solid #DDDDDE;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody .gasDetailContainer__gasolineBox span:first-child {
+  color: #fff;
+  background-color: #14BD72;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody .gasDetailContainer__dieselBox {
+  margin: 0 auto;
+  width: 90%;
+  height: 20%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody .gasDetailContainer__dieselBox span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 100%;
+  text-align: center;
+  outline: 0.1vh solid #DDDDDE;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__infoArea .gasDetailContainer__gasPriceTable .gasDetailContainer__gasPriceBody .gasDetailContainer__dieselBox span:first-child {
+  color: #fff;
+  background-color: #14BD72;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__chartArea {
+  height: 90%;
+  width: 50%;
+  box-shadow: -0.15vw -0.25vh 0.5vw 0 gray;
+  border-radius: 0.5vh;
+}
+.gasDetailContainer .gasDetailContainer__background .gasDetailContainer__chartArea .gasDetailContainer__chartBox {
+  width: 90%;
+  height: 100%;
+  background-color: red;
+  margin: 0 auto;
 }
 
 #searchResultTitle {
