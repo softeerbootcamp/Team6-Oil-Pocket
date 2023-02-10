@@ -1,4 +1,4 @@
-
+//
 //package com.kaspi.backend.util;
 //
 //import com.kaspi.backend.service.GasDataService;
@@ -64,6 +64,6 @@
 //        casRadio.click();
 //        button.sendKeys(Keys.ENTER);
 //        driver.switchTo().alert().accept();
-//        gasDataService.insertGasInfo(LPG_STATION, new LpgDetailCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
+//            gasDataService.insertGasInfo(LPG_STATION, new LpgDetailCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
 //    }
 //}

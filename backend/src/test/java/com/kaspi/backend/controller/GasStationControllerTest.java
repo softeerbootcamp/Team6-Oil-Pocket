@@ -1,6 +1,6 @@
 package com.kaspi.backend.controller;
 
-import com.kaspi.backend.dto.FindGasStationReqDto;
+import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -39,9 +38,9 @@ class GasStationControllerTest {
     @DisplayName("주유소 네이밍 기준 검색 API 테스트")
     void findGasStationByName() throws Exception {
         // Given
-        List<FindGasStationReqDto> expectedMatchingGasStations = Arrays.asList(
-                FindGasStationReqDto.builder().name("유진 주유소").brand("s-oil").stationNo(1L).address("노원구").area("서울").build(),
-                FindGasStationReqDto.builder().name("서울 유진 주유소").brand("s-oil").stationNo(2L).address("도봉구").area("서울").build()
+        List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
+                FindGasStationResDto.builder().name("유진 주유소").brand("s-oil").stationNo(1L).address("노원구").area("서울").build(),
+                FindGasStationResDto.builder().name("서울 유진 주유소").brand("s-oil").stationNo(2L).address("도봉구").area("서울").build()
         );
         given(gasStationService.getGasStationByContainingName("유진"))
                 .willReturn(expectedMatchingGasStations);

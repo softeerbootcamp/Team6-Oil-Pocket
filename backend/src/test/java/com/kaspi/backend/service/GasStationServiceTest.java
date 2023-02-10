@@ -1,10 +1,8 @@
 package com.kaspi.backend.service;
 
 import com.kaspi.backend.dao.GasStationDao;
-import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.GasStation;
-import com.kaspi.backend.dto.FindGasStationReqDto;
-import org.assertj.core.api.Assertions;
+import com.kaspi.backend.dto.FindGasStationResDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class GasStationServiceTest {
@@ -32,16 +29,16 @@ class GasStationServiceTest {
         //given
         List<GasStation> gasStations = Arrays.asList(
                 GasStation.builder().name("유진 주유소").build(),
-                GasStation.builder().name("서울 유진 주유소").build(),
-                GasStation.builder().name("서브웨이").build()
+                GasStation.builder().name("서울 유진 주유소").build()
         );
-        List<FindGasStationReqDto> expectedMatchingGasStations = Arrays.asList(
-                FindGasStationReqDto.builder().name("유진 주유소").build(),
-                FindGasStationReqDto.builder().name("서울 유진 주유소").build()
+        List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
+                FindGasStationResDto.builder().name("유진 주유소").build(),
+                FindGasStationResDto.builder().name("서울 유진 주유소").build()
         );
-        when(gasStationDao.findAll()).thenReturn(gasStations);
+        String requestGasStation = "유진";
+        when(gasStationDao.findAllLikeName("%"+requestGasStation+"%")).thenReturn(gasStations);
         //when
-        List<FindGasStationReqDto> actualMatchingGasStations = gasStationService.getGasStationByContainingName("유진");
+        List<FindGasStationResDto> actualMatchingGasStations = gasStationService.getGasStationByContainingName(requestGasStation);
         //then
         assertThat(actualMatchingGasStations.size()).isEqualTo(2);
         assertThat(actualMatchingGasStations.get(0).getName()).isEqualTo(expectedMatchingGasStations.get(0).getName());

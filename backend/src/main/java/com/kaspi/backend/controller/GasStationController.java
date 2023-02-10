@@ -2,7 +2,7 @@ package com.kaspi.backend.controller;
 
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStationDto;
-import com.kaspi.backend.dto.FindGasStationReqDto;
+import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.util.response.CommonResponseDto;
@@ -36,7 +36,7 @@ public class GasStationController {
 
     @GetMapping("/v2/gas-station")
     public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name) {
-        List<FindGasStationReqDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
+        List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION,matchingGasStations));
     }
