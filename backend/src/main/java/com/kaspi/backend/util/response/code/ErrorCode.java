@@ -5,7 +5,8 @@ public enum ErrorCode implements Code {
     AUTH_ERROR("E002", "세션이 만료되었습니다"),
     NOT_VALID_USER("E003", "유저가 존재하지 않습니다.(회원 테이블에 존재하지 않는 유저)"),
     DUPLICATE_USER("E004", "중복된 아이디를 가진 유저가 존재합니다."),
-    LOGIN_FAIL("E005", "아이디 혹은 패스워드가 다릅니다.");
+    LOGIN_FAIL("E005", "아이디 혹은 패스워드가 다릅니다."),
+    GAS_STATION_NOT_FOUND("E006", "해당되는 가스스테이션이 없습니다.");
 
 
     private String code;
