@@ -9,11 +9,13 @@ public class DefaultException extends RuntimeException {
     private Code errorCode;
 
     public DefaultException(String className, Code code) {
+        super(code.getMessage());
         this.className = className;
         this.errorCode = code;
     }
 
     public DefaultException(Code code) {
+        super(code.getMessage());
         this.className = this.getClass().getSimpleName();
         this.errorCode = code;
     }
