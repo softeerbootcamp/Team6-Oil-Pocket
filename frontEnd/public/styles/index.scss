@@ -20,10 +20,6 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-* {
-    transition: 0.4s;
-}
-
 *:focus {
     outline: none;
 }
@@ -64,6 +60,18 @@ a {
     text-decoration: none;
 }
 
+* {
+    transition: 0.4s;
+}
+
+html {
+    font-family: 'Do Hyeon', sans-serif;
+}
+
+a, button, select, input {
+    font-family: 'Do Hyeon', sans-serif;
+}
+
 /* nav bar */
 .navbar {
     padding: 0 4vw;
@@ -75,7 +83,7 @@ a {
     justify-content: space-between;
     align-items: center;
     font-size: 2rem;
-    z-index: 1000;
+    z-index: 5;
     border-bottom: 0.2vh solid #F5F5F5;
 
     & .navbar__logo {
@@ -294,36 +302,71 @@ a {
         left: 2vw;
         bottom: 2vw;
         width: 30vw;
-        height: 60vh;
-        z-index: 1;
-        color: #ECECEC;
-        background-color: #ECECEC;
+        height: 2vh;
+        z-index: 5;
+        background-color: #fff;
+        outline: 0.5vh solid #14BD7E;
+
+        & .chatBotArea__shadowArea {
+            z-index: -5;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color : rgba(255, 255, 255, 0.8);
+        }
+
+        & .chatBotArea__closeArea {
+            z-index: 5;
+            padding: 0.75vh 1.5vw;
+            height: 1.5vh;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+
+            & .chatBotArea__closeBtn {
+                position: absolute;
+                width: 1vw;
+                cursor: pointer;
+                margin-bottom: 1vw;
+                margin-right: -1vw;
+                color: #14BD7E;
+
+                &:hover {
+                    transform: rotate(180deg);
+                }
+            }
+        }
 
         & .chatBotArea__background {
+            z-index: 5;
             overflow-y: scroll;
+            scroll-behavior: smooth;
+            opacity: 0;
             width: 100%;
-            height: 100%;
+            height: 90%;
 
             &::-webkit-scrollbar {
-                background-color: #14BD72;
-                width: 0.2vw;
+                width: 0;
+                height: 0;
             }
             
             &::-webkit-scrollbar-thumb {
-                width: 0.4vw;
-                background-color: #14BD72;
+                width: 0;
+                height: 0;
             }
 
             &::-webkit-scrollbar-track {
-                width: 4vw;
-                background-color: #ECECEC;
+                width: 0;
+                height: 0;
             }
 
             & .chatBotArea__profile {
-                transition: 0.5;
-                width: 90%;
+                transition: 0.5s;
+                width: 95%;
                 height: 5vh;
-                margin: 0 0 1.5vh;
+                margin: 0 auto 1.5vh;
                 padding: 0.5vh 0;
                 transition: 0.5s;
                 background-color: #14BD7E;
@@ -331,6 +374,8 @@ a {
                 justify-content: center;
                 align-items: center;
                 border-radius: 2vh;
+                color: #fff;
+
                 & img {
                     transition: 0.5s;
                     height: 5vh;
@@ -343,41 +388,25 @@ a {
     
                 & span {
                     width: 90%;
-                    text-align: left;
+                    text-align: center;
                     font-size: 1rem;
                     font-weight: 600;
-                }
-            }
-    
-            & .chatBotArea__closeArea {
-                padding: 0.75vh 1.5vw;
-                height: 1.5vh;
-                display: flex;
-                justify-content: right;
-                align-items: center;
-    
-                & .chatBotArea__closeBtn {
-                    position: absolute;
-                    width: 1vw;
-                    cursor: pointer;
-                    margin-bottom: 1vw;
-                    margin-right: -1vw;
-                    color: #14BD7E;
                 }
             }
     
             & .chatBotArea__chat {
                 transition: 0.2s;
-                margin: 1.5vh 0;
+                margin: 1.5vh auto;
                 padding: 0.5vh 1.5vw;
-                width: 80%;
+                width: 85%;
                 height: 5vh;
                 background-color: #fff;
                 color: #14BD7E;
                 display: flex;
-                justify-content: right;
+                justify-content: center;
                 align-items: center;
                 border-radius: 2vh;
+                outline: 0.25vh solid #14BD7E;
                 cursor: pointer;
     
                 & span {
@@ -385,26 +414,69 @@ a {
                     font-weight: 600;
                     line-height: 1.2;
                 }
+
+                &.reChat {
+                    transition: 0.2s;
+                    opacity: 0;
+                }
             }
 
             & .chatBotArea__answer {
-                transition: 0.2s;
-                margin: 1.5vh 0;
+                transition: 0.5s;
+                margin: 1.5vh auto;
                 padding: 0.5vh 1.5vw;
-                width: 80%;
+                width: 85%;
                 height: 5vh;
-                background-color: #fff;
-                color: #14BD7E;
+                background-color: #14BD7E;
+                color: #fff;
                 display: flex;
-                justify-content: right;
+                justify-content: center;
                 align-items: center;
                 border-radius: 2vh;
-                cursor: pointer;
-    
+                opacity: 0;
+
                 & span {
                     font-size: 1rem;
                     font-weight: 600;
                     line-height: 1.2;
+
+                    & strong {
+                        color: blue;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            & .chatBotArea__managerProfile {
+                transition: 0.5s;
+                width: 95%;
+                height: 5vh;
+                margin: 0 auto 1.5vh;
+                padding: 0.5vh 0;
+                transition: 0.5s;
+                background-color: #14BD7E;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 2vh;
+                color: #fff;
+                opacity: 0;
+
+                & img {
+                    transition: 0.5s;
+                    height: 5vh;
+                    margin-top: 0.5vh;
+    
+                    &:hover {
+                        margin-top: -1vh;
+                    }
+                }
+    
+                & span {
+                    width: 90%;
+                    text-align: center;
+                    font-size: 1rem;
+                    font-weight: 600;
                 }
             }
         }

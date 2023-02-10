@@ -5,12 +5,12 @@ NodeList.prototype.forEach = Array.prototype.forEach;
 
 const getChatTextArray = ($chatBotContent) => $chatBotContent.querySelectorAll(".chatBotArea__chat");
 
-const deleteOtherChatNode = ($exceptChatText) => pipe(
+const deleteChatNode = ($exceptChatText) => pipe(
     ($chatTextArray) => $chatTextArray.forEach(($chatText, index) => {
         setTimeout(() => {
             if($chatText !== $exceptChatText) $chatText.remove();
             else changeCSS($exceptChatText, "color", "#000");
-        }, 200 * index)
+        }, 100 * index)
     })
 )(document.querySelectorAll(".chatBotArea__chat"));
 
@@ -18,4 +18,4 @@ const initializeChatBotContent = ($chatBotContent) => {
     $chatBotContent.remove();
 }
 
-export { getChatTextArray, deleteOtherChatNode, initializeChatBotContent }
+export { getChatTextArray, deleteChatNode, initializeChatBotContent }

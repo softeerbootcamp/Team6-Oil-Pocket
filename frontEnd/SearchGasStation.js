@@ -8,7 +8,6 @@ var map, marker;
 var markerArr = [];
 var innerHtml = ""; 
 
-
 const SortByHH = document.getElementById("sort_HH");
 const SortByLL = document.getElementById("sort_LL");
 const SortByGG = document.getElementById("sort_GG");
