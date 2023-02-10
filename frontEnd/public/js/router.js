@@ -10,6 +10,7 @@ import { gasSTDView } from "./GSTdetail/view.js";
 import { notFoundView } from "./notFound/view.js";
 
 const $body = document.querySelector("body");
+
 const router = async () => {
     const routes = [
         { path: "/", view: mainView },

@@ -10,6 +10,7 @@ import com.kaspi.backend.util.response.CommonResponseDto;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
+@Slf4j
 public class AuthController {
 
     private final AuthService authService;
@@ -30,6 +32,7 @@ public class AuthController {
     @GetMapping("/v1/auth")
     public ResponseEntity<CommonResponseDto> checkDuplicateId(@RequestParam("id") String id) {
         if (!authService.checkValidUserId(id)) {
+            log.error("아이디가 중복된 유저: {}",id);
             return ResponseEntity.status(HttpStatus.CONFLICT)
                     .body(CommonResponseDto.toResponse(ErrorCode.DUPLICATE_USER));
         }

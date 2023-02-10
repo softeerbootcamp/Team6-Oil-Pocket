@@ -44,3 +44,7 @@ spring:
     redis:
       namespace: session
 
+  output:
+    ansi:
+      enabled: always
+

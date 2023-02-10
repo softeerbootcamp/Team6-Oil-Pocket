@@ -38,6 +38,7 @@ public class GasDetail {
         this.gasType = gasType;
         this.date = date;
     }
+    
     public static List<GasDetail> parseListGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
         List<GasDetail> list = new ArrayList<>();
         list.add(new GasDetail(gasStation, Integer.valueOf(attribute[PREMIUM_GASOLINE]), GasType.PREMIUM_GASOLINE, date));
