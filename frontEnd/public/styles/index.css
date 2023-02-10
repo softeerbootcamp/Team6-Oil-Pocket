@@ -856,6 +856,9 @@ a {
   opacity: 0.5;
 }
 .main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult {
+  display: flex;
+  flex-direction: column;
+  box-sizing: content-box;
   border: 2px solid #14BD7E;
   border-radius: 5px;
   width: 15vw;
@@ -864,6 +867,67 @@ a {
   margin-top: 3vh;
   background-color: white;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar {
+  width: 0.5vw;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar-thumb {
+  border-radius: 0.2vh 0 0 0.2vh;
+  background-color: #12BD7E;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList {
+  display: inherit;
+  justify-content: center;
+  flex-direction: column;
+  width: 15vw;
+  height: 5.7vh;
+  margin-bottom: 20px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title {
+  padding: 0 1vw;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  width: 15vw;
+  height: 2vh;
+  font-size: 15px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a img {
+  flex-grow: 1;
+  width: 2%;
+  height: 2%;
+  margin-right: 0.25vw;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a span {
+  flex-grow: 2;
+  margin-left: 0.25vw;
+  font-size: 0.8rem;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:visited {
+  color: #000;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:hover {
+  cursor: pointer;
+  color: blue;
+}
+.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents {
+  width: 15vw;
+  height: 3vh;
+  font-size: 13px;
+  font-weight: lighter;
+  color: grey;
+  line-height: 20px;
+  padding-left: 10px;
 }
 .main .main__ForMap .main__SearchBarHideButton {
   display: flex;
@@ -875,7 +939,7 @@ a {
   height: 40px;
   margin-top: 20vh;
   margin-right: auto;
-  background-color: white;
+  background-color: #14bd72;
   align-items: center;
   justify-content: center;
 }
@@ -947,6 +1011,9 @@ a {
   background-color: #14BD72;
   box-shadow: 0 0.5vh 4vh 0 #F5F5F5;
   cursor: pointer;
+}
+.searchBar .searchBar__right a {
+  color: #fff;
 }
 .searchBar .searchBar__right:hover {
   outline: 0.1vh solid #14BD72;
