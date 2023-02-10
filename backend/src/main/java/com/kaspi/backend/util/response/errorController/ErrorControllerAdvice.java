@@ -1,7 +1,9 @@
 package com.kaspi.backend.util.response.errorController;
 
+import com.kaspi.backend.dto.error.ErrorResponseDto;
 import com.kaspi.backend.util.exception.AuthenticationException;
-import com.kaspi.backend.util.exception.AuthorizationException;
+import com.kaspi.backend.util.exception.DefaultException;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.CommonResponseDto;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
@@ -33,4 +35,11 @@ public class ErrorControllerAdvice {
 //        e.printStackTrace();
 //        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(CommonResponseDto.toResponse(e.getCode()));
 //    }
+
+    @ExceptionHandler(SqlNotFoundException.class)
+    public ResponseEntity<ErrorResponseDto> defaultExceptionHandler(SqlNotFoundException e) {
+        log.error(e.getMessage());
+        e.printStackTrace();
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ErrorResponseDto.toResponse(e));
+    }
 }
