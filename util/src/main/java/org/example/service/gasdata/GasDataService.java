@@ -41,7 +41,7 @@ public class GasDataService {
 
                 //가스 도로명+브랜드 겹치는거 있는지 체크
                 if (!gasStationInfos.containsKey(key)) {
-                    GasStation gasStation = GasStation.parseGasStation(attribute);
+                    GasStation gasStation = GasStation.parseNowGasStation(attribute);
                     //디비에 이미 주유소 정보가 있다면 넣지 않음
                     Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand(gasStation.getAddress(), gasStation.getBrand());
                     saveGasStationIfNotExists(key, gasStation, optionalGasStation);
