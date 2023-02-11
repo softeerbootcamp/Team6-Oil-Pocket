@@ -1022,6 +1022,7 @@ a, button, select, input {
             & input {
                 color: #14BD7E;
                 background-color: #FAFAFB;
+                border-radius: 0.5vh;
                 font-size: 1.2rem;
                 text-align: center;
                 padding: 2vh 0;
@@ -1029,6 +1030,10 @@ a, button, select, input {
 
                 &::placeholder {
                     color: #D5DDE6;
+                }
+
+                &:hover {
+                    outline:0.2vh solid #14BD72;
                 }
             }
             & button {
@@ -1206,8 +1211,25 @@ a, button, select, input {
             }
 
             & .registerArea__dropDownArea {
+                position: relative;
                 display: flex;
                 justify-content: space-between;
+
+                & .registerArea__btn {
+                    transition: .5s;
+                    font-weight: 600;
+                    padding: 2vh 0;
+                    font-size: 1.1rem;
+                    height: 2.5vh;
+                    width: 45%;
+                    background-color: #80E3C3;
+                    color: #fff;
+                    appearance: none;
+                    cursor: pointer;
+                    text-align: center;
+                    z-index: 1;
+                    border-radius: 0.5vh;
+                }
 
                 & select {
                     transition: .5s;

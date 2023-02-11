@@ -1185,6 +1185,7 @@ a, button, select, input {
 .loginArea .loginArea__backGround .loginArea__frame input {
   color: #14BD7E;
   background-color: #FAFAFB;
+  border-radius: 0.5vh;
   font-size: 1.2rem;
   text-align: center;
   padding: 2vh 0;
@@ -1195,6 +1196,9 @@ a, button, select, input {
 }
 .loginArea .loginArea__backGround .loginArea__frame input::placeholder {
   color: #D5DDE6;
+}
+.loginArea .loginArea__backGround .loginArea__frame input:hover {
+  outline: 0.2vh solid #14BD72;
 }
 .loginArea .loginArea__backGround .loginArea__frame button {
   padding: 2vh 0;
@@ -1347,8 +1351,26 @@ a, button, select, input {
   color: #14BD7E;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea {
+  position: relative;
   display: flex;
   justify-content: space-between;
+}
+.registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea .registerArea__btn {
+  transition: 0.5s;
+  font-weight: 600;
+  padding: 2vh 0;
+  font-size: 1.1rem;
+  height: 2.5vh;
+  width: 45%;
+  background-color: #80E3C3;
+  color: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+  text-align: center;
+  z-index: 1;
+  border-radius: 0.5vh;
 }
 .registerArea .registerArea__backGround .registerArea__frame .registerArea__dropDownArea select {
   transition: 0.5s;

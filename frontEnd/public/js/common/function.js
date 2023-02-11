@@ -17,11 +17,13 @@ const pipe = (...functionList) => (firstParam) =>
 
 const makeLighter = ($target) => $target.style.opacity = 1;
 
+const makeTransparent = ($target) => $target.style.opacity = 0;
+
 const makeNodeArrayLighterSubsequently = (nodeArray, time) => 
     nodeArray.forEach((node, index) => 
         setTimeout(() => makeLighter(node), time * (index + 1)));
 
 export { 
-    addEvent, changeCSS, replaceChildWithFadeEffect, pipe, makeLighter,
+    addEvent, changeCSS, replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
     makeNodeArrayLighterSubsequently
 }
