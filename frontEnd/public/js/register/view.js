@@ -1,4 +1,7 @@
-import { eventToIDValidateBtn, eventToTermOfUseBtn, eventToSelects, eventToRegisterBtn } from "./event.js";
+import { 
+    eventToIDValidateBtn, eventToTermOfUseBtn, 
+    eventToSelects, eventToSelectValues, eventToRegisterBtn,
+} from "./event.js";
 import { getRegisterTemplate } from "./template.js";
 
 const registerView = () => {
@@ -8,6 +11,7 @@ const registerView = () => {
 
     eventToTermOfUseBtn($registerContainer);
     eventToSelects($registerContainer);
+    eventToSelectValues($registerContainer);
     eventToIDValidateBtn($registerContainer);
     eventToRegisterBtn($registerContainer);
 

@@ -1,6 +1,8 @@
-import { addEvent, changeCSS } from "../common/function"
+import { addEvent, changeCSS, changeArrayCSS } from "../common/function"
 import { fetchRegisterID, fetchValidateID } from "./fetch";
 import { getRegisterFetchBody, isSamePWInputs } from "./helperFunction";
+
+NodeList.prototype.forEach = Array.prototype.forEach;
 
 const eventToTermOfUseBtn = ($container) => {
     const $termOfUseBtn = $container.querySelector(".registerArea__termOfUseContentBtn");
@@ -16,30 +18,62 @@ const eventToTermOfUseBtn = ($container) => {
 }
 
 const eventToSelects = ($container) => {
-    const $selectAge = $container.querySelector("#registerArea__ageBtn");
-    const $selectGender = $container.querySelector("#registerArea__genderBtn");
+    const $selectgender = $container.querySelector(".registerArea__genderTitle");
+    const $selectgenderValues = $container.querySelectorAll(".registerArea__genderValue");
+    const $selectAge = $container.querySelector(".registerArea__ageTitle");
+    const $selectAgeValues = $container.querySelectorAll(".registerArea__ageValue");
 
-    addEvent($selectAge, [() => changeCSS($selectAge, "backgroundColor", "#14BD7E")], "change");
-    addEvent($selectGender, [() => changeCSS($selectGender, "backgroundColor", "#14BD7E")], "change");
+    addEvent($selectgender, [
+        () => $selectgenderValues.forEach(($genderValue, index) => {
+            changeCSS($genderValue, "outline", "0.2vh solid #14BD72");
+            changeCSS($genderValue, "top", `${(index + 1) * 108}%`) 
+        })
+    ]);
+
+    addEvent($selectAge, [
+        () => $selectAgeValues.forEach(($ageValue, index) => {
+            changeCSS($ageValue, "outline", "0.2vh solid #14BD72");
+            changeCSS($ageValue, "top", `${(index + 1) * 108}%`);
+        })
+    ]);
+}
+
+const eventToSelectValues = ($container) => {
+    const $genderTitle = $container.querySelector(".registerArea__genderTitle");
+    const $genderValues = $container.querySelectorAll(".registerArea__genderValue");
+    const $ageTitle = $container.querySelector(".registerArea__ageTitle");
+    const $ageValues = $container.querySelectorAll(".registerArea__ageValue");
+
+    $genderValues.forEach(($genderValue) => addEvent($genderValue, [
+        () => $genderTitle.innerHTML = $genderValue.innerHTML,
+        () => changeCSS($genderTitle, "backgroundColor", "#14BD72"),
+        () => changeArrayCSS($genderValues, "top", 0)
+    ]));
+
+    $ageValues.forEach(($ageValue) => addEvent($ageValue, [
+        () => $ageTitle.innerHTML = $ageValue.innerHTML,
+        () => changeCSS($ageTitle, "backgroundColor", "#14BD72"),
+        () => changeArrayCSS($ageValues, "top", 0)
+    ]))
 }
 
 const eventToRegisterBtn = ($container) => {
     const $IDInput = $container.querySelector(".registerArea__IDArea > input")
     const $registerBtn = $container.querySelector(".registerBtn");
-    const $selectAge = $container.querySelector("#registerArea__ageBtn");
-    const $selectGender = $container.querySelector("#registerArea__genderBtn");
+    const $selectAge = $container.querySelector(".registerArea__ageTitle");
+    const $selectGender = $container.querySelector(".registerArea__genderTitle");
     const $pwInput = $container.querySelector("#registerArea__pwInput");
     const $pwReInput = $container.querySelector("#registerArea__pwReInput");
 
     addEvent($registerBtn, [() => {
-        if($selectGender.value === "성별") {
+        if($selectGender.innerHTML === "성별") {
             changeCSS($selectGender, "outline", "0.4vh solid red");
             setTimeout(() => changeCSS($selectGender, "outline", "0vh solid #14BD7E"), 1000);
             $selectGender.focus();
             return;
         }
 
-        if($selectAge.value == "나이") {
+        if($selectAge.innerHTML == "나이") {
             changeCSS($selectAge, "outline", "0.4vh solid red");
             setTimeout(() => changeCSS($selectAge, "outline", "0vh solid #14BD7E"), 1000);
             return;
@@ -83,4 +117,4 @@ const eventToIDValidateBtn = ($registerContainer) => {
     addEvent($IDValidateBtn, [() => fetchValidateID($IDInput, $IDValidateBtn, $registerBtn)]);
 }
 
-export { eventToTermOfUseBtn, eventToIDValidateBtn, eventToSelects, eventToRegisterBtn }
+export { eventToTermOfUseBtn, eventToIDValidateBtn, eventToSelects, eventToRegisterBtn, eventToSelectValues }

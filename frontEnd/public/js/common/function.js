@@ -1,8 +1,13 @@
+NodeList.prototype.forEach = Array.prototype.forEach;
+
 const addEvent = ($target, callBackArray, eventType="click") => {
     callBackArray.forEach((callBack) => $target.addEventListener(eventType, callBack));
 }
 
 const changeCSS = ($target, key, value) => $target.style[key] = value;
+
+const changeArrayCSS = ($targetArray, key, value) => 
+    $targetArray.forEach(($target) => changeCSS($target, key, value));
 
 const replaceChildWithFadeEffect = ($parent, $child) => {
     $parent.innerHTML = "";
@@ -24,6 +29,7 @@ const makeNodeArrayLighterSubsequently = (nodeArray, time) =>
         setTimeout(() => makeLighter(node), time * (index + 1)));
 
 export { 
-    addEvent, changeCSS, replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
+    addEvent, changeCSS, changeArrayCSS,
+    replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
     makeNodeArrayLighterSubsequently
 }

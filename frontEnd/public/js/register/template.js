@@ -14,19 +14,19 @@ const getRegisterTemplate = () => `
                     </div>
                 </div>
                 <div class="registerArea__dropDownArea">
-                    <select name="registerArea__genderBtn" id="registerArea__genderBtn">
-                        <option disabled selected value="성별">성별</option>
-                        <option value="남">남자</option>
-                        <option value="여">여자</option>
-                    </select>
-                    <select name="registerArea__ageBtn" id="registerArea__ageBtn">
-                        <option disabled selected value="나이">나이</option>
-                        <option value="20대">20대</option>
-                        <option value="30대">30대</option>
-                        <option value="40대">40대</option>
-                        <option value="50대">50대</option>
-                        <option value="60대 이상">60대 이상</option>
-                    </select>
+                    <div class="registerArea__genderArea">
+                        <div class="registerArea__genderValue">남자</div>
+                        <div class="registerArea__genderValue">여자</div>
+                        <div class="registerArea__genderTitle">성별</div>
+                    </div>
+                    <div class="registerArea__ageArea">
+                        <div class="registerArea__ageValue">20대</div>
+                        <div class="registerArea__ageValue">30대</div>
+                        <div class="registerArea__ageValue">40대</div>
+                        <div class="registerArea__ageValue">50대</div>
+                        <div class="registerArea__ageValue">60대 이상</div>
+                        <div class="registerArea__ageTitle">나이</div>
+                    </div>
                 </div>
                 <div class="registerArea__IDArea">
                     <input type="text" placeholder="ID를 입력해주세요." minlength="6" maxlength="20">

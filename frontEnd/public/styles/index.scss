@@ -1211,9 +1211,81 @@ a, button, select, input {
             }
 
             & .registerArea__dropDownArea {
+                height: 6%;
+                width: 100%;
                 position: relative;
                 display: flex;
                 justify-content: space-between;
+
+                & .registerArea__genderArea {
+                    position: absolute;
+                    left: 0;
+                    width: 45%;
+                    height: 100%;
+
+                    & .registerArea__genderValue {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0.5vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #fff;
+                        color: #14BD72;
+                        cursor: pointer;
+                    }
+
+                    & .registerArea__genderTitle {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0.5vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #80E3C3;
+                            color: #fff;
+                        cursor: pointer;
+                    }
+                }
+
+                & .registerArea__ageArea {
+                    position: absolute;
+                    right: 0;
+                    width: 45%;
+                    height: 100%;
+
+                    & .registerArea__ageValue {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0.5vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #fff;
+                        color: #14BD72;
+                        cursor: pointer;
+                    }
+
+                    & .registerArea__ageTitle {
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 0.5vh;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #80E3C3;
+                            color: #fff;
+                        cursor: pointer;
+                    }
+                }
 
                 & .registerArea__btn {
                     transition: .5s;
@@ -1229,33 +1301,6 @@ a, button, select, input {
                     text-align: center;
                     z-index: 1;
                     border-radius: 0.5vh;
-                }
-
-                & select {
-                    transition: .5s;
-                    font-weight: 600;
-                    border: none;
-                    padding: 2vh 0;
-                    font-size: 1.1rem;
-                    width: 45%;
-                    background-color: #80E3C3;
-                    color: #fff;
-                    appearance: none;
-                    cursor: pointer;
-                    text-align: center;
-                    border-radius: 0.5vh;
-
-                    &:focus {
-                        outline: none;
-                    }
-
-                    &:checked {
-                        background-color: #14BD7E;
-                    }
-
-                    &::selection {
-                        background-color: #14BD7E;
-                    }
                 }
             }
 

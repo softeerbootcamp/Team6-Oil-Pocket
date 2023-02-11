@@ -20,6 +20,7 @@ function fetchValidateID($IDInput, $IDValidateBtn, $registerBtn) {
 }
 
 function fetchRegisterID(requestBody) {
+    console.log(requestBody)
     fetch(REGISTER_URL, {
         method: METHOD.POST,
         headers: HEADER.POST,
