@@ -12,6 +12,7 @@ import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.enums.GasType;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -71,4 +72,14 @@ class UserRecordServiceTest {
 
     }
 
+    @Test
+    @DisplayName("사용자가 이익/손해 로직 계산")
+    void calUserSavingAmount() {
+        //given
+        Long userGasAmount=2L;
+        Long nationalGasAvg=1200L;
+        Long userGasRefuelingPrice=2400L;
+        Long actualSavingAmount = userRecordService.calUserSavingAmount(userGasRefuelingPrice, userGasAmount, nationalGasAvg);
+        Assertions.assertThat(0).isEqualTo(actualSavingAmount);
+    }
 }
