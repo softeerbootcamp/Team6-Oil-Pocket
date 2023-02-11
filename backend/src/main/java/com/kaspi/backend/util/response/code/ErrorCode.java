@@ -6,7 +6,8 @@ public enum ErrorCode implements Code {
     NOT_VALID_USER("E003", "유저가 존재하지 않습니다.(회원 테이블에 존재하지 않는 유저)"),
     DUPLICATE_USER("E004", "중복된 아이디를 가진 유저가 존재합니다."),
     LOGIN_FAIL("E005", "아이디 혹은 패스워드가 다릅니다."),
-    SQL_NOT_FOUND("E006", "쿼리문에서 특정값을 가져오지 못했습니다.");
+    SQL_NOT_FOUND("E006", "쿼리문에서 특정값을 가져오지 못했습니다."),
+    OPINET_EXCEPTION("E007", "오피넷에서 관련된 API요청에 문제가 생겼습니다");
 
 
     private String code;
