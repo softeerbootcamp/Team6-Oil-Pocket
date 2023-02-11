@@ -35,4 +35,8 @@ public class UserRecordService {
         log.info("사용자가 주유한 가스타입:{}, 주유량:{}",userGasRecordReqDto.getGasType().name(),userGasAmount);
         return userGasAmount;
     }
+
+    public Long calUserSavingAmount(Long userRefuelingPrice, Long userGasAmount, Long nationalAvgOilPrice) {
+            return userRefuelingPrice - nationalAvgOilPrice * userGasAmount;
+    }
 }
