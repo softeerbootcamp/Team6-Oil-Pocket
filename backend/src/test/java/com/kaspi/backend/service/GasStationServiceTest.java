@@ -3,6 +3,8 @@ package com.kaspi.backend.service;
 import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.dto.FindGasStationResDto;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,6 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class GasStationServiceTest {
@@ -43,5 +46,36 @@ class GasStationServiceTest {
         assertThat(actualMatchingGasStations.size()).isEqualTo(2);
         assertThat(actualMatchingGasStations.get(0).getName()).isEqualTo(expectedMatchingGasStations.get(0).getName());
         assertThat(actualMatchingGasStations.get(1).getName()).isEqualTo(expectedMatchingGasStations.get(1).getName());
+    }
+
+    @Test
+    @DisplayName("PK값으로 GasStation 객체 얻기 성공")
+    void getGasStationByNo() {
+        //given
+        Long requestGasStationNo = 1L;
+        GasStation gasStation = GasStation.builder()
+                .stationNo(requestGasStationNo)
+                .build();
+        when(gasStationDao.findById(requestGasStationNo)).thenReturn(Optional.of(gasStation));
+        //when
+        GasStation findGasStation = gasStationService.getGasStationByNo(requestGasStationNo);
+        //then
+        assertThat(findGasStation).usingRecursiveComparison().isEqualTo(gasStation);
+    }
+
+    @Test
+    @DisplayName("PK값으로 GasStation 객체 얻기 예외")
+    void getGasStationByNo_Exception() {
+        //given
+        Long requestGasStationNo = 1L;
+        GasStation gasStation = GasStation.builder()
+                .stationNo(requestGasStationNo)
+                .build();
+        when(gasStationDao.findById(requestGasStationNo)).thenReturn(Optional.empty());
+        //when
+        //then
+        assertThrows(NoSuchElementException.class, () -> {
+            gasStationService.getGasStationByNo(requestGasStationNo);
+        });
     }
 }
