@@ -1152,10 +1152,24 @@ a, button, select, input {
   width: 100vw;
 }
 .loginArea .loginArea__backGround {
+  position: relative;
   background-color: #FCFCFE;
   height: 100%;
   width: 20%;
   margin: 0 auto;
+}
+.loginArea .loginArea__backGround .loginArea__errorModal {
+  transition: 0.8s;
+  position: absolute;
+  top: -12%;
+  background-color: #80E3C3;
+  color: #000;
+  width: 100%;
+  height: 12%;
+  display: flex;
+  border-radius: 1vh;
+  justify-content: center;
+  align-items: center;
 }
 .loginArea .loginArea__backGround .loginArea__frame {
   height: 50%;
@@ -1197,7 +1211,7 @@ a, button, select, input {
 .loginArea .loginArea__backGround .loginArea__frame input::placeholder {
   color: #D5DDE6;
 }
-.loginArea .loginArea__backGround .loginArea__frame input:hover {
+.loginArea .loginArea__backGround .loginArea__frame input:focus {
   outline: 0.2vh solid #14BD72;
 }
 .loginArea .loginArea__backGround .loginArea__frame button {

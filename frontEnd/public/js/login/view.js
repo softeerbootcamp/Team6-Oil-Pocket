@@ -1,3 +1,4 @@
+import { eventToLoginBtn } from "./event";
 import { getLoginTemplate } from "./template";
 
 const loginView = () => { 
@@ -5,6 +6,8 @@ const loginView = () => {
     $loginContainer.classList.add("loginArea");
     
     $loginContainer.innerHTML = getLoginTemplate();
+
+    eventToLoginBtn($loginContainer);
 
     return $loginContainer;
 }

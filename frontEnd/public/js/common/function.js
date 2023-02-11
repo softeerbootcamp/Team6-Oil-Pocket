@@ -28,8 +28,16 @@ const makeNodeArrayLighterSubsequently = (nodeArray, time) =>
     nodeArray.forEach((node, index) => 
         setTimeout(() => makeLighter(node), time * (index + 1)));
 
+const giveErrorStyle = ($target, styleKey, originalStyle, changeStyle, time) => {
+    changeCSS($target, styleKey, changeStyle);
+    setTimeout(() => {
+        changeCSS($target, styleKey, originalStyle);
+        $target.focus();
+    }, time);
+} 
+
 export { 
     addEvent, changeCSS, changeArrayCSS,
     replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
-    makeNodeArrayLighterSubsequently
+    makeNodeArrayLighterSubsequently, giveErrorStyle
 }

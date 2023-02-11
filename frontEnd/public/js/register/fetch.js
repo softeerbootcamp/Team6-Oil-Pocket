@@ -20,12 +20,12 @@ function fetchValidateID($IDInput, $IDValidateBtn, $registerBtn) {
 }
 
 function fetchRegisterID(requestBody) {
-    console.log(requestBody)
     fetch(REGISTER_URL, {
         method: METHOD.POST,
         headers: HEADER.POST,
         body: JSON.stringify(requestBody)
     }).then((res) => {
+        console.log(res)
         if(res.status === 201) {
             location.assign("/login");
         }
