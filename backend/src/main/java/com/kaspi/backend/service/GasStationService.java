@@ -3,6 +3,9 @@ package com.kaspi.backend.service;
 import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.dto.FindGasStationResDto;
+import com.kaspi.backend.util.response.code.ErrorCode;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -39,6 +42,14 @@ public class GasStationService {
                 .address(gasStation.getAddress())
                 .build());
 
+    }
+
+    public GasStation getGasStationByNo(Long gasStationNo) {
+        Optional<GasStation> findGasStation = gasStationDao.findById(gasStationNo);
+        if (findGasStation.isEmpty()) {
+            throw new NoSuchElementException(ErrorCode.GAS_STATION_NOT_FOUND.getMessage());
+        }
+        return findGasStation.get();
     }
 
     private String getLikeAddress(String roadNum, String buildNum) {
