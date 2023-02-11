@@ -47,7 +47,7 @@ public class GasStationService {
     public GasStation getGasStationByNo(Long gasStationNo) {
         Optional<GasStation> findGasStation = gasStationDao.findById(gasStationNo);
         if (findGasStation.isEmpty()) {
-            throw new NoSuchElementException(ErrorCode.GAS_STATION_NOT_FOUND.getMessage());
+            throw new NoSuchElementException(ErrorCode.SQL_NOT_FOUND.getMessage());
         }
         return findGasStation.get();
     }

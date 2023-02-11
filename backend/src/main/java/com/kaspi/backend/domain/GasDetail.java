@@ -1,6 +1,8 @@
 package com.kaspi.backend.domain;
 
 import com.kaspi.backend.enums.GasType;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,5 +51,11 @@ public class GasDetail {
 
     public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
         return new GasDetail(gasStation, Integer.valueOf(attribute[LPG]), GasType.LPG, date);
+    }
+
+    public static String getNowDateToStr() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String currentDate = sdf.format(new Date());
+        return currentDate;
     }
 }
