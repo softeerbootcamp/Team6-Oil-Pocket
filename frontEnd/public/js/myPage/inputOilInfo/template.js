@@ -17,7 +17,9 @@ const getInputOilInfoTemplate = () => `
                 </h1>
                 <div class="oilInfoArea__contentBody">
                     <div class="oilInfoArea__inputBox">
-                        <input type="text" placeholder="기름 종류">
+                        <div>
+                            <span>기름 종류</span>
+                        </div>
                         <input type="text" placeholder="주유금액">
                         <input type="text" placeholder="주유소">
                     </div>

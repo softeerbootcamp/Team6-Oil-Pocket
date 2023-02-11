@@ -1618,6 +1618,22 @@ a, button, select, input {
   height: 100%;
   padding: 0 1vw;
 }
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox div {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 4vh;
+  font-size: 1.5rem;
+  border-radius: 0.5vh;
+  background-color: #FAFAFB;
+  padding: 1vh 0.5vw;
+  font-weight: 600;
+  color: #D5DDE6;
+  cursor: pointer;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox div span {
+  text-align: center;
+}
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input {
   width: 90%;
   margin-bottom: 4vh;

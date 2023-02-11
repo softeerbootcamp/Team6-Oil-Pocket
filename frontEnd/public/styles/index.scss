@@ -1502,6 +1502,24 @@ a, button, select, input {
                     height: 100%;
                     padding: 0 1vw;
 
+                    & div {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 90%;
+                        margin-bottom: 4vh;
+                        font-size: 1.5rem;
+                        border-radius: 0.5vh;
+                        background-color: #FAFAFB;
+                        padding: 1vh 0.5vw;
+                        font-weight: 600;
+                        color: #D5DDE6;
+                        cursor: pointer;
+
+                        & span {
+                            text-align: center;
+                        }
+                    }
+
                     & input {
                         width: 90%;
                         margin-bottom: 4vh;
