@@ -14,25 +14,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 @RestController
 @RequestMapping("api/v1/gas-station")
 @RequiredArgsConstructor
 public class GasStationController {
     private final GasStationService gasStationService;
+
     @GetMapping("/{name}/{roadName}/{buildNum}/{brand}")
     public ResponseEntity<CommonResponseDto> getGasStationInfoNow(@PathVariable("name") String name,
-                                                          @PathVariable("roadName") String roadName,
-                                                          @PathVariable("buildNum") String buildNum,
-                                                          @PathVariable("brand") String brand) {
+                                                                  @PathVariable("roadName") String roadName,
+                                                                  @PathVariable("buildNum") String buildNum,
+                                                                  @PathVariable("brand") String brand) {
         GasStationDto gasStationDto = gasStationService.findGasStationDto(name, roadName, buildNum, brand);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
     }
-
-
-
 }
