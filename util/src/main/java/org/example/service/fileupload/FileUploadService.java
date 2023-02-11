@@ -1,11 +1,8 @@
-package org.example.service;
+package org.example.service.fileupload;
 
 import org.example.dao.GasDetailDao;
 import org.example.dao.GasStationDao;
 import org.example.domain.GasStation;
-import org.example.service.GasDetailCallback;
-import org.example.service.LpgDetailCallback;
-import org.example.service.NomalGasDetailCallback;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
