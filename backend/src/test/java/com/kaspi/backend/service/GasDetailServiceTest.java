@@ -8,8 +8,6 @@ import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
-import org.aspectj.lang.annotation.Before;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -41,6 +39,8 @@ class GasDetailServiceTest {
     LocalDate date;
     List<GasDetail> list;
     List<GasDetailDto> gasDetailDtoList;
+    GasStation gasStation;
+
 
     @BeforeEach
     void setUp() {
@@ -62,6 +62,7 @@ class GasDetailServiceTest {
         list.add(gasDetail4);
 
         gasDetailDtoList = GasDetailDto.newDtoList(list);
+        gasStation = new GasStation(1L, "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true);
     }
 
     @Test
@@ -70,9 +71,7 @@ class GasDetailServiceTest {
         //when
         when(gasDetailDao.findByStationNoAndDate(1L, date))
                 .thenReturn(Optional.of(list));
-        when(gasStationDao.findByAddressAndBrand("평창문화로 135", "현대오일뱅크"))
-                .thenReturn(Optional.of(new GasStation(1L, "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true)));
-        List<GasDetailDto> result = gasDetailService.findGasDetailList("평창문화로", "135", "현대오일뱅크");
+        List<GasDetailDto> result = gasDetailService.findGasDetailList(gasStation);
 
         //then
         SoftAssertions softly = new SoftAssertions();
@@ -83,29 +82,14 @@ class GasDetailServiceTest {
     }
 
     @Test
-    @DisplayName("findGasDetailList 주유소 not found 실패 테스트")
-    void findGasDetailListFailGasStation() {
-        when(gasStationDao.findByAddressAndBrand("안됨로 1", "브랜드"))
-                .thenReturn(Optional.empty());
-        when(gasStationDao.findByLikeAddressAndBrand("%안됨로%1", "브랜드"))
-                .thenReturn(Optional.empty());
-        SqlNotFoundException exception = assertThrows(SqlNotFoundException.class, () -> {
-            gasDetailService.findGasDetailList("안됨로", "1", "브랜드");
-        });
-        assertEquals(ErrorCode.NOT_FOUND_GAS_STATION.getMessage(), exception.getErrorMessage());
-    }
-
-    @Test
     @DisplayName("findGasDetailList 주유소 정보 not found 실패 테스트")
     void findGasDetailListFailGasDetail() {
-        when(gasStationDao.findByAddressAndBrand("평창문화로 135", "현대오일뱅크"))
-                .thenReturn(Optional.of(new GasStation(1L, "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true)));
         when(gasDetailDao.findByStationNoAndDate(1L, date))
                 .thenReturn(Optional.empty());
 
         SqlNotFoundException exception = assertThrows(SqlNotFoundException.class, () -> {
-            gasDetailService.findGasDetailList("평창문화로", "135", "현대오일뱅크");
+            gasDetailService.findGasDetailList(gasStation);
         });
-        assertEquals(ErrorCode.NOT_FOUND_GAS_DETAIL.getMessage(), exception.getErrorMessage());
+        assertEquals(ErrorCode.NOT_FOUND_GAS_DETAIL.getMessage(), exception.getErrorCode().getMessage());
     }
 }
