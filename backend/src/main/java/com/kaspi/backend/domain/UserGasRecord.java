@@ -20,14 +20,14 @@ public class UserGasRecord {
 
 
     @Id
-    private Long UserGasRecordNo;
+    private Long userGasRecordNo;
     @Column("user_no")
     private Long userNo;
     @Column("gas_station_no")
     private Long gasStationNo;
     private Date chargeDate;
     private Long refuelingPrice;
-    private Long savingAmount;
+    private Long savingPrice;
     private GasType recordGasType;
     private Long recordGasAmount;
 

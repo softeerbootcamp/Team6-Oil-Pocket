@@ -13,6 +13,4 @@ public class UserGasRecordReqDto {
     private GasType gasType;
     private Long refuelingPrice;
     private Long gasStationNo;
-
-    private Date chargeDate;
 }
