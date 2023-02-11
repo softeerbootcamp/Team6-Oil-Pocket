@@ -1100,6 +1100,21 @@ a, button, select, input {
     height: 100vh;
     width: 100vw;
 
+    & .registerArea__errorModal--register, .registerArea__errorModal--IDvalidation {
+        transition: 0.8s;
+        position: absolute;
+        top: -12%;
+        background-color: #80E3C3;
+        color: #000;
+        width: 20%;
+        left: 40%;
+        height: 12%;
+        display: flex;
+        border-radius: 1vh;
+        justify-content: center;
+        align-items: center;
+    }
+
     & .registerArea__backGround {
         background-color: #FCFCFE;
         height: 100%;

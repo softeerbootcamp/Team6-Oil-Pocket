@@ -3,8 +3,6 @@ import { BASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
 
 const fetchLoginID = ($IDInput, $PWInput) => {
     const $loginErrorModal = document.querySelector(".loginArea__errorModal");
-    console.log($loginErrorModal)
-
     fetch(BASE_COMMON_URL + "/auth", {
         method: METHOD.POST,
         headers: HEADER.POST, 
@@ -19,8 +17,10 @@ const fetchLoginID = ($IDInput, $PWInput) => {
         }
         else {
             changeCSS($loginErrorModal, "top", "12%");
-            setTimeout(() => changeCSS($loginErrorModal, "top", "-12%"), 1000);
-            $IDInput.focus();
+            setTimeout(() => {
+                changeCSS($loginErrorModal, "top", "-12%")
+                $IDInput.focus();
+            }, 1200);
         }
     })
 }

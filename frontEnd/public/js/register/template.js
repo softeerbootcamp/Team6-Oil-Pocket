@@ -1,5 +1,11 @@
 const getRegisterTemplate = () => `
     <section class="registerArea">
+        <div class="registerArea__errorModal--IDvalidation">
+            이미 존재하는 ID입니다.
+        </div>
+        <div class="registerArea__errorModal--register">
+            회원가입에 실패하였습니다.
+        </div>
         <section class="registerArea__backGround">
             <div class="registerArea__frame">
                 <h1><a href="/">Oil Pocket</a></h1>
