@@ -1,9 +1,9 @@
 package org.example.service.fileupload;
 
+import lombok.RequiredArgsConstructor;
 import org.example.dao.GasDetailDao;
 import org.example.dao.GasStationDao;
 import org.example.domain.GasStation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 @Service
+@RequiredArgsConstructor
 public class FileUploadService {
 
     public static final String PATH_PREFIX = "/Users/historyData/";
@@ -22,12 +23,6 @@ public class FileUploadService {
     private final Map<String, GasStation> gasStationInfos = new HashMap<>();
     private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
-    @Autowired
-    public FileUploadService(GasStationDao gasStationDao, GasDetailDao gasDetailDao) {
-        this.gasStationDao = gasStationDao;
-        this.gasDetailDao = gasDetailDao;
-    }
-    @PostConstruct
     public void fileOpen() {
         File oilFile = new File(PATH_PREFIX + OIL_FILE + PATH_SUFFIX);
         fileRead(oilFile, new NomalGasDetailCallback());
