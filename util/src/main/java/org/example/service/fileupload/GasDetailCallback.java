@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.service.fileupload;
 
 
 import org.example.domain.GasDetail;
