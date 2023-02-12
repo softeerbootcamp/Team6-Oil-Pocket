@@ -60,4 +60,22 @@ class GasDetailDaoTest {
         }
         softAssertions.assertAll();
     }
+
+    @Test
+    @DisplayName("현재 날짜 기준 해당 주유소의 1달 로그 반환 성공 테스트")
+    void findByStationAndOneMonth() {
+        //given
+        LocalDate date = LocalDate.of(2023, 2, 12);
+
+        Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand("평창문화로 135", "현대오일뱅크");
+        GasStation gasStation = optionalGasStation.get();
+        Optional<List<GasDetail>> optionalGasDetails = gasDetailDao.findByStationAndOneMonth(gasStation.getStationNo(), date);
+        List<GasDetail> gasDetails = optionalGasDetails.get();
+        SoftAssertions softAssertions = new SoftAssertions();
+        for (GasDetail gasDetail : gasDetails) {
+            softAssertions.assertThat(gasDetail.getStationNo()).isEqualTo(1);
+            softAssertions.assertThat(gasDetail.getDate()).isBetween(LocalDate.now().minusMonths(1), LocalDate.now());
+        }
+        softAssertions.assertAll();
+    }
 }

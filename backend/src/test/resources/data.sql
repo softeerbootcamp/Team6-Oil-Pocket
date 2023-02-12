@@ -58,7 +58,29 @@ CREATE TABLE user_gas_record (
 insert into gas_station(area, name, address, brand, is_self)
 values ("서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true);
 
-insert into gas_detail (station_no, gas_type, price, created_date) values (1, "PREMIUM_GASOLINE", 1899, now());
-insert into gas_detail (station_no, gas_type, price, created_date) values (1, "GASOLINE", 1659, now());
-insert into gas_detail (station_no, gas_type, price, created_date) values (1, "DIESEL", 1759, now());
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "PREMIUM_GASOLINE", 1899, now());
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "GASOLINE", 1659, now());
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "DIESEL", 1759, now());
 
+-- 한달 정보 조회를 위한 더미데이터
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "PREMIUM_GASOLINE", 1899, DATE_ADD(now(), interval -1 month));
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "GASOLINE", 1659, DATE_ADD(now(), interval -1 month));
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "DIESEL", 1759, DATE_ADD(now(), interval -1 month));
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "PREMIUM_GASOLINE", 1899, '2023-02-01');
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "GASOLINE", 1659, '2023-02-01');
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "DIESEL", 1759, '2023-02-01');
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "PREMIUM_GASOLINE", 1899, '2023-01-02');
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "GASOLINE", 1659, '2023-01-02');
+insert into gas_detail (station_no, gas_type, price, created_date)
+values (1, "DIESEL", 1759, '2023-01-02');
