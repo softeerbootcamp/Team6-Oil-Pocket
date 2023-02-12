@@ -1,11 +1,11 @@
 package com.kaspi.backend.service;
 
 import com.kaspi.backend.dao.GasStationDao;
-<<<<<<< HEAD
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.NoSuchElementException;
 import java.util.Optional;

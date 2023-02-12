@@ -96,7 +96,7 @@ class UserRecordServiceTest {
         Long userGasRefuelingPrice = 2400L;
         Long actualSavingAmount = userRecordService.calUserSavingAmount(userGasRefuelingPrice, userGasAmount,
                 nationalGasAvg);
-        Assertions.assertThat(0).isEqualTo(actualSavingAmount);
+        Assertions.assertThat(0L).isEqualTo(actualSavingAmount);
     }
 
     @Test
