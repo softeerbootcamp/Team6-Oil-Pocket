@@ -1,7 +1,15 @@
 package com.kaspi.backend.domain;
 
 import com.kaspi.backend.enums.GasType;
-import lombok.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -47,5 +55,11 @@ public class GasDetail {
 
     public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
         return new GasDetail(gasStation, Integer.valueOf(attribute[LPG]), GasType.LPG, date);
+    }
+
+    public static String getNowDateToStr() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String currentDateTime = LocalDateTime.now().format(formatter);
+        return currentDateTime;
     }
 }

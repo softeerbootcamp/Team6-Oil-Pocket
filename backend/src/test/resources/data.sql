@@ -1,6 +1,7 @@
 USE
 `oilpocket_db`;
 
+drop table if exists `user_gas_record`;
 drop table if exists `users`;
 drop table if exists `gas_detail`;
 drop table if exists `gas_station`;
@@ -15,6 +16,8 @@ CREATE TABLE users
     age      VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_no)
 );
+
+
 
 
 create table gas_station
@@ -36,6 +39,22 @@ create table gas_detail
     created_date date         not null,
     foreign key (station_no) references gas_station (station_no)
 );
+
+
+CREATE TABLE user_gas_record (
+  user_gas_record_no BIGINT NOT NULL AUTO_INCREMENT,
+  user_no BIGINT NOT NULL,
+  gas_station_no BIGINT NOT NULL,
+  charge_date DATE NOT NULL,
+  refueling_price BIGINT NOT NULL,
+  saving_price BIGINT NOT NULL,
+  record_gas_type varchar(255) NOT NULL,
+  record_gas_amount BIGINT NOT NULL,
+  PRIMARY KEY (user_gas_record_no),
+  FOREIGN KEY (user_no) REFERENCES users(user_no),
+  FOREIGN KEY (gas_station_no) REFERENCES gas_station(station_no)
+);
+
 insert into gas_station(area, name, address, brand, is_self)
 values ("서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true);
 
