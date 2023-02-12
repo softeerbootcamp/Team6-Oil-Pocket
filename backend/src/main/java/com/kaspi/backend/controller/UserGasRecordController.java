@@ -21,13 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v2")
 @RequiredArgsConstructor
 @Slf4j
-public class UserRecordController {
-    @Autowired
-    GasStationDao gasStationDao;
-    @Autowired
-    HttpSessionService httpSessionService;
-    @Autowired
-    GasDetailDao gasDetailDao;
+public class UserGasRecordController {
     private final GasStationService gasStationService;
     private final UserRecordService userRecordService;
     private final OpinetService opinetService;
@@ -61,7 +55,6 @@ public class UserRecordController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(CommonResponseDto.toResponse(DefaultCode.SAVE_USER_GAS_RECORD));
     }
-
 
 
 }
