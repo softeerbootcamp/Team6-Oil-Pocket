@@ -39,11 +39,27 @@ const giveErrorStyle = ($target, styleKey, originalStyle, changeStyle, time) => 
         changeCSS($target, styleKey, originalStyle);
         $target.focus();
     }, time);
-} 
+}
+
+const parseNumberToMoneyString = (number) => {
+    let parsedString = "";
+    let numberToString = String(number);
+
+    for(let index=numberToString.length-1, j=0;index>=0;index--, j += 1) {
+        if(j && j % 3 == 0) {
+            parsedString += ",";
+        }
+        parsedString += numberToString[index];
+    }
+
+    parsedString = parsedString.split("").reverse().join("");
+
+    return `${parsedString} 원`;
+}
 
 export { 
     addEvent, changeCSS, changeArrayCSS,
     toggleArrayClass,
     replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
-    makeNodeArrayLighterSubsequently, giveErrorStyle
+    makeNodeArrayLighterSubsequently, giveErrorStyle, parseNumberToMoneyString
 }

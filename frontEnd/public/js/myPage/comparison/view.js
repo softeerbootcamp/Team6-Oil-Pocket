@@ -1,4 +1,5 @@
 import { navBarView } from "../../navbar/view.js";
+import { makeComparisonCards } from "./helperFunction.js";
 import { getComparisonTemplate } from "./template.js";
 
 const comparisonView = () => {
@@ -10,6 +11,11 @@ const comparisonView = () => {
 
     $comparionContainer.appendChild(navBarView());
     $comparionContainer.appendChild($comparionContent);
+
+    let myPrice = 330_000;
+    let commonPrice = 329_000;
+
+    makeComparisonCards($comparionContent, myPrice, commonPrice);
 
     return $comparionContainer;
 }

@@ -1,4 +1,4 @@
-import { changeCSS } from "../../common/function";
+import { changeCSS, parseNumberToMoneyString } from "../../common/function";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 const OIL_UPPER_PRICE = 200_000;
@@ -11,8 +11,8 @@ const makeChart = ($container, userOilArray, commonOilArray) => {
         const $userPriceText = $userPrice.querySelector("span");
         const $averageText = $averagePrice.querySelector("span");
 
-        $userPriceText.innerHTML = `${userOilArray[index]}`;
-        $averageText.innerHTML = `${commonOilArray[index]}`;
+        $userPriceText.innerHTML = parseNumberToMoneyString(userOilArray[index]);
+        $averageText.innerHTML = parseNumberToMoneyString(commonOilArray[index]);
 
         let userPercent = userOilArray[index] / OIL_UPPER_PRICE;
         let averagePercent = commonOilArray[index] / OIL_UPPER_PRICE;
