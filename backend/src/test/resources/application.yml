@@ -12,4 +12,5 @@ spring:
   redis:
     host: localhost
     port: 6379
+    
 #    추후 redis embedded redis로 변경
