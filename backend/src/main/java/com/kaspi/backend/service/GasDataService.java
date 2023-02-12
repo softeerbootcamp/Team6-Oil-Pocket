@@ -56,7 +56,7 @@ public class GasDataService {
                 List<GasDetail> gasDetails = callback.makeGasDetailAndSaveToDB(gasStation, gasDetailDao, attribute, date);
                 if (cacheMap.containsKey(key)) {
                     GasStationDto gasStationDto = cacheMap.get(key);
-                    gasStationDto.addGasDetailList(GasDetailDto.newDtoList(gasDetails));
+                    gasStationDto.addGasDetailDtoList(GasDetailDto.newDtoList(gasDetails));
                     continue;
                 }
                 cacheMap.put(key, GasStationDto.newInstance(gasStationInfos.get(key), GasDetailDto.newDtoList(gasDetails)));

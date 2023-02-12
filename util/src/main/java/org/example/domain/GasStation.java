@@ -1,8 +1,13 @@
 package org.example.domain;
 
+import lombok.Getter;
 import org.example.enums.AttributeIndex;
+import org.example.enums.SchedulerIndex;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
+@Getter
+@Table("gas_station")
 public class GasStation {
     @Id
     private Long stationNo;
@@ -21,64 +26,20 @@ public class GasStation {
         this.self = self;
     }
 
-    public long getStationNo() {
-        return stationNo;
-    }
-
-    public void setStationNo(long stationNo) {
-        this.stationNo = stationNo;
-    }
-
-    public boolean isSelf() {
-        return self;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public boolean getIsSelf() {
-        return self;
-    }
-
-    public void setSelf(boolean self) {
-        this.self = self;
-    }
-
     public static GasStation parseGasStation(String[] attribute) {
         return new GasStation(attribute[AttributeIndex.AREA.getIndex()],
                 attribute[AttributeIndex.NAME.getIndex()],
                 attribute[AttributeIndex.ADDRESS.getIndex()],
                 attribute[AttributeIndex.BRAND.getIndex()],
                 isSelf(attribute[AttributeIndex.SELF.getIndex()]));
+    }
+
+    public static GasStation parseNowGasStation(String[] attribute) {
+        return new GasStation(attribute[SchedulerIndex.AREA.getIndex()],
+                attribute[SchedulerIndex.NAME.getIndex()],
+                attribute[SchedulerIndex.ADDRESS.getIndex()],
+                attribute[SchedulerIndex.BRAND.getIndex()],
+                isSelf(attribute[SchedulerIndex.SELF.getIndex()]));
     }
 
     private static boolean isSelf(String attribute) {
