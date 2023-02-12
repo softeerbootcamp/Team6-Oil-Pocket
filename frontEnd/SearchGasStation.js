@@ -7,6 +7,7 @@ let searchOption = 1;
 var map, marker;
 var markerArr = [];
 var innerHtml = ""; 
+var responseStorage = [];
 
 
 const SortByHH = document.getElementById("sort_HH");
@@ -38,7 +39,10 @@ function sortLlPrice() {
     $("#sort_HH").css("opacity", "0.5");
 }
 
-navigator.geolocation.getCurrentPosition(initTmap);
+// let latitide = localStorage.getItem("latitude");
+// let longitude = localStorage
+
+initTmap();
 
 const MainFrame = document.querySelector(".main__ForMap");
 
@@ -46,10 +50,15 @@ const SideBarButton = MainFrame.querySelector(".main__SearchBarHideButton");
 
 SideBarButton.addEventListener('click', (e) => MoveSideBar(e));
 
+document.getElementsByClassName("main__GSTdetailCloseButton")[0].addEventListener('click', closeDetailTab);
 
+function closeDetailTab() {
+    const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
+    GSTDetailTab[0].style.marginLeft = "-22vw";
+}
 
 function MoveSideBar(e){
-    const HideSideBar = document.getElementsByClassName("main__SideSearchBar");
+    const HideSideBar = document.getElementsByClassName("main__SearchBarnDetailTab");
     const HideSideBarButton = e.target.closest(".main__SearchBarHideButton");
     if(SideBarDisplay){
         HideSideBar[0].style.marginLeft = "-22vw";
@@ -115,9 +124,9 @@ function SelectSearchOption2(e) {
 
 
 
-function initTmap(position) {
-	map = new Tmapv2.Map("map_div", {
-		center : new Tmapv2.LatLng(position.coords.latitude, position.coords.longitude),
+function initTmap(latitide, longitude) {
+	map = new Tmapv3.Map("map_div", {
+		center : new Tmapv3.LatLng(37.56656541,126.98452047),
 		width : "100vw",
 		height : "82vh",
 		zoom : 17,
@@ -125,12 +134,20 @@ function initTmap(position) {
 		scrollwheel : true
 	});
 
+    map.on("ConfigLoad", function() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            FindAddressofSearchCoords(position.coords.longitude, position.coords.latitude);
+        });
+    });
+
     const SearchButton = document.getElementById("main__btn_select");
-    FindAddressofSearchCoords(position.coords.longitude,position.coords.latitude);
+    //FindAddressofSearchCoords(position.coords.longitude,position.coords.latitude);
     SearchButton.addEventListener('click', SearchNearGasStation);
 }
 
 function FindAddressofSearchCoords(lon, lat) {
+    var mapCenterPosition = new Tmapv3.LatLng(lat, lon);
+    map.setCenter(mapCenterPosition);
     $.ajax({
         method : "GET",
         url : "https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result&appKey=l7xx7250af6176574c63a12302edf09d020c",
@@ -173,9 +190,10 @@ function FindAddressofSearchCoords(lon, lat) {
             }
 
             var result = "<div>" + newRoadAddr + "</div>";
-            $(".main__CurrentLocationAddress").html(result);
+            const curAddr = document.getElementsByClassName("main__CurrentLocationAddress");
+            curAddr[0].innerHTML = result;
         },
-        error : function(request, status, error) {
+        error : function(request, error) {
             console.log("code:" + request.status + "\n"
                     + "message:" + request.responseText + "\n"
                     + "error:" + error);
@@ -188,52 +206,57 @@ function SelectStIdLogo(stId, name){
     return `
         <div class='main__ResultList'> 
             <div class='main__ResultList__Title'>
-        <img class='main__ResultList__Title_Logo' src = 'img/GasStation_Image/${stId}.png'>
-            <span>${name}</span>
-        </div>
+                <img class='main__ResultList__Title_Logo' src = 'img/GasStation_Image/${stId}.png'>
+                <span>${name}</span>
+            </div>
     `;
 }
 
 function ShowResult(ResultArray, positionBounds){
+    responseStorage = ResultArray;
     for(var k in ResultArray){
+        console.log(ResultArray);
         var noorLat = Number(ResultArray[k].noorLat);
         var noorLon = Number(ResultArray[k].noorLon);
 
         innerHtml += SelectStIdLogo(ResultArray[k].stId, ResultArray[k].name);
-        var pointCng = new Tmapv2.Point(noorLon, noorLat);
-        var projectionCng = new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(pointCng);
+        var pointCng = new Tmapv3.Point(noorLon, noorLat);
+        var projectionCng = new Tmapv3.Projection.convertEPSG3857ToWGS84GEO(pointCng);
         
         var lat = projectionCng._lat;
         var lon = projectionCng._lng;
 
-        var markerPosition = new Tmapv2.LatLng(lat, lon);
+        var markerPosition = new Tmapv3.LatLng(lat, lon);
 
-        marker = new Tmapv2.Marker({
+        marker = new Tmapv3.Marker({
             position : markerPosition,
             icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" + k + ".png",
-            iconSize : new Tmapv2.Size(24, 38),
+            iconSize : new Tmapv3.Size(24, 38),
             title : ResultArray[k].name,
             map:map
         });
 
-        if(ResultArray[k].hhPrice==0 || ResultArray[k].ggPrice==0){
+        if(ResultArray[k].hhPrice==0 && ResultArray[k].ggPrice==0 && ResultArray[k].llPrice==0){
             innerHtml += "<div class='main__ResultList__Contents'>"
                         + "유가 정보가 등록되지 않았습니다. </div> </div>";
         }
-
-        else {
-            innerHtml += "<div class='main__ResultList__Contents'> 휘발유: " + "<span>" + ResultArray[k].hhPrice + "</span>"
-                     + "&nbsp;&nbsp;경유: " + "<span>" + ResultArray[k].ggPrice + "</span>"
-                     + "&nbsp;&nbsp;LPG: <span>" + ResultArray[k].llPrice + " </span></div> </div>";
+        
+        else if(ResultArray[k].llPrice != 0){
+            innerHtml += "<div class='main__ResultList__Contents'>"
+                     + "LPG: <span>" + ResultArray[k].llPrice + " </span></div></div>";
         }
-
+        else {
+            innerHtml += "<div class='main__ResultList__Contents'> 휘발유: <span>" + ResultArray[k].hhPrice + "</span>"
+                     + "&nbsp;&nbsp;경유: " + "<span>" + ResultArray[k].ggPrice + "</span>"
+                     + "&nbsp;&nbsp;LPG: <span>" + ResultArray[k].llPrice + " </span></div></div>";
+        }
         markerArr.push(marker);
-        positionBounds.extend(markerPosition);	
+        positionBounds.extend(markerPosition);
     }
-    $(".main__SearchResult").html(innerHtml);	
-    map.panToBounds(positionBounds);	
-    map.zoomOut();
-
+    const resultArea = document.querySelector(".main__SearchResult");
+    resultArea.innerHTML = innerHtml;
+    addEventToResult(ResultArray);
+    map.fitBounds(positionBounds);	
 }
 
 
@@ -242,32 +265,32 @@ function SearchNearGasStation(){
         method:"GET", // 요청 방식
         url:"https://apis.openapi.sk.com/tmap/pois/search/around?version=1&format=json&callback=result", 
         data:{
-            "categories" : "주유소",
+            "categories" : "가스충전소",
             "resCoordType" : "EPSG3857",
             "searchType" : "name",
             "searchtypCd" : "A",
-            "radius" : 2,
+            "radius" : 0,
             "reqCoordType" : "WGS84GEO",
             "centerLon" : map.getCenter()._lng,
             "centerLat" : map.getCenter()._lat,
             "appKey" : "l7xx7250af6176574c63a12302edf09d020c",
             "count" : 10
         },
-        success:function(response){
+        success:function(response) {
             FindAddressofSearchCoords(map.getCenter()._lng,map.getCenter()._lat);
 
             if(response==null){
                 const NoResult = "검색 결과가 존재하지 않습니다.";
-                $("#searchResult").html(NoResult);
+                document.getElementById("searchResult").innerHTML = NoResult;
             }
             else {
                 var resultpoisData = response.searchPoiInfo.pois.poi;
-                var positionBounds = new Tmapv2.LatLngBounds();
+                var positionBounds = new Tmapv3.LatLngBounds();
                 ResetMarkerArray();
                 ShowResultByOption(searchOption, resultpoisData, positionBounds);
             }
         },
-        error:function(request,status,error){
+        error:function(request, error){
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
@@ -303,4 +326,26 @@ function ShowResultByOption(option, resultpoisData, positionBounds){
         })
         ShowResult(LLsort, positionBounds);
     }
+}
+
+function addEventToResult(ResultArray){
+    const GSTArray = document.getElementsByClassName("main__ResultList__Title");
+    for(var k=0;k<GSTArray.length;k++) {
+        GSTArray[k].addEventListener('click', (e) => {
+            ShowGSTDetail(e, ResultArray);
+        });
+    }
+}
+
+function ShowGSTDetail(event, ResultArray){
+    // console.log(ResultArray);
+    // console.log(event.target.innerHTML);
+
+    console.log("결과 제목 클릭 이벤트 발생!!");
+    const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
+    GSTDetailTab[0].style.marginLeft = "0vw";
+
+    //query 문 작성
+
+
 }

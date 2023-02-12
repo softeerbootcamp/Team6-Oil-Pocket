@@ -784,8 +784,15 @@ a {
   margin-top: auto;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
-.main .main__ForMap .main__SideSearchBar {
+.main .main__ForMap .main__SearchBarnDetailTab {
+  display: flex;
+  flex-direction: row;
+  transition: 0.4s;
+  transition-timing-function: linear;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar {
   z-index: 3;
   display: flex;
   flex-direction: row;
@@ -798,13 +805,13 @@ a {
   border-radius: 0 5px 5px 0;
   box-sizing: border-box;
 }
-.main .main__ForMap .main__SideSearchBar .main__SearchOption {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption {
   width: 2vw;
   display: flex;
   flex-direction: column;
   background-color: transparent;
 }
-.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation {
   display: flex;
   margin-top: 3vh;
   height: 5vh;
@@ -815,11 +822,11 @@ a {
   align-items: center;
   justify-content: center;
 }
-.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation #Option1 {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation #Option1 {
   transition: 0.5s;
   transition-timing-function: linear;
 }
-.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromRoute {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute {
   display: flex;
   width: 1.3vw;
   height: 4.6vh;
@@ -830,17 +837,17 @@ a {
   align-items: center;
   justify-content: center;
 }
-.main .main__ForMap .main__SideSearchBar .main__SearchOption .main__SearchFromRoute #Option2 {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute #Option2 {
   transition: 0.5s;
   transition-timing-function: linear;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar {
   width: 19vw;
   display: flex;
   flex-direction: column;
   font-size: 14px;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocation {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocation {
   width: 6vw;
   height: 3vh;
   margin-left: 2vw;
@@ -852,7 +859,7 @@ a {
   border-radius: 20px;
   line-height: 3vh;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocationAddress {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocationAddress {
   background-color: white;
   border: 2px solid #14BD7E;
   border-radius: 5px;
@@ -863,14 +870,14 @@ a {
   font-size: 13px;
   padding-top: 3px;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup {
   background-color: white;
   width: 15vw;
   height: 3vh;
   margin-left: 2vw;
   margin-top: 2vh;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_HH {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_HH {
   box-sizing: border-box;
   width: 4.5vw;
   height: 3vh;
@@ -880,7 +887,7 @@ a {
   background-color: rgba(20, 189, 114, 0.5);
   opacity: 1;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_GG {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_GG {
   box-sizing: border-box;
   width: 4.5vw;
   height: 3vh;
@@ -890,7 +897,7 @@ a {
   background-color: rgba(20, 189, 114, 0.5);
   opacity: 0.5;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_LL {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchOptionButtonGroup #sort_LL {
   box-sizing: border-box;
   width: 4.5vw;
   height: 3vh;
@@ -900,7 +907,7 @@ a {
   background-color: rgba(20, 189, 114, 0.5);
   opacity: 0.5;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult {
   display: flex;
   flex-direction: column;
   box-sizing: content-box;
@@ -915,14 +922,14 @@ a {
   overflow-x: hidden;
   overflow-y: scroll;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar {
   width: 0.5vw;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar-thumb {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult::-webkit-scrollbar-thumb {
   border-radius: 0.2vh 0 0 0.2vh;
   background-color: #12BD7E;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList {
   display: inherit;
   justify-content: center;
   flex-direction: column;
@@ -931,7 +938,7 @@ a {
   margin-bottom: 20px;
   padding: 0.5vh 0;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title {
   transition: 0.1s;
   padding: 0 1vw;
   display: flex;
@@ -944,30 +951,23 @@ a {
   font-weight: bold;
   padding-bottom: 10px;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a img {
-  flex-grow: 1;
-  width: 2%;
-  height: 2%;
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title img {
+  width: 10px;
+  height: 10px;
   margin-right: 0.25vw;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a span {
-  flex-grow: 2;
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title span {
   margin-left: 0.25vw;
   font-size: 1rem;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:visited {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title:visited {
   color: #000;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title a:hover {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Title:hover {
   cursor: pointer;
   color: blue;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents {
   padding: 0.1vh 0;
   width: 15vw;
   height: 2vh;
@@ -976,30 +976,182 @@ a {
   line-height: 20px;
   padding-left: 10px;
 }
-.main .main__ForMap .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents span {
+.main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__SearchResult .main__ResultList .main__ResultList__Contents span {
   color: #000;
   font-weight: 700;
 }
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  transition: 0.4s;
+  transition-timing-function: linear;
+  width: 22vw;
+  height: 82vh;
+  background-color: lightgrey;
+  border: 2px solid green;
+  border-radius: 0 5px 5px 0;
+  box-sizing: border-box;
+  margin-left: -22vw;
+  align-items: center;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetailCloseButton {
+  display: flex;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  color: white;
+  margin-left: auto;
+  align-items: center;
+  background-color: transparent;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetailCloseButton:hover {
+  color: rgb(90, 193, 227);
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  height: 70vh;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Title {
+  display: flex;
+  justify-content: center;
+  width: 22vw;
+  height: 3vh;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background-color: white;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Title img {
+  width: 30px;
+  height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents {
+  display: flex;
+  flex-direction: column;
+  width: 22vw;
+  font-size: 20px;
+  font-weight: 400;
+  align-items: center;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Oilprice {
+  display: flex;
+  width: 17vw;
+  height: 3vh;
+  justify-content: center;
+  color: #12BD7E;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 3vh;
+  margin-bottom: 20px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 1px;
+  margin-bottom: 10px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Address {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgrey;
+  line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Time {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgrey;
+  line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Phone {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  border-bottom: 1px solid lightgrey;
+  line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Url {
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 1px solid lightgrey;
+  line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__TableHead {
+  display: flex;
+  flex-direction: row;
+  background-color: lightgrey;
+  font-size: 20px;
+  font-weight: 500;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__TableHead .main__GSTdetail__Contents__OilPriceTable__TableHead_Oil {
+  font-size: 15px;
+  width: 20%;
+  justify-content: flex-start;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__TableHead .main__GSTdetail__Contents__OilPriceTable__TableHead_Price {
+  font-size: 15px;
+  width: 80%;
+  justify-content: flex-start;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__Contents {
+  display: flex;
+  flex-direction: column;
+  font-size: 19px;
+  font-weight: 400;
+  border: 1px solid lightgrey;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__Contents .main__GSTdetail__Contents__OilPriceTable__Contents__Row {
+  display: flex;
+  flex-direction: row;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__Contents .main__GSTdetail__Contents__OilPriceTable__Contents__Row .main__GSTdetail__Contents__OilPriceTable__Contents__Oil {
+  border: 1px solid lightgrey;
+  width: 20%;
+  font-size: 15px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable .main__GSTdetail__Contents__OilPriceTable__Contents .main__GSTdetail__Contents__OilPriceTable__Contents__Row .main__GSTdetail__Contents__OilPriceTable__Contents__Price {
+  border: 1px solid lightgrey;
+  width: 80%;
+  font-size: 15px;
+}
 .main .main__ForMap .main__SearchBarHideButton {
   display: flex;
-  z-index: 3;
+  z-index: 2;
   border: 3px solid lightgreen;
   border-radius: 0 5px 5px 0;
   border-left: none;
   width: 20px;
   height: 40px;
-  margin-top: 20vh;
   margin-right: auto;
   background-color: #14bd72;
   align-items: center;
   justify-content: center;
 }
 .main .main__ForMap .main__MapDiv {
-  z-index: 2;
   position: absolute;
   background-color: #14BD7E;
   width: 100vw;
   height: 82vh;
+}
+.main .main__ForMap .main__MapDiv div {
+  width: 100%;
+}
+.main .main__ForMap .main__MapDiv div canvas {
+  width: 100%;
 }
 .main .main__ForMap #main__btn_select {
   z-index: 5;
