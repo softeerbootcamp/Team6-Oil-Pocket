@@ -988,10 +988,11 @@ a {
   transition-timing-function: linear;
   width: 22vw;
   height: 82vh;
-  background-color: lightgrey;
   border: 2px solid green;
+  border-left: 0;
   border-radius: 0 5px 5px 0;
   box-sizing: border-box;
+  background-color: white;
   margin-left: -22vw;
   align-items: center;
 }
@@ -1001,7 +1002,7 @@ a {
   width: 40px;
   height: 40px;
   font-size: 30px;
-  color: white;
+  color: grey;
   margin-left: auto;
   align-items: center;
   background-color: transparent;
@@ -1058,31 +1059,48 @@ a {
   margin-bottom: 10px;
 }
 .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Address {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 10px;
   margin-bottom: 5px;
   border-bottom: 1px solid lightgrey;
   line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Address img {
+  width: 15px;
+  height: 15px;
 }
 .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Time {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 350;
   margin-bottom: 5px;
   border-bottom: 1px solid lightgrey;
   line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Time img {
+  width: 15px;
+  height: 15px;
 }
 .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Phone {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 350;
   margin-bottom: 5px;
   border-bottom: 1px solid lightgrey;
   line-height: 30px;
 }
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Phone img {
+  width: 15px;
+  height: 15px;
+}
 .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Url {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 350;
   border-bottom: 1px solid lightgrey;
   line-height: 30px;
+}
+.main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Url img {
+  width: 15px;
+  height: 15px;
 }
 .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable {
   width: 100%;

@@ -1,8 +1,7 @@
 let SideBarDisplay = true;
+let DetailTabDisplay = false;
 let isOption1 = true;
 let isOption2 = false;
-let myPosition_lat;
-let myPosition_lng;
 let searchOption = 1;
 var map, marker;
 var markerArr = [];
@@ -55,15 +54,24 @@ document.getElementsByClassName("main__GSTdetailCloseButton")[0].addEventListene
 function closeDetailTab() {
     const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
     GSTDetailTab[0].style.marginLeft = "-22vw";
+    const SideSearchBar = document.getElementsByClassName("main__SideSearchBar");
+    SideSearchBar[0].style.borderRadius = "0 5px 5px 0";
+    DetailTabDisplay = false;
 }
 
 function MoveSideBar(e){
     const HideSideBar = document.getElementsByClassName("main__SearchBarnDetailTab");
     const HideSideBarButton = e.target.closest(".main__SearchBarHideButton");
     if(SideBarDisplay){
-        HideSideBar[0].style.marginLeft = "-22vw";
+        if(DetailTabDisplay){
+            HideSideBar[0].style.marginLeft = "-44vw";
+        }
+        else {
+            HideSideBar[0].style.marginLeft = "-22vw";
+        }
         SideBarDisplay = false;
         HideSideBarButton.innerHTML = "<img src='img/🦆 icon _chevron right_.svg'>";
+        
     }
     else {
         HideSideBar[0].style.marginLeft = "0vw";
@@ -344,7 +352,9 @@ function ShowGSTDetail(event, ResultArray){
     console.log("결과 제목 클릭 이벤트 발생!!");
     const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
     GSTDetailTab[0].style.marginLeft = "0vw";
-
+    const SideSearchBar = document.getElementsByClassName("main__SideSearchBar");
+    SideSearchBar[0].style.borderRadius = "0";
+    DetailTabDisplay = true;
     //query 문 작성
 
 
