@@ -35,8 +35,7 @@ public class UserRecordService {
     public Long calTodayUserGasAmount(UserGasRecordReqDto userGasRecordReqDto, GasStation gasStation) {
         Optional<Long> todayGasPrice = gasDetailDao.findTodayGasPrice(gasStation.getStationNo(),
                 userGasRecordReqDto.getGasType().name(),
-                "2023-02-11");
-//                GasDetail.getNowDateToStr());//오늘 날짜로 계산
+                GasDetail.getNowDateToStr());//오늘 날짜로 계산
         if (todayGasPrice.isEmpty()) {
             log.error("DB에 오늘날짜에 해당되는 주유 가격 정보가 존재하지 않음 가스타입:{}, 주유소PK:{}",userGasRecordReqDto.getGasType().name(),gasStation.getStationNo());
             throw new NoSuchElementException(ErrorCode.SQL_NOT_FOUND.getMessage());
