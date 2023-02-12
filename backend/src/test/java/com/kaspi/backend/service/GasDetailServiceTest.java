@@ -78,6 +78,7 @@ class GasDetailServiceTest {
         softly.assertThat(result.get(0)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(0));
         softly.assertThat(result.get(1)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(1));
         softly.assertThat(result.get(2)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(2));
+        softly.assertThat(result.get(3)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(3));
         softly.assertAll();
     }
 
@@ -91,5 +92,22 @@ class GasDetailServiceTest {
             gasDetailService.findGasDetailList(gasStation);
         });
         assertEquals(ErrorCode.NOT_FOUND_GAS_DETAIL.getMessage(), exception.getErrorCode().getMessage());
+    }
+    @Test
+    @DisplayName("findOneMonthGasDetailList 주유소 1달 정보 성공 테스트")
+    void findOneMonthGasDetailList() {
+        //when
+        when(gasDetailDao.findByStationNoAndDate(1L, date))
+                .thenReturn(Optional.of(list));
+        List<GasDetailDto> result = gasDetailService.findGasDetailList(gasStation);
+
+        //then
+        // 1달 정보에서는 빈 유종을 default 0으로 채워주지 않습니다.
+        // 즉 존재하는 유종 정보만 전달합니다.
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(result.get(0)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(0));
+        softly.assertThat(result.get(1)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(1));
+        softly.assertThat(result.get(2)).usingRecursiveComparison().isEqualTo(gasDetailDtoList.get(2));
+        softly.assertAll();
     }
 }
