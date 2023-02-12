@@ -1823,8 +1823,8 @@ a, button, select, input {
   transition: 0.5s;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareMyBox:hover {
-  margin-top: -0.5vh;
-  margin-bottom: 0.5vh;
+  margin-top: -2vh;
+  margin-bottom: 2vh;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareMyBox h1, .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareMyBox h3 {
   font-weight: 500;
@@ -1836,8 +1836,9 @@ a, button, select, input {
   font-size: 1.2rem;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareMyBox h3 span {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
+  color: #14BD72;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareCommonBox {
   width: 30%;
@@ -1861,12 +1862,13 @@ a, button, select, input {
   font-size: 1.2rem;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareCommonBox h3 span {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
+  color: #14BD72;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareCommonBox:hover {
-  margin-top: -0.5vh;
-  margin-bottom: 0.5vh;
+  margin-top: -2vh;
+  margin-bottom: 2vh;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox {
   width: 30%;
@@ -1881,8 +1883,8 @@ a, button, select, input {
   transition: 0.5s;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox:hover {
-  margin-top: -0.5vh;
-  margin-bottom: 0.5vh;
+  margin-top: -2vh;
+  margin-bottom: 2vh;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox img {
   width: 90%;

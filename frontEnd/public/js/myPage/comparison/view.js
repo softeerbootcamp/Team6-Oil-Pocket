@@ -12,8 +12,8 @@ const comparisonView = () => {
     $comparionContainer.appendChild(navBarView());
     $comparionContainer.appendChild($comparionContent);
 
-    let myPrice = 330_000;
-    let commonPrice = 329_000;
+    let myPrice = 310_000;
+    let commonPrice = 330_000;
 
     makeComparisonCards($comparionContent, myPrice, commonPrice);
 
