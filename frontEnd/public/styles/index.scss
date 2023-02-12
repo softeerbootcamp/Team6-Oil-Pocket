@@ -1634,6 +1634,29 @@ a, button, select, input {
                             }
                         }
                     }
+
+                    & .oilInfoArea__oilSearchInfoText {
+                        width: 93%;
+                        text-align: right;
+                        height: 10%;
+                        margin-bottom: 2vh;
+                        border-radius: 0.5vh;
+                        color: #14BD7E;
+                        font-weight: 600;
+
+                        & span {
+                            font-size: 0.9rem;
+                            padding: 1vh 0.5vw;
+                            border-bottom: 0.2vh solid #14BD7E;
+                        }
+
+                        & strong {
+                            font-size: 1rem;
+                            padding: 1vh 0.5vw;
+                            color: #000;
+                            border-bottom: 0.2vh solid #000;
+                        }
+                    }
                 }
 
                 & .oilInfoArea__effectBox {

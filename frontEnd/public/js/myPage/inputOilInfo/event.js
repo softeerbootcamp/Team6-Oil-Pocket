@@ -69,7 +69,6 @@ const eventToOilSearchInput = ($container) => {
             else {
                 debounceTimer = setTimeout(() => {
                     // 검색 관련 통신 함수
-                    console.log("hi");
                     $oilSearchValues.forEach(($oilSearchValue, index) => {
                         changeCSS($oilSearchValue, "top", `${(index + 1) * 150}%`);
                         changeCSS($oilSearchValue, "borderBottom", "0.2vh solid black");
@@ -78,6 +77,11 @@ const eventToOilSearchInput = ($container) => {
             }
         }
     ], "input")
+
+    addEvent($oilSearchInput, [
+        () => changeArrayCSS($oilSearchValues, "top", "0"),
+        () => changeArrayCSS($oilSearchValues, "borderBottom", "none")
+    ], "focusout");
 }
 
 export { eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput }

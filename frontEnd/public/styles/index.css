@@ -1741,6 +1741,26 @@ a, button, select, input {
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__searchInput:focus {
   outline: none;
 }
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__oilSearchInfoText {
+  width: 93%;
+  text-align: right;
+  height: 10%;
+  margin-bottom: 2vh;
+  border-radius: 0.5vh;
+  color: #14BD7E;
+  font-weight: 600;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__oilSearchInfoText span {
+  font-size: 0.9rem;
+  padding: 1vh 0.5vw;
+  border-bottom: 0.2vh solid #14BD7E;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__oilSearchInfoText strong {
+  font-size: 1rem;
+  padding: 1vh 0.5vw;
+  color: #000;
+  border-bottom: 0.2vh solid #000;
+}
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__effectBox {
   width: 50%;
   height: 100%;
