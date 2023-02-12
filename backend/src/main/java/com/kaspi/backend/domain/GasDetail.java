@@ -4,6 +4,7 @@ import com.kaspi.backend.enums.GasType;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Table("gas_detail")
 public class GasDetail {
     private static final int ADDRESS = 4;

@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,20 +25,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GasStationController {
     private final GasStationService gasStationService;
-    @GetMapping
-    public ResponseEntity<GasStationDto> getGasInfos() {
-        GasDetailDto gasDetailDto = new GasDetailDto(GasType.GASOLINE, 2000, LocalDate.now());
-        List<GasDetailDto> list = new ArrayList<>();
-        list.add(gasDetailDto);
-        GasStationDto gasStationDto = new GasStationDto( "서울 종로구", "㈜지에스이앤알 평창주유소",
-                "서울 종로구 평창문화로 135 (평창동)", "현대오일뱅크", true, list);
-        return new ResponseEntity<>(gasStationDto, HttpStatus.OK);
+
+
+    @GetMapping("/v1/gas-station/{name}/{roadName}/{buildNum}/{brand}")
+    public ResponseEntity<CommonResponseDto> getGasStationInfoNow(@PathVariable("name") String name,
+                                                                  @PathVariable("roadName") String roadName,
+                                                                  @PathVariable("buildNum") String buildNum,
+                                                                  @PathVariable("brand") String brand) {
+        GasStationDto gasStationDto = gasStationService.findGasStationDto(name, roadName, buildNum, brand);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
     }
 
     @GetMapping("/v2/gas-station")
     public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name) {
         List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION,matchingGasStations));
+                .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION, matchingGasStations));
     }
 }
