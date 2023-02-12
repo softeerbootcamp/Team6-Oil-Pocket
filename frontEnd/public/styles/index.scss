@@ -623,6 +623,7 @@ a {
                         & #Option1 {
                             transition: 0.5s;
                             transition-timing-function: linear;
+                            font-size:10px;
                         }
                     }
     
@@ -706,6 +707,7 @@ a {
                             margin:0;
                             background-color: rgba(20, 189, 114, 0.5);
                             opacity:0.5;
+                            display:none;
                         }
                     }
                     & .main__SearchResult {
@@ -807,6 +809,7 @@ a {
                 background-color: white;
                 margin-left: -22vw;
                 align-items: center;
+
                 & .main__GSTdetailCloseButton {
                     display:flex;
                     cursor: pointer;
@@ -825,14 +828,15 @@ a {
                     display:flex;
                     flex-direction: column;
                     //overflow: scroll;
-                    width:22vw;
-                    height:70vh;
+                    width:95%;
+                    height:100%;
+                    margin-left: 2.5%;
                     // border:1px solid black;
 
                     & .main__GSTdetail__Title {
                         display:flex;
                         justify-content: center;
-                        width:22vw;
+                        width:100%;
                         height:3vh;
                         font-size:30px;
                         font-weight: 700;
@@ -847,7 +851,7 @@ a {
                     & .main__GSTdetail__Contents {
                         display:flex;
                         flex-direction: column;
-                        width:22vw;
+                        width:100%;
 
                         font-size:20px;
                         font-weight: 400;
@@ -885,6 +889,7 @@ a {
                                 & img {
                                     width:15px;
                                     height:15px;
+                                    margin-right: 5px;
                                 }
                             }
                             & .main__GSTdetail__Contents__Basic__Time {
@@ -894,8 +899,9 @@ a {
                                 border-bottom: 1px solid lightgrey;
                                 line-height: 30px;
                                 & img {
-                                    width:15px;
-                                    height:15px;
+                                    width:14px;
+                                    height:14px;
+                                    margin-right: 5px;
                                 }
                             }
                             & .main__GSTdetail__Contents__Basic__Phone {
@@ -905,8 +911,9 @@ a {
                                 border-bottom: 1px solid lightgrey;
                                 line-height: 30px;
                                 & img {
-                                    width:15px;
-                                    height:15px;
+                                    width:14px;
+                                    height:14px;
+                                    margin-right: 5px;
                                 }
                             }
                             & .main__GSTdetail__Contents__Basic__Url {
@@ -915,8 +922,9 @@ a {
                                 border-bottom: 1px solid lightgrey;
                                 line-height: 30px;
                                 & img {
-                                    width:15px;
-                                    height:15px;
+                                    width:14px;
+                                    height:14px;
+                                    margin-right: 5px;
                                 }
                             }
                         }
@@ -926,43 +934,49 @@ a {
                             background-color: white;
                             display: flex;
                             flex-direction: column;
+
                             & .main__GSTdetail__Contents__OilPriceTable__TableHead {
                                 display:flex;
                                 flex-direction: row;
-                                background-color: lightgrey;
+                                background-color: #14bd72;
                                 font-size:20px;
                                 font-weight: 500;
+                                color:white;
+                                border-radius: 5px 5px 0 0;
+                                margin-top: 5px;
                                 & .main__GSTdetail__Contents__OilPriceTable__TableHead_Oil{
                                     font-size:15px;
                                     width:20%;
-                                    justify-content: flex-start;
+                                    text-align: center;
+                                    line-height: 20px;
                                 }
                                 & .main__GSTdetail__Contents__OilPriceTable__TableHead_Price{
                                     font-size:15px;
                                     width:80%;
-                                    justify-content: flex-start;
+                                    text-align: center;
+                                    line-height: 20px;
                                 }
                             }
                             & .main__GSTdetail__Contents__OilPriceTable__Contents {
                                 display:flex;
                                 flex-direction: column;
-                                font-size: 19px;
-                                font-weight: 400;
-                                border:1px solid lightgrey;
                                 & .main__GSTdetail__Contents__OilPriceTable__Contents__Row{
                                     display: flex;
                                     flex-direction: row;
 
                                     & .main__GSTdetail__Contents__OilPriceTable__Contents__Oil {
                                         border:1px solid lightgrey;
+                                        border-right: none;
                                         width:20%;
                                         font-size: 15px;
+                                        text-align: center;
                                     }
 
                                     & .main__GSTdetail__Contents__OilPriceTable__Contents__Price {
                                         border:1px solid lightgrey;
                                         width:80%;
                                         font-size: 15px;
+                                        text-align:center;
                                     }
                                 }
                             }

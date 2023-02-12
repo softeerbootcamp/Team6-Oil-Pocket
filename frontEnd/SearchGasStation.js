@@ -18,24 +18,46 @@ SortByLL.addEventListener('click', sortLlPrice);
 SortByGG.addEventListener('click', sortGgPrice);
 
 function sortHhPrice() {
-	searchOption = 1;
-    $('#sort_LL').css("opacity", "0.5");
-    $('#sort_GG').css("opacity", "0.5");
-    $('#sort_HH').css("opacity", "1");
+    if(searchOption==1){
+        searchOption = 0;
+        $("#sort_HH").css("opacity", "0.5");
+    }
+    else {
+        searchOption = 1;
+        $("#sort_GG").css("opacity", "0.5");
+        $("#sort_HH").css("opacity", "1");
+    }
+	// searchOption = 1;
+    // $('#sort_LL').css("opacity", "0.5");
+    // $('#sort_GG').css("opacity", "0.5");
+    // $('#sort_HH').css("opacity", "1");
 }
 
 function sortGgPrice() {
-	searchOption = 2;
-    $("#sort_LL").css("opacity", "0.5");
-    $("#sort_GG").css("opacity", "1");
-    $("#sort_HH").css("opacity", "0.5");
+    if(searchOption==2){
+        searchOption = 0;
+        $("#sort_GG").css("opacity", "0.5");
+    }
+    else {
+        searchOption = 2;
+        $("#sort_GG").css("opacity", "1");
+        $("#sort_HH").css("opacity", "0.5");
+    }
+	// searchOption = 2;
+    // $("#sort_LL").css("opacity", "0.5");
+    // $("#sort_GG").css("opacity", "1");
+    // $("#sort_HH").css("opacity", "0.5");
 }
 
 function sortLlPrice() {
-	searchOption = 3;
-    $("#sort_LL").css("opacity", "1");
-    $("#sort_GG").css("opacity", "0.5");
-    $("#sort_HH").css("opacity", "0.5");
+    if(searchOption==3){
+        searchOption = 0;
+        $("#sort_LL").css("opacity", "0.5");
+    }
+    else {
+        searchOption = 3;
+        $("#sort_LL").css("opacity", "1");
+    }
 }
 
 // let latitide = localStorage.getItem("latitude");
@@ -103,6 +125,12 @@ function SelectSearchOption1(e){
         SearchFromCurLocButton.style.backgroundColor = "#14BD7E";
         SearchFromCurLocButton.querySelector("#Option1").style.height = "30px";
         SearchFromCurLocButton.querySelector("#Option1").style.width = "30px";
+        const HH = document.getElementById("sort_HH");
+        const GG = document.getElementById("sort_GG");
+        const LL = document.getElementById("sort_LL");
+        HH.style.display = "";
+        GG.style.display = "";
+        LL.style.display = "none";
         isOption1 = true;
         isOption2 = false;
     }
@@ -125,6 +153,12 @@ function SelectSearchOption2(e) {
         SearchFromRouteButton.style.backgroundColor = "#14BD7E";
         SearchFromRouteButton.querySelector("#Option2").style.height = "30px";
         SearchFromRouteButton.querySelector("#Option2").style.width = "30px";
+        const HH = document.getElementById("sort_HH");
+        const GG = document.getElementById("sort_GG");
+        const LL = document.getElementById("sort_LL");
+        HH.style.display = "none";
+        GG.style.display = "none";
+        LL.style.display = "inline";
         isOption2 = true;
         isOption1 = false;
     }
