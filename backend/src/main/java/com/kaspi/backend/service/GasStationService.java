@@ -43,4 +43,10 @@ public class GasStationService {
     private String getLikeAddress(String roadNum, String buildNum) {
         return WILDCARD + roadNum + WILDCARD + buildNum;
     }
+
+    public GasStationDto findOntMonthGasStationDto(String name, String roadNum, String buildNum, String brand) {
+        GasStation gasStation = findGasStation(roadNum, buildNum, brand);
+        List<GasDetailDto> gasDetailDtoList = gasDetailService.findOneMonthGasDetailList(gasStation);
+        return GasStationDto.newInstance(name, gasStation, gasDetailDtoList);
+    }
 }
