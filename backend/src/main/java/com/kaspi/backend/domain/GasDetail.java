@@ -2,6 +2,8 @@ package com.kaspi.backend.domain;
 
 import com.kaspi.backend.enums.GasType;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -56,8 +58,8 @@ public class GasDetail {
     }
 
     public static String getNowDateToStr() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String currentDate = sdf.format(new Date());
-        return currentDate;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String currentDateTime = LocalDateTime.now().format(formatter);
+        return currentDateTime;
     }
 }
