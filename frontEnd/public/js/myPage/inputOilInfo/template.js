@@ -30,7 +30,13 @@ const getInputOilInfoTemplate = () => `
                         <div class="oilInfoArea__oilPrice">
                             <span>주유 금액이 입력되지 않았습니다.</span>
                         </div>
-                        <input type="text" placeholder="주유소">
+                        <div class="oilInfoArea__searchArea">
+                            <div class="oilInfoArea__oilSearchValue">검색 결과 1</div>
+                            <div class="oilInfoArea__oilSearchValue">검색 결과 2</div>
+                            <div class="oilInfoArea__oilSearchValue">검색 결과 3</div>
+                            <div class="oilInfoArea__oilSearchValue">검색 결과 4</div>
+                            <input class="oilInfoArea__searchInput" type="text" placeholder="주유소 검색">
+                        </div>
                     </div>
                     <div class="oilInfoArea__effectBox">
                         <div class="oilInfoArea__effectBoxBackGround">

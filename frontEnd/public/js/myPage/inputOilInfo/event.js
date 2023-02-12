@@ -1,7 +1,8 @@
 import { addEvent, changeArrayCSS, changeCSS } from "../../common/function";
-import { animateOilImage, parseOilPriceIntoKorean } from "./helperFunction";
+import { parseOilPriceIntoKorean } from "./helperFunction";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
+let debounceTimer = "";
 
 const eventToOilSelectArea = ($container) => {
     let oilSelectFlag = false;
@@ -49,4 +50,34 @@ const eventToOilPriceInput = ($container) => {
     ], "keyup")
 }
 
-export { eventToOilSelectArea, eventToOilPriceInput }
+const eventToOilSearchInput = ($container) => {
+    const $oilSearchInput = $container.querySelector(".oilInfoArea__searchInput");
+    const $oilSearchValues = $container.querySelectorAll(".oilInfoArea__oilSearchValue");
+
+    console.log($oilSearchValues)
+
+    addEvent($oilSearchInput, [
+        () => {
+            if(debounceTimer) {
+                clearTimeout(debounceTimer);
+            }
+
+            if($oilSearchInput.value === "") {
+                changeArrayCSS($oilSearchValues, "top", "0");
+                changeArrayCSS($oilSearchValues, "borderBottom", "none");
+            }
+            else {
+                debounceTimer = setTimeout(() => {
+                    // 검색 관련 통신 함수
+                    console.log("hi");
+                    $oilSearchValues.forEach(($oilSearchValue, index) => {
+                        changeCSS($oilSearchValue, "top", `${(index + 1) * 150}%`);
+                        changeCSS($oilSearchValue, "borderBottom", "0.2vh solid black");
+                    })
+                }, 300);
+            }
+        }
+    ], "input")
+}
+
+export { eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput }

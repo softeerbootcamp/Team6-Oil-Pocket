@@ -1502,6 +1502,26 @@ a, button, select, input {
                     height: 100%;
                     padding: 0 1vw;
 
+                    & input {
+                        width: 90%;
+                        height: 10%;
+                        margin-bottom: 2vh;
+                        font-size: 1.5rem;
+                        border-radius: 0.5vh;
+                        background-color: #FAFAFB;
+                        color: #14BD7E;
+                        padding: 1vh 0.5vw;
+                        font-weight: 600;
+
+                        ::placeholder {
+                            color: #D5DDE6;
+                        }
+
+                        &:focus {
+                            outline: 0.2vh solid #14BD7E;
+                        }
+                    }
+
                     & .oilInfoArea__selectOil {
                         position: relative;
                         display: flex;
@@ -1552,26 +1572,6 @@ a, button, select, input {
                         }
                     }
 
-                    & input {
-                        width: 90%;
-                        height: 10%;
-                        margin-bottom: 2vh;
-                        font-size: 1.5rem;
-                        border-radius: 0.5vh;
-                        background-color: #FAFAFB;
-                        color: #14BD7E;
-                        padding: 1vh 0.5vw;
-                        font-weight: 600;
-
-                        ::placeholder {
-                            color: #D5DDE6;
-                        }
-
-                        &:focus {
-                            outline: 0.2vh solid #14BD7E;
-                        }
-                    }
-
                     & .oilInfoArea__oilPrice {
                         width: 93%;
                         text-align: right;
@@ -1585,6 +1585,53 @@ a, button, select, input {
                             font-size: 0.9rem;
                             padding: 1vh 0.5vw;
                             border-bottom: 0.2vh solid #14BD7E;
+                        }
+                    }
+
+                    & .oilInfoArea__searchArea {
+                        width: 90%;
+                        height: 10%;
+                        position: relative;
+                        margin-bottom: 2vh;
+
+                        & .oilInfoArea__oilSearchValue {
+                            background-color: #fff;
+                            color: #000;
+                            font-size: 1.5rem;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 70%;
+                            padding: 1vh 0.5vw;
+                            border-radius: 0.5vh;
+
+                            &:focus {
+                                outline: 0.2vh solid #14BD72;
+                            }
+                        }
+
+                        & .oilInfoArea__searchInput {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 70%;
+                            margin-bottom: 2vh;
+                            font-size: 1.5rem;
+                            border-radius: 0.5vh;
+                            background-color: #FAFAFB;
+                            color: #14BD7E;
+                            padding: 1vh 0.5vw;
+                            font-weight: 600;
+    
+                            &::placeholder {
+                                color: #D5DDE6;
+                            }
+
+                            &:focus {
+                                outline: none;
+                            }
                         }
                     }
                 }
@@ -2104,7 +2151,7 @@ a, button, select, input {
 
             & button {
                 margin-left: 1vw;
-                width: 10%;
+                width: 15%;
                 height: 50%;
                 border-radius: 0.5vh;
                 font-weight: 600;
@@ -2113,19 +2160,12 @@ a, button, select, input {
             & .oilInfoArea__cancelBtn {
                 color: #000;
                 background-color: #FAFAFB;
-
-                &:hover {
-                    outline: 0.2vh solid #D5DDE6;
-                }
+                outline: 0.2vh solid #D5DDE6;
             }
 
             & .oilInfoArea__registerBtn {
                 color: #fff;
                 background-color: #14BD7E;
-
-                &:hover {
-                    outline: 0.2vh solid #14BD7E;
-                }
             }
         }
     }

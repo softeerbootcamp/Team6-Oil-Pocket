@@ -1618,6 +1618,26 @@ a, button, select, input {
   height: 100%;
   padding: 0 1vw;
 }
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input {
+  width: 90%;
+  height: 10%;
+  margin-bottom: 2vh;
+  font-size: 1.5rem;
+  border-radius: 0.5vh;
+  background-color: #FAFAFB;
+  color: #14BD7E;
+  padding: 1vh 0.5vw;
+  font-weight: 600;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input ::-moz-placeholder {
+  color: #D5DDE6;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input ::placeholder {
+  color: #D5DDE6;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input:focus {
+  outline: 0.2vh solid #14BD7E;
+}
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__selectOil {
   position: relative;
   display: flex;
@@ -1663,26 +1683,6 @@ a, button, select, input {
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__selectOil span {
   text-align: center;
 }
-.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input {
-  width: 90%;
-  height: 10%;
-  margin-bottom: 2vh;
-  font-size: 1.5rem;
-  border-radius: 0.5vh;
-  background-color: #FAFAFB;
-  color: #14BD7E;
-  padding: 1vh 0.5vw;
-  font-weight: 600;
-}
-.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input ::-moz-placeholder {
-  color: #D5DDE6;
-}
-.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input ::placeholder {
-  color: #D5DDE6;
-}
-.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox input:focus {
-  outline: 0.2vh solid #14BD7E;
-}
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__oilPrice {
   width: 93%;
   text-align: right;
@@ -1696,6 +1696,50 @@ a, button, select, input {
   font-size: 0.9rem;
   padding: 1vh 0.5vw;
   border-bottom: 0.2vh solid #14BD7E;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea {
+  width: 90%;
+  height: 10%;
+  position: relative;
+  margin-bottom: 2vh;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchValue {
+  background-color: #fff;
+  color: #000;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  padding: 1vh 0.5vw;
+  border-radius: 0.5vh;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchValue:focus {
+  outline: 0.2vh solid #14BD72;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__searchInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  margin-bottom: 2vh;
+  font-size: 1.5rem;
+  border-radius: 0.5vh;
+  background-color: #FAFAFB;
+  color: #14BD7E;
+  padding: 1vh 0.5vw;
+  font-weight: 600;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__searchInput::-moz-placeholder {
+  color: #D5DDE6;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__searchInput::placeholder {
+  color: #D5DDE6;
+}
+.oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__searchInput:focus {
+  outline: none;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__effectBox {
   width: 50%;
@@ -2124,7 +2168,7 @@ a, button, select, input {
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea button {
   margin-left: 1vw;
-  width: 10%;
+  width: 15%;
   height: 50%;
   border-radius: 0.5vh;
   font-weight: 600;
@@ -2132,16 +2176,11 @@ a, button, select, input {
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__cancelBtn {
   color: #000;
   background-color: #FAFAFB;
-}
-.oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__cancelBtn:hover {
   outline: 0.2vh solid #D5DDE6;
 }
 .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__registerBtn {
   color: #fff;
   background-color: #14BD7E;
-}
-.oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea .oilInfoArea__registerBtn:hover {
-  outline: 0.2vh solid #14BD7E;
 }
 
 /* gas Detail */

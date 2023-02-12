@@ -1,5 +1,5 @@
 import { navBarView } from "../../navbar/view.js";
-import { eventToOilPriceInput, eventToOilSelectArea } from "./event.js";
+import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput } from "./event.js";
 import { getInputOilInfoTemplate } from "./template.js";
 
 const inputOilInfoView = () => {
@@ -14,6 +14,7 @@ const inputOilInfoView = () => {
 
     eventToOilSelectArea($inputOilInputContent);
     eventToOilPriceInput($inputOilInputContent);
+    eventToOilSearchInput($inputOilInputContent);
 
     return $inputOilInputContainer;
 }
