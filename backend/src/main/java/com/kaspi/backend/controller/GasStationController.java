@@ -29,4 +29,13 @@ public class GasStationController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
     }
+    @GetMapping("/{name}/{roadName}/{buildNum}/{brand}/month")
+    public ResponseEntity<CommonResponseDto> getGasStationInfoMonth(@PathVariable("name") String name,
+                                                                  @PathVariable("roadName") String roadName,
+                                                                  @PathVariable("buildNum") String buildNum,
+                                                                  @PathVariable("brand") String brand) {
+        GasStationDto gasStationDto = gasStationService.findOntMonthGasStationDto(name, roadName, buildNum, brand);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
+    }
 }
