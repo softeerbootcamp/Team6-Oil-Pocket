@@ -9,6 +9,11 @@ const changeCSS = ($target, key, value) => $target.style[key] = value;
 const changeArrayCSS = ($targetArray, key, value) => 
     $targetArray.forEach(($target) => changeCSS($target, key, value));
 
+const toggleClass = ($target, className) => $target.classList.toggle(className);
+
+const toggleArrayClass = ($targetArray, className) => 
+    $targetArray.forEach(($target) => toggleClass($target, className));
+
 const replaceChildWithFadeEffect = ($parent, $child) => {
     $parent.innerHTML = "";
     $parent.appendChild($child);
@@ -38,6 +43,7 @@ const giveErrorStyle = ($target, styleKey, originalStyle, changeStyle, time) => 
 
 export { 
     addEvent, changeCSS, changeArrayCSS,
+    toggleArrayClass,
     replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
     makeNodeArrayLighterSubsequently, giveErrorStyle
 }
