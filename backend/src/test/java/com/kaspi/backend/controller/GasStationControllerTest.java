@@ -1,14 +1,13 @@
 package com.kaspi.backend.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStationDto;
+import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
+import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,23 +19,48 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 import static java.time.LocalDate.now;
-import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @WebMvcTest(controllers = GasStationController.class)
 @ContextConfiguration(classes = {TestRedisConfiguration.class})
 @ExtendWith(MockitoExtension.class)
 @AutoConfigureMockMvc
 class GasStationControllerTest {
+
     @Autowired
-    MockMvc mvc;
+    MockMvc mockMvc;
     @MockBean
     GasStationService gasStationService;
+
+
+    @Test
+    @DisplayName("주유소 네이밍 기준 검색 API 테스트")
+    void findGasStationByName() throws Exception {
+        // Given
+        List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
+                FindGasStationResDto.builder().name("유진 주유소").brand("s-oil").stationNo(1L).address("노원구").area("서울").build(),
+                FindGasStationResDto.builder().name("서울 유진 주유소").brand("s-oil").stationNo(2L).address("도봉구").area("서울").build()
+        );
+        given(gasStationService.getGasStationByContainingName("유진"))
+                .willReturn(expectedMatchingGasStations);
+
+        // When
+        // Then
+        mockMvc.perform(get("/api/v2/gas-station")
+                        .param("name", "유진"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("code").value(DefaultCode.CHECK_MATCH_GAS_STATION.getCode()))
+                .andExpect(jsonPath("message").value(DefaultCode.CHECK_MATCH_GAS_STATION.getMessage()));
+    }
 
     @Test
     @DisplayName("주유소 상세정보 조회 api 성공 테스트")
@@ -54,7 +78,7 @@ class GasStationControllerTest {
                         new GasDetailDto(GasType.LPG, 0, date)));
         // "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true);
         when(gasStationService.findGasStationDto(name, roadName, buildNum, brand)).thenReturn(gasStationDto);
-        mvc.perform(get("/api/v1/gas-station/평창주유소/평창문화로/135/현대오일뱅크"))
+        mockMvc.perform(get("/api/v1/gas-station/평창주유소/평창문화로/135/현대오일뱅크"))
                 .andExpect(jsonPath("code").value(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL.getCode()))
                 .andExpect(jsonPath("message").value(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL.getMessage()));
 

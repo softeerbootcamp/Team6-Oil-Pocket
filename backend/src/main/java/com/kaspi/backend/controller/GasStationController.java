@@ -2,6 +2,7 @@ package com.kaspi.backend.controller;
 
 import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStationDto;
+import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.util.response.CommonResponseDto;
@@ -12,15 +13,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
-@RequestMapping("api/v1/gas-station")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class GasStationController {
     private final GasStationService gasStationService;
 
-    @GetMapping("/{name}/{roadName}/{buildNum}/{brand}")
+
+    @GetMapping("/v1/gas-station/{name}/{roadName}/{buildNum}/{brand}")
     public ResponseEntity<CommonResponseDto> getGasStationInfoNow(@PathVariable("name") String name,
                                                                   @PathVariable("roadName") String roadName,
                                                                   @PathVariable("buildNum") String buildNum,
@@ -29,7 +36,14 @@ public class GasStationController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
     }
-    @GetMapping("/{name}/{roadName}/{buildNum}/{brand}/month")
+
+    @GetMapping("/v2/gas-station")
+    public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name) {
+        List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION, matchingGasStations));
+    }
+    @GetMapping("/v1/{name}/{roadName}/{buildNum}/{brand}/month")
     public ResponseEntity<CommonResponseDto> getGasStationInfoMonth(@PathVariable("name") String name,
                                                                   @PathVariable("roadName") String roadName,
                                                                   @PathVariable("buildNum") String buildNum,

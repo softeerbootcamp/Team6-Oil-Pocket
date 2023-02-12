@@ -39,9 +39,10 @@ class GasStationDaoTest {
                 , "현대오일뱅크", "셀프", "1899", "1659", "1759", "0"};
         GasStation gasStation = GasStation.parseGasStation(input);
         gasStationDao.save(gasStation);
-        Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand("%지우로 9999%", "현대오일뱅크");
+        Optional<GasStation> optionalGasStation = gasStationDao.findByLikeAddressAndBrand("%지우로 9999%", "현대오일뱅크");
         Assertions.assertThat(optionalGasStation.get()).usingRecursiveComparison().isEqualTo(gasStation);
     }
+
     @Test
     @DisplayName("gasStation findByAddressAndBrand null 테스트")
     void findByAddressAndBrandTest2() {
