@@ -18,8 +18,8 @@ const makeChart = ($container, userOilArray, commonOilArray) => {
         let userPercent = userOilArray[index] / OIL_UPPER_PRICE;
         let averagePercent = commonOilArray[index] / OIL_UPPER_PRICE;
 
-        userPercent = userPercent + 0.1 >= 1 ? 100 : userPercent * 100 + 10;
-        averagePercent = averagePercent + 0.1 >= 1 ? 100 : averagePercent * 100 + 10;
+        userPercent = userPercent >= 1 ? 100 : userPercent * 100;
+        averagePercent = averagePercent >= 1 ? 100 : averagePercent * 100;
 
         setTimeout(() => {
             changeCSS($userPrice, "height", `${userPercent}%`);

@@ -1476,7 +1476,7 @@ a, button, select, input {
             border-radius: 0 1.5vh 0 0;
 
             & .oilInfoArea__contentTitle {
-                height: 20%;
+                height: 15%;
                 width: 100%;
                 display: flex;
                 align-items: center;
@@ -1693,10 +1693,10 @@ a, button, select, input {
                     align-items: center;
 
                     & .oilInfoArea__compareTitle {
-                        padding-bottom: 2vh;
+                        padding-bottom: 0.5vh;
                         font-weight: 500;
                         font-size: 1.5rem;
-                        margin-bottom: 2vh;
+                        margin-bottom: 1.5vh;
                         border-radius: 0.2vh;
                         width: 85%;
 
@@ -1714,80 +1714,177 @@ a, button, select, input {
                         width: 100%;
                         height: 100%;
 
-                        & .oilInfoArea__compareMyBox {
-                            width: 30%;
-                            padding: 2vh 0;
+                        & .oilInfoArea__boxArea {
+                            width: 60%;
                             display: flex;
-                            flex-direction: column;
+                            flex-direction: row;
+                            flex-wrap: wrap;
                             justify-content: space-around;
-                            align-items: center;
-                            border-radius: 2vh;
-                            outline: 0.2vh solid #F2F2F2;
-                            box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
-                            transition: 0.5s;
 
-                            &:hover {
-                                margin-top: -2vh;
-                                margin-bottom: 2vh;
-                            }
-
-                            & h1, h3 {
+                            & .oilInfoArea__otherText {
+                                padding-bottom: 1vh;
                                 font-weight: 500;
-                            }
-
-                            & h1 {
-                                font-size: 1.5rem;
-                            }
-
-                            & h3 {
-                                font-size: 1.2rem;
+                                font-size: 1.3rem;
+                                margin: 3vh 0 2vh;
+                                border-radius: 0.2vh;
+                                width: 85%;
 
                                 & span {
-                                    font-size: 1.6rem;
                                     font-weight: 700;
-                                    color: #14BD72;
+                                    font-size: 1.6rem;
+                                    color: #14BD7E;
                                 }
                             }
-                        }
-
-                        & .oilInfoArea__compareCommonBox {
-                            width: 30%;
-                            padding: 2vh 0;
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-around;
-                            align-items: center;
-                            border-radius: 2vh;
-                            outline: 0.2vh solid #F2F2F2;
-                            box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
-                            transition: 0.5s;
-
-                            & h1, h3 {
-                                font-weight: 500;
-                            }
-
-                            & h1 {
-                                font-size: 1.5rem;
-                            }
-
-                            & h3 {
-                                font-size: 1.2rem;
-
-                                & span {
-                                    font-size: 1.6rem;
-                                    font-weight: 700;
-                                    color: #14BD72;
+    
+                            & .oilInfoArea__compareMySaveBox, .oilInfoArea__compareMyBox {
+                                width: 45%;
+                                height: 30%;
+                                padding: 1.5vh 0;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-around;
+                                align-items: center;
+                                border-radius: 2vh;
+                                outline: 0.2vh solid #F2F2F2;
+                                box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
+                                transition: 0.5s;
+    
+                                & h1, h3 {
+                                    font-weight: 500;
+                                }
+    
+                                & h1 {
+                                    font-size: 1.5rem;
+                                }
+    
+                                & h3 {
+                                    font-size: 1.2rem;
+    
+                                    & span {
+                                        font-size: 1.6rem;
+                                        font-weight: 700;
+                                        color: #14BD72;
+                                    }
+                                }
+    
+                                &:hover {
+                                    margin-top: -2vh;
+                                    margin-bottom: 2vh;
                                 }
                             }
 
-                            &:hover {
-                                margin-top: -2vh;
-                                margin-bottom: 2vh;
+                            & .oilInfoArea__compareAgeCommonBox {
+                                width: 45%;
+                                height: 40%;
+                                padding: 1.5vh 0;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-around;
+                                align-items: center;
+                                border-radius: 2vh;
+                                outline: 0.2vh solid #F2F2F2;
+                                box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
+                                transition: 0.5s;
+    
+                                & h1, h3 {
+                                    font-weight: 500;
+                                }
+    
+                                & h1 {
+                                    font-size: 1.5rem;
+                                }
+    
+                                & h3 {
+                                    font-size: 1.2rem;
+    
+                                    & span {
+                                        font-size: 1.6rem;
+                                        font-weight: 700;
+                                        color: #14BD72;
+                                    }
+                                }
+    
+                                &:hover {
+                                    margin-top: -2vh;
+                                    margin-bottom: 2vh;
+                                }  
+                            }
+
+                            & .oilInfoArea__chartBox {
+                                width: 45%;
+                                height: 40%;
+                                padding: 1.5vh 0;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: space-around;
+                                align-items: center;
+                                border-radius: 2vh;
+                                outline: 0.2vh solid #F2F2F2;
+                                box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
+                                transition: 0.5s;
+
+                                & .oilInfoArea__chartArea {
+                                    display: flex;
+                                    justify-content: space-around;
+                                    align-items: flex-end;
+                                    width: 60%;
+                                    padding: 0 10%;
+                                    height: 95%;
+                                    border-bottom: 0.3vh solid #14BD72;
+                                    
+                                    & .oilInfoArea__myChart {
+                                        width: 15%;
+                                        height: 100%;
+                                        background-color: #14BD72;
+                                    }
+
+                                    & .oilInfoArea__otherChart {
+                                        width: 15%;
+                                        height: 80%;
+                                        background-color: #fff;
+                                        outline: 0.25vh solid #14BD72;
+                                    }
+                                }
+    
+                                & .oilInfoArea__chartValueTextArea {
+                                    display: flex;
+                                    justify-content: space-around;
+                                    width: 60%;
+                                    margin-top: 0.5vh;
+                                    padding: 0 10%;
+                                    height: 5%;
+
+                                    & span {
+                                        text-align: center;
+                                        font-size: 0.4rem;
+                                    }
+                                }
+
+                                & .oilInfoArea__chartNameArea {
+                                    display: flex;
+                                    justify-content: space-around;
+                                    width: 60%;
+                                    margin-top: 0.5vh;
+                                    padding: 0 10%;
+                                    height: 5%;
+
+                                    & span {
+                                        text-align: center;
+                                        font-size: 0.85rem;
+                                        padding-left: 0.5vw;
+                                    }
+                                }
+
+                                &:hover {
+                                    margin-top: -2vh;
+                                    margin-bottom: 2vh;
+                                }  
                             }
                         }
 
                         & .oilInfoArea__compareImgBox {
                             width: 30%;
+                            height: 104%;
                             padding: 2vh 0;
                             display: flex;
                             flex-direction: column;
@@ -1796,6 +1893,7 @@ a, button, select, input {
                             border-radius: 2vh;
                             outline: 0.2vh solid #F2F2F2;
                             box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
+                            background-color: #FDF1CC;
                             transition: 0.5s;
 
                             &:hover {
@@ -1804,6 +1902,7 @@ a, button, select, input {
                             }
 
                             & img {
+                                transition: 0.5s;
                                 width: 90%;
                                 height: 90%;
                             }

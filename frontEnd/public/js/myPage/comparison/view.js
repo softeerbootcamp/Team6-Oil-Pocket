@@ -12,10 +12,13 @@ const comparisonView = () => {
     $comparionContainer.appendChild(navBarView());
     $comparionContainer.appendChild($comparionContent);
 
-    let myPrice = 310_000;
-    let commonPrice = 330_000;
+    let myPrice = 290_000;
+    let commonPrice = 280_000;
+    let percent = 50;
+    let age = "40대";
+    let gender = "남자";
 
-    makeComparisonCards($comparionContent, myPrice, commonPrice);
+    makeComparisonCards($comparionContent, myPrice, commonPrice, percent, age, gender);
 
     return $comparionContainer;
 }

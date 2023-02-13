@@ -19,15 +19,38 @@ const getComparisonTemplate = () => `
                 </h1>
                 <div class="oilInfoArea__contentBody">
                     <div class="oilInfoArea__compareArea">
-                        <h2 class="oilInfoArea__compareTitle">이번 달은 다른 사람들보다 <span>커피</span> 만큼의 돈을 절약했어요!</h2>
+                        <h2 class="oilInfoArea__compareTitle">이번 달은 <span>커피</span> 만큼의 돈을 절약했어요!</h2>
                         <div class="oilInfoArea__compareContent">
-                            <div class="oilInfoArea__compareMyBox">
-                                <h3>이번 달 <span>나</span>의 지출액</h3>
-                                <h1>329,000</h1>
-                            </div>
-                            <div class="oilInfoArea__compareCommonBox">
-                                <h3>이번 달 <span>절약 금액</span></h3>
-                                <h1>330,000</h1>
+                            <div class="oilInfoArea__boxArea">
+                                <div class="oilInfoArea__compareMyBox">
+                                    <h3><span>나</span>의 지출액</h3>
+                                    <h1>329,000</h1>
+                                </div>
+                                <div class="oilInfoArea__compareMySaveBox">
+                                    <h3><span>나</span>의 절약 금액</h3>
+                                    <h1>+ 2,000</h1>
+                                </div>
+                                <div class="oilInfoArea__otherText">
+                                    <h2>현재까지 주유액은 20대 남자 중  <span>상위 70%</span>  입니다.</h2>
+                                </div>
+                                <div class="oilInfoArea__compareAgeCommonBox">
+                                    <h3><span>20대 남자</span> 평균 지출액</h3>
+                                    <h1>300,000</h1>
+                                </div>
+                                <div class="oilInfoArea__chartBox">
+                                    <div class="oilInfoArea__chartArea">
+                                        <div class="oilInfoArea__myChart"></div>
+                                        <div class="oilInfoArea__otherChart"></div>
+                                    </div>
+                                    <div class="oilInfoArea__chartValueTextArea">
+                                        <span class="oilInfoArea__chartValueText--user">310,000</span>
+                                        <span class="oilInfoArea__chartValueText--common">300,000</span>
+                                    </div>
+                                    <div class="oilInfoArea__chartNameArea">
+                                        <span class="oilInfoArea__chartNameArea--name">jaewon</span>
+                                        <span class="oilInfoArea__chartNameArea--info">20대 남자</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="oilInfoArea__compareImgBox">
                                 <img src="./public/img/myProfile_Image/coffee.png" alt="비교 이미지">
