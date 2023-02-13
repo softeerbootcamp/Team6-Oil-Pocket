@@ -10,9 +10,9 @@ const imageLocationMapper = {
 
 const getCompareText = (myPrice, commonPrice) => {
     if(myPrice < commonPrice) {
-        return `이번 달은 <span>${getImageName(myPrice, commonPrice)}</span> 만큼 절약했어요! 😁`;
+        return `이번 달은 다른 사람들보다 <span>${getImageName(myPrice, commonPrice)}</span> 만큼 절약했어요! 😁`;
     }
-    return `이번 달은 <span>${getImageName(myPrice, commonPrice)}</span> 만큼 더 소비했어요! 🥲`;
+    return `이번 달은 다른 사람들보다 <span>${getImageName(myPrice, commonPrice)}</span> 만큼 더 소비했어요! 🥲`;
 }
 
 const getImageName = (myPrice, commonPrice) => {

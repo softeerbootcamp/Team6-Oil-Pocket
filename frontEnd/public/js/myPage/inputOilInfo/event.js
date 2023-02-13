@@ -10,7 +10,7 @@ const eventToOilSelectArea = ($container) => {
     const $oilSelect = _$(".oilInfoArea__oilSelect", $container);
     const $oilSelectText = _$(".oilInfoArea__oilSelect > span", $container);
     const $oilSelectImg = _$(".oilInfoArea__oilSelect > img", $container);
-    const $oilValues = _$(".oilInfoArea__oilValue", $container);
+    const $oilValues = _$_ALL(".oilInfoArea__oilValue", $container);
 
     addEvent($oilSelect, [
         () => {
@@ -67,7 +67,7 @@ const eventToOilSearchInput = ($container) => {
             else {
                 debounceTimer = setTimeout(() => {
                     // 검색 관련 통신 함수
-                    
+
                     $oilSearchValues.forEach(($oilSearchValue, index) => {
                         changeCSS($oilSearchValue, "top", `${(index + 1) * 150}%`);
                         changeCSS($oilSearchValue, "borderBottom", "0.2vh solid black");
