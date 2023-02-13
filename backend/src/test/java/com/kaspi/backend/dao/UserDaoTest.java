@@ -6,9 +6,12 @@ import com.kaspi.backend.domain.User;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import com.kaspi.backend.util.config.TestRedisConfiguration;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -46,5 +49,25 @@ class UserDaoTest {
         //then
         assertThat(findUser.isPresent()).isTrue();
         assertThat(findUser.get()).usingRecursiveComparison().isEqualTo(existUser);
+    }
+
+    @Test
+    @DisplayName("사용자의 아이디를 성별과 age로 받아오는 쿼리 작성")
+    void findUserNoByGenderAndAge() {
+        User user2 = User.builder().age(Age.FORTY).gender(Gender.MALE).id("admin2").password("password")
+                        .build();
+        User user3 = User.builder().age(Age.FORTY).gender(Gender.MALE).id("admin3").password("password")
+                .build();
+        User user4 = User.builder().age(Age.FORTY).gender(Gender.FEMALE).id("admin4").password("password")
+                .build();
+        User user5 = User.builder().age(Age.TWENTY).gender(Gender.MALE).id("admin5").password("password")
+                .build();
+        User user6 = User.builder().age(Age.FIFTY).gender(Gender.MALE).id("admin6").password("password")
+                .build();
+        userDao.saveAll(Arrays.asList(user2, user3, user4, user5, user6));
+        Optional<List<Long>> optionalUserNoList = userDao.findUserNoByGenderAndAge(Gender.MALE, Age.FORTY);
+        List<Long> userNoList = optionalUserNoList.get();
+
+        Assertions.assertThat(userNoList.size()).isEqualTo(3);
     }
 }
