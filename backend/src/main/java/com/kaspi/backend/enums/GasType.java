@@ -1,8 +1,27 @@
 package com.kaspi.backend.enums;
 
+import lombok.Getter;
+
+import java.util.Arrays;
+import java.util.Optional;
+
+@Getter
 public enum GasType {
-    PREMIUM_GASOLINE,
-    GASOLINE,
-    DIESEL,
-    LPG;
+    PREMIUM_GASOLINE("고급휘발유"),
+    GASOLINE("휘발유"),
+    DIESEL("자동차용경유"),
+    LPG("자동차용부탄");
+
+    private String opinetGasType;
+
+    GasType(String opinetGasType) {
+        this.opinetGasType = opinetGasType;
+    }
+
+    public static Optional<GasType> getTypeFromOpinetData(String opinetdata) {
+        return Arrays.stream(values())
+                .filter(value -> value.opinetGasType.equals(opinetdata))
+                .findAny();
+    }
+
 }

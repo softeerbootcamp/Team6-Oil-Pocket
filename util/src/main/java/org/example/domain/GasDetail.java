@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.enums.AttributeIndex;
 import org.example.enums.GasType;
+import org.example.enums.SchedulerIndex;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -40,8 +41,18 @@ public class GasDetail {
         list.add(new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.DIESEL.getIndex()]), GasType.DIESEL, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd"))));
         return list;
     }
+    public static List<GasDetail> parseListGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
+        List<GasDetail> list = new ArrayList<>();
+        list.add(new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.PREMIUM_GASOLINE.getIndex()]), GasType.PREMIUM_GASOLINE, date));
+        list.add(new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.GASOLINE.getIndex()]), GasType.GASOLINE, date));
+        list.add(new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.DIESEL.getIndex()]), GasType.DIESEL, date));
+        return list;
+    }
 
     public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute) {
         return new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.LPG.getIndex()]), GasType.LPG, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd")));
+    }
+    public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
+        return new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.LPG.getIndex()]), GasType.LPG, date);
     }
 }
