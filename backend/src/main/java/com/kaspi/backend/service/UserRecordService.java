@@ -85,6 +85,20 @@ public class UserRecordService {
         if (optionalFoodImage.isEmpty()) {
             throw new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE);
         }
-        return UserEcoRecordResDto.newInstance(refuelingPrice, ecoPrice, optionalFoodImage.get());
+        Optional<List<EcoRecord>> optionalEcoRecords = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge());
+        List<EcoRecord> rankSavingPrices = optionalEcoRecords.get();
+        double rank = rankSavingPrices.indexOf(EcoRecord.builder().userNo(user.getUserNo()).build()) + 1;
+        double rankPercentage = (double) Math.round((rank / rankSavingPrices.size() * 100) * 100) / 100;
+
+        double totalSavingPrice = 0;
+        for (EcoRecord rankSavingPrice : rankSavingPrices) {
+            totalSavingPrice += rankSavingPrice.getSaving_price();
+        }
+        double average = totalSavingPrice / rankSavingPrices.size();
+        return UserEcoRecordResDto.builder().userId(user.getId())
+                .gender(user.getGender()).age(user.getAge()).refuelingPrice(refuelingPrice).myEcoPrice(ecoPrice)
+                .averageEcoPrice((long)average).imageUrl(optionalFoodImage.get().getImageUrl()).rankPercentage(rankPercentage)
+                .build();
     }
+
 }
