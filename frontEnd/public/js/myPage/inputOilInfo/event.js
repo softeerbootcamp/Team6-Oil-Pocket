@@ -1,4 +1,4 @@
-import { addEvent, changeArrayCSS, changeCSS } from "../../common/function";
+import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS } from "../../common/function";
 import { parseOilPriceIntoKorean } from "./helperFunction";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
@@ -7,10 +7,10 @@ let debounceTimer = "";
 const eventToOilSelectArea = ($container) => {
     let oilSelectFlag = false;
 
-    const $oilSelect = $container.querySelector(".oilInfoArea__oilSelect");
-    const $oilSelectText = $container.querySelector(".oilInfoArea__oilSelect > span");
-    const $oilSelectImg = $container.querySelector(".oilInfoArea__oilSelect > img");
-    const $oilValues = $container.querySelectorAll(".oilInfoArea__oilValue");
+    const $oilSelect = _$(".oilInfoArea__oilSelect", $container);
+    const $oilSelectText = _$(".oilInfoArea__oilSelect > span", $container);
+    const $oilSelectImg = _$(".oilInfoArea__oilSelect > img", $container);
+    const $oilValues = _$(".oilInfoArea__oilValue", $container);
 
     addEvent($oilSelect, [
         () => {
@@ -51,10 +51,8 @@ const eventToOilPriceInput = ($container) => {
 }
 
 const eventToOilSearchInput = ($container) => {
-    const $oilSearchInput = $container.querySelector(".oilInfoArea__searchInput");
-    const $oilSearchValues = $container.querySelectorAll(".oilInfoArea__oilSearchValue");
-
-    console.log($oilSearchValues)
+    const $oilSearchInput = _$(".oilInfoArea__searchInput", $container);
+    const $oilSearchValues = _$_ALL(".oilInfoArea__oilSearchValue", $container);
 
     addEvent($oilSearchInput, [
         () => {
@@ -69,6 +67,7 @@ const eventToOilSearchInput = ($container) => {
             else {
                 debounceTimer = setTimeout(() => {
                     // 검색 관련 통신 함수
+                    
                     $oilSearchValues.forEach(($oilSearchValue, index) => {
                         changeCSS($oilSearchValue, "top", `${(index + 1) * 150}%`);
                         changeCSS($oilSearchValue, "borderBottom", "0.2vh solid black");

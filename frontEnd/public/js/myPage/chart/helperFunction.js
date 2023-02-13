@@ -1,15 +1,16 @@
-import { changeCSS, parseNumberToMoneyString } from "../../common/function";
+import { _$, _$_ALL, changeCSS, parseNumberToMoneyString } from "../../common/function";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 const OIL_UPPER_PRICE = 200_000;
 
 const makeChart = ($container, userOilArray, commonOilArray) => {
-    const $charts = $container.querySelectorAll(".oilInfoArea__chart");
+    const $charts = _$_ALL(".oilInfoArea__chart", $container);    
+
     $charts.forEach(($chart, index) => {
-        const $userPrice = $chart.querySelector(".oilInfoArea__myChart");
-        const $averagePrice = $chart.querySelector(".oilInfoArea__averageChart");
-        const $userPriceText = $userPrice.querySelector("span");
-        const $averageText = $averagePrice.querySelector("span");
+        const $userPrice = _$(".oilInfoArea__myChart", $chart);
+        const $averagePrice = _$(".oilInfoArea__averageChart", $chart);
+        const $userPriceText = _$("span", $userPrice);
+        const $averageText = _$("span", $averagePrice);
 
         $userPriceText.innerHTML = parseNumberToMoneyString(userOilArray[index]);
         $averageText.innerHTML = parseNumberToMoneyString(commonOilArray[index]);
@@ -27,8 +28,4 @@ const makeChart = ($container, userOilArray, commonOilArray) => {
     })
 }
 
-const filterChart = ($container) => {
-
-}
-
-export { makeChart, filterChart }
+export { makeChart }

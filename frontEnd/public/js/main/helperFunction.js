@@ -1,4 +1,4 @@
-import { changeCSS, pipe } from "../common/function";
+import { _$_ALL, changeCSS, pipe } from "../common/function";
 import { getChatBotTemplate } from "./template";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
@@ -12,10 +12,8 @@ const deleteChatNode = ($exceptChatText) => pipe(
             else changeCSS($exceptChatText, "color", "#000");
         }, 100 * index)
     })
-)(document.querySelectorAll(".chatBotArea__chat"));
+)(_$_ALL(".chatBotArea__chat"));
 
-const initializeChatBotContent = ($chatBotContent) => {
-    $chatBotContent.remove();
-}
+const initializeChatBotContent = ($chatBotContent) => $chatBotContent.remove();
 
 export { getChatTextArray, deleteChatNode, initializeChatBotContent }

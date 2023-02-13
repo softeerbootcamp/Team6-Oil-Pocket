@@ -1,6 +1,6 @@
 import { navBarView } from "../../navbar/view.js";
 import { eventToChartLegend } from "./event.js";
-import { makeChart, filterChart } from "./helperFunction.js";
+import { makeChart } from "./helperFunction.js";
 import { getChartTemplate } from "./template.js";
 
 const chartView = () => {

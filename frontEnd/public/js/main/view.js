@@ -1,3 +1,4 @@
+import { _$ } from "../common/function.js";
 import { navBarView } from "../navbar/view.js";
 import { eventToChatBot, eventToSaveChat, eventToSearchChat } from "./event.js";
 import { 
@@ -10,10 +11,9 @@ import {
 const mainView = () => {
     const $mainViewContainer = document.createElement("section");
     const $mainViewContent = document.createElement("section");
-
     $mainViewContent.innerHTML = getMainViewContentTemplate();
 
-    const $chatBotImg = $mainViewContent.querySelector(".chatBotArea__img");
+    const $chatBotImg = _$(".chatBotArea__img", $mainViewContent);
     
     eventToChatBot($chatBotImg);
 

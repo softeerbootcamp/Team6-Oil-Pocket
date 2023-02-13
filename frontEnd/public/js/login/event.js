@@ -1,10 +1,11 @@
-import { addEvent, giveErrorStyle } from "../common/function";
+import { addEvent, giveErrorStyle, _$ } from "../common/function";
 import { fetchLoginID } from "./fetch";
 
 const eventToLoginBtn = ($container) => {
-    const $loginBtn = $container.querySelector("#loginArea__loginBtn");
-    const $IDInput = $container.querySelector(".loginArea__IDInput");
-    const $PWInput = $container.querySelector(".loginArea__PWInput");
+    
+    const $loginBtn = _$("#loginArea__loginBtn", $container);
+    const $IDInput = _$(".loginArea__IDInput", $container);
+    const $PWInput = _$(".loginArea__PWInput", $container);
 
     addEvent($loginBtn, [() => {
         if($IDInput.value === "") {

@@ -7,8 +7,9 @@ import { comparisonView } from "./myPage/comparison/view.js";
 import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
+import { _$ } from "./common/function.js";
 
-const $body = document.querySelector("body");
+const $body = _$("body");
 
 const router = async () => {
     const routes = [

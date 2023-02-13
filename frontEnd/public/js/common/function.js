@@ -1,5 +1,9 @@
 NodeList.prototype.forEach = Array.prototype.forEach;
 
+const _$ = (cssSelector, startNode=document) => startNode.querySelector(cssSelector);
+
+const _$_ALL = (cssSelector, startNode=document) => startNode.querySelectorAll(cssSelector);
+
 const addEvent = ($target, callBackArray, eventType="click") => {
     callBackArray.forEach((callBack) => $target.addEventListener(eventType, callBack));
 }
@@ -14,20 +18,12 @@ const toggleClass = ($target, className) => $target.classList.toggle(className);
 const toggleArrayClass = ($targetArray, className) => 
     $targetArray.forEach(($target) => toggleClass($target, className));
 
-const replaceChildWithFadeEffect = ($parent, $child) => {
-    $parent.innerHTML = "";
-    $parent.appendChild($child);
-    $child.style.opacity = 1;
-}
-
 const pipe = (...functionList) => (firstParam) => 
     functionList.reduce((curValue, curFunc) => { 
         return curFunc(curValue);
     }, firstParam);
 
 const makeLighter = ($target) => $target.style.opacity = 1;
-
-const makeTransparent = ($target) => $target.style.opacity = 0;
 
 const makeNodeArrayLighterSubsequently = (nodeArray, time) => 
     nodeArray.forEach((node, index) => 
@@ -57,9 +53,10 @@ const parseNumberToMoneyString = (number) => {
     return `${parsedString} 원`;
 }
 
-export { 
+export {
+    _$, _$_ALL,
     addEvent, changeCSS, changeArrayCSS,
     toggleArrayClass,
-    replaceChildWithFadeEffect, pipe, makeLighter, makeTransparent,
+    pipe, makeLighter,
     makeNodeArrayLighterSubsequently, giveErrorStyle, parseNumberToMoneyString
 }

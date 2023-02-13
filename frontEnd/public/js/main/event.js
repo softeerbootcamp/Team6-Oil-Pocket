@@ -1,4 +1,4 @@
-import { addEvent, changeCSS, makeNodeArrayLighterSubsequently, pipe } from "../common/function.js";
+import { _$_ALL, addEvent, changeCSS, makeNodeArrayLighterSubsequently, pipe, _$ } from "../common/function.js";
 import { deleteChatNode, getChatTextArray } from "./helperFunction.js";
 import { 
     chatBotAnswerView__myPage01, chatBotAnswerView__myPage02, 
@@ -7,13 +7,14 @@ import {
     chatBotAnswerView__ETC01, chatBotAnswerView__ETC02,
     chatBotQuestionView01, chatBotQuestionView02, chatBotQuestionView03,
 } from "./view.js";
+
 NodeList.prototype.forEach = Array.prototype.forEach;
 
 let chatBotArea = "";
 
 const eventToChatBotCloseBtn = ($chatBotCloseBtn) => {
     const $chatBotArea = $chatBotCloseBtn.closest(".chatBotArea");
-    const $explainAreaArray = document.querySelectorAll(".explainArea");
+    const $explainAreaArray = _$_ALL(".explainArea");
     addEvent($chatBotCloseBtn, [
         () => changeCSS($chatBotArea, "height", "5vh"),
         () => setTimeout(() => changeCSS($chatBotArea, "opacity", 0), 400),
@@ -27,8 +28,8 @@ const eventToChatBotCloseBtn = ($chatBotCloseBtn) => {
 const eventToChatBot = ($chatBotImg) => {
     $chatBotImg.addEventListener("click", () => {
         const $chatBotView = chatBotView();
-        const $chatBotBackGround = $chatBotView.querySelector(".chatBotArea__background");
-        const $explainAreaArray = document.querySelectorAll(".explainArea");
+        const $chatBotBackGround = _$(".chatBotArea__background", $chatBotView);
+        const $explainAreaArray = _$_ALL(".explainArea");
         $explainAreaArray.forEach(($explainArea) => {
             $explainArea.style.animationPlayState = "paused";
         });
@@ -41,7 +42,7 @@ const eventToChatBot = ($chatBotImg) => {
 
         eventToChatBotText($chatBotView);
 
-        const $chatBotCloseBtn = $chatBotView.querySelector(".chatBotArea__closeBtn");
+        const $chatBotCloseBtn = _$(".chatBotArea__closeBtn", $chatBotView);
         eventToChatBotCloseBtn($chatBotCloseBtn);
     })
 }

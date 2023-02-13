@@ -1,4 +1,4 @@
-import { changeCSS } from "../common/function";
+import { _$, changeCSS } from "../common/function";
 import { BASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
 import { setTargetDisabled } from "./helperFunction";
 
@@ -6,7 +6,7 @@ const ID_VALIDATION_URL = BASE_COMMON_URL + "/auth";
 const REGISTER_URL = BASE_COMMON_URL + "/user";
 
 function fetchValidateID($IDInput, $IDValidateBtn, $registerBtn) {
-    const $IdValidateErrorModal = document.querySelector(".registerArea__errorModal--IDvalidation");
+    const $IdValidateErrorModal = _$(".registerArea__errorModal--IDvalidation");
 
     fetch(ID_VALIDATION_URL + `?id="${$IDInput.value}"`, {
         method: METHOD.GET
@@ -24,7 +24,7 @@ function fetchValidateID($IDInput, $IDValidateBtn, $registerBtn) {
 }
 
 function fetchRegisterID(requestBody) {
-    const $registerErrorModal = document.querySelector(".registerArea__errorModal--register");
+    const $registerErrorModal = _$(".registerArea__errorModal--register");
 
     fetch(REGISTER_URL, {
         method: METHOD.POST,

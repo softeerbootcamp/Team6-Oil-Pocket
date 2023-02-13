@@ -1,4 +1,4 @@
-import { parseNumberToMoneyString } from "../../common/function";
+import { _$, parseNumberToMoneyString } from "../../common/function";
 
 const imageLocationMapper = {
     "동전": "./public/img/myProfile_Image/coin.png",
@@ -38,10 +38,10 @@ const getImageName = (myPrice, commonPrice) => {
 const setImageByName = ($image, imageName) => $image.setAttribute("src", imageLocationMapper[imageName]);
 
 const makeComparisonCards = ($container, myPrice, commonPrice) => {
-    const $myPirceText = $container.querySelector(".oilInfoArea__compareMyBox > h1");
-    const $commonPriceText = $container.querySelector(".oilInfoArea__compareCommonBox > h1");
-    const $imageText = $container.querySelector(".oilInfoArea__compareTitle");
-    const $compareImage = $container.querySelector(".oilInfoArea__compareImgBox > img");
+    const $myPirceText = _$(".oilInfoArea__compareMyBox > h1", $container);
+    const $commonPriceText = _$(".oilInfoArea__compareCommonBox > h1", $container);
+    const $imageText = _$(".oilInfoArea__compareTitle", $container);
+    const $compareImage = _$(".oilInfoArea__compareImgBox > img", $container);
 
     $myPirceText.innerHTML = parseNumberToMoneyString(myPrice);
     $commonPriceText.innerHTML = parseNumberToMoneyString(commonPrice);

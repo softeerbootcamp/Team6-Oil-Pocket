@@ -1,13 +1,13 @@
-import { addEvent, changeCSS, changeArrayCSS } from "../common/function"
+import { _$, _$_ALL, addEvent, changeCSS, changeArrayCSS } from "../common/function"
 import { fetchRegisterID, fetchValidateID } from "./fetch";
 import { getRegisterFetchBody, isSamePWInputs } from "./helperFunction";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 
 const eventToTermOfUseBtn = ($container) => {
-    const $termOfUseBtn = $container.querySelector(".registerArea__termOfUseContentBtn");
-    const $termOfUseParagraph = $container.querySelector(".registerArea__termOfUseContent");
-    const $termOfUseArea = $container.querySelector(".registerArea__termOfUse");
+    const $termOfUseBtn = _$(".registerArea__termOfUseContentBtn", $container);
+    const $termOfUseParagraph = _$(".registerArea__termOfUseContent", $container);
+    const $termOfUseArea = _$(".registerArea__termOfUse", $container);
 
     addEvent($termOfUseBtn, [
         () => $termOfUseParagraph.innerHTML = ``,
@@ -18,10 +18,10 @@ const eventToTermOfUseBtn = ($container) => {
 }
 
 const eventToSelects = ($container) => {
-    const $selectgender = $container.querySelector(".registerArea__genderTitle");
-    const $selectgenderValues = $container.querySelectorAll(".registerArea__genderValue");
-    const $selectAge = $container.querySelector(".registerArea__ageTitle");
-    const $selectAgeValues = $container.querySelectorAll(".registerArea__ageValue");
+    const $selectgender = _$(".registerArea__genderTitle", $container);
+    const $selectgenderValues = _$_ALL(".registerArea__genderValue", $container);
+    const $selectAge = _$(".registerArea__ageTitle", $container);
+    const $selectAgeValues = _$_ALL(".registerArea__ageValue", $container);
 
     addEvent($selectgender, [
         () => $selectgenderValues.forEach(($genderValue, index) => {
@@ -39,10 +39,10 @@ const eventToSelects = ($container) => {
 }
 
 const eventToSelectValues = ($container) => {
-    const $genderTitle = $container.querySelector(".registerArea__genderTitle");
-    const $genderValues = $container.querySelectorAll(".registerArea__genderValue");
-    const $ageTitle = $container.querySelector(".registerArea__ageTitle");
-    const $ageValues = $container.querySelectorAll(".registerArea__ageValue");
+    const $genderTitle = _$(".registerArea__genderTitle", $container);
+    const $genderValues = _$_ALL(".registerArea__genderValue", $container);
+    const $ageTitle = _$(".registerArea__ageTitle", $container);
+    const $ageValues = _$_ALL(".registerArea__ageValue", $container);
 
     $genderValues.forEach(($genderValue) => addEvent($genderValue, [
         () => $genderTitle.innerHTML = $genderValue.innerHTML,
@@ -58,12 +58,12 @@ const eventToSelectValues = ($container) => {
 }
 
 const eventToRegisterBtn = ($container) => {
-    const $IDInput = $container.querySelector(".registerArea__IDArea > input")
-    const $registerBtn = $container.querySelector(".registerBtn");
-    const $selectAge = $container.querySelector(".registerArea__ageTitle");
-    const $selectGender = $container.querySelector(".registerArea__genderTitle");
-    const $pwInput = $container.querySelector("#registerArea__pwInput");
-    const $pwReInput = $container.querySelector("#registerArea__pwReInput");
+    const $IDInput = _$(".registerArea__IDArea > input", $container);
+    const $registerBtn = _$(".registerBtn", $container);
+    const $selectAge = _$(".registerArea__ageTitle", $container);
+    const $selectGender = _$(".registerArea__genderTitle", $container);
+    const $pwInput = _$("#registerArea__pwInput", $container);
+    const $pwReInput = _$("#registerArea__pwReInput", $container);
 
     addEvent($registerBtn, [() => {
         if($selectGender.innerHTML === "성별") {
@@ -110,9 +110,9 @@ const eventToRegisterBtn = ($container) => {
 }
 
 const eventToIDValidateBtn = ($registerContainer) => {
-    const $IDValidateBtn = $registerContainer.querySelector(".IDValidateBtn");
-    const $registerBtn = $registerContainer.querySelector(".registerBtn");
-    const $IDInput = $registerContainer.querySelector(".registerArea__IDArea > input");
+    const $IDValidateBtn = _$(".IDValidateBtn", $registerContainer);
+    const $registerBtn = _$(".registerBtn", $registerContainer);
+    const $IDInput = _$(".registerArea__IDArea > input", $registerContainer);
 
     addEvent($IDValidateBtn, [() => fetchValidateID($IDInput, $IDValidateBtn, $registerBtn)]);
 }
