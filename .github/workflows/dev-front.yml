@@ -1,0 +1,39 @@
+name: Deploy frontend to EC2
+
+on:
+  push:
+    branches:
+      - dev
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: CD into frontend directory
+      run: cd frontend
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build frontend
+      run: npm run build
+
+    - name: Copy files to EC2
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
+
+    - name: Deploy to EC2
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.EC2_IP }}
+        username: ubuntu
+        password: ${{ secrets.EC2_PASSWORD }}
+        source: dist
+        target: /home/ubuntu/front
