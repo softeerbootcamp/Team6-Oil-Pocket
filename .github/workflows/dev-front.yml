@@ -21,7 +21,7 @@ jobs:
     - name: Build frontend
       run: cd frontEnd && npm run build
 
-    - name: Deploy to EC2
+    - name: Transfer Deploy Script use SCP
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.EC2_IP }}
@@ -30,14 +30,14 @@ jobs:
         source: "./frontEnd/dist"
         target: "/home/ubuntu/"
         
-    - name: Transfer Deploy Script use SCP
-      uses: appleboy/scp-action@master
+    - name: Execute Server Init Script
+      uses: appleboy/ssh-action@master
       with:
         username: ubuntu
-        host: ${{ secrets.HOST }}
-        key: ${{ secrets.PRIVATE_KEY }}
-        source: "deploy.sh"
-        target: "/home/ubuntu/frontEnd"
+        host: ${{ secrets.EC2_IP }}
+        key: ${{ secrets.EC2_PASSWORD }}
+        script_stop: true
+        script: chmod +x /home/ubuntu/frontEnd/deploy.sh && sh /home/ubuntu/frontEnd/deploy.sh
         
         
 
