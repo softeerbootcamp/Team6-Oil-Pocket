@@ -4,6 +4,9 @@ import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
+
+import com.kaspi.backend.util.exception.AuthenticationException;
+import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,12 +29,18 @@ public class HttpSessionService {
 
     public User getUserFromSession() {
         Long userNo = (Long) httpSession.getAttribute(SESSION_KEY);
+        checkSession(userNo);
         Optional<User> findUser = userDao.findById(userNo);
         authService.checkNotValidUser(findUser);
         return findUser.get();
     }
 
-
+    private static void checkSession(Long userNo) {
+        if (userNo == null) {
+            log.error("세션이 만료되었습니다.");
+            throw new AuthenticationException(ErrorCode.AUTH_ERROR);
+        }
+    }
 
 
 }

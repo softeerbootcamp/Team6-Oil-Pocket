@@ -4,6 +4,7 @@ package com.kaspi.backend.controller;
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignInRequestDto;
+import com.kaspi.backend.dto.ValidLoginResDto;
 import com.kaspi.backend.service.AuthService;
 import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.util.response.CommonResponseDto;
@@ -38,6 +39,13 @@ public class AuthController {
         }
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_VALID_ID));
+    }
+
+    @GetMapping("/v1/auth/status")
+    public ResponseEntity<CommonResponseDto> checkLogin() {
+        User userFromSession = httpSessionService.getUserFromSession();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_SIGN_IN,ValidLoginResDto.toValidLoginResDto(userFromSession)));
     }
 
     @PostMapping("/v1/auth")
