@@ -3,10 +3,15 @@ package com.kaspi.backend.util.exception;
 import com.kaspi.backend.util.response.code.Code;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 
 //인증
-@Getter
-@RequiredArgsConstructor
-public class AuthenticationException extends RuntimeException {
-    private final Code code;
+public class AuthenticationException extends DefaultException {
+    public AuthenticationException(String className, Code code) {
+        super(className, code, HttpStatus.UNAUTHORIZED);
+    }
+
+    public AuthenticationException(Code code) {
+        super(code,HttpStatus.UNAUTHORIZED);
+    }
 }
