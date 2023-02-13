@@ -14,9 +14,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-#     - name: CD into frontend directory
-#       run: cd frontEnd
-
     - name: Install dependencies
       run: cd frontEnd && npm install
 
@@ -27,7 +24,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: dist
-        path: dist
+        path: ./frontEnd/dist
 
     - name: Deploy to EC2
       uses: appleboy/scp-action@master
