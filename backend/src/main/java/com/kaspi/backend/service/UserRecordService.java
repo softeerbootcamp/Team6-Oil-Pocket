@@ -1,18 +1,21 @@
 package com.kaspi.backend.service;
 
+import com.kaspi.backend.dao.FoodImageDao;
 import com.kaspi.backend.dao.GasDetailDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
-import com.kaspi.backend.domain.GasDetail;
-import com.kaspi.backend.domain.GasStation;
-import com.kaspi.backend.domain.User;
-import com.kaspi.backend.domain.UserGasRecord;
+import com.kaspi.backend.domain.*;
+import com.kaspi.backend.dto.UserEcoRecordResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
-import java.sql.SQLException;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -26,6 +29,7 @@ public class UserRecordService {
     private final HttpSessionService httpSessionService;
     private final UserGasRecordDao userGasRecordDao;
 
+    private final FoodImageDao foodImageDao;
 
 
     /**
@@ -63,5 +67,24 @@ public class UserRecordService {
                 .build();
         log.info("유저 주유기록 저장 유저No:{}",user.getUserNo());
         return userGasRecordDao.save(userGasRecord);
+    }
+
+    public UserEcoRecordResDto calMonthUserEcoPrice() {
+        User user = httpSessionService.getUserFromSession();
+        Optional<List<UserGasRecord>> optionalUserGasRecords = userGasRecordDao.findByMonthOfNow(user.getUserNo(), LocalDate.now());
+        if (optionalUserGasRecords.isEmpty()) {
+            throw new SqlNotFoundException(ErrorCode.NOT_FOUND_USER_GAS_RECORD);
+        }
+        long refuelingPrice = 0;
+        long ecoPrice = 0;
+        for (UserGasRecord userGasRecord : optionalUserGasRecords.get()) {
+            refuelingPrice += userGasRecord.getRefuelingPrice();
+            ecoPrice += userGasRecord.getSavingPrice();
+        }
+        Optional<FoodImage> optionalFoodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(ecoPrice));
+        if (optionalFoodImage.isEmpty()) {
+            throw new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE);
+        }
+        return UserEcoRecordResDto.newInstance(refuelingPrice, ecoPrice, optionalFoodImage.get());
     }
 }
