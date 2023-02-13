@@ -95,7 +95,7 @@ insert into gas_detail (station_no, gas_type, price, created_date)
 values (1, "DIESEL", 1759, '2023-01-02');
 
 insert into users(id, password, gender, age)
-values ("admin", "password", "MALE", "FORTHY");
+values ("admin", "password", "MALE", "FORTY");
 insert into user_gas_record(user_no, gas_station_no, charge_date, refueling_price, saving_price, record_gas_type,
                             record_gas_amount)
 values (1, 1, "2023-02-12", 23000, 376, "DIESEL", 14);
