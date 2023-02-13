@@ -33,7 +33,7 @@ const getHistoryTemplate = () => `
                             </div>
                             <div>
                                 <span>2022.02.01</span>
-                                <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
                                 <span>유진 주유소</span>
                                 <span>휘발유 30L</span>
                                 <span>42,000원</span>
@@ -41,61 +41,68 @@ const getHistoryTemplate = () => `
                             </div>
                             <div>
                                 <span>2022.02.01</span>
-                                <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
                                 <span>유진 주유소</span>
                                 <span>휘발유 30L</span>
                                 <span>42,000원</span>
                                 <span>-3,000원</span>
-                            </div><div>
+                            </div>
+                            <div>
+                                <span>2022.02.01</span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span>유진 주유소</span>
+                                <span>휘발유 30L</span>
+                                <span>42,000원</span>
+                                <span>-3,000원</span>
+                            </div>
+                            <div>
+                                <span>2022.02.01</span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span>유진 주유소</span>
+                                <span>휘발유 30L</span>
+                                <span>42,000원</span>
+                                <span>-3,000원</span>
+                            </div>
+                            <div>
+                                <span>2022.02.01</span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span>유진 주유소</span>
+                                <span>휘발유 30L</span>
+                                <span>42,000원</span>
+                                <span>-3,000원</span>
+                            </div>
+                            <div>
                             <span>2022.02.01</span>
-                            <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                            <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
                             <span>유진 주유소</span>
                             <span>휘발유 30L</span>
                             <span>42,000원</span>
                             <span>-3,000원</span>
-                        </div><div>
-                        <span>2022.02.01</span>
-                        <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                        <span>유진 주유소</span>
-                        <span>휘발유 30L</span>
-                        <span>42,000원</span>
-                        <span>-3,000원</span>
-                    </div><div>
-                    <span>2022.02.01</span>
-                    <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                    <span>유진 주유소</span>
-                    <span>휘발유 30L</span>
-                    <span>42,000원</span>
-                    <span>-3,000원</span>
-                </div><div>
-                <span>2022.02.01</span>
-                <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                <span>유진 주유소</span>
-                <span>휘발유 30L</span>
-                <span>42,000원</span>
-                <span>-3,000원</span>
-            </div><div>
-            <span>2022.02.01</span>
-            <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-            <span>유진 주유소</span>
-            <span>휘발유 30L</span>
-            <span>42,000원</span>
-            <span>-3,000원</span>
-        </div><div>
-        <span>2022.02.01</span>
-        <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-        <span>유진 주유소</span>
-        <span>휘발유 30L</span>
-        <span>42,000원</span>
-        <span>-3,000원</span>
-    </div><div>
-    <span>2022.02.01</span>
-    <span><img src="../img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-    <span>유진 주유소</span>
-    <span>휘발유 30L</span>
-    <span>42,000원</span>
-    <span>-3,000원</span>
-</div>
+                            </div>
+                            <div>
+                                <span>2022.02.01</span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span>유진 주유소</span>
+                                <span>휘발유 30L</span>
+                                <span>42,000원</span>
+                                <span>-3,000원</span>
+                            </div>
+                            <div>
+                                <span>2022.02.01</span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span>유진 주유소</span>
+                                <span>휘발유 30L</span>
+                                <span>42,000원</span>
+                                <span>-3,000원</span>
+                            </div>
+                            <div>
+                                <span>2022.02.01</span>
+                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
+                                <span>유진 주유소</span>
+                                <span>휘발유 30L</span>
+                                <span>42,000원</span>
+                                <span>-3,000원</span>
+                            </div>
                         </div>
                     </div>
                 </div>
