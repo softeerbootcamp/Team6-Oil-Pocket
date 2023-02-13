@@ -2,8 +2,7 @@ name: Deploy frontend to EC2
 
 on:
   push:
-    branches:
-      - dev
+    branches: [dev, main]
 
 
 
