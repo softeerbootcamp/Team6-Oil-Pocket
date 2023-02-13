@@ -8,20 +8,21 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.kaspi.backend.dao.FoodImageDao;
 import com.kaspi.backend.dao.GasDetailDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
-import com.kaspi.backend.domain.GasDetail;
-import com.kaspi.backend.domain.GasStation;
+import com.kaspi.backend.domain.*;
 import com.kaspi.backend.domain.GasStation.GasStationBuilder;
-import com.kaspi.backend.domain.User;
-import com.kaspi.backend.domain.UserGasRecord;
+import com.kaspi.backend.dto.UserEcoRecordResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.enums.GasType;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
+
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,6 +39,8 @@ class UserRecordServiceTest {
     private GasDetailDao gasDetailDao;
     @Mock
     private UserGasRecordDao userGasRecordDao;
+    @Mock
+    private FoodImageDao foodImageDao;
     @Mock
     private HttpSessionService httpSessionService;
 
@@ -157,5 +160,51 @@ class UserRecordServiceTest {
         // Then
         verify(userGasRecordDao, times(1)).save(any(UserGasRecord.class));
         assertThat(result).isEqualTo(userGasRecord);
+    }
+
+    @Test
+    @DisplayName("이미지 반환 성공 테스트")
+    void calMonthUserEcoPrice() {
+        UserGasRecord userGasRecord = UserGasRecord.builder()
+                .userNo(1L)
+                .gasStationNo(1L)
+                .chargeDate(new Date())
+                .refuelingPrice(20000L)
+                .recordGasAmount(10L)
+                .savingPrice(1000L)
+                .recordGasType(GasType.GASOLINE)
+                .build();
+        UserGasRecord userGasRecord2 = UserGasRecord.builder()
+                .userNo(1L)
+                .gasStationNo(1L)
+                .chargeDate(new Date())
+                .refuelingPrice(30000L)
+                .recordGasAmount(10L)
+                .savingPrice(3000L)
+                .recordGasType(GasType.GASOLINE)
+                .build();
+        List<UserGasRecord> list = new ArrayList<>();
+        list.add(userGasRecord);
+        list.add(userGasRecord2);
+        FoodImage foodImage = FoodImage.builder()
+                .food_no(2)
+                .startPrice(BigDecimal.valueOf(1000L))
+                .endPrice(BigDecimal.valueOf(5000L))
+                .imageUrl("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/coffee.png")
+                .build();
+        LocalDate localDate = LocalDate.now();
+        User user = User.builder()
+                .userNo(1L)
+                .build();
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        when(userGasRecordDao.findByMonthOfNow(1L, localDate)).thenReturn(Optional.of(list));
+        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(4000))).thenReturn(Optional.of(foodImage));
+        UserEcoRecordResDto userEcoRecordResDto = userRecordService.calMonthUserEcoPrice();
+
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(userEcoRecordResDto.getRefuelingPrice()).isEqualTo(50000);
+        softly.assertThat(userEcoRecordResDto.getEcoPrice()).isEqualTo(4000);
+        softly.assertThat(userEcoRecordResDto.getImageUrl()).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/coffee.png");
+        softly.assertAll();
     }
 }
