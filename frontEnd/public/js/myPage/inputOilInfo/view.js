@@ -2,7 +2,7 @@ import { navBarView } from "../../navbar/view.js";
 import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput, eventToRegisterBtn, eventToSearchValue } from "./event.js";
 import { getInputOilInfoTemplate, getSearchTemplate } from "./template.js";
 
-const inputOilInfoView = () => {
+const inputOilInfoView = async () => {
     const $inputOilInputContainer = document.createElement("section");
     const $inputOilInputContent = document.createElement("section");
     $inputOilInputContent.classList.add("main");

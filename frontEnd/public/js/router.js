@@ -23,6 +23,7 @@ const router = async () => {
         { path: "/history", view: historyView },
         { path: "/404", view: notFoundView }
     ];
+    
     let match = routes.map(route => {
         return {
             route,
@@ -36,7 +37,7 @@ const router = async () => {
         }
     }
     const getNode = match.route.view;
-    const $container = getNode();
+    const $container = await getNode();
     $body.replaceWith($container);
 }
 // 페이지 전환 함수

@@ -43,12 +43,12 @@ const getComparisonTemplate = () => `
                                         <div class="oilInfoArea__otherChart"></div>
                                     </div>
                                     <div class="oilInfoArea__chartValueTextArea">
-                                        <span class="oilInfoArea__chartValueText--user">310,000</span>
-                                        <span class="oilInfoArea__chartValueText--common">300,000</span>
+                                        <span class="oilInfoArea__chartValueText--user"></span>
+                                        <span class="oilInfoArea__chartValueText--common"></span>
                                     </div>
                                     <div class="oilInfoArea__chartNameArea">
-                                        <span class="oilInfoArea__chartNameArea--name">jaewon</span>
-                                        <span class="oilInfoArea__chartNameArea--info">20대 남자</span>
+                                        <span class="oilInfoArea__chartNameArea--name"></span>
+                                        <span class="oilInfoArea__chartNameArea--info"></span>
                                     </div>
                                 </div>
                             </div>

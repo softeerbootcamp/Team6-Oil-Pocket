@@ -3,7 +3,7 @@ import { eventToChartLegend } from "./event.js";
 import { makeChart } from "./helperFunction.js";
 import { getChartTemplate } from "./template.js";
 
-const chartView = () => {
+const chartView = async () => {
     const $chartContainer = document.createElement("section");
     const $chartContent = document.createElement("section");
     $chartContent.classList.add("main");

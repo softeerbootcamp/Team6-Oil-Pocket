@@ -4,7 +4,7 @@ import {
 } from "./event.js";
 import { getRegisterTemplate } from "./template.js";
 
-const registerView = () => {
+const registerView = async () => {
     const $registerContainer = document.createElement("section");
     $registerContainer.classList.add("main");
     $registerContainer.innerHTML = getRegisterTemplate();

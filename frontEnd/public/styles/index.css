@@ -3090,7 +3090,7 @@ a, button, select, input {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
-    font-size: 0.45rem;
+    font-size: 0.35rem;
     padding-left: 0.5vw;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox:hover {

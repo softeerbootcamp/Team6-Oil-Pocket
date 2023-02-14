@@ -1,4 +1,4 @@
-const notFoundView = () => {
+const notFoundView = async () => {
     return ``;
 }
 

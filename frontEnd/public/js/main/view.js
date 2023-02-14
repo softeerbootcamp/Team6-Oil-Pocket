@@ -8,7 +8,7 @@ import {
     getETCAnswerChatTemplate01, getETCAnswerChatTemplate02
 } from "./template.js";
 
-const mainView = () => {
+const mainView = async () => {
     const $mainViewContainer = document.createElement("section");
     const $mainViewContent = document.createElement("section");
     $mainViewContent.innerHTML = getMainViewContentTemplate();
