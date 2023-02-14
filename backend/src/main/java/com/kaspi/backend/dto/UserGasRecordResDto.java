@@ -6,11 +6,14 @@ import com.kaspi.backend.enums.GasBrand;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 
 @Getter
 @Builder
-public class UserGasRecordResDto {
+public class UserGasRecordResDto implements Comparable<UserGasRecordResDto> {
 
     private String chargeDate;
     private String gasStationName;
@@ -38,4 +41,18 @@ public class UserGasRecordResDto {
         return date.toString().replace("-", ".");
     }
 
+
+    //날짜를 기준으로 정렬 내림차순 정렬(최근것 우선)
+    @Override
+    public int compareTo(UserGasRecordResDto o) {
+        Date date1 = null;
+        Date date2 = null;
+        try {
+            date1 = new SimpleDateFormat("yyyy.MM.dd").parse(this.getChargeDate());
+            date2 = new SimpleDateFormat("yyyy.MM.dd").parse(o.getChargeDate());
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return date2.compareTo(date1);
+    }
 }
