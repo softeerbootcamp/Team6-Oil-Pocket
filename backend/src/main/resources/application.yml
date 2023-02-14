@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://43.200.157.18:3306/oilpocket_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: "jdbc:mysql://${EC2_URI}:3306/oilpocket_db?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8"
     username: ${MYSQL_ID}
     password: ${MYSQL_PASSWORD}
 
@@ -12,7 +12,8 @@ spring:
         max-idle: 10
         min-idle: 2
     port: 6379
-    host: 43.200.157.18
+    host: ${EC2_URI}
+    password: ${REDIS_PASSWORD}
 
   session:
     cookie:
