@@ -71,34 +71,41 @@ public class UserRecordService {
 
     public UserEcoRecordResDto calMonthUserEcoPrice() {
         User user = httpSessionService.getUserFromSession();
-        Optional<List<UserGasRecord>> optionalUserGasRecords = userGasRecordDao.findByMonthOfNow(user.getUserNo(), LocalDate.now());
-        if (optionalUserGasRecords.isEmpty()) {
-            throw new SqlNotFoundException(ErrorCode.NOT_FOUND_USER_GAS_RECORD);
-        }
-        long refuelingPrice = 0;
-        long ecoPrice = 0;
-        for (UserGasRecord userGasRecord : optionalUserGasRecords.get()) {
-            refuelingPrice += userGasRecord.getRefuelingPrice();
-            ecoPrice += userGasRecord.getSavingPrice();
-        }
-        Optional<FoodImage> optionalFoodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(ecoPrice));
-        if (optionalFoodImage.isEmpty()) {
-            throw new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE);
-        }
-        Optional<List<EcoRecord>> optionalEcoRecords = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge());
-        List<EcoRecord> rankSavingPrices = optionalEcoRecords.get();
-        double rank = rankSavingPrices.indexOf(EcoRecord.builder().userNo(user.getUserNo()).build()) + 1;
-        double rankPercentage = (double) Math.round((rank / rankSavingPrices.size() * 100) * 100) / 100;
+        List<UserGasRecord> userGasRecords = userGasRecordDao.findByMonthOfNow(user.getUserNo(), LocalDate.now())
+                .orElseThrow(() -> new SqlNotFoundException(ErrorCode.NOT_FOUND_USER_GAS_RECORD));
 
-        double totalSavingPrice = 0;
-        for (EcoRecord rankSavingPrice : rankSavingPrices) {
-            totalSavingPrice += rankSavingPrice.getSaving_price();
-        }
-        double average = totalSavingPrice / rankSavingPrices.size();
+        long refuelingPrice = getRefuelingPrice(userGasRecords);
+        long ecoPrice = getEcoPrice(userGasRecords);
+
+        FoodImage foodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(ecoPrice))
+                .orElseThrow(() -> new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE));
+
+        List<EcoRecord> rankSavingPrices = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge()).get();
+
+        double rankPercentage = getRankPercentage(user, rankSavingPrices);
+        long average = getAverage(rankSavingPrices);
         return UserEcoRecordResDto.builder().userId(user.getId())
                 .gender(user.getGender()).age(user.getAge()).refuelingPrice(refuelingPrice).myEcoPrice(ecoPrice)
-                .averageEcoPrice((long)average).imageUrl(optionalFoodImage.get().getImageUrl()).rankPercentage(rankPercentage)
+                .averageEcoPrice(average).imageUrl(foodImage.getImageUrl()).rankPercentage(rankPercentage)
                 .build();
+    }
+
+    private long getRefuelingPrice(List<UserGasRecord> userGasRecords) {
+        return userGasRecords.stream().mapToLong(UserGasRecord::getRefuelingPrice).sum();
+    }
+
+    private long getEcoPrice(List<UserGasRecord> userGasRecords) {
+        return userGasRecords.stream().mapToLong(UserGasRecord::getSavingPrice).sum();
+    }
+
+    private double getRankPercentage(User user, List<EcoRecord> rankSavingPrices) {
+        int rank = rankSavingPrices.indexOf(EcoRecord.builder().userNo(user.getUserNo()).build()) + 1;
+        return (double) Math.round((rank / (double) rankSavingPrices.size() * 100) * 100) / 100;
+    }
+
+    private long getAverage(List<EcoRecord> rankSavingPrices) {
+        double totalSavingPrice = rankSavingPrices.stream().mapToDouble(EcoRecord::getSaving_price).sum();
+        return (long) (totalSavingPrice / rankSavingPrices.size());
     }
 
 }
