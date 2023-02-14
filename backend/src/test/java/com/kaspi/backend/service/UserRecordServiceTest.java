@@ -8,20 +8,22 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import com.kaspi.backend.dao.FoodImageDao;
 import com.kaspi.backend.dao.GasDetailDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
-import com.kaspi.backend.domain.GasDetail;
-import com.kaspi.backend.domain.GasStation;
-import com.kaspi.backend.domain.GasStation.GasStationBuilder;
-import com.kaspi.backend.domain.User;
-import com.kaspi.backend.domain.UserGasRecord;
+import com.kaspi.backend.domain.*;
+import com.kaspi.backend.dto.UserEcoRecordResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
+import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
+
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
+
+import com.kaspi.backend.enums.Gender;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,6 +40,8 @@ class UserRecordServiceTest {
     private GasDetailDao gasDetailDao;
     @Mock
     private UserGasRecordDao userGasRecordDao;
+    @Mock
+    private FoodImageDao foodImageDao;
     @Mock
     private HttpSessionService httpSessionService;
 
@@ -157,5 +161,32 @@ class UserRecordServiceTest {
         // Then
         verify(userGasRecordDao, times(1)).save(any(UserGasRecord.class));
         assertThat(result).isEqualTo(userGasRecord);
+    }
+    @Test
+    @DisplayName("절약 정보 조회 테스트")
+    public void calMonthUserEcoPrice_ShouldReturnUserEcoRecordResDto() {
+        User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
+        LocalDate date = LocalDate.now();
+        List<EcoRecord> rankSavingPrices = Arrays.asList(
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).perRank(0).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).perRank(0.5).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(200).perRank(1).build()
+        );
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
+        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(200))).thenReturn(Optional.of(FoodImage.builder().food_no(1).imageUrl("http://example.com/food1.jpg").build()));
+
+        // Act
+        UserEcoRecordResDto result = userRecordService.calMonthUserEcoPrice();
+
+        // Assert
+        assertEquals("user1", result.getUserId());
+        assertEquals(Gender.MALE, result.getGender());
+        assertEquals(Age.FORTY, result.getAge());
+        assertEquals(20000, result.getRefuelingPrice());
+        assertEquals(200, result.getMyEcoPrice());
+        assertEquals(320, result.getAverageEcoPrice());
+        assertEquals("http://example.com/food1.jpg", result.getImageUrl());
+        assertEquals(1, result.getRankPercentage(), 0.001);
     }
 }
