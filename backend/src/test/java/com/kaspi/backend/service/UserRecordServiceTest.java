@@ -162,82 +162,31 @@ class UserRecordServiceTest {
         verify(userGasRecordDao, times(1)).save(any(UserGasRecord.class));
         assertThat(result).isEqualTo(userGasRecord);
     }
-
     @Test
-    @DisplayName("이미지 반환 성공 테스트")
-    void calMonthUserEcoPrice() {
-        UserGasRecord userGasRecord = UserGasRecord.builder()
-                .userNo(1L)
-                .gasStationNo(1L)
-                .chargeDate(new Date())
-                .refuelingPrice(20000L)
-                .recordGasAmount(10L)
-                .savingPrice(1000L)
-                .recordGasType(GasType.GASOLINE)
-                .build();
-        UserGasRecord userGasRecord2 = UserGasRecord.builder()
-                .userNo(1L)
-                .gasStationNo(1L)
-                .chargeDate(new Date())
-                .refuelingPrice(30000L)
-                .recordGasAmount(10L)
-                .savingPrice(3000L)
-                .recordGasType(GasType.GASOLINE)
-                .build();
-        List<UserGasRecord> list = new ArrayList<>();
-        list.add(userGasRecord);
-        list.add(userGasRecord2);
-        FoodImage foodImage = FoodImage.builder()
-                .food_no(2)
-                .startPrice(BigDecimal.valueOf(1000L))
-                .endPrice(BigDecimal.valueOf(5000L))
-                .imageUrl("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/coffee.png")
-                .build();
-        LocalDate localDate = LocalDate.now();
-        User user = User.builder()
-                .userNo(1L)
-                .build();
-        when(httpSessionService.getUserFromSession()).thenReturn(user);
-        when(userGasRecordDao.findByMonthOfNow(1L, localDate)).thenReturn(Optional.of(list));
-        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(4000))).thenReturn(Optional.of(foodImage));
-        UserEcoRecordResDto userEcoRecordResDto = userRecordService.calMonthUserEcoPrice();
-
-        SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(userEcoRecordResDto.getRefuelingPrice()).isEqualTo(50000);
-        softly.assertThat(userEcoRecordResDto.getMyEcoPrice()).isEqualTo(4000);
-        softly.assertThat(userEcoRecordResDto.getImageUrl()).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/coffee.png");
-        softly.assertAll();
-    }
-    @Test
-    @DisplayName("calMonthUserEcoPrice()메소드의 UserEcoRecordResDto 반환 성공 테스트")
+    @DisplayName("절약 정보 조회 테스트")
     public void calMonthUserEcoPrice_ShouldReturnUserEcoRecordResDto() {
-        User user = User.builder().id("test_id").userNo(1L).gender(Gender.MALE).age(Age.FORTY).build();
-        UserGasRecord userGasRecord1 = UserGasRecord.builder().refuelingPrice(10000L).savingPrice(5000L).build();
-        UserGasRecord userGasRecord2 = UserGasRecord.builder().refuelingPrice(20000L).savingPrice(6000L).build();
-        List<UserGasRecord> userGasRecords = Arrays.asList(userGasRecord1, userGasRecord2);
-        FoodImage foodImage = FoodImage.builder().imageUrl("http://food.com").build();
-        EcoRecord ecoRecord1 = EcoRecord.builder().userNo(1L).saving_price(3000).build();
-        EcoRecord ecoRecord2 = EcoRecord.builder().userNo(2L).saving_price(2000).build();
-        EcoRecord ecoRecord3 = EcoRecord.builder().userNo(3L).saving_price(1000).build();
-        List<EcoRecord> ecoRecords = Arrays.asList(ecoRecord1, ecoRecord2, ecoRecord3);
-
+        User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
+        LocalDate date = LocalDate.now();
+        List<EcoRecord> rankSavingPrices = Arrays.asList(
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).perRank(0).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).perRank(0.5).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(200).perRank(1).build()
+        );
         when(httpSessionService.getUserFromSession()).thenReturn(user);
-        when(userGasRecordDao.findByMonthOfNow(user.getUserNo(), LocalDate.now())).thenReturn(Optional.of(userGasRecords));
-        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(11000))).thenReturn(Optional.of(foodImage));
-        when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge())).thenReturn(Optional.of(ecoRecords));
+        when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
+        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(200))).thenReturn(Optional.of(FoodImage.builder().food_no(1).imageUrl("http://example.com/food1.jpg").build()));
 
-        UserEcoRecordResDto actual = userRecordService.calMonthUserEcoPrice();
+        // Act
+        UserEcoRecordResDto result = userRecordService.calMonthUserEcoPrice();
 
-        SoftAssertions softly = new SoftAssertions();
-
-        softly.assertThat(actual.getUserId()).isEqualTo("test_id");
-        softly.assertThat(actual.getGender()).isEqualTo(Gender.MALE);
-        softly.assertThat(actual.getAge()).isEqualTo(Age.FORTY);
-        softly.assertThat(actual.getRefuelingPrice()).isEqualTo(30000L);
-        softly.assertThat(actual.getMyEcoPrice()).isEqualTo(11000L);
-        softly.assertThat(actual.getAverageEcoPrice()).isEqualTo(2000L);
-        softly.assertThat(actual.getImageUrl()).isEqualTo("http://food.com");
-        softly.assertThat(actual.getRankPercentage()).isEqualTo(33.33);
-        softly.assertAll();
+        // Assert
+        assertEquals("user1", result.getUserId());
+        assertEquals(Gender.MALE, result.getGender());
+        assertEquals(Age.FORTY, result.getAge());
+        assertEquals(20000, result.getRefuelingPrice());
+        assertEquals(200, result.getMyEcoPrice());
+        assertEquals(320, result.getAverageEcoPrice());
+        assertEquals("http://example.com/food1.jpg", result.getImageUrl());
+        assertEquals(1, result.getRankPercentage(), 0.001);
     }
 }
