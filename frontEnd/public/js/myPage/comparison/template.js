@@ -34,7 +34,7 @@ const getComparisonTemplate = () => `
                                     <h2>현재까지 주유액은 20대 남자 중  <span>상위 70%</span>  입니다.</h2>
                                 </div>
                                 <div class="oilInfoArea__compareAgeCommonBox">
-                                    <h3><span>20대 남자</span> 평균 지출액</h3>
+                                    <h3><span>20대 남자</span> 평균 절약 금액</h3>
                                     <h1>300,000</h1>
                                 </div>
                                 <div class="oilInfoArea__chartBox">

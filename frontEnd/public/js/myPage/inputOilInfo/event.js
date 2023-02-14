@@ -1,4 +1,5 @@
-import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS } from "../../common/function";
+import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/function";
+import { fetchGasStationSearch, fetchOilRegister } from "./fetch";
 import { parseOilPriceIntoKorean } from "./helperFunction";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
@@ -52,7 +53,7 @@ const eventToOilPriceInput = ($container) => {
 
 const eventToOilSearchInput = ($container) => {
     const $oilSearchInput = _$(".oilInfoArea__searchInput", $container);
-    const $oilSearchValues = _$_ALL(".oilInfoArea__oilSearchValue", $container);
+    const $oilSearchResultBox = _$(".oilInfoArea__oilSearchResultBox", $container);
 
     addEvent($oilSearchInput, [
         () => {
@@ -61,26 +62,40 @@ const eventToOilSearchInput = ($container) => {
             }
 
             if($oilSearchInput.value === "") {
-                changeArrayCSS($oilSearchValues, "top", "0");
-                changeArrayCSS($oilSearchValues, "borderBottom", "none");
+                changeCSS($oilSearchResultBox, "opacity", "0");
+                $oilSearchResultBox.scrollTop = 0;
             }
             else {
                 debounceTimer = setTimeout(() => {
                     // 검색 관련 통신 함수
+                    fetchGasStationSearch($oilSearchResultBox, $oilSearchInput.value);
 
-                    $oilSearchValues.forEach(($oilSearchValue, index) => {
-                        changeCSS($oilSearchValue, "top", `${(index + 1) * 150}%`);
-                        changeCSS($oilSearchValue, "borderBottom", "0.2vh solid black");
-                    })
+                    // 검색 결과 불러와서 넣어주는 함수
+                    makeLighter($oilSearchResultBox);
+                    changeCSS($oilSearchResultBox, "top", "130%");
+                    $oilSearchResultBox.scrollBottom = $oilSearchResultBox.scrollHeight;
                 }, 300);
             }
         }
-    ], "input")
-
-    addEvent($oilSearchInput, [
-        () => changeArrayCSS($oilSearchValues, "top", "0"),
-        () => changeArrayCSS($oilSearchValues, "borderBottom", "none")
-    ], "focusout");
+    ], "input");
 }
 
-export { eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput }
+const eventToSearchValue = ($searchValue) => {
+    const $searchInput = _$(".oilInfoArea__searchInput");
+    const $searchResultBox = _$(".oilInfoArea__oilSearchResultBox");
+    const $gasNameSection = _$("h1", $searchValue);
+
+    addEvent($searchValue, [
+        () => $searchInput.value = $gasNameSection.innerHTML,
+        () => $searchInput.dataset.stationNo = $gasNameSection.closest(".oilInfoArea__oilSearchValue").dataset.stationNo,
+        () => $searchResultBox.innerHTML = ``,
+        () => $searchInput.disabled = true
+    ]);
+}
+
+const eventToRegisterBtn = ($container) => {
+    const $registerBtn = _$(".oilInfoArea__registerBtn", $container);
+    addEvent($registerBtn, [() => fetchOilRegister($container)]); 
+}
+
+export { eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput, eventToSearchValue, eventToRegisterBtn }

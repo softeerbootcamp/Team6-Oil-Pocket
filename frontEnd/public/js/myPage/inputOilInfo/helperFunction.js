@@ -1,3 +1,5 @@
+import { _$ } from "../../common/function";
+
 String.prototype.foreach = Array.prototype.forEach;
 const OIL_PRICE_UPPER_BOUND = 150_000;
 
@@ -66,4 +68,40 @@ const animateOilImage = ($oilImage, inputValue) => {
     $oilImage.setAttribute("fill", "#14BD7E");
 }
 
-export { parseOilPriceIntoKorean, animateOilImage }
+const validateGasName = ($gasText) => {
+   if($gasText.innerHTML === "기름 종류") return false;
+   return true;
+}
+
+const validateGasPrice = ($gasPrice) => {
+    return !($gasPrice.value === "");
+}
+
+const validateStationName = ($gasStationText) => {
+    if(!$gasStationText.disabled) {
+        return false;
+    }
+    return !($gasStationText.value === "");
+}
+
+const validateOilInput = ($oilText, $oilPriceText, $gasStationText) => 
+    validateGasName($oilText) && validateGasPrice($oilPriceText) && validateStationName($gasStationText);
+
+const gasNameMapper = (gasName) => {
+    switch(gasName) {
+        case "휘발유":
+            return "GASOLINE";
+
+        case "경유":
+            return "DIESEL";
+
+        case "LPG":
+            return "LPG";
+    }
+}
+
+export { 
+    parseOilPriceIntoKorean, animateOilImage,
+    validateGasName, validateGasPrice, validateStationName, validateOilInput,
+    gasNameMapper
+}

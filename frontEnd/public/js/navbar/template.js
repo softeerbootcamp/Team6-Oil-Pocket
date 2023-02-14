@@ -1,11 +1,11 @@
 const getNavBarTemplate = () => `
     <div class="navbar__logo"><a href="/">Oil Pocket</a></div>
     <div class="navbar__btns">
-        <span><a href="/userDetail">jaewon님 안녕하세요</a></span>
+        <strong><a href="/userDetail">jaewon님 안녕하세요</a></strong>
         <span> | </span>
-        <span class="navbar__myPageBtn"><a href="/login" data-link>로그인</a></span>
+        <strong class="navbar__myPageBtn"><a href="/login" data-link>로그인</a></strong>
         <span> | </span>
-        <span>다크모드</span>
+        <strong>다크모드</strong>
     </div>
 `;
 

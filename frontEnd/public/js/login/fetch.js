@@ -2,7 +2,7 @@ import { _$, changeCSS } from "../common/function";
 import { BASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
 
 const fetchLoginID = ($IDInput, $PWInput) => {
-    const $loginErrorModal = _S(".loginArea__errorModal");
+    const $loginErrorModal = _$(".loginArea__errorModal");
     
     fetch(BASE_COMMON_URL + "/auth", {
         method: METHOD.POST,

@@ -94,8 +94,7 @@ const getChatBotTemplate = () => `
 `;
 
 const getManagerChatTemplate = () => `
-    <img src="./img/main/chatBot/
-    managerProfile.png" alt="profile">
+    <img src="./img/main/chatBot/managerProfile.png" alt="profile">
     <span>또 궁금한 게 있나요?</span>
 `;
 

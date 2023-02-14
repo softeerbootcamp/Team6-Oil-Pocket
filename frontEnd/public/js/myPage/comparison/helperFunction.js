@@ -83,7 +83,7 @@ const makeComparisonCards = ($container, myPrice, commonPrice, percent, ageText,
     $agePriceText.innerHTML = parseNumberToMoneyString(commonPrice);
     $chartMyPriceText.innerHTML = parseNumberToMoneyString(myPrice);
     $chartCommonPriceText.innerHTML = parseNumberToMoneyString(commonPrice);
-    $percentText.innerHTML = `현재까지 주유액은 ${ageText} ${gender} 중  <span>상위 ${percent}%</span>  입니다.`;
+    $percentText.innerHTML = `현재까지 절약 금액은 ${ageText} ${gender} 중  <span>상위 ${percent}%</span>  입니다.`;
     $chartCommonText.innerHTML = `${ageText} ${gender}`;
 
     adjustChartsOnCard(myPrice, commonPrice, $container);
