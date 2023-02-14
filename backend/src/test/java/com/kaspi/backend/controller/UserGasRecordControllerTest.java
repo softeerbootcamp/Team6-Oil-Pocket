@@ -92,7 +92,7 @@ class UserGasRecordControllerTest {
     @DisplayName("사용자 절약 정보 조회 테스트")
     void getUserEcoRecord() throws Exception {
         //User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
-        UserEcoRecordResDto userEcoRecordResDto = UserEcoRecordResDto.builder().userId("user1").gender(Gender.MALE).age(Age.FORTY)
+        UserEcoRecordResDto userEcoRecordResDto = UserEcoRecordResDto.builder().userId("user1").gender(Gender.MALE).age(Age.FORTY.getAgeBound())
                         .myEcoPrice(200).averageEcoPrice(300).refuelingPrice(20000).imageUrl("url").rankPercentage(0.5).build();
         when(userRecordService.calMonthUserEcoPrice()).thenReturn(userEcoRecordResDto);
 

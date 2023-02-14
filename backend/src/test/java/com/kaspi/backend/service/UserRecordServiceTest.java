@@ -182,7 +182,7 @@ class UserRecordServiceTest {
         // Assert
         assertEquals("user1", result.getUserId());
         assertEquals(Gender.MALE, result.getGender());
-        assertEquals(Age.FORTY, result.getAge());
+        assertEquals(Age.FORTY.getAgeBound(), result.getAge());
         assertEquals(20000, result.getRefuelingPrice());
         assertEquals(200, result.getMyEcoPrice());
         assertEquals(320, result.getAverageEcoPrice());
