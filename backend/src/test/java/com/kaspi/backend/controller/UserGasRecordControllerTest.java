@@ -1,19 +1,24 @@
 package com.kaspi.backend.controller;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaspi.backend.domain.GasStation;
+import com.kaspi.backend.dto.UserEcoRecordResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
+import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
+import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.service.OpinetService;
 import com.kaspi.backend.service.UserRecordService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
+import com.kaspi.backend.util.response.code.DefaultCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -81,5 +86,23 @@ class UserGasRecordControllerTest {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Test
+    @DisplayName("사용자 절약 정보 조회 테스트")
+    void getUserEcoRecord() throws Exception {
+        //User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
+        UserEcoRecordResDto userEcoRecordResDto = UserEcoRecordResDto.builder().userId("user1").gender(Gender.MALE).age(Age.FORTY)
+                        .myEcoPrice(200).averageEcoPrice(300).refuelingPrice(20000).imageUrl("url").rankPercentage(0.5).build();
+        when(userRecordService.calMonthUserEcoPrice()).thenReturn(userEcoRecordResDto);
+
+        mockMvc.perform(get("/api/v2/user/eco-record")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("code").value(DefaultCode.SUCCESS_FIND_USER_ECO_RECORD.getCode()))
+                .andExpect(jsonPath("message").value(DefaultCode.SUCCESS_FIND_USER_ECO_RECORD.getMessage()))
+                .andExpect(jsonPath("$.data.userId").value(userEcoRecordResDto.getUserId()))
+                .andExpect(jsonPath("$.data.gender").value(Gender.MALE.name()))
+                .andExpect(jsonPath("$.data.myEcoPrice").value(userEcoRecordResDto.getMyEcoPrice()));
     }
 }
