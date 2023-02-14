@@ -6,7 +6,8 @@ public enum DefaultCode implements Code {
     SUCCESS_VALID_ID("L002", "사용가능한 아이디입니다."),
     SUCCESS_SIGN_IN("L003", "로그인 성공(세션 생성)"),
     CHECK_MATCH_GAS_STATION("M001", "사용자 요청과 일치하는 데이터 조회 성공"),
-    SAVE_USER_GAS_RECORD("U001", "유저의 주유데이터 저장 성공"),
+    SAVE_USER_GAS_RECORD("M002", "유저의 주유데이터 저장 성공"),
+    GET_USER_GAS_RECORDS("M003", "유저의 주유데이터 조회 성공"),
     SUCCESS_TO_FIND_GAS_DEATIL("G001", "주유소 가격 상세정보를 찾았습니다.");
 
 

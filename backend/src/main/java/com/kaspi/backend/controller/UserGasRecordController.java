@@ -2,8 +2,12 @@ package com.kaspi.backend.controller;
 
 import com.kaspi.backend.dao.GasDetailDao;
 import com.kaspi.backend.dao.GasStationDao;
+import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.GasStation;
+import com.kaspi.backend.domain.User;
+import com.kaspi.backend.domain.UserGasRecord;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
+import com.kaspi.backend.dto.UserGasRecordResDto;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.service.OpinetService;
@@ -17,6 +21,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/v2")
 @RequiredArgsConstructor
@@ -25,6 +34,12 @@ public class UserGasRecordController {
     private final GasStationService gasStationService;
     private final UserRecordService userRecordService;
     private final OpinetService opinetService;
+
+
+    private final HttpSessionService httpSessionService;
+    private final UserGasRecordDao userGasRecordDao;
+    private final GasStationDao gasStationDao;
+
 
 
     @PostMapping("/user/gas-record")
@@ -56,5 +71,21 @@ public class UserGasRecordController {
                 .body(CommonResponseDto.toResponse(DefaultCode.SAVE_USER_GAS_RECORD));
     }
 
+    @GetMapping("/user/gas-record")
+    public ResponseEntity<CommonResponseDto> getUserGasRecord() {
+        User user = httpSessionService.getUserFromSession();
+        List<UserGasRecord> matchingUserGasRecords = userGasRecordDao.findGasRecordListByUserId(user.getUserNo());
+        List<UserGasRecordResDto> list = new ArrayList<>();
+        for (UserGasRecord userGasRecord : matchingUserGasRecords) {
+            Optional<GasStation> gasStation = gasStationDao.findById(userGasRecord.getGasStationNo());
+            if(gasStation.isEmpty()){
+                //TODO 예외처리
+            }
+            list.add(UserGasRecordResDto.toUserGasRecordResDto(userGasRecord, gasStation.get()));
+        }
 
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.GET_USER_GAS_RECORDS,list));
+    }
 }

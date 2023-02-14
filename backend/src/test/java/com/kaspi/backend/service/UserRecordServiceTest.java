@@ -9,6 +9,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import com.kaspi.backend.dao.GasDetailDao;
+import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.GasDetail;
 import com.kaspi.backend.domain.GasStation;
@@ -18,9 +19,8 @@ import com.kaspi.backend.domain.UserGasRecord;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.enums.GasType;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +38,9 @@ class UserRecordServiceTest {
     private GasDetailDao gasDetailDao;
     @Mock
     private UserGasRecordDao userGasRecordDao;
+
+    @Mock
+    private GasStationDao gasStationDao;
     @Mock
     private HttpSessionService httpSessionService;
 
@@ -157,5 +160,33 @@ class UserRecordServiceTest {
         // Then
         verify(userGasRecordDao, times(1)).save(any(UserGasRecord.class));
         assertThat(result).isEqualTo(userGasRecord);
+    }
+
+    @Test
+    @DisplayName("특정 사용자의 주유기록을 가져오는 로직")
+    void getUserRecords() {
+        //given
+        List<UserGasRecord> records = new ArrayList<>();
+        records.add(
+                UserGasRecord.builder().userNo(1L).gasStationNo(10L).chargeDate(new Date(2023,2,1))
+                        .refuelingPrice(10000L).
+                new UserGasRecord(new Date(2023,2,1), 1L, 10, 1000, 100, 1, 1, 1));
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        when(user.getUserNo()).thenReturn(1L);
+        when(userGasRecordDao.findGasRecordListByUserId(1L)).thenReturn(records);
+        when(gasStationDao.findById(1L)).thenReturn(Optional.of(new GasStation("test", "test", 1)));
+
+        YourService yourService = new YourService(httpSessionService, userGasRecordDao, gasStationDao);
+
+        List<UserGasRecordResDto> result = yourService.getUserRecords();
+
+        assertEquals(1, result.size());
+        assertEquals("1", result.get(0).getChargeDate());
+        assertEquals("test", result.get(0).getGasStationName());
+        assertEquals("1", result.get(0).getGasType());
+        assertEquals("10L", result.get(0).getRecordGasAmount());
+        assertEquals("1000원", result.get(0).getRefuelingPrice());
+        assertEquals("100원", result.get(0).getSavingPrice());
+        assertEquals("test", result.get(0).getBrand());
     }
 }
