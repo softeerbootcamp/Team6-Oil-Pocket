@@ -14,11 +14,11 @@ const getChartTemplate = () => `
                         <h2>월별 주유 정보</h2>
                         <div class="oilInfoArea__oilChartInfo">
                             <div class="oilInfoArea__oilChartInfo--common">
-                                <div class="oilInfoArea__legend--common">1</div>
+                                <div class="oilInfoArea__legend--common">&nbsp;</div>
                                 <span>평균 주유 금액</span>
                             </div>
                             <div class="oilInfoArea__oilChartInfo--user">
-                                <div class="oilInfoArea__legend--user">1</div>
+                                <div class="oilInfoArea__legend--user">&nbsp;</div>
                                 <span>사용자 주유 금액</span>
                             </div>
                         </div>

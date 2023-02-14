@@ -73,13 +73,13 @@ const makeUserSaveCard = ($container, userSavePrice) => {
 }
 
 const makeComparisonSecondTitle = ($title, age, gender, percent) => 
-    $title.innerHTML = `현재까지 절약 금액은 ${age} ${gender} 중  <span>상위 ${percent}%</span>  입니다.`;
+    $title.innerHTML = `절약 금액은 ${age} ${gender} 중  <span>상위 ${percent}%</span>  입니다.`;
 
 const makeCommonSaveCard = ($card, age, gender, commonSavePrice) => {
     const $cardTitle = _$("h3", $card);
     const $cardContent = _$("h1", $card);
 
-    $cardTitle.innerHTML = `<span>${age} ${gender}</span> 평균 절약 금액`;
+    $cardTitle.innerHTML = `<span>${age} ${gender}</span> 절약 금액`;
     $cardContent.innerHTML = parseNumberToMoneyString(commonSavePrice);
 }
 

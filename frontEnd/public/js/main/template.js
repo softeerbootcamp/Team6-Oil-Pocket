@@ -32,7 +32,7 @@ const getMainViewContentTemplate = () => `
                     <h1>편안한 주유 입력</h1>
                     <h2>
                         기름 종류, 주유액, 주유소를 입력하고 <br>
-                        나만의 차계부를 관리할 수 있어요. <br>
+                        나만의 차계부를 관리할 수 있어요.
                     </h2>
                 </div>
                 <img class="explainArea__phone" src="./public/img/main/phoneAnimation/02.png" alt="phone_02">
@@ -41,8 +41,10 @@ const getMainViewContentTemplate = () => `
                 <div class="explainArea__text">
                     <h1>이번 달 주유 금액 분석</h1>
                     <h2>
-                        평균 주유 금액을 통해 주행자님의 소비 습관을 분석해요. <br>
-                        친근한 음식을 통해 한 눈에 절약 금액을 파악할 수 있어요. <br>
+                        평균 주유 금액을 통해 <br>
+                        주행자님의 소비 습관을 분석해요. <br>
+                        친근한 음식을 통해 <br>
+                        한 눈에 절약 금액을 파악할 수 있어요.
                     </h2>
                 </div>
                 <img class="explainArea__phone" src="./public/img/main/phoneAnimation/03.png" alt="phone_03">
@@ -52,7 +54,7 @@ const getMainViewContentTemplate = () => `
                     <h1>월별 사용량 비교</h1>
                     <h2>
                         전국 주유소 평균 가격과 나의 사용량을 <br>
-                        월별 차트를 통해 확인할 수 있어요. <br>
+                        월별 차트를 통해 확인할 수 있어요.
                     </h2>
                 </div>
                 <img class="explainArea__phone" src="./public/img/main/phoneAnimation/04.png" alt="phone_04">
@@ -61,8 +63,9 @@ const getMainViewContentTemplate = () => `
                 <div class="explainArea__text">
                     <h1>주유 내역 확인</h1>
                     <h2>
-                        차계부 페이지에서 날짜, 주유소, 주유 금액, 절약 금액 내역을 <br>
-                        한 눈에 확인할 수 있어요.<br>
+                        차계부 페이지에서 <br>
+                        날짜, 주유소, 주유 금액, 절약 금액 내역을 <br>
+                        한 눈에 확인할 수 있어요.
                     </h2>
                 </div>
                 <img class="explainArea__phone" src="./public/img/main/phoneAnimation/05.png" alt="phone_05">
