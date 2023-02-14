@@ -8,10 +8,13 @@ import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
 import { _$ } from "./common/function.js";
+import { fecthCheckLogin, isLogin } from "./login/fetch.js";
 
 const $body = _$("body");
 
 const router = async () => {
+    await fecthCheckLogin();
+
     const routes = [
         { path: "/", view: mainView },
         { path: "/register", view: registerView },
