@@ -34,11 +34,10 @@ public class DataDownloadScheduler {
 
     private final GasDataService gasDataService;
 
-    //server
-    //@Scheduled(cron = "0 1 1 * * *", zone = "Asia/Seoul")
-
     //local
-    @Scheduled(fixedDelay = 300000)
+    //@Scheduled(fixedDelay = 300000)
+    //server
+    @Scheduled(cron = "0 1 1 * * *", zone = "Asia/Seoul")
     public void backgroundProcess() {
         try {
             log.debug("스케쥴러 시작");
