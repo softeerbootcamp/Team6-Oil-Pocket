@@ -1,7 +1,11 @@
 package com.kaspi.backend.dao;
 
+import com.kaspi.backend.domain.EcoRecord;
 import com.kaspi.backend.domain.UserGasRecord;
+import com.kaspi.backend.enums.Age;
+import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,6 +38,14 @@ class UserGasRecordDaoTest {
             softly.assertThat(userGasRecord.getChargeDate()).isBetween("2023-02-01", "2023-02-28");
         }
         softly.assertAll();
+    }
+
+    @Test
+    @DisplayName("유저 절약 정보 조회 테스트")
+    void findSavingPriceByGenderAndAge_SUCCESS() {
+        List<EcoRecord> ecoRecords = userGasRecordDao.findSavingPriceByGenderAndAge(Gender.MALE, Age.FORTY, LocalDate.now()).get();
+        Assertions.assertThat(ecoRecords.size()).isEqualTo(1);
+
     }
 
 }
