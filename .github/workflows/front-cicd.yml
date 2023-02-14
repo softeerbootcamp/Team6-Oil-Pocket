@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.EC2_IP }}
           username: ubuntu
           key: ${{ secrets.EC2_PASSWORD }}
-          source: "~/frontEnd/dist"
+          source: "./frontEnd/dist"
           target: "/home/ubuntu/"
 
       - name: Execute Server Init Script
