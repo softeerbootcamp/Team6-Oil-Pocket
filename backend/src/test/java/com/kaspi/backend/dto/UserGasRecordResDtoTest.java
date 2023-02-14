@@ -4,11 +4,15 @@ import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.UserGasRecord;
 import com.kaspi.backend.enums.GasBrand;
 import com.kaspi.backend.enums.GasType;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserGasRecordResDtoTest {
@@ -38,5 +42,18 @@ class UserGasRecordResDtoTest {
         assertEquals(GasBrand.getImg(gasStation.getBrand()), dto.getBrand());
         assertEquals(gasStation.getName(), dto.getGasStationName());
         assertEquals(userGasRecord.getChargeDate().toString().replace("-", "."), dto.getChargeDate());
+    }
+
+    @Test
+    @DisplayName("날짜 최신순 정렬 테스트")
+    void compareTo() {
+        UserGasRecordResDto recent = UserGasRecordResDto.builder()
+                .chargeDate("2022.02.23").build();
+        UserGasRecordResDto last = UserGasRecordResDto.builder()
+                .chargeDate("2021.01.23").build();
+        //when
+        int result = recent.compareTo(last);
+        //then
+        assertTrue(result < 0);
     }
 }
