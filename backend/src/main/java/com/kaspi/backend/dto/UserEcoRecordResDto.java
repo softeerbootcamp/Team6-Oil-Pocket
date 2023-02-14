@@ -13,7 +13,7 @@ import lombok.Data;
 public class UserEcoRecordResDto {
     private String userId;
     private Gender gender;
-    private Age age;
+    private String age;
     private long refuelingPrice;
     private long myEcoPrice;
     private long averageEcoPrice;

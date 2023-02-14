@@ -86,7 +86,7 @@ public class UserRecordService {
                 .orElseThrow(() -> new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE));
 
         return UserEcoRecordResDto.builder().userId(user.getId())
-                .gender(user.getGender()).age(user.getAge()).refuelingPrice(refuelingPrice).myEcoPrice(ecoPrice)
+                .gender(user.getGender()).age(user.getAge().getAgeBound()).refuelingPrice(refuelingPrice).myEcoPrice(ecoPrice)
                 .averageEcoPrice(average).imageUrl(foodImage.getImageUrl()).rankPercentage(userEcoRecord.getPerRank())
                 .build();
     }
