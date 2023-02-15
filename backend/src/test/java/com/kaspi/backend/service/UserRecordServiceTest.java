@@ -221,7 +221,6 @@ class UserRecordServiceTest {
         assertEquals(gasStation2.getName(), record1.getGasStationName());
         assertEquals(gasStation1.getName(), record2.getGasStationName());
     }
-}
 
     @Test
     @DisplayName("절약 정보 조회 테스트")
