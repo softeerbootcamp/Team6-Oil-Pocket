@@ -36,12 +36,6 @@ public class UserGasRecordController {
     private final OpinetService opinetService;
 
 
-    private final HttpSessionService httpSessionService;
-    private final UserGasRecordDao userGasRecordDao;
-    private final GasStationDao gasStationDao;
-
-
-
     @PostMapping("/user/gas-record")
     public ResponseEntity<CommonResponseDto> postUserGasRecord(@RequestBody UserGasRecordReqDto userGasRecordReqDto) {
 
@@ -73,19 +67,9 @@ public class UserGasRecordController {
 
     @GetMapping("/user/gas-record")
     public ResponseEntity<CommonResponseDto> getUserGasRecord() {
-        User user = httpSessionService.getUserFromSession();
-        List<UserGasRecord> matchingUserGasRecords = userGasRecordDao.findGasRecordListByUserId(user.getUserNo());
-        List<UserGasRecordResDto> list = new ArrayList<>();
-        for (UserGasRecord userGasRecord : matchingUserGasRecords) {
-            Optional<GasStation> gasStation = gasStationDao.findById(userGasRecord.getGasStationNo());
-            if(gasStation.isEmpty()){
-                //TODO 예외처리
-            }
-            list.add(UserGasRecordResDto.toUserGasRecordResDto(userGasRecord, gasStation.get()));
-        }
-
+        List<UserGasRecordResDto> userGasRecords = userRecordService.getUserRecords();
 
         return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.GET_USER_GAS_RECORDS,list));
+                .body(CommonResponseDto.toResponse(DefaultCode.GET_USER_GAS_RECORDS, userGasRecords));
     }
 }
