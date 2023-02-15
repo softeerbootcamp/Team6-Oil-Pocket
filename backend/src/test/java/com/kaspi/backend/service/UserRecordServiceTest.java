@@ -210,7 +210,7 @@ class UserRecordServiceTest {
         UserGasRecordResDto record1 = result.get(0);
         UserGasRecordResDto record2 = result.get(1);
         int compareDate = record1.getChargeDate().compareTo(record2.getChargeDate());
-        assertTrue(compareDate < 0); //날짜 정렬 확인
+        assertTrue(compareDate > 0); //날짜 정렬 확인
         assertEquals(gasStation2.getName(), record1.getGasStationName());
         assertEquals(gasStation1.getName(), record2.getGasStationName());
     }
