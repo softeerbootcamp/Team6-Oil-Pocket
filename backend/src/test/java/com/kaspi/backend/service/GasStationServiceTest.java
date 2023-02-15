@@ -3,6 +3,7 @@ package com.kaspi.backend.service;
 import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.dto.FindGasStationResDto;
+import com.kaspi.backend.enums.GasBrand;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
@@ -31,8 +32,8 @@ class GasStationServiceTest {
     void getGasStationByContainingName() {
         //given
         List<GasStation> gasStations = Arrays.asList(
-                GasStation.builder().name("유진 주유소").build(),
-                GasStation.builder().name("서울 유진 주유소").build()
+                GasStation.builder().name("유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build(),
+                GasStation.builder().name("서울 유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build()
         );
         List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
                 FindGasStationResDto.builder().name("유진 주유소").build(),
