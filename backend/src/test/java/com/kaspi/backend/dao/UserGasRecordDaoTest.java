@@ -3,17 +3,15 @@ package com.kaspi.backend.dao;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.domain.UserGasRecord;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import java.time.LocalDate;
 import com.kaspi.backend.domain.EcoRecord;
-import com.kaspi.backend.domain.UserGasRecord;
-import com.kaspi.backend.enums.Age;
-import com.kaspi.backend.enums.Gender;
-import com.kaspi.backend.util.config.TestRedisConfiguration;
-import org.assertj.core.api.Assertions;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,9 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import java.time.LocalDate;
-import java.util.List;
+
 import java.util.Optional;
 
 @DataJdbcTest
@@ -83,10 +79,12 @@ class UserGasRecordDaoTest {
         assertThat(actualGasRecord.getRefuelingPrice()).isEqualTo(savedUserGasRecord.getRefuelingPrice());
         assertThat(actualGasRecord.getSavingPrice()).isEqualTo(savedUserGasRecord.getSavingPrice());
     }
+
     @Test
     @DisplayName("현재 날짜가 해당된 달의 유저가스레코드를 가져오는 성공 테스트")
     void findByMonthOfNow_SUCCESS() {
-        Optional<List<UserGasRecord>> optionalUserGasRecordList = userGasRecordDao.findByMonthOfNow(1L, LocalDate.now());
+        Optional<List<UserGasRecord>> optionalUserGasRecordList = userGasRecordDao.findByMonthOfNow(1L,
+                LocalDate.now());
         SoftAssertions softly = new SoftAssertions();
         for (UserGasRecord userGasRecord : optionalUserGasRecordList.get()) {
             //2월 안에 드는지 테스트
@@ -98,9 +96,45 @@ class UserGasRecordDaoTest {
     @Test
     @DisplayName("유저 절약 정보 조회 테스트")
     void findSavingPriceByGenderAndAge_SUCCESS() {
-        List<EcoRecord> ecoRecords = userGasRecordDao.findSavingPriceByGenderAndAge(Gender.MALE, Age.FORTY, LocalDate.now()).get();
-        Assertions.assertThat(ecoRecords.size()).isEqualTo(1);
+        List<EcoRecord> ecoRecords = userGasRecordDao.findSavingPriceByGenderAndAge(Gender.MALE, Age.FORTY,
+                LocalDate.now()).get();
+        assertThat(ecoRecords.size()).isEqualTo(1);
 
     }
 
+    @Test
+    @DisplayName("주유기록 월별 합계(주유금액, 국내 평균 주유금액)")
+    void findSumRecordGroupByMonth() {
+        //given
+        User user = User.builder().id("test").password("test").age(Age.TWENTY).gender(Gender.MALE).build();
+        User savedUser = userDao.save(user);
+        saveUserRecordPerMonth(savedUser);
+        //when
+        Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth = userGasRecordDao.findSumRecordGroupByMonth(
+                user.getUserNo());
+        //then
+        List<UserGasRecordMonthResDto> userGasRecordMonthResDtos = sumRecordGroupByMonth.get();
+        for (int i = 0; i < 12; i++) {
+            assertThat(userGasRecordMonthResDtos.get(i).getMonthDate()).isEqualTo(LocalDate.now().minusMonths(i).format(
+                    DateTimeFormatter.ofPattern("yyyy.MM")));
+            assertThat(userGasRecordMonthResDtos.get(i).getTotalRefuelingPrice()).isEqualTo((i * 1000));
+            assertThat(userGasRecordMonthResDtos.get(i).getTotalNationalAvgPrice()).isEqualTo((i * 10)+(i * 1000));
+        }
+    }
+
+    private void saveUserRecordPerMonth(User user) {
+        List<UserGasRecord> userGasRecordList = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            userGasRecordList.add(
+                    UserGasRecord.builder()
+                            .userNo(user.getUserNo())
+                            .gasStationNo(1L)
+                            .recordGasType(GasType.GASOLINE)
+                            .recordGasAmount(10L)
+                            .chargeDate(LocalDate.now().minusMonths(i))
+                            .refuelingPrice((long) (i * 1000))
+                            .savingPrice((long) (i * 10)).build());
+        }
+        userGasRecordDao.saveAll(userGasRecordList);
+    }
 }

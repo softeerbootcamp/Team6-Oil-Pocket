@@ -6,6 +6,7 @@ import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.*;
 import com.kaspi.backend.dto.UserEcoRecordResDto;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.dto.UserGasRecordResDto;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
@@ -13,14 +14,9 @@ import com.kaspi.backend.util.response.code.ErrorCode;
 
 import java.time.LocalDate;
 import java.util.*;
-import com.kaspi.backend.util.exception.SqlNotFoundException;
-import com.kaspi.backend.util.response.code.ErrorCode;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
@@ -133,6 +129,24 @@ public class UserRecordService {
     private long getAverage(List<EcoRecord> rankSavingPrices) {
         double totalSavingPrice = rankSavingPrices.stream().mapToDouble(EcoRecord::getSavingPrice).sum();
         return (long) (totalSavingPrice / rankSavingPrices.size());
+    }
+
+
+    /**
+     * 사용자의 월별 주유금액/ 전국 유가 평균값의 주유금액 비교 로직 값 들고오기
+     */
+    public List<UserGasRecordMonthResDto> getUsersRecordPerMonth() {
+        User user = httpSessionService.getUserFromSession();
+        Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth = userGasRecordDao.findSumRecordGroupByMonth(user.getUserNo());
+        checkUserRecordPerMonth(user, sumRecordGroupByMonth);
+        return sumRecordGroupByMonth.get();
+    }
+
+    private void checkUserRecordPerMonth(User user, Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth) {
+        if(sumRecordGroupByMonth.isEmpty()){
+            log.debug("사용자의 월별 주유기록 부분에서 sql쿼리문에서 문제가 생겼습니다. 사용자 PK:{}", user.getUserNo());
+            throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
+        }
     }
 
 }
