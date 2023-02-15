@@ -34,6 +34,7 @@ public class GasDetail {
         this.gasType = gasType;
         this.date = date;
     }
+
     public static List<GasDetail> parseListGasDetail(GasStation gasStation, String[] attribute) {
         List<GasDetail> list = new ArrayList<>();
         list.add(new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.PREMIUM_GASOLINE.getIndex()]), GasType.PREMIUM_GASOLINE, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd"))));
@@ -41,6 +42,7 @@ public class GasDetail {
         list.add(new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.DIESEL.getIndex()]), GasType.DIESEL, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd"))));
         return list;
     }
+
     public static List<GasDetail> parseListGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
         List<GasDetail> list = new ArrayList<>();
         list.add(new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.PREMIUM_GASOLINE.getIndex()]), GasType.PREMIUM_GASOLINE, date));
@@ -52,6 +54,7 @@ public class GasDetail {
     public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute) {
         return new GasDetail(gasStation, Integer.valueOf(attribute[AttributeIndex.LPG.getIndex()]), GasType.LPG, LocalDate.parse(attribute[AttributeIndex.DATE.getIndex()], DateTimeFormatter.ofPattern("yyyyMMdd")));
     }
+
     public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
         return new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.LPG.getIndex()]), GasType.LPG, date);
     }
