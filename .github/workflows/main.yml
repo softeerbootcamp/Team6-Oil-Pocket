@@ -25,10 +25,12 @@ jobs:
         run: chmod +x ./backend/gradlew
 
       - name: Build Gradle
-        run: cd backend && ./gradlew clean build -x test
+        run: cd backend &&  ./gradlew clean bootJar -x test
         env:
           MYSQL_ID: ${{ secrets.MYSQL.MYSQL_ID }}
           MYSQL_PASSWORD: ${{ secrets.MYSQL.MYSQL_PASSWORD }}
+          EC2_URI: ${{ secrets.EC2.URI }}
+          REDIS_PASSWORD: ${{ secrets.REDIS.PASSWORD }}
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9

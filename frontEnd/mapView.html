@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gas Map</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-    </style>
+    <title>Oil Pocket</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="./public/styles/index.css">
-
-    <script src="https://kit.fontawesome.com/53b577849a.js" crossorigin="anonymous"></script>
     <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xx7250af6176574c63a12302edf09d020c"></script>
+	<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=l7xx7250af6176574c63a12302edf09d020c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer type="module" src="SearchGasStation.js"></script>
 </head>
 <body>
@@ -34,41 +30,95 @@
         </section>
         <section class="main">
             <div class="main__ForMap">
-                <div class="main__SideSearchBar">
-                    <div class="main__SearchOption">
-                        <button class="main__SearchFromCurrentLocation">
-                            <img src='./public/img/🦆 icon _pin outline_.svg'>
-                        </button>
-                        <button class="main__SearchFromRoute">
-                            <img src='./public/img/🦆 icon _search outline_.svg'>
-                        </button>
-                    </div>
-                    <div class="main__InputandResultinSearchBar">
-                        <div class="main__ShowCurrentLocation">
-                            <div class="main__CurrentLocation">
-                                <span>현재위치</span>
+                <div class="main__SearchBarnDetailTab">
+                    <div class="main__SideSearchBar">
+                        <div class="main__SearchOption">
+                            <button class="main__SearchFromCurrentLocation" >
+                                <span id="Option1"><i class="fa-solid fa-location-dot"></i></span>
+                            </button>
+                            <button class="main__SearchFromRoute">
+                                <span id="Option2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                            </button>
+                        </div>
+                        <div class="main__InputandResultinSearchBar">
+                            <div class="main__ShowCurrentLocation">
+                                <div class="main__CurrentLocation">
+                                    <span>현재위치</span>
+                                </div>
+                                <div class="main__CurrentLocationAddress">
+                                    현재 위치를 계산 중입니다....
+                                </div>
+                                <div class="main__SearchOptionButtonGroup">
+                                    <button id="sort_HH">휘발유</button>
+                                    <button id="sort_GG">경유</button>
+                                    <button id="sort_LL">LPG</button>
+                                </div>
                             </div>
-                            <div class="main__CurrentLocationAddress">
-                            </div>
-                            <div class="main__SearchOptionButtonGroup">
-                                <button id="sort_HH">휘발유</button>
-                                <button id="sort_GG">경유</button>
-                                <button id="sort_LL">LPG</button>
+                            <div class="main__SearchResult">
+
                             </div>
                         </div>
-                        <div class="main__SearchResult">
-                            <div class="main__ResultList">
+                    </div>
+                    <div class="main__GSTDetailTab">
+                        <button class="main__GSTdetailCloseButton">
+                            x
+                        </button>
+                        <div class="main__GSTdetail">
+                            <div class="main__GSTdetail__Title">
+                                <!-- <img class="main__GSTdetail__Title_LOGO" src="img/GasStation_Image/hyundai.png"> -->
+                                <span id="GSTdetail__Name"></span>                          
+                            </div>
+                            <div class="main__GSTdetail__Contents">
+                                <div class="main__GSTdetail__Contents__Oilprice">
+                                </div>
+                                <div class="main__GSTdetail__Contents__Basic">
+                                    기본정보
+                                    <div class="main__GSTdetail__Contents__Basic__Address">
+                                        <img src='./public/img/🦆 icon _map_.svg'>
+                                        <span id = "GSTdetail_addr"></span>
+                                    </div>
+                                    <div class="main__GSTdetail__Contents__Basic__Time">
+                                        <img src='./public/img/🦆 icon _clock_.svg'>
+                                        이용 시간을 알려주세요
+                                    </div>
+                                    <div class="main__GSTdetail__Contents__Basic__Phone">
+                                        <img src='./public/img/🦆 icon _phone_.svg'>
+                                        <span id="GSTdetail_phone"></span>
+                                    </div>
+                                    <div class="main__GSTdetail__Contents__Basic__Url">
+                                        <img src='./public/img/🦆 icon _home_.svg'>
+                                        <a id="GSTdetail_url"></a>
+                                    </div>
+                                </div>
+                                <div class="main__GSTdetail__Contents__OilPriceTable">
+                                    유가 정보
+                                    <div class="main__GSTdetail__Contents__OilPriceTable__TableHead">
+                                        <div class="main__GSTdetail__Contents__OilPriceTable__TableHead_Oil">
+                                            <div>유종</div>
+                                        </div>
+                                        <div class="main__GSTdetail__Contents__OilPriceTable__TableHead_Price">
+                                            <div>가격</div>
+                                        </div>
+                                    </div>
+                                    <div class="main__GSTdetail__Contents__OilPriceTable__Contents">
+                                    </div>
+                                </div>
+                                <div class="">
+                                    최근 가격 추이
+                                    <canvas id="myChart"></canvas>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <button class="main__SearchBarHideButton">
                     <img src='./public/img/🦆 icon _chevron left_.svg'>
                 </button>
                 <div class="main__MapDiv">
                     <div id="map_div" class="map_wrap" style="float:left"></div>
                 </div>
-                <button id="main__btn_select">검색하기</button>
+                <button id="main__btn_select">현재 위치에서 검색</button>
             </div>
         </section>
     </section>

@@ -5,8 +5,13 @@ public enum ErrorCode implements Code {
     AUTH_ERROR("E002", "세션이 만료되었습니다"),
     NOT_VALID_USER("E003", "유저가 존재하지 않습니다.(회원 테이블에 존재하지 않는 유저)"),
     DUPLICATE_USER("E004", "중복된 아이디를 가진 유저가 존재합니다."),
-    LOGIN_FAIL("E005", "아이디 혹은 패스워드가 다릅니다.");
-
+    LOGIN_FAIL("E005", "아이디 혹은 패스워드가 다릅니다."),
+    SQL_NOT_FOUND("E006", "쿼리문에서 특정값을 가져오지 못했습니다."),
+    OPINET_EXCEPTION("E007", "오피넷에서 관련된 API요청에 문제가 생겼습니다"),
+    NOT_FOUND_GAS_STATION("S001", "해당 주유소가 존재하지 않습니다."),
+    NOT_FOUND_GAS_DETAIL("S002", "주유소 상세정보가 존재하지 않습니다."),
+    NOT_FOUND_USER_GAS_RECORD("S003", "이번달 주유 기록이 존재하지 않습니다."),
+    NOT_FOUND_FOOD_IMAGE("S004", "이미지를 찾을 수 없습니다. 절약 가격의 범위를 확인해주세요.");
 
     private String code;
     private String message;

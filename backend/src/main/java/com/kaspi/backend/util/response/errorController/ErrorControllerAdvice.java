@@ -1,8 +1,11 @@
 package com.kaspi.backend.util.response.errorController;
 
+import com.kaspi.backend.dto.error.ErrorResponseDto;
 import com.kaspi.backend.util.exception.AuthenticationException;
-import com.kaspi.backend.util.exception.AuthorizationException;
+import com.kaspi.backend.util.exception.DefaultException;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.CommonResponseDto;
+import com.kaspi.backend.util.response.code.DefaultCode;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -13,24 +16,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class ErrorControllerAdvice {
-    @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<CommonResponseDto> AuthenticationHandler(AuthenticationException e) {
-        log.error(e.getCode().getMessage());
-        e.printStackTrace();
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(CommonResponseDto.toResponse(e.getCode()));
-    }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<CommonResponseDto> IllegalArgumentExceptionHandler(IllegalArgumentException e) {
+
+    @ExceptionHandler(DefaultException.class)
+    public ResponseEntity<ErrorResponseDto> defaultExceptionHandler(DefaultException e) {
         log.error(e.getMessage());
         e.printStackTrace();
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(CommonResponseDto.toResponse(ErrorCode.PARAMETER_ERROR));
+        return ResponseEntity.status(e.getHttpStatus()).body(ErrorResponseDto.toResponse(e));
     }
-
-//    @ExceptionHandler(AuthorizationException.class)
-//    public ResponseEntity<CommonResponseDto> AuthorizationHandler(AuthorizationException e) {
-//        log.error(e.getCode().getMessage());
-//        e.printStackTrace();
-//        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(CommonResponseDto.toResponse(e.getCode()));
-//    }
 }

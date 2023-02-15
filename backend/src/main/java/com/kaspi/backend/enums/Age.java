@@ -1,8 +1,11 @@
 package com.kaspi.backend.enums;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.Optional;
 
+@Getter
 public enum Age {
 
     TWENTY("20대"),

@@ -8,6 +8,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignInRequestDto;
+import com.kaspi.backend.dto.ValidLoginResDto;
+import com.kaspi.backend.enums.Age;
+import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.service.AuthService;
 
 import java.util.HashMap;
@@ -78,6 +81,24 @@ class AuthControllerTest {
 
         verify(authService).signIn(signInRequestDto);
         verify(httpSessionService).makeHttpSession(authenticatedUser.getUserNo());
+    }
+
+    @Test
+    @DisplayName("유저가 로그인이 되어 있는지 안되어 있는지 체크")
+    public void testCheckLogin() throws Exception {
+        //given
+        User user = User.builder().id("test").password("password").gender(Gender.MALE).age(Age.TWENTY).userNo(1L).build();
+        ValidLoginResDto expectedDto = ValidLoginResDto.toValidLoginResDto(user);
+        //when
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        //then
+        mockMvc.perform(get("/api/v1/auth/status"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("code").value(DefaultCode.SUCCESS_SIGN_IN.getCode()))
+                .andExpect(jsonPath("$.data.userId").value(user.getId()))
+                .andExpect(jsonPath("$.data.gender").value(user.getGender().getInitial()))
+                .andExpect(jsonPath("$.data.age").value(user.getAge().getAgeBound()));
+
     }
 
     private String toJson(Object object) {
