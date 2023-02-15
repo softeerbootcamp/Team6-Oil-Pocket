@@ -38,6 +38,6 @@ public class UserGasRecordResDto implements Comparable<UserGasRecordResDto> {
     //날짜를 기준으로 정렬 내림차순 정렬(최근것 우선)
     @Override
     public int compareTo(UserGasRecordResDto o) {
-        return this.chargeDate.compareTo(o.chargeDate);
+        return o.chargeDate.compareTo(this.chargeDate);
     }
 }
