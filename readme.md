@@ -74,7 +74,7 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 <br>
 
 ## 🛠 ERD
-<img width="915" alt="스크린샷 2023-02-06 오후 6 27 56" src="https://user-images.githubusercontent.com/87477702/216935196-200bc078-a180-4ae7-971e-91d6af834c0d.png">
+<img width="809" alt="image" src="https://user-images.githubusercontent.com/35219960/218905377-26c50bec-8491-4f72-a320-5827c270e38b.png">
 
 <br>
 
