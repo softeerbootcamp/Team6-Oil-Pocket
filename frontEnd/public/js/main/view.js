@@ -1,6 +1,6 @@
 import { _$ } from "../common/function.js";
 import { navBarView } from "../navbar/view.js";
-import { eventToChatBot, eventToSaveChat, eventToSearchChat } from "./event.js";
+import { eventToChatBot, eventToSaveChat, eventToSearchChat, eventToClientChat } from "./event.js";
 import { 
     getChatBotTemplate, getMainViewContentTemplate, getManagerChatTemplate, 
     getMyPageAnswerChatTemplate01, getMyPageAnswerChatTemplate02,
@@ -64,7 +64,7 @@ const chatBotQuestionView03 = () => {
     $chatQuestioin03.classList.add("chatBotArea__chat", "reChat");
     $chatQuestioin03.innerHTML = `<span>그 밖에 문의를 하고 싶어요.</span>`;
 
-    eventToSearchChat($chatQuestioin03);
+    eventToClientChat($chatQuestioin03);
 
     return $chatQuestioin03;
 }

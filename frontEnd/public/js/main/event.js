@@ -136,4 +136,4 @@ const eventToClientChat = ($clientChat) => addEvent($clientChat, [
     }
 ]);
 
-export { eventToChatBot, eventToSaveChat, eventToSearchChat }
+export { eventToChatBot, eventToSaveChat, eventToSearchChat, eventToClientChat }
