@@ -32,6 +32,9 @@ const fetchLoginID = ($IDInput, $PWInput) => {
 }
 
 const fecthCheckLogin = async () => {
+    if(location.pathname === "/mapView.html" || location.pathname === "mapView") {
+        return;
+    }
     isLogin = false;
     const CHECK_LOGIN_URL = BASE_COMMON_URL + "/auth/status";
 
