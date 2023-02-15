@@ -7,7 +7,7 @@ import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
-import org.junit.jupiter.api.Assertions;
+import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -17,7 +17,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -59,7 +58,7 @@ class UserGasRecordDaoTest {
                 .recordGasAmount(2L)
                 .recordGasType(GasType.GASOLINE)
                 .refuelingPrice(10000L)
-                .chargeDate(new Date())
+                .chargeDate(LocalDate.now())
                 .savingPrice(123L)
                 .build();
 

@@ -4,25 +4,20 @@ import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.UserGasRecord;
 import com.kaspi.backend.enums.GasBrand;
 import com.kaspi.backend.enums.GasType;
-import org.assertj.core.api.Assertions;
+import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserGasRecordResDtoTest {
 
     @Test
     @DisplayName("사용자 주유 기록 dto로 변환하는 로직 테스트")
-    void toUserGasRecordResDto()  {
+    void toUserGasRecordResDto() {
         //given
         UserGasRecord userGasRecord = UserGasRecord.builder()
-                .chargeDate(new Date())
+                .chargeDate(LocalDate.now())
                 .recordGasType(GasType.GASOLINE)
                 .recordGasAmount(12L)
                 .refuelingPrice(50000L)
@@ -48,9 +43,9 @@ class UserGasRecordResDtoTest {
     @DisplayName("날짜 최신순 정렬 테스트")
     void compareTo() {
         UserGasRecordResDto recent = UserGasRecordResDto.builder()
-                .chargeDate("2022.02.23").build();
+                .chargeDate(LocalDate.now().plusMonths(1)).build();
         UserGasRecordResDto last = UserGasRecordResDto.builder()
-                .chargeDate("2021.01.23").build();
+                .chargeDate(LocalDate.now()).build();
         //when
         int result = recent.compareTo(last);
         //then
