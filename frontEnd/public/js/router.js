@@ -55,3 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     router();
 });
+
+navigator.geolocation.getCurrentPosition((position) =>{
+    localStorage.setItem("longitude", position.coords.longitude);
+    localStorage.setItem("latitude", position.coords.latitude);
+})
