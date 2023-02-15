@@ -53,7 +53,7 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 <br>
 
 ## 📖 &nbsp; api 명세서
-#### <img src="https://user-images.githubusercontent.com/74173976/216894208-c4c0dbe8-d4bb-40db-9417-9b37905acd03.png" alt="api 명세서 사진"/>
+#### <img width="1093" alt="명세서 사진" src="https://user-images.githubusercontent.com/35219960/218905730-93371ea5-0d8d-451e-b514-91de862fb1f6.png">
 #### <a href="https://cotton-smoke-d3a.notion.site/API-9f0f154f923341749dfce02ee37f1cf0">명세서 자세히 보기</a>
 
 <br>
