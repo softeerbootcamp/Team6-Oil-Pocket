@@ -3423,6 +3423,24 @@ a, button, select, input {
     cursor: not-allowed;
     background-color: #80E3C3;
   }
+  .registerArea .registerArea__backGround .registerArea__frame input {
+    color: #14BD7E;
+    background-color: #FAFAFB;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2vh 0;
+    font-weight: 600;
+    border-radius: 0.5vh;
+  }
+  .registerArea .registerArea__backGround .registerArea__frame input::-moz-placeholder {
+    color: #D5DDE6;
+  }
+  .registerArea .registerArea__backGround .registerArea__frame input::placeholder {
+    color: #D5DDE6;
+  }
+  .registerArea .registerArea__backGround .registerArea__frame input:focus {
+    outline: 0.2vh solid #14BD7E;
+  }
   .registerArea .registerArea__backGround .registerArea__frame .registerArea__termOfUse {
     transition: 0.5s;
     height: 40%;
@@ -3604,6 +3622,7 @@ a, button, select, input {
     font-size: 1rem;
     font-weight: 600;
     border-radius: 0.5vh;
+    width: 20%;
   }
   .registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea button:disabled {
     cursor: not-allowed;
@@ -3622,23 +3641,8 @@ a, button, select, input {
     color: #A1E5CB;
     background-color: #FAFAFB;
   }
-  .registerArea .registerArea__backGround .registerArea__frame input {
-    color: #14BD7E;
-    background-color: #FAFAFB;
-    font-size: 1.2rem;
-    text-align: center;
-    padding: 2vh 0;
-    font-weight: 600;
-    border-radius: 0.5vh;
-  }
-  .registerArea .registerArea__backGround .registerArea__frame input::-moz-placeholder {
-    color: #D5DDE6;
-  }
-  .registerArea .registerArea__backGround .registerArea__frame input::placeholder {
-    color: #D5DDE6;
-  }
-  .registerArea .registerArea__backGround .registerArea__frame input:focus {
-    outline: 0.2vh solid #14BD7E;
+  .registerArea .registerArea__backGround .registerArea__frame .registerArea__IDArea input {
+    width: 70%;
   }
   .registerArea .registerArea__backGround .registerArea__frame label {
     display: flex;
