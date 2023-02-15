@@ -4037,13 +4037,13 @@ a, button, select, input {
     font-weight: 500;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__compareAgeCommonBox h1 {
-    font-size: 0.7rem;
+    font-size: 0.5rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__compareAgeCommonBox h3 {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__compareAgeCommonBox h3 span {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 700;
     color: #14BD72;
   }
@@ -4106,8 +4106,7 @@ a, button, select, input {
     font-size: 0.25rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartNameArea span {
-    overflow: hidden;
-    text-overflow: ellipsis;
+    display: none;
     text-align: center;
     font-size: 0.35rem;
     padding-left: 0.5vw;
@@ -4404,11 +4403,13 @@ a, button, select, input {
     align-items: center;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer .oilInfoArea__oilCharttitle .oilInfoArea__oilChartInfo .oilInfoArea__oilChartInfo--common div:first-child {
+    font-size: 1px;
     background-color: #fff;
     outline: 0.2vh solid black;
     color: #fff;
     width: 1.2vw;
     height: 1.2vw;
+    font-size: 1px;
     margin-right: 1vw;
     cursor: pointer;
   }
@@ -4419,10 +4420,13 @@ a, button, select, input {
     align-items: center;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer .oilInfoArea__oilCharttitle .oilInfoArea__oilChartInfo .oilInfoArea__oilChartInfo--user div:first-child {
+    overflow: hidden;
+    font-size: 0px;
     background-color: #000;
     color: #000;
     width: 1.2vw;
     height: 1.2vw;
+    font-size: 1px;
     margin-right: 1vw;
     cursor: pointer;
   }

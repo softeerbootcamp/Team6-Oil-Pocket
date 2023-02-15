@@ -40,18 +40,19 @@ const fecthCheckLogin = async () => {
         credentials: "include"
     }).then((res) => {
         if(res.status === 200) {
-            // 로그인
             isLogin = true;
             return res.json();
         }
         else if(res.status === 401) {
-            // 로그인 아님
             isLogin = false;
+            return {};
         }
     }).then(({data}) => {
-        userId = data.userId;
-        userGender = data.gender;
-        userAge = data.age;
+        if(data) {
+            userId = data.userId;
+            userGender = data.gender;
+            userAge = data.age;
+        }
     })
 }
 
