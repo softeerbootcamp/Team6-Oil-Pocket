@@ -2,6 +2,7 @@ package com.kaspi.backend.dao;
 
 import com.kaspi.backend.domain.EcoRecord;
 import com.kaspi.backend.domain.UserGasRecord;
+import com.kaspi.backend.dto.UserGasRecordMonthDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
 import io.lettuce.core.dynamic.annotation.Param;
@@ -25,4 +26,19 @@ public interface UserGasRecordDao extends CrudRepository<UserGasRecord, Long> {
             "(select user_no, sum(refueling_price) refueling_price, sum(saving_price) saving_price from user_gas_record ugr where month(charge_date) = month(:date) and year(charge_date) = year(:date) group by user_no) ugr " +
             "on u.user_no = ugr.user_no where gender = :gender and age = :age")
     Optional<List<EcoRecord>> findSavingPriceByGenderAndAge(@Param("gender") Gender gender, @Param("age") Age age, @Param("date") LocalDate date);
+
+    @Query("SELECT \n"
+            + "  DATE_FORMAT(charge_date, '%Y.%m') AS month_date, \n"
+            + "  SUM(refueling_price) AS total_refueling_price, \n"
+            + "  SUM(saving_price) AS total_saving_price\n"
+            + "FROM \n"
+            + "  user_gas_record ugr \n"
+            + "WHERE \n"
+            + "  charge_date BETWEEN DATE_SUB(NOW(), INTERVAL 12 MONTH) AND NOW()\n"
+            + "  AND user_no = :userNo\n"
+            + "GROUP BY \n"
+            + "  month_date\n"
+            + "ORDER BY \n"
+            + "  month_date DESC")
+    Optional<List<UserGasRecordMonthDto>> findSumRecordGroupByMonth(@Param("userNo") Long userNo);
 }
