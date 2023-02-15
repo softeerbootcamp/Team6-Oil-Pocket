@@ -20,6 +20,7 @@ import com.kaspi.backend.enums.GasBrand;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
 
+import com.kaspi.backend.util.exception.SqlNotFoundException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -93,7 +94,7 @@ class UserRecordServiceTest {
                 GasDetail.getNowDateToStr())) // 항상 오늘날짜로 기준
                 .thenReturn(Optional.empty());//가솔린 1L당 1000원
         //when
-        assertThrows(NoSuchElementException.class, () -> {
+        assertThrows(SqlNotFoundException.class, () -> {
             userRecordService.calTodayUserGasAmount(userGasRecordReqDto, gasStation);
         });
 
