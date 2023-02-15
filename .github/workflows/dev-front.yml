@@ -1,0 +1,43 @@
+name: Deploy frontend to EC2
+
+on:
+  push:
+    branches:
+      - dev
+
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: cd frontEnd && npm install
+
+    - name: Build frontend
+      run: cd frontEnd && npm run build
+
+    - name: Transfer Deploy Script use SCP
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.EC2_IP }}
+        username: ubuntu
+        key: ${{ secrets.EC2_PASSWORD }}
+        source: "./frontEnd/dist"
+        target: "/home/ubuntu/"
+        
+    - name: Execute Server Init Script
+      uses: appleboy/ssh-action@master
+      with:
+        username: ubuntu
+        host: ${{ secrets.EC2_IP }}
+        key: ${{ secrets.EC2_PASSWORD }}
+        script_stop: true
+        script: chmod +x /home/ubuntu/frontEnd/deploy.sh && sh /home/ubuntu/frontEnd/deploy.sh
+        
+        
+

@@ -10,15 +10,21 @@ import static org.mockito.Mockito.when;
 
 import com.kaspi.backend.dao.FoodImageDao;
 import com.kaspi.backend.dao.GasDetailDao;
+import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.*;
 import com.kaspi.backend.dto.UserEcoRecordResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
+import com.kaspi.backend.dto.UserGasRecordResDto;
+import com.kaspi.backend.enums.GasBrand;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
 import java.util.*;
 
 import com.kaspi.backend.enums.Gender;
@@ -40,6 +46,9 @@ class UserRecordServiceTest {
     private GasDetailDao gasDetailDao;
     @Mock
     private UserGasRecordDao userGasRecordDao;
+
+    @Mock
+    private GasStationDao gasStationDao;
     @Mock
     private FoodImageDao foodImageDao;
     @Mock
@@ -145,7 +154,7 @@ class UserRecordServiceTest {
         UserGasRecord userGasRecord = UserGasRecord.builder()
                 .userNo(user.getUserNo())
                 .gasStationNo(gasStation.getStationNo())
-                .chargeDate(new Date())
+                .chargeDate(LocalDate.now())
                 .refuelingPrice(userGasRecordReqDto.getRefuelingPrice())
                 .recordGasAmount(10L)
                 .savingPrice(1000L)
@@ -162,6 +171,58 @@ class UserRecordServiceTest {
         verify(userGasRecordDao, times(1)).save(any(UserGasRecord.class));
         assertThat(result).isEqualTo(userGasRecord);
     }
+
+    @Test
+    @DisplayName("특정 사용자의 주유기록을 가져오는 로직")
+    void getUserRecords() {
+        //given
+        User user = User.builder().userNo(1L).id("test").build();
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        GasStation gasStation1 = GasStation.builder().stationNo(1L).brand(GasBrand.SK_GAS.getDbName()).build();
+        GasStation gasStation2 = GasStation.builder().stationNo(2L).brand(GasBrand.HYUNDIA_OIL_BANK.getDbName()).build();
+
+        List<UserGasRecord> userGasRecords = new ArrayList<>();
+        UserGasRecord GasRecord1 = UserGasRecord.builder()
+                .userNo(user.getUserNo())
+                .gasStationNo(gasStation1.getStationNo())
+                .recordGasAmount(2L)
+                .recordGasType(GasType.GASOLINE)
+                .refuelingPrice(10000L)
+                .chargeDate((LocalDate.now().plusDays(1)))
+                .savingPrice(123L)
+                .build(); // 더 최근
+        ;
+        UserGasRecord GasRecord2 = UserGasRecord.builder()
+                .userNo(user.getUserNo())
+                .gasStationNo(gasStation2.getStationNo())
+                .recordGasAmount(2L)
+                .recordGasType(GasType.GASOLINE)
+                .refuelingPrice(10000L)
+                .chargeDate((LocalDate.now()))
+                .savingPrice(123L)
+                .build();
+        userGasRecords.add(GasRecord2);
+        userGasRecords.add(GasRecord1);
+
+        when(userGasRecordDao.findGasRecordListByUserId(user.getUserNo())).thenReturn(userGasRecords);
+
+        when(gasStationDao.findById(1L)).thenReturn(Optional.of(gasStation1));
+        when(gasStationDao.findById(2L)).thenReturn(Optional.of(gasStation2));
+
+        //when
+        List<UserGasRecordResDto> result = userRecordService.getUserRecords();
+
+        // Verify
+        assertEquals(2, result.size());
+        UserGasRecordResDto record1 = result.get(0);
+        UserGasRecordResDto record2 = result.get(1);
+        int compareDate = record1.getChargeDate().compareTo(record2.getChargeDate());
+        assertTrue(compareDate > 0); //날짜 정렬 확인
+        assertEquals(gasStation2.getName(), record1.getGasStationName());
+        assertEquals(gasStation1.getName(), record2.getGasStationName());
+    }
+}
+
     @Test
     @DisplayName("절약 정보 조회 테스트")
     public void calMonthUserEcoPrice_ShouldReturnUserEcoRecordResDto() {

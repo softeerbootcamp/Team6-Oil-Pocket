@@ -2,10 +2,17 @@ package com.kaspi.backend.service;
 
 import com.kaspi.backend.dao.FoodImageDao;
 import com.kaspi.backend.dao.GasDetailDao;
+import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.*;
 import com.kaspi.backend.dto.UserEcoRecordResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
+import com.kaspi.backend.dto.UserGasRecordResDto;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
+import com.kaspi.backend.util.response.code.ErrorCode;
+
+import java.time.LocalDate;
+import java.util.*;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 
@@ -26,11 +33,11 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserRecordService {
     private final GasDetailDao gasDetailDao;
+    private final GasStationDao gasStationDao;
     private final HttpSessionService httpSessionService;
     private final UserGasRecordDao userGasRecordDao;
 
     private final FoodImageDao foodImageDao;
-
 
     /**
      * 사용자로 부터 받은 주유금액, 유종과 주유소 정보로 얼마만큼 넣었는지 계산하는 로직
@@ -54,11 +61,12 @@ public class UserRecordService {
 
 
     @Transactional
-    public UserGasRecord saveUserGasRecord(UserGasRecordReqDto userGasRecordReqDto, GasStation gasStation, Long userGasAmount, Long usersSavingPrice) {
+    public UserGasRecord saveUserGasRecord(UserGasRecordReqDto userGasRecordReqDto, GasStation gasStation,
+                                           Long userGasAmount, Long usersSavingPrice) {
         User user = httpSessionService.getUserFromSession();
         UserGasRecord userGasRecord = UserGasRecord.builder().userNo(user.getUserNo())
                 .gasStationNo(gasStation.getStationNo())
-                .chargeDate(new Date())
+                .chargeDate(LocalDate.now())
                 .refuelingPrice(userGasRecordReqDto.getRefuelingPrice())
                 .recordGasAmount(userGasAmount) //주유소 주유량
                 .savingPrice(usersSavingPrice) // 사용자 전국 유가 평균값  가져오기
@@ -68,6 +76,37 @@ public class UserRecordService {
         return userGasRecordDao.save(userGasRecord);
     }
 
+    /**
+     * 유저가 저장한 주유기록을 가져오는 로직
+     */
+    public List<UserGasRecordResDto> getUserRecords() {
+        User user = httpSessionService.getUserFromSession();
+        List<UserGasRecord> matchingUserGasRecords = userGasRecordDao.findGasRecordListByUserId(user.getUserNo());
+        List<UserGasRecordResDto> userGasRecordResDtos = toUserGasRecordResDtos(matchingUserGasRecords);
+        //날짜 최신순 정렬
+        Collections.sort(userGasRecordResDtos);
+        return userGasRecordResDtos;
+    }
+
+    private List<UserGasRecordResDto> toUserGasRecordResDtos(List<UserGasRecord> matchingUserGasRecords) {
+        List<UserGasRecordResDto> userRecordsRes = new ArrayList<>();
+
+        for (UserGasRecord userGasRecord : matchingUserGasRecords) {
+            GasStation findGasStation = getGasStation(userGasRecord);
+            //유저 주유 기록과 주유할때 입력한 주유소를 통해 주유기록 열람 dto를 생성
+            userRecordsRes.add(UserGasRecordResDto.toUserGasRecordResDto(userGasRecord, findGasStation));
+        }
+        return userRecordsRes;
+    }
+
+    private GasStation getGasStation(UserGasRecord userGasRecord) {
+        Optional<GasStation> gasStation = gasStationDao.findById(userGasRecord.getGasStationNo());
+        if (gasStation.isEmpty()) {
+            log.error("GasStation을 가져오는 쿼리에서 해당 GasStation이 없습니다. gasStationNo:{}", userGasRecord.getGasStationNo());
+            throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
+        }
+        return gasStation.get();
+    }
     public UserEcoRecordResDto calMonthUserEcoPrice() {
         User user = httpSessionService.getUserFromSession();
         LocalDate date = LocalDate.now();
