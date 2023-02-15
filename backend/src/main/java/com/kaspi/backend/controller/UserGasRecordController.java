@@ -77,6 +77,12 @@ public class UserGasRecordController {
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_FIND_USER_ECO_RECORD, userRecordService.calMonthUserEcoPrice()));
     }
 
+    @GetMapping("/user/gas-record/month")
+    public ResponseEntity<CommonResponseDto> getUsersMonthRecord() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_FIND_USER_RECORDS_MONTH, userRecordService.getUsersRecordPerMonth()));
+    }
+
 
        
 }
