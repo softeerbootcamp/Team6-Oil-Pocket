@@ -13,7 +13,7 @@ import { fecthCheckLogin, isLogin } from "./login/fetch.js";
 const $body = _$("body");
 
 const router = async () => {
-    await fecthCheckLogin();
+    // await fecthCheckLogin();
 
     const routes = [
         { path: "/", view: mainView },
