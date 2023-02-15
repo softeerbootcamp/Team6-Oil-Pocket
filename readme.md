@@ -26,8 +26,6 @@
 
 https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-bcd2-d206ad04ae5d.mov
 
-[![IMAGE ALT TEXT HERE](https://user-images.githubusercontent.com/92264609/217170500-849ef0c0-5dce-4a68-b6a5-a9343be0ad45.png)](https://youtu.be/b25lq7qcF4I)
-
 ##### 5주차 결과물
 
 <br>
