@@ -27,6 +27,10 @@ public interface UserGasRecordDao extends CrudRepository<UserGasRecord, Long> {
             "on u.user_no = ugr.user_no where gender = :gender and age = :age")
     Optional<List<EcoRecord>> findSavingPriceByGenderAndAge(@Param("gender") Gender gender, @Param("age") Age age, @Param("date") LocalDate date);
 
+
+    /**
+     * 사용자의 주유기록에서 월별로 그룹화 하여 해당날짜, 월별 주유 금액, 전국 유가 평균값을 기반으로한 주유금액을 리턴합니다.
+     */
     @Query("SELECT \n"
             + "  DATE_FORMAT(charge_date, '%Y.%m') AS month_date, \n"
             + "  SUM(refueling_price) AS total_refueling_price, \n"
