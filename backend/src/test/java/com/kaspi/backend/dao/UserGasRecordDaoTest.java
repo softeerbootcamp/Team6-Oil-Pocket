@@ -3,20 +3,15 @@ package com.kaspi.backend.dao;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.domain.UserGasRecord;
-import com.kaspi.backend.dto.UserGasRecordMonthDto;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import java.time.LocalDate;
 import com.kaspi.backend.domain.EcoRecord;
-import com.kaspi.backend.domain.UserGasRecord;
-import com.kaspi.backend.enums.Age;
-import com.kaspi.backend.enums.Gender;
-import com.kaspi.backend.util.config.TestRedisConfiguration;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,12 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 @DataJdbcTest
@@ -119,15 +110,15 @@ class UserGasRecordDaoTest {
         User savedUser = userDao.save(user);
         saveUserRecordPerMonth(savedUser);
         //when
-        Optional<List<UserGasRecordMonthDto>> sumRecordGroupByMonth = userGasRecordDao.findSumRecordGroupByMonth(
+        Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth = userGasRecordDao.findSumRecordGroupByMonth(
                 user.getUserNo());
         //then
-        List<UserGasRecordMonthDto> userGasRecordMonthDtos = sumRecordGroupByMonth.get();
+        List<UserGasRecordMonthResDto> userGasRecordMonthResDtos = sumRecordGroupByMonth.get();
         for (int i = 0; i < 12; i++) {
-            assertThat(userGasRecordMonthDtos.get(i).getMonthDate()).isEqualTo(LocalDate.now().minusMonths(i).format(
+            assertThat(userGasRecordMonthResDtos.get(i).getMonthDate()).isEqualTo(LocalDate.now().minusMonths(i).format(
                     DateTimeFormatter.ofPattern("yyyy.MM")));
-            assertThat(userGasRecordMonthDtos.get(i).getTotalRefuelingPrice()).isEqualTo((i * 1000));
-            assertThat(userGasRecordMonthDtos.get(i).getTotalSavingPrice()).isEqualTo((i * 10));
+            assertThat(userGasRecordMonthResDtos.get(i).getTotalRefuelingPrice()).isEqualTo((i * 1000));
+            assertThat(userGasRecordMonthResDtos.get(i).getTotalNationalAvgPrice()).isEqualTo((i * 10)+(i * 1000));
         }
     }
 

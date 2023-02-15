@@ -2,7 +2,7 @@ package com.kaspi.backend.dao;
 
 import com.kaspi.backend.domain.EcoRecord;
 import com.kaspi.backend.domain.UserGasRecord;
-import com.kaspi.backend.dto.UserGasRecordMonthDto;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
 import io.lettuce.core.dynamic.annotation.Param;
@@ -30,7 +30,7 @@ public interface UserGasRecordDao extends CrudRepository<UserGasRecord, Long> {
     @Query("SELECT \n"
             + "  DATE_FORMAT(charge_date, '%Y.%m') AS month_date, \n"
             + "  SUM(refueling_price) AS total_refueling_price, \n"
-            + "  SUM(saving_price) AS total_saving_price\n"
+            + "  SUM(saving_price)+SUM(refueling_price) AS total_national_avg_price\n"
             + "FROM \n"
             + "  user_gas_record ugr \n"
             + "WHERE \n"
@@ -40,5 +40,5 @@ public interface UserGasRecordDao extends CrudRepository<UserGasRecord, Long> {
             + "  month_date\n"
             + "ORDER BY \n"
             + "  month_date DESC")
-    Optional<List<UserGasRecordMonthDto>> findSumRecordGroupByMonth(@Param("userNo") Long userNo);
+    Optional<List<UserGasRecordMonthResDto>> findSumRecordGroupByMonth(@Param("userNo") Long userNo);
 }

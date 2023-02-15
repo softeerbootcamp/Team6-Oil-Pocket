@@ -1,11 +1,10 @@
 package com.kaspi.backend.dto;
 
 import lombok.Getter;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Getter
-public class UserGasRecordMonthDto {
+public class UserGasRecordMonthResDto {
     private String monthDate;
     private Long totalRefuelingPrice;
-    private Long totalSavingPrice;
+    private Long totalNationalAvgPrice;
 }
