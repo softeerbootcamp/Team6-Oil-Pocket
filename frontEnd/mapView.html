@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oil Pocket</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="./public/styles/index.css">
     <script	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://apis.openapi.sk.com/tmap/vectorjs?version=1&appKey=l7xx7250af6176574c63a12302edf09d020c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer type="module" src="SearchGasStation.js"></script>
 </head>
 <body>
@@ -33,10 +34,10 @@
                     <div class="main__SideSearchBar">
                         <div class="main__SearchOption">
                             <button class="main__SearchFromCurrentLocation" >
-                                <span id="Option1">휘발유/경유</span>
+                                <span id="Option1"><i class="fa-solid fa-location-dot"></i></span>
                             </button>
                             <button class="main__SearchFromRoute">
-                                <span id="Option2">LPG</span>
+                                <span id="Option2"><i class="fa-solid fa-magnifying-glass"></i></span>
                             </button>
                         </div>
                         <div class="main__InputandResultinSearchBar">
@@ -54,8 +55,7 @@
                                 </div>
                             </div>
                             <div class="main__SearchResult">
-                                <div class="main__ResultList">
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -65,18 +65,17 @@
                         </button>
                         <div class="main__GSTdetail">
                             <div class="main__GSTdetail__Title">
-                                <img class="main__GSTdetail__Title_LOGO" src="img/GasStation_Image/hyundai.png">
-                                현대 유진 주유소                            
+                                <!-- <img class="main__GSTdetail__Title_LOGO" src="img/GasStation_Image/hyundai.png"> -->
+                                <span id="GSTdetail__Name"></span>                          
                             </div>
                             <div class="main__GSTdetail__Contents">
                                 <div class="main__GSTdetail__Contents__Oilprice">
-                                    휘발유 : 1900원  경유 : 1200원
                                 </div>
                                 <div class="main__GSTdetail__Contents__Basic">
                                     기본정보
                                     <div class="main__GSTdetail__Contents__Basic__Address">
                                         <img src='./public/img/🦆 icon _map_.svg'>
-                                        서울 마포구 신수동 62-47(신수동)
+                                        <span id = "GSTdetail_addr"></span>
                                     </div>
                                     <div class="main__GSTdetail__Contents__Basic__Time">
                                         <img src='./public/img/🦆 icon _clock_.svg'>
@@ -84,41 +83,29 @@
                                     </div>
                                     <div class="main__GSTdetail__Contents__Basic__Phone">
                                         <img src='./public/img/🦆 icon _phone_.svg'>
-                                        02-406-5950
+                                        <span id="GSTdetail_phone"></span>
                                     </div>
                                     <div class="main__GSTdetail__Contents__Basic__Url">
                                         <img src='./public/img/🦆 icon _home_.svg'>
-                                        <a>https://www.skenergy.com</a>
+                                        <a id="GSTdetail_url"></a>
                                     </div>
                                 </div>
                                 <div class="main__GSTdetail__Contents__OilPriceTable">
                                     유가 정보
                                     <div class="main__GSTdetail__Contents__OilPriceTable__TableHead">
                                         <div class="main__GSTdetail__Contents__OilPriceTable__TableHead_Oil">
-                                            유종
+                                            <div>유종</div>
                                         </div>
                                         <div class="main__GSTdetail__Contents__OilPriceTable__TableHead_Price">
-                                            가격
+                                            <div>가격</div>
                                         </div>
                                     </div>
                                     <div class="main__GSTdetail__Contents__OilPriceTable__Contents">
-                                        <div class="main__GSTdetail__Contents__OilPriceTable__Contents__Row">
-                                            <div class="main__GSTdetail__Contents__OilPriceTable__Contents__Oil">
-                                                휘발유
-                                            </div>
-                                            <div class="main__GSTdetail__Contents__OilPriceTable__Contents__Price">
-                                                1591원
-                                            </div>
-                                        </div>
-                                        <div class="main__GSTdetail__Contents__OilPriceTable__Contents__Row">
-                                            <div class="main__GSTdetail__Contents__OilPriceTable__Contents__Oil">
-                                                휘발유
-                                            </div>
-                                            <div class="main__GSTdetail__Contents__OilPriceTable__Contents__Price">
-                                                1591원
-                                            </div>
-                                        </div>
                                     </div>
+                                </div>
+                                <div class="">
+                                    최근 가격 추이
+                                    <canvas id="myChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +118,7 @@
                 <div class="main__MapDiv">
                     <div id="map_div" class="map_wrap" style="float:left"></div>
                 </div>
-                <button id="main__btn_select">조회하기</button>
+                <button id="main__btn_select">현재 위치에서 검색</button>
             </div>
         </section>
     </section>

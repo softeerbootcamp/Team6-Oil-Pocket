@@ -606,13 +606,14 @@ a {
                 box-sizing: border-box;
     
                 & .main__SearchOption {
-                    width:2vw;
+                    width:3vw;
                     display:flex;
                     flex-direction: column;
                     background-color: transparent;
                     & .main__SearchFromCurrentLocation {
                         display:flex;
                         margin-top: 3vh;
+                        width:3vw;
                         height:5vh;
                         background-color: #14BD7E;
                         box-shadow: 1px 0 3px -1px black;
@@ -623,13 +624,14 @@ a {
                         & #Option1 {
                             transition: 0.5s;
                             transition-timing-function: linear;
-                            font-size:10px;
+                            width:10px;
+                            height:10px;
                         }
                     }
     
                     & .main__SearchFromRoute {
                         display:flex;
-                        width:1.3vw;
+                        width:1.9vw;
                         height:4.6vh;
                         background-color: white;
                         box-shadow: 1px 0 2px -1px ;
@@ -640,6 +642,8 @@ a {
                         & #Option2 {
                             transition: 0.5s;
                             transition-timing-function: linear;
+                            width:10px;
+                            height:10px;
                         }
                     }
                 }
@@ -686,7 +690,7 @@ a {
                             border-radius: 5px;
                             margin:0;
                             background-color: rgba(20, 189, 114, 0.5);
-                            opacity:1;
+                            opacity:0.5;
                         }
                         & #sort_GG {
                             box-sizing: border-box;
@@ -707,7 +711,6 @@ a {
                             margin:0;
                             background-color: rgba(20, 189, 114, 0.5);
                             opacity:0.5;
-                            display:none;
                         }
                     }
                     & .main__SearchResult {
@@ -740,40 +743,56 @@ a {
                             flex-direction: column;
                             width:15vw ;
                             height:10vh;
-                            margin-bottom: 20px;
+                            margin-bottom: 1px;
+                            margin-left:0.3vw;
+                            box-sizing: content-box;
                             padding: 0.5vh 0;
                             
+                            &:hover {
+                                cursor:pointer;
+                                background-color: lightblue;
+                            }
+
                             & .main__ResultList__Title {
-                                transition: 0.1s;
+                                transition : none;
                                 padding: 0 1vw;
                                 display: flex;
                                 justify-content: flex-start;
                                 flex-direction: row;
                                 align-items: center;
-                                width:15vw;
+                                width:13vw;
                                 height:1.5vh;
                                 font-size: 15px;
                                 font-weight: bold;
                                 padding-bottom: 10px;
-    
+                                color : black;
+                                line-height: 1.5vh;
+
                                 & img {
-                                    width: 10px;
-                                    height: 10px;
+                                    width: 1.5vw;
+                                    height: 1.5vw;
+                                    margin-top:3vh;
+                                    margin-left : -0.7vw;
                                     margin-right: 0.25vw;
                                 }
-    
-                                & span {
-                                    margin-left: 0.25vw;
-                                    font-size: 1rem;
-                                }
-    
-                                &:visited {
-                                    color: #000;
-                                }
-    
-                                &:hover {
-                                    cursor:pointer;
-                                    color: blue;
+                                & .main__TitleArea {
+                                    display:flex;
+                                    flex-direction: row;
+                                    width:13vw;
+                                    justify-content: space-between;
+                                    & #stName {
+                                        overflow:hidden;
+                                        width:7vw;
+                                        margin-left: 0.25vw;
+                                        font-size: 1rem;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                    }
+                                    & #stRadius {
+                                        margin-left: auto;
+                                        font-size:0.9rem;
+                                        color:grey;
+                                    }
                                 }
                             }
                             & .main__ResultList__Contents {
@@ -781,13 +800,17 @@ a {
                                 width:15vw;
                                 height:2vh;
                                 font-size: 0.85rem;
-                                color: gray;
+                                color: grey;
                                 line-height: 20px;
                                 padding-left: 10px;
-    
+                                margin-left:1.8vw;
                                 & span {
                                     color: #000;
                                     font-weight: 700;
+                                }
+
+                                & i {
+                                    color : rgb(90, 90, 208);
                                 }
                             }
                         }
@@ -827,25 +850,21 @@ a {
                 & .main__GSTdetail {
                     display:flex;
                     flex-direction: column;
-                    //overflow: scroll;
                     width:95%;
                     height:100%;
                     margin-left: 2.5%;
-                    // border:1px solid black;
 
                     & .main__GSTdetail__Title {
                         display:flex;
                         justify-content: center;
+                        align-items: center;
                         width:100%;
                         height:3vh;
-                        font-size:30px;
+                        font-size:25px;
                         font-weight: 700;
+                        line-height: 3vh;
                         margin-bottom: 10px;
                         background-color: white;
-                        & img{
-                            width:30px;
-                            height:30px;
-                        }
                     }
 
                     & .main__GSTdetail__Contents {
@@ -856,11 +875,9 @@ a {
                         font-size:20px;
                         font-weight: 400;
                         align-items: center;
-                        // border:1px solid black;
-                        & .main__GSTdetail__Contents__Oilprice {
 
+                        & .main__GSTdetail__Contents__Oilprice {
                             display: flex;
-                            // border:1px solid black;
                             width:17vw;
                             height:3vh;
                             justify-content: center;
@@ -870,6 +887,14 @@ a {
                             font-weight: 600;
                             line-height: 3vh;
                             margin-bottom: 20px;
+
+                            & i{
+                                width:20px;
+                                height:20px;
+                                margin-top: 6px;
+                                margin-right:10px;
+                                justify-content: center;
+                            }
                         }
                         
                         & .main__GSTdetail__Contents__Basic {
@@ -898,6 +923,7 @@ a {
                                 margin-bottom: 5px;
                                 border-bottom: 1px solid lightgrey;
                                 line-height: 30px;
+                                color:lightgrey;
                                 & img {
                                     width:14px;
                                     height:14px;
@@ -919,64 +945,89 @@ a {
                             & .main__GSTdetail__Contents__Basic__Url {
                                 font-size:14px;
                                 font-weight: 350;
+                                transition:0.3s;
                                 border-bottom: 1px solid lightgrey;
                                 line-height: 30px;
+                                color: #14BD7E;
                                 & img {
                                     width:14px;
                                     height:14px;
                                     margin-right: 5px;
                                 }
+                                & :hover {
+                                    transform :scale(1.5);
+                                    cursor:pointer;
+                                }
                             }
                         }
-
                         & .main__GSTdetail__Contents__OilPriceTable {
                             width:100%;
                             background-color: white;
                             display: flex;
                             flex-direction: column;
-
+                            margin-top: 20px;
                             & .main__GSTdetail__Contents__OilPriceTable__TableHead {
                                 display:flex;
                                 flex-direction: row;
-                                background-color: #14bd72;
+                                // background-color: #14BD7E;
+                                // outline: 0.1vh solid #14bd72;
                                 font-size:20px;
                                 font-weight: 500;
+                                height:4vh;
                                 color:white;
-                                border-radius: 5px 5px 0 0;
                                 margin-top: 5px;
                                 & .main__GSTdetail__Contents__OilPriceTable__TableHead_Oil{
-                                    font-size:15px;
+                                    background-color: #14BD7E;
+                                    outline: 0.1vh solid #14BD7E;
+                                    color : white;
+                                    font-size:22px;
                                     width:20%;
                                     text-align: center;
-                                    line-height: 20px;
+                                    line-height: 4vh;
+                                    opacity:0.8;
                                 }
                                 & .main__GSTdetail__Contents__OilPriceTable__TableHead_Price{
-                                    font-size:15px;
+                                    background-color: #14BD72;
+                                    outline: 0.1vh solid #14BD72;
+                                    font-size:22px;
                                     width:80%;
                                     text-align: center;
-                                    line-height: 20px;
+                                    line-height: 4vh;
                                 }
                             }
                             & .main__GSTdetail__Contents__OilPriceTable__Contents {
                                 display:flex;
                                 flex-direction: column;
+                                
                                 & .main__GSTdetail__Contents__OilPriceTable__Contents__Row{
+                                    margin-top: 0.1vh;
                                     display: flex;
                                     flex-direction: row;
+                                    justify-content: space-between;
+                                    height:3vh;
 
                                     & .main__GSTdetail__Contents__OilPriceTable__Contents__Oil {
-                                        border:1px solid lightgrey;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
                                         border-right: none;
-                                        width:20%;
-                                        font-size: 15px;
+                                        width:calc(20% - 0.05vh);
+                                        font-size: 20px;
+                                        font-size: 0.7rem;
+                                        font-weight: 500;
                                         text-align: center;
+                                        outline: 0.05vh solid #14BD7E;
+
                                     }
 
                                     & .main__GSTdetail__Contents__OilPriceTable__Contents__Price {
-                                        border:1px solid lightgrey;
-                                        width:80%;
-                                        font-size: 15px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        font-size: 0.7rem;
+                                        width:calc(80% - 0.05vh);
                                         text-align:center;
+                                        outline: 0.1vh solid #14BD7E;
                                     }
                                 }
                             }
@@ -1004,10 +1055,53 @@ a {
             width:100vw;
             height:82vh;
 
-            & div {
-                width: 100%;
-                & canvas {
-                    width: 100%;
+            // & div {
+            //     width:120px;
+            //     height:40px;
+            // }
+            & .Map_Marker{
+                width:180px;
+                height:50px;
+
+                & img {
+                    margin-left: 64px;
+                    margin-bottom : 25px;
+                }
+                & #HG {
+                    width:180px;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    display:block;
+                    padding-left:70px;
+                    line-height: 30px;
+                    margin-top:-70px;
+                }
+                & #LL {
+                    width:108px;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    display:block;
+                    padding-left:70px;
+                    line-height: 30px;
+                    margin-top:-70px;
+                    &:hover {
+                        background-color: black;
+                    }
+                } 
+                & #Name {
+                    overflow: hidden;
+                    width:162px;
+                    font-size: 1.2rem;
+                    font-weight: 500;
+                    display:block;
+                    padding-left:70px;
+                    line-height: 30px;
+                    margin-top:-70px;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    &:hover {
+                        background-color: black;
+                    }
                 }
             }
         }
@@ -1015,14 +1109,17 @@ a {
         & #main__btn_select{
             z-index:5;
             position:absolute;
-            width:60px;
-            height:35px;
+            width:130px;
+            height:45px;
             right:36vw;
             top:74vh;
-            background-color: green;
+            background-color: #14BD72;
             color:white;
-            font-size:11px;
-            border-radius: 5px;
+            font-size:13px;
+            font-weight: 700;
+            padding : 0.5vh 0.5vw;
+            border-radius: 20px;
+            transition : 0.4s;
         }
     }
 }
@@ -2285,20 +2382,4 @@ a {
             }
         }
     }
-}
-
-#searchResultTitle {
-    font-size:16px;
-    font-weight: bold;
-    line-height: 2vh;
-    overflow: scroll;
-}
-
-.GasStationLogo{
-    width:28px;
-    height:28px;
-}
-
-.ResultContents {
-    color:grey;
 }
