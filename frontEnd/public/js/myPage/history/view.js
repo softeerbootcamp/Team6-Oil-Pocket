@@ -1,7 +1,7 @@
 import { navBarView } from "../../navbar/view.js";
 import { getHistoryTemplate } from "./template.js";
 
-const historyView = () => {
+const historyView = async () => {
     const $historyContainer = document.createElement("section");
     const $historyContent = document.createElement("section");
     $historyContent.classList.add("main");

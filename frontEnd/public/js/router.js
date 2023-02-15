@@ -7,10 +7,14 @@ import { comparisonView } from "./myPage/comparison/view.js";
 import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
+import { _$ } from "./common/function.js";
+import { fecthCheckLogin, isLogin } from "./login/fetch.js";
 
-const $body = document.querySelector("body");
+const $body = _$("body");
 
 const router = async () => {
+    await fecthCheckLogin();
+
     const routes = [
         { path: "/", view: mainView },
         { path: "/register", view: registerView },
@@ -22,6 +26,7 @@ const router = async () => {
         { path: "/history", view: historyView },
         { path: "/404", view: notFoundView }
     ];
+    
     let match = routes.map(route => {
         return {
             route,
@@ -35,7 +40,7 @@ const router = async () => {
         }
     }
     const getNode = match.route.view;
-    const $container = getNode();
+    const $container = await getNode();
     $body.replaceWith($container);
 }
 // 페이지 전환 함수

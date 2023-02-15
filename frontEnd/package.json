@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite"
   },
   "repository": {
     "type": "git",
