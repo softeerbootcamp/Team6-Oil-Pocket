@@ -1,3 +1,5 @@
+import { RELEASE_HOST_URL } from "./variable";
+
 NodeList.prototype.forEach = Array.prototype.forEach;
 
 const _$ = (cssSelector, startNode=document) => startNode.querySelector(cssSelector);
@@ -53,10 +55,13 @@ const parseNumberToMoneyString = (number) => {
     return `${parsedString} 원`;
 }
 
+const isReleaseMode = () => location.hostname === RELEASE_HOST_URL;
+
 export {
     _$, _$_ALL,
     addEvent, changeCSS, changeArrayCSS,
     toggleArrayClass,
     pipe, makeLighter,
-    makeNodeArrayLighterSubsequently, giveErrorStyle, parseNumberToMoneyString
+    makeNodeArrayLighterSubsequently, giveErrorStyle, parseNumberToMoneyString,
+    isReleaseMode
 }
