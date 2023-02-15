@@ -22,11 +22,19 @@
 
 <br>
 
-## 📑 &nbsp; About The Project
+## 📑 &nbsp; About The Project 
 
-https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-bcd2-d206ad04ae5d.mov
+#### 메인 화면
 
-##### 5주차 결과물
+https://user-images.githubusercontent.com/74173976/218913447-d71c97b6-1e5f-4a29-8bc9-282016d76fc5.mov
+
+#### 로그인 / 회원가입
+
+https://user-images.githubusercontent.com/74173976/218913482-41e7421f-228d-426d-9bb7-83a6fe1b02d3.mov
+
+#### 마이페이지
+
+https://user-images.githubusercontent.com/74173976/218913513-e487662f-5ede-48b2-a05a-c500663b80b8.mov
 
 <br>
 
