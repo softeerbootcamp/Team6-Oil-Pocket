@@ -3,6 +3,9 @@ package org.example.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.gpedro.integrations.slack.SlackApi;
+import net.gpedro.integrations.slack.SlackAttachment;
+import net.gpedro.integrations.slack.SlackMessage;
 import org.example.service.gasdata.GasDataService;
 import org.example.service.gasdata.LpgGasDataCallback;
 import org.example.service.gasdata.NomalGasDataCallback;
@@ -17,6 +20,8 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +36,10 @@ public class DataDownloadScheduler {
     private String oilStation;
     @Value("${file.lpg}")
     private String lpgStation;
+    @Value("${slack.token}")
+    String token;
+    @Value("${slack.url}")
+    String url;
 
     private final GasDataService gasDataService;
 
@@ -38,9 +47,10 @@ public class DataDownloadScheduler {
     //@Scheduled(fixedDelay = 300000)
     //server
     @Scheduled(cron = "0 1 1 * * *", zone = "Asia/Seoul")
-    public void backgroundProcess() {
+    public void backgroundProcess() throws Exception {
         try {
             log.debug("스케쥴러 시작");
+            notifyToSlack("start");
             ChromeOptions chromeOptions = new ChromeOptions();
             Map<String, Object> prefs = new HashMap<String, Object>();
             prefs.put("download.default_directory", filePath);
@@ -58,9 +68,10 @@ public class DataDownloadScheduler {
             fileDownload(driver);
             driver.quit();
             log.debug("스케쥴러 종료");
+            notifyToSlack("end");
         } catch (Exception e) {
             log.error("크롬 실행 실패 : {}", e.getMessage());
-            e.printStackTrace();
+            throw new Exception(e);
         }
     }
 
@@ -76,5 +87,19 @@ public class DataDownloadScheduler {
         button.sendKeys(Keys.ENTER);
         driver.switchTo().alert().accept();
         gasDataService.insertGasInfo(lpgStation, new LpgGasDataCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
+    }
+    private void notifyToSlack(String message) {
+        SlackAttachment slackAttachment = new SlackAttachment();
+        slackAttachment.setFallback("Post");
+        slackAttachment.setColor("good");
+        slackAttachment.setTitle("Data save " + message);
+        slackAttachment.setText(LocalDateTime.now().toString());
+
+        SlackMessage slackMessage = new SlackMessage();
+        slackMessage.setAttachments(Collections.singletonList(slackAttachment));
+        slackMessage.setIcon(":floppy_disk:");
+        slackMessage.setText("Scheduler");
+        SlackApi api = new SlackApi(url+ token);
+        api.call(slackMessage);
     }
 }

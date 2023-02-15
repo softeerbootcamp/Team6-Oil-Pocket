@@ -36,8 +36,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-
-
+    implementation("net.gpedro.integrations.slack:slack-webhook:1.4.0")
 }
 
 tasks.named('test') {
