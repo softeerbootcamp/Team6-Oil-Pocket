@@ -1257,9 +1257,6 @@ a {
   line-height: 30px;
   margin-top: -70px;
 }
-.main .main__ForMap .main__MapDiv .Map_Marker #LL:hover {
-  background-color: black;
-}
 .main .main__ForMap .main__MapDiv .Map_Marker #Name {
   overflow: hidden;
   width: 162px;
@@ -1271,9 +1268,6 @@ a {
   margin-top: -70px;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-.main .main__ForMap .main__MapDiv .Map_Marker #Name:hover {
-  background-color: black;
 }
 .main .main__ForMap #main__btn_select {
   z-index: 5;

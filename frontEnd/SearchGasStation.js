@@ -260,6 +260,7 @@ function ShowResult(ResultArray, positionBounds){
                 map:map
             });
             LPGmarkerArr.push(LPGmarker);
+            
         }
         else {
             HGmarker = new Tmapv3.Marker({
@@ -287,6 +288,8 @@ function ShowResult(ResultArray, positionBounds){
         }
         positionBounds.extend(markerPosition);
     }
+    // AddEventToMarker(LPGmarkerArr);
+    // AddEventToMarker(HGmarkerArr);
     resultArea.innerHTML = ResultHtml;
     addEventToResult(ResultArray);
     map.fitBounds(positionBounds);	
@@ -538,11 +541,11 @@ function ShowResultByOption(ResultArray) {
         }
         positionBounds.extend(markerPosition);
     }
+    // AddEventToMarker(markerArr);
     resultArea.innerHTML = ResultHtml;
     addEventToResult(ResultArray);
     map.fitBounds(positionBounds);	
 }
-
 
 function FillSTDetail(ResultArrayElem){
     const ST_name = document.getElementById("GSTdetail__Name");
@@ -581,7 +584,6 @@ function FillSTDetail(ResultArrayElem){
 
     const ST_url = document.getElementById("GSTdetail_url");
     ST_url.innerHTML = `www.${ResultArrayElem.stId}.com`;
-
 
     const ST_PriceTable = document.getElementsByClassName("main__GSTdetail__Contents__OilPriceTable__Contents");
     ST_PriceTable[0].innerHTML = "";
@@ -679,3 +681,7 @@ const labels = [
     document.getElementById('myChart'),
     config
   );
+
+// function AddEventToMarker(marray){
+    
+// }

@@ -1084,9 +1084,6 @@ a {
                     padding-left:70px;
                     line-height: 30px;
                     margin-top:-70px;
-                    &:hover {
-                        background-color: black;
-                    }
                 } 
                 & #Name {
                     overflow: hidden;
@@ -1099,9 +1096,6 @@ a {
                     margin-top:-70px;
                     white-space: nowrap;
                     text-overflow: ellipsis;
-                    &:hover {
-                        background-color: black;
-                    }
                 }
             }
         }
