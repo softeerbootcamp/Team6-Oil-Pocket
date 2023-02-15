@@ -14,6 +14,7 @@ import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.*;
 import com.kaspi.backend.dto.UserEcoRecordResDto;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.dto.UserGasRecordResDto;
 import com.kaspi.backend.enums.GasBrand;
@@ -250,4 +251,39 @@ class UserRecordServiceTest {
         assertEquals("http://example.com/food1.jpg", result.getImageUrl());
         assertEquals(1, result.getRankPercentage(), 0.001);
     }
+
+    @Test
+    @DisplayName("월별 주유 기록 조회 예외 케이스")
+    public void testGetUsersRecordPerMonthWhenRecordNotFound() {
+        //given
+        User user = User.builder().userNo(1L).build();
+        //when
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        when(userGasRecordDao.findSumRecordGroupByMonth(user.getUserNo())).thenReturn(Optional.empty());
+        //then
+        assertThrows(SqlNotFoundException.class, () -> userRecordService.getUsersRecordPerMonth());
+    }
+
+    @Test
+    @DisplayName("월별 주유 기록 조회")
+    void testGetUsersRecordPerMonth(){
+        //given
+        User user = User.builder().userNo(1L).build();
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        List<UserGasRecordMonthResDto> recordList = Collections.singletonList(UserGasRecordMonthResDto.builder()
+                .monthDate("2023.02")
+                .totalRefuelingPrice(1000L)
+                .totalNationalAvgPrice(1220L).build());
+        when(userGasRecordDao.findSumRecordGroupByMonth(user.getUserNo())).thenReturn(Optional.of(recordList));
+        //when
+        List<UserGasRecordMonthResDto> result = userRecordService.getUsersRecordPerMonth();
+        //then
+        assertNotNull(result);
+        assertEquals(recordList, result);
+        verify(httpSessionService).getUserFromSession();
+        verify(userGasRecordDao).findSumRecordGroupByMonth(user.getUserNo());
+
+    }
+
+
 }

@@ -1,5 +1,5 @@
-import { _$, changeCSS } from "../common/function";
-import { BASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
+import { _$, changeCSS, isReleaseMode } from "../common/function";
+import { BASE_COMMON_URL, RELEASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
 
 let isLogin = "";
 let userId = ""
@@ -8,8 +8,11 @@ let userAge = "";
 
 const fetchLoginID = ($IDInput, $PWInput) => {
     const $loginErrorModal = _$(".loginArea__errorModal");
-    
-    fetch(BASE_COMMON_URL + "/auth", {
+    const FETCH_URL = isReleaseMode() ? 
+                        RELEASE_COMMON_URL + "/auth" :
+                        BASE_COMMON_URL + "/auth";
+
+    fetch(FETCH_URL, {
         method: METHOD.POST,
         headers: HEADER.POST, 
         body: JSON.stringify({
@@ -33,9 +36,11 @@ const fetchLoginID = ($IDInput, $PWInput) => {
 
 const fecthCheckLogin = async () => {
     isLogin = false;
-    const CHECK_LOGIN_URL = BASE_COMMON_URL + "/auth/status";
+    const FETCH_URL = isReleaseMode() ? 
+                            RELEASE_COMMON_URL + "/auth/status" : 
+                            BASE_COMMON_URL + "/auth/status";
 
-    await fetch(CHECK_LOGIN_URL, {
+    await fetch(FETCH_URL, {
         method: METHOD.GET,
         credentials: "include"
     }).then((res) => {

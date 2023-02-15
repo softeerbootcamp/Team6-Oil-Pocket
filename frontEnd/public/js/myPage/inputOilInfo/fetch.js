@@ -1,10 +1,14 @@
-import { _$ } from "../../common/function.js";
-import { BASE_COOKIE_URL, HEADER, METHOD } from "../../common/variable.js";
-import { gasNameMapper, validateGasName, validateGasPrice, validateOilInput, validateStationName } from "./helperFunction.js";
+import { isReleaseMode, _$ } from "../../common/function.js";
+import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../common/variable.js";
+import { gasNameMapper, validateOilInput } from "./helperFunction.js";
 import { gasStationSearchView } from "./view.js";
 
 const fetchGasStationSearch = ($oilSearchResultBox, gasStationName) => {
-    fetch(`${BASE_COOKIE_URL}/gas-station/?name=${gasStationName}`, {
+    const FETCH_URL = isReleaseMode() ? 
+                        `${RELEASE_COOKIE_URL}/gas-station/?name=${gasStationName}` :
+                        `${BASE_COOKIE_URL}/gas-station/?name=${gasStationName}`;
+
+    fetch(FETCH_URL, {
         method: METHOD.GET,
         credentials: "include",
     }).then((res) => {
@@ -24,12 +28,15 @@ const fetchOilRegister = ($container) => {
     const $oilText = _$(".oilInfoArea__oilSelect > span", $container);
     const $oilPriceText = _$(".oilInfoArea__oilPriceInput", $container);
     const $gasStationText = _$(".oilInfoArea__searchInput", $container);
+    const FETCH_URL = isReleaseMode() ? 
+                        RELEASE_COOKIE_URL + "/user/gas-record" :
+                        BASE_COOKIE_URL + "/user/gas-record";
+
 
     if(validateOilInput($oilText, $oilPriceText, $gasStationText)) {
-        fetch(BASE_COOKIE_URL + "/user/gas-record", {
+        fetch(FETCH_URL, {
             method: METHOD.POST,
             headers: HEADER.POST,
-            // mode: 'cors',
             body: JSON.stringify({
                 gasType: `${gasNameMapper($oilText.innerHTML)}`,
                 "refuelingPrice": $oilPriceText.value,
