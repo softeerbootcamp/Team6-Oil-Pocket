@@ -1,5 +1,6 @@
 package com.kaspi.backend.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -8,7 +9,9 @@ import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class GasStationDto {
+    private long stationNo;
     private String area;
     private String name;
     private String address;
@@ -28,7 +31,7 @@ public class GasStationDto {
         return new GasStationDto(gasStation.getArea(), gasStation.getName(), gasStation.getAddress(), gasStation.getBrand(), gasStation.isSelf(), list);
     }
     public static GasStationDto newInstance(String name, GasStation gasStation, List<GasDetailDto> list) {
-        return new GasStationDto(gasStation.getArea(), name, gasStation.getAddress(), gasStation.getBrand(), gasStation.isSelf(), list);
+        return new GasStationDto(gasStation.getStationNo(), gasStation.getArea(), name, gasStation.getAddress(), gasStation.getBrand(), gasStation.isSelf(), list);
     }
     public void addGasDetailDtoList(List<GasDetailDto> gasDetailDtolist) {
         for (GasDetailDto gasDetailDto : gasDetailDtolist) {

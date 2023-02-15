@@ -34,7 +34,7 @@ public class GasStationController {
                                                                   @PathVariable("brand") String brand) {
         GasStationDto gasStationDto = gasStationService.findGasStationDto(name, roadName, buildNum, brand);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL, gasStationDto));
     }
 
     @GetMapping("/v2/gas-station")
@@ -50,6 +50,6 @@ public class GasStationController {
                                                                   @PathVariable("brand") String brand) {
         GasStationDto gasStationDto = gasStationService.findOntMonthGasStationDto(name, roadName, buildNum, brand);
         return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DEATIL, gasStationDto));
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL, gasStationDto));
     }
 }

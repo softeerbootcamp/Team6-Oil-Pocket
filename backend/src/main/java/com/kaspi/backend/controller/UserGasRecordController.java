@@ -1,5 +1,6 @@
 package com.kaspi.backend.controller;
 
+
 import com.kaspi.backend.dao.GasDetailDao;
 import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
@@ -9,14 +10,12 @@ import com.kaspi.backend.domain.UserGasRecord;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.dto.UserGasRecordResDto;
 import com.kaspi.backend.service.GasStationService;
-import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.service.OpinetService;
 import com.kaspi.backend.service.UserRecordService;
 import com.kaspi.backend.util.response.CommonResponseDto;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,8 +67,16 @@ public class UserGasRecordController {
     @GetMapping("/user/gas-record")
     public ResponseEntity<CommonResponseDto> getUserGasRecord() {
         List<UserGasRecordResDto> userGasRecords = userRecordService.getUserRecords();
-
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.GET_USER_GAS_RECORDS, userGasRecords));
     }
+    
+    @GetMapping("/user/eco-record")
+    public ResponseEntity<CommonResponseDto> getUserEcoRecord() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_FIND_USER_ECO_RECORD, userRecordService.calMonthUserEcoPrice()));
+    }
+
+
+       
 }

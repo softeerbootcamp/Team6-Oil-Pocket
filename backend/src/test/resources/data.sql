@@ -5,6 +5,7 @@ drop table if exists `user_gas_record`;
 drop table if exists `users`;
 drop table if exists `gas_detail`;
 drop table if exists `gas_station`;
+drop table if exists `food_image`;
 
 
 CREATE TABLE users
@@ -16,7 +17,6 @@ CREATE TABLE users
     age      VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_no)
 );
-
 
 
 
@@ -41,18 +41,27 @@ create table gas_detail
 );
 
 
-CREATE TABLE user_gas_record (
-  user_gas_record_no BIGINT NOT NULL AUTO_INCREMENT,
-  user_no BIGINT NOT NULL,
-  gas_station_no BIGINT NOT NULL,
-  charge_date DATE NOT NULL,
-  refueling_price BIGINT NOT NULL,
-  saving_price BIGINT NOT NULL,
-  record_gas_type varchar(255) NOT NULL,
-  record_gas_amount BIGINT NOT NULL,
-  PRIMARY KEY (user_gas_record_no),
-  FOREIGN KEY (user_no) REFERENCES users(user_no),
-  FOREIGN KEY (gas_station_no) REFERENCES gas_station(station_no)
+CREATE TABLE user_gas_record
+(
+    user_gas_record_no BIGINT       NOT NULL AUTO_INCREMENT,
+    user_no            BIGINT       NOT NULL,
+    gas_station_no     BIGINT       NOT NULL,
+    charge_date        DATE         NOT NULL,
+    refueling_price    BIGINT       NOT NULL,
+    saving_price       BIGINT       NOT NULL,
+    record_gas_type    varchar(255) NOT NULL,
+    record_gas_amount  BIGINT       NOT NULL,
+    PRIMARY KEY (user_gas_record_no),
+    FOREIGN KEY (user_no) REFERENCES users (user_no),
+    FOREIGN KEY (gas_station_no) REFERENCES gas_station (station_no)
+);
+
+create table food_image
+(
+    food_no     int primary key auto_increment,
+    start_price decimal       not null,
+    end_price   decimal       not null,
+    image_url   varchar(1024) not null
 );
 
 insert into gas_station(area, name, address, brand, is_self)
@@ -84,3 +93,19 @@ insert into gas_detail (station_no, gas_type, price, created_date)
 values (1, "GASOLINE", 1659, '2023-01-02');
 insert into gas_detail (station_no, gas_type, price, created_date)
 values (1, "DIESEL", 1759, '2023-01-02');
+
+insert into users(id, password, gender, age)
+values ("admin", "password", "MALE", "FORTY");
+insert into user_gas_record(user_no, gas_station_no, charge_date, refueling_price, saving_price, record_gas_type,
+                            record_gas_amount)
+values (1, 1, "2023-02-12", 23000, 376, "DIESEL", 14);
+insert into user_gas_record(user_no, gas_station_no, charge_date, refueling_price, saving_price, record_gas_type,
+                            record_gas_amount)
+values (1, 1, "2023-02-12", 23000, 390, "DIESEL", 14);
+
+insert into food_image(start_price, end_price, image_url)
+values (0, 1000, 'https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/candy.png')
+     , (1000, 5000, 'https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/coffee.png')
+     , (5000, 10000, 'https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/hamburger.png')
+     , (10000, 20000, 'https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/rice.png')
+     , (20000, 100000000, 'https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/chicken.png');
