@@ -34,7 +34,7 @@ class UserGasRecordResDtoTest {
         assertEquals(userGasRecord.getRecordGasAmount() + "L", dto.getRecordGasAmount());
         assertEquals(userGasRecord.getRefuelingPrice() + "원", dto.getRefuelingPrice());
         assertEquals(userGasRecord.getSavingPrice() + "원", dto.getSavingPrice());
-        assertEquals(GasBrand.getImg(gasStation.getBrand()), dto.getBrand());
+        assertEquals(GasBrand.getImgByDbName(gasStation.getBrand()), dto.getBrand());
         assertEquals(gasStation.getName(), dto.getGasStationName());
         assertEquals(userGasRecord.getChargeDate().toString().replace("-", "."), dto.getChargeDate());
     }

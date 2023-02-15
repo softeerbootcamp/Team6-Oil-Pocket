@@ -1,7 +1,6 @@
 package com.kaspi.backend.enums;
 
 import lombok.Getter;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -30,7 +29,8 @@ public enum GasBrand {
         this.dbName = dbName;
     }
 
-    public static String getImg(String gasBrand) {
+    //dbName을 기준으로 해당 이름에 맞는 image url을 가져옴
+    public static String getImgByDbName(String gasBrand) {
         Optional<GasBrand> findGasBrand = Arrays.stream(values())
                 .filter(value -> value.dbName.equals(gasBrand))
                 .findAny();

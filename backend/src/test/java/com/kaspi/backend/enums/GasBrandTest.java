@@ -14,7 +14,7 @@ class GasBrandTest {
         //given
         String brand = "현대오일뱅크";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/HYUNDIA_OIL_BANK.png");
     }
@@ -25,7 +25,7 @@ class GasBrandTest {
         //given
         String brand = "알뜰주유소";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/ALTTEUL.png");
     }
@@ -36,7 +36,7 @@ class GasBrandTest {
         //given
         String brand = "알뜰(ex)";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/ALTTEUL_EX.png");
     }
@@ -47,7 +47,7 @@ class GasBrandTest {
         //given
         String brand = "자가상표";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/CUSTOM.png");
     }
@@ -58,7 +58,7 @@ class GasBrandTest {
         //given
         String brand = "E1";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/E1.png");
     }
@@ -69,7 +69,7 @@ class GasBrandTest {
         //given
         String brand = "GS칼텍스";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/GS_CALTEXT.png");
     }
@@ -80,7 +80,7 @@ class GasBrandTest {
         //given
         String brand = "NH-OIL";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/NH_OIL.png");
     }
@@ -91,7 +91,7 @@ class GasBrandTest {
         //given
         String brand = "S-OIL";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/S_OIL.png");
     }
@@ -102,7 +102,7 @@ class GasBrandTest {
         //given
         String brand = "SK에너지";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/SK_ENERGY.png");
     }
@@ -113,7 +113,7 @@ class GasBrandTest {
         //given
         String brand = "SK가스";
         //when
-        String img = GasBrand.getImg(brand);
+        String img = GasBrand.getImgByDbName(brand);
         //then
         assertThat(img).isEqualTo("https://team6-public-image.s3.ap-northeast-2.amazonaws.com/GasStation_DB/SK_GAS.png");
     }
