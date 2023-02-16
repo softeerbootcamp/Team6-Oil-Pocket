@@ -81,7 +81,7 @@ class UserControllerTest {
     @Test
     @DisplayName("유저 정보 수정 API 테스트")
     void userUpdate() throws Exception {
-        UserUpdateReqDto dto = UserUpdateReqDto.builder().age(Age.FORTY).gender(Gender.MALE).build();
+        UserUpdateReqDto dto = UserUpdateReqDto.builder().age(Age.FORTY.getAgeBound()).gender(Gender.MALE.getInitial()).build();
 
         doNothing().when(userService).updateUser(dto);
 
