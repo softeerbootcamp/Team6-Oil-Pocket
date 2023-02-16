@@ -5,6 +5,7 @@ import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
+import com.kaspi.backend.enums.GasBrand;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.NoSuchElementException;
@@ -41,7 +42,7 @@ public class GasStationService {
     private void insertMatchingGasStation(GasStation gasStation, List<FindGasStationResDto> matchingGasStations) {
         matchingGasStations.add(FindGasStationResDto.builder()
                 .stationNo(gasStation.getStationNo())
-                .brand(gasStation.getBrand())
+                .brand(GasBrand.getImgByDbName(gasStation.getBrand()))
                 .name(gasStation.getName())
                 .area(gasStation.getArea())
                 .address(gasStation.getAddress())

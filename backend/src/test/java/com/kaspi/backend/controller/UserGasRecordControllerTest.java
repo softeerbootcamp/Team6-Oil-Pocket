@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.dto.UserEcoRecordResDto;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.dto.UserGasRecordResDto;
 import com.kaspi.backend.enums.GasBrand;
@@ -22,6 +23,7 @@ import com.kaspi.backend.service.UserRecordService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import org.junit.jupiter.api.DisplayName;
@@ -147,5 +149,25 @@ class UserGasRecordControllerTest {
                 .andExpect(jsonPath("$.data.userId").value(userEcoRecordResDto.getUserId()))
                 .andExpect(jsonPath("$.data.gender").value(Gender.MALE.name()))
                 .andExpect(jsonPath("$.data.myEcoPrice").value(userEcoRecordResDto.getMyEcoPrice()));
+    }
+
+    @Test
+    @DisplayName("사용자 월별비교 api")
+    void getUsersMonthRecord() throws Exception {
+        //given
+        List<UserGasRecordMonthResDto> recordList = Collections.singletonList(UserGasRecordMonthResDto.builder()
+                .monthDate("2023.02")
+                .totalRefuelingPrice(1000L)
+                .totalNationalAvgPrice(1220L).build());
+        when(userRecordService.getUsersRecordPerMonth()).thenReturn(recordList);
+        // Act and Assert
+        mockMvc.perform(get("/api/v2/user/gas-record/month")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.code").value(DefaultCode.SUCCESS_FIND_USER_RECORDS_MONTH.getCode()))
+                .andExpect(jsonPath("$.message").value(DefaultCode.SUCCESS_FIND_USER_RECORDS_MONTH.getMessage()))
+                .andExpect(jsonPath("$.data[0].monthDate").value(recordList.get(0).getMonthDate()))
+                .andExpect(jsonPath("$.data[0].totalRefuelingPrice").value(recordList.get(0).getTotalRefuelingPrice()))
+                .andExpect(jsonPath("$.data[0].totalNationalAvgPrice").value(recordList.get(0).getTotalNationalAvgPrice()));
     }
 }

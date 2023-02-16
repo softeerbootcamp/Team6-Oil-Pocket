@@ -6,6 +6,9 @@ import org.example.enums.SchedulerIndex;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
+
+import java.util.Objects;
+
 @Getter
 @Table("gas_station")
 public class GasStation {
@@ -47,6 +50,19 @@ public class GasStation {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GasStation that = (GasStation) o;
+        return Objects.equals(address, that.address) && Objects.equals(brand, that.brand);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, brand);
     }
 }
 

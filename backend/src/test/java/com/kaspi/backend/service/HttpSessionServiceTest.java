@@ -1,6 +1,7 @@
 package com.kaspi.backend.service;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -9,6 +10,7 @@ import com.kaspi.backend.domain.User;
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
+import com.kaspi.backend.util.exception.AuthenticationException;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -57,5 +59,16 @@ public class HttpSessionServiceTest {
         verify(httpSession).getAttribute(HttpSessionService.SESSION_KEY);
         verify(userDao).findById(userNo);
         assertThat(user).isEqualTo(resultUser);
+    }
+
+    @Test
+    @DisplayName("세션 삭제 로직 테스트")
+    void deleteSession() {
+        //given
+        httpSessionService.makeHttpSession(1L);
+        //when
+        httpSessionService.deleteSession();
+        //then
+        assertThrows(AuthenticationException.class, () -> httpSessionService.getUserFromSession());
     }
 }

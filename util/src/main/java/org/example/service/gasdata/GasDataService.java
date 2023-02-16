@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class GasDataService {
             File file = new File(fileName);
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
             String line = br.readLine();
-            LocalDate date = LocalDate.now();
+            LocalDate date = LocalDate.now(ZoneId.of("Asia/Seoul"));
             while ((line = br.readLine()) != null) {
                 String[] attribute = line.split(",");
                 if (attribute.length <= 1) break;

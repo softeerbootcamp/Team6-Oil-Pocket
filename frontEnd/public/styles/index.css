@@ -81,14 +81,6 @@ a {
   transition: 0.4s;
 }
 
-html {
-  font-family: "Do Hyeon", sans-serif;
-}
-
-a, button, select, input {
-  font-family: "Do Hyeon", sans-serif;
-}
-
 /* nav bar */
 @media (max-width: 575.98px) {
   .navbar {

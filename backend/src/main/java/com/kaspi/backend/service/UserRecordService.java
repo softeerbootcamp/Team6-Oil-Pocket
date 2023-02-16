@@ -6,6 +6,7 @@ import com.kaspi.backend.dao.GasStationDao;
 import com.kaspi.backend.dao.UserGasRecordDao;
 import com.kaspi.backend.domain.*;
 import com.kaspi.backend.dto.UserEcoRecordResDto;
+import com.kaspi.backend.dto.UserGasRecordMonthResDto;
 import com.kaspi.backend.dto.UserGasRecordReqDto;
 import com.kaspi.backend.dto.UserGasRecordResDto;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
@@ -13,14 +14,9 @@ import com.kaspi.backend.util.response.code.ErrorCode;
 
 import java.time.LocalDate;
 import java.util.*;
-import com.kaspi.backend.util.exception.SqlNotFoundException;
-import com.kaspi.backend.util.response.code.ErrorCode;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
@@ -46,9 +42,9 @@ public class UserRecordService {
         Optional<Long> todayGasPrice = gasDetailDao.findTodayGasPrice(gasStation.getStationNo(),
                 userGasRecordReqDto.getGasType().name(),
                 GasDetail.getNowDateToStr());//오늘 날짜로 계산
-        if (todayGasPrice.isEmpty()) {
+        if (todayGasPrice.isEmpty()||todayGasPrice.get()==0) {
             log.error("DB에 오늘날짜에 해당되는 주유 가격 정보가 존재하지 않음 가스타입:{}, 주유소PK:{}", userGasRecordReqDto.getGasType().name(), gasStation.getStationNo());
-            throw new NoSuchElementException(ErrorCode.SQL_NOT_FOUND.getMessage());
+            throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
         }
         Long userGasAmount = (long) Math.round(userGasRecordReqDto.getRefuelingPrice() / todayGasPrice.get());
         log.info("사용자가 주유한 가스타입:{}, 주유량:{}", userGasRecordReqDto.getGasType().name(), userGasAmount);
@@ -112,7 +108,8 @@ public class UserRecordService {
         LocalDate date = LocalDate.now();
 
         // 이번 달 유저가 속한 (나이대, 성별) 그룹원을 반환합니다
-        List<EcoRecord> rankSavingPrices = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date).get();
+        List<EcoRecord> rankSavingPrices = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)
+                .orElseThrow(() -> new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND));
         // 리스트에서 유저의 레코드를 뽑아냅니다
         int userIndex = rankSavingPrices.indexOf(EcoRecord.builder().userNo(user.getUserNo()).build());
         EcoRecord userEcoRecord = rankSavingPrices.get(userIndex);
@@ -133,6 +130,24 @@ public class UserRecordService {
     private long getAverage(List<EcoRecord> rankSavingPrices) {
         double totalSavingPrice = rankSavingPrices.stream().mapToDouble(EcoRecord::getSavingPrice).sum();
         return (long) (totalSavingPrice / rankSavingPrices.size());
+    }
+
+
+    /**
+     * 사용자의 월별 주유금액/ 전국 유가 평균값의 주유금액 비교 로직 값 들고오기
+     */
+    public List<UserGasRecordMonthResDto> getUsersRecordPerMonth() {
+        User user = httpSessionService.getUserFromSession();
+        Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth = userGasRecordDao.findSumRecordGroupByMonth(user.getUserNo());
+        checkUserRecordPerMonth(user, sumRecordGroupByMonth);
+        return sumRecordGroupByMonth.get();
+    }
+
+    private void checkUserRecordPerMonth(User user, Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth) {
+        if(sumRecordGroupByMonth.isEmpty()){
+            log.debug("사용자의 월별 주유기록 부분에서 sql쿼리문에서 문제가 생겼습니다. 사용자 PK:{}", user.getUserNo());
+            throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
+        }
     }
 
 }

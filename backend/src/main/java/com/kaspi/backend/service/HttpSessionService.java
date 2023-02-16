@@ -42,5 +42,9 @@ public class HttpSessionService {
         }
     }
 
+    public void deleteSession() {
+        httpSession.invalidate();
+    }
+
 
 }

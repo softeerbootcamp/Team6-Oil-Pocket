@@ -23,11 +23,11 @@ const getComparisonTemplate = () => `
                         <div class="oilInfoArea__compareContent">
                             <div class="oilInfoArea__boxArea">
                                 <div class="oilInfoArea__compareMyBox">
-                                    <h3></h3>
+                                    <h3><span>나</span>의 지출액</h3>
                                     <h1></h1>
                                 </div>
                                 <div class="oilInfoArea__compareMySaveBox">
-                                    <h3></h3>
+                                    <h3><span>나</span>의 절약 금액</h3>
                                     <h1></h1>
                                 </div>
                                 <div class="oilInfoArea__otherText">

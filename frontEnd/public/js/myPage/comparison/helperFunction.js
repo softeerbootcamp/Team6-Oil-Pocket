@@ -9,10 +9,10 @@ const imageLocationMapper = {
 };
 
 const getCompareText = (mySavePrice) => {
-    if(mySavePrice < 0) {
+    if(mySavePrice > 0) {
         return `이번 달은 <span>${getImageName(mySavePrice)}</span> 만큼 절약했어요! 😁`;
     }
-    else if(mySavePrice > 0) {
+    else if(mySavePrice < 0) {
         return `이번 달은 <span>${getImageName(mySavePrice)}</span> 만큼 더 소비했어요! 🥲`;
     }
 
@@ -62,7 +62,7 @@ const makeUserSaveCard = ($container, userSavePrice) => {
     $commonPriceText.innerHTML = parseNumberToMoneyString(userSavePrice);
 
     let priceDiffColor = "red";
-    if(userSavePrice > 0) {
+    if(userSavePrice < 0) {
         priceDiffColor = "#3181F6";
     }
     else if(userSavePrice === 0) {
