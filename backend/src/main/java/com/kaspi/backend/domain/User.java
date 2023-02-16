@@ -36,4 +36,9 @@ public class User {
             throw new AuthenticationException(ErrorCode.LOGIN_FAIL);
         }
     }
+
+    public void updateUser(Gender gender, Age age) {
+        this.gender = gender;
+        this.age = age;
+    }
 }
