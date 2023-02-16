@@ -1,8 +1,10 @@
 package com.kaspi.backend.controller;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -10,6 +12,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignUpRequestDto;
+import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.service.AuthService;
@@ -30,6 +33,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @WebMvcTest(controllers = UserController.class)
 @ContextConfiguration(classes = {TestRedisConfiguration.class})
@@ -72,5 +76,19 @@ class UserControllerTest {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Test
+    @DisplayName("유저 정보 수정 API 테스트")
+    void userUpdate() throws Exception {
+        UserUpdateReqDto dto = UserUpdateReqDto.builder().age(Age.FORTY).gender(Gender.MALE).build();
+
+        doNothing().when(userService).updateUser(dto);
+
+        mockMvc.perform(patch("/api/v2/user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(toJson(dto)))
+                .andExpect(status().isOk());
+
     }
 }
