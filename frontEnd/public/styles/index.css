@@ -4892,12 +4892,12 @@ a, button, select, input {
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__myChart {
     width: 15%;
-    height: 100%;
+    height: 0%;
     background-color: #14BD72;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__otherChart {
     width: 15%;
-    height: 80%;
+    height: 0%;
     background-color: #fff;
     outline: 0.25vh solid #14BD72;
   }
@@ -5775,12 +5775,12 @@ a, button, select, input {
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__myChart {
     width: 15%;
-    height: 100%;
+    height: 0%;
     background-color: #14BD72;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__otherChart {
     width: 15%;
-    height: 80%;
+    height: 0%;
     background-color: #fff;
     outline: 0.25vh solid #14BD72;
   }
@@ -6638,12 +6638,12 @@ a, button, select, input {
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__myChart {
     width: 15%;
-    height: 100%;
+    height: 0%;
     background-color: #14BD72;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__otherChart {
     width: 15%;
-    height: 80%;
+    height: 0%;
     background-color: #fff;
     outline: 0.25vh solid #14BD72;
   }
