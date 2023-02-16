@@ -30,7 +30,7 @@ const getHistoryRowTemplate = (date, imgSrc, gasStationName, gasType, gasAmount,
         <span>${gasStationName}</span>
         <span>${gasType} ${gasAmount}</span>
         <span>${spendPrice}</span>
-        <span>-${savePrice}</span>
+        <span>${savePrice}</span>
     </div>
 `;
 
