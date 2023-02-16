@@ -4473,6 +4473,24 @@ a {
     width: 100%;
     height: 100%;
   }
+  .oilInfoArea .myPage__SuccessModal {
+    top: 0;
+    left: 40%;
+    transition: 0.8s;
+    position: absolute;
+    width: 20%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    border-radius: 1vh;
+    top: -30%;
+    background-color: #80E3C3;
+    z-index: 10;
+  }
   .oilInfoArea .oilInfoArea__background {
     width: 90%;
     height: 100%;
@@ -5355,6 +5373,24 @@ a {
     width: 100%;
     height: 100%;
   }
+  .oilInfoArea .myPage__SuccessModal {
+    top: 0;
+    left: 40%;
+    transition: 0.8s;
+    position: absolute;
+    width: 20%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    border-radius: 1vh;
+    top: -30%;
+    background-color: #80E3C3;
+    z-index: 10;
+  }
   .oilInfoArea .oilInfoArea__background {
     width: 60%;
     height: 100%;
@@ -6220,8 +6256,27 @@ a {
 }
 @media (min-width: 1200px) {
   .oilInfoArea {
+    position: relative;
     width: 100%;
     height: 100%;
+  }
+  .oilInfoArea .myPage__SuccessModal {
+    top: 0;
+    left: 40%;
+    transition: 0.8s;
+    position: absolute;
+    width: 20%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    border-radius: 1vh;
+    top: -30%;
+    background-color: #80E3C3;
+    z-index: 10;
   }
   .oilInfoArea .oilInfoArea__background {
     width: 60%;

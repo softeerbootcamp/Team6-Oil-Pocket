@@ -10,7 +10,7 @@ const eventToUserDetailModifyBtn = ($container) => {
             const modifiedGender = getGenderFromLabel($container);
             const modifiedAge = getAgeFromLabel($container);
 
-            fetchModifyUserDetail(modifiedGender, modifiedAge);
+            fetchModifyUserDetail(modifiedGender, modifiedAge, $container);
         }
     ])
 }
