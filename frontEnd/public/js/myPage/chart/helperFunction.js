@@ -1,4 +1,4 @@
-import { _$, _$_ALL, changeCSS, parseNumberToMoneyString } from "../../common/function";
+import { _$, _$_ALL, changeCSS, parseNumberToMoneyString } from "../../common/function.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 const OIL_UPPER_PRICE = 200_000;
@@ -28,4 +28,6 @@ const makeChart = ($container, userOilArray, commonOilArray) => {
     })
 }
 
-export { makeChart }
+const getMonthNumberFromDate = (dateString) => parseInt(dateString.split(".")[1]);
+
+export { makeChart, getMonthNumberFromDate }
