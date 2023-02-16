@@ -49,7 +49,8 @@ public class UserService {
         Optional<Gender> gender = Gender.getGender(userUpdateReqDto.getGender());
         Optional<Age> age = Age.getAge(userUpdateReqDto.getAge());
         checkValidRequest(age,gender);
-        user.updateUser(gender.get(),age.get());
+        user.updateUser(gender.get(), age.get());
+        userDao.save(user);
     }
 
 
