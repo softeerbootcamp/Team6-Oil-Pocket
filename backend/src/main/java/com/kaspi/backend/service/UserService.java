@@ -53,5 +53,12 @@ public class UserService {
         userDao.save(user);
     }
 
+    public void deleteUser() {
+        User user = httpSessionService.getUserFromSession();
+        userDao.delete(user);
+        log.info("유저 삭제: {}", user.toString());
+        httpSessionService.deleteSession(); //세션도 삭제
+    }
+
 
 }
