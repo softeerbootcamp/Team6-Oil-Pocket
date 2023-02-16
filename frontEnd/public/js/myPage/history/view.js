@@ -1,3 +1,4 @@
+import { changeCSS, _$, _$_ALL } from "../../common/function.js";
 import { navBarView } from "../../navbar/view.js";
 import { fetchOilHistory } from "./fetch.js";
 import { getHistoryRowTemplate, getHistoryTemplate } from "./template.js";
@@ -28,6 +29,12 @@ const historyRowView = (chargeDate, brand, gasStationName, gasType, recordGasAmo
     $historyRow.innerHTML = getHistoryRowTemplate(
         chargeDate, brand, gasStationName, gasType, recordGasAmount, refuelingPrice, savingPrice
     );
+
+    const $priceText = _$_ALL("span", $historyRow)[5];
+
+    if(parseInt(savingPrice) > 0) {
+        changeCSS($priceText, "color", "red");
+    }
 
     return $historyRow;
 }
