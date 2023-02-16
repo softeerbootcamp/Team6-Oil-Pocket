@@ -2,11 +2,12 @@ package com.kaspi.backend.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignUpRequestDto;
+import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
 import org.junit.jupiter.api.DisplayName;
@@ -21,6 +22,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class UserServiceTest {
     @Mock
     private UserDao userDao;
+
+    @Mock
+    private HttpSessionService httpSessionService ;
 
     @InjectMocks
     private UserService userService;
@@ -58,4 +62,18 @@ class UserServiceTest {
     }
 
 
+    @Test
+    @DisplayName("update user service 테스트")
+    void updateUser() {
+        //given
+        User user = User.builder().id("test").password("password").gender(Gender.MALE).age(Age.TWENTY).build();
+        UserUpdateReqDto dto = UserUpdateReqDto.builder().age(Age.FORTY).age(Age.FIFTY).build();
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        //when
+        userService.updateUser(dto);
+        //then
+        verify(httpSessionService, times(1)).getUserFromSession();
+        assertEquals(user.getGender(),dto.getGender() );
+        assertEquals(user.getAge(), dto.getAge());
+    }
 }
