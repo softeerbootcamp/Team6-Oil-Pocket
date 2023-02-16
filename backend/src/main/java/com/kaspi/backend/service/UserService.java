@@ -6,6 +6,7 @@ import com.kaspi.backend.dto.SignUpRequestDto;
 import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
+import com.kaspi.backend.util.exception.ParameterException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -39,13 +40,16 @@ public class UserService {
 
     private void checkValidRequest(Optional<Age> age, Optional<Gender> gender) {
         if(age.isEmpty()|| gender.isEmpty()){
-            throw new IllegalArgumentException(ErrorCode.PARAMETER_ERROR.getMessage());
+            throw new ParameterException(ErrorCode.PARAMETER_ERROR);
         }
     }
 
     public void updateUser(UserUpdateReqDto userUpdateReqDto) {
         User user = httpSessionService.getUserFromSession();
-        user.updateUser(userUpdateReqDto.getGender(), userUpdateReqDto.getAge());
+        Optional<Gender> gender = Gender.getGender(userUpdateReqDto.getGender());
+        Optional<Age> age = Age.getAge(userUpdateReqDto.getAge());
+        checkValidRequest(age,gender);
+        user.updateUser(gender.get(),age.get());
     }
 
 

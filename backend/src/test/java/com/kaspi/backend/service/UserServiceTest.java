@@ -10,6 +10,8 @@ import com.kaspi.backend.dto.SignUpRequestDto;
 import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
+import com.kaspi.backend.util.exception.ParameterException;
+import com.kaspi.backend.util.exception.SqlNotFoundException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,7 +58,7 @@ class UserServiceTest {
         SignUpRequestDto signUpRequestDto = SignUpRequestDto.builder().id("user1").password("password").gender("Male")
                 .age("20대")
                 .build();
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(ParameterException.class, () -> {
             userService.makeUser(signUpRequestDto);
         });
     }
@@ -67,13 +69,13 @@ class UserServiceTest {
     void updateUser() {
         //given
         User user = User.builder().id("test").password("password").gender(Gender.MALE).age(Age.TWENTY).build();
-        UserUpdateReqDto dto = UserUpdateReqDto.builder().age(Age.FORTY).age(Age.FIFTY).build();
+        UserUpdateReqDto dto = UserUpdateReqDto.builder().gender(Gender.FEMALE.getInitial()).age(Age.FIFTY.getAgeBound()).build();
         when(httpSessionService.getUserFromSession()).thenReturn(user);
         //when
         userService.updateUser(dto);
         //then
         verify(httpSessionService, times(1)).getUserFromSession();
-        assertEquals(user.getGender(),dto.getGender() );
-        assertEquals(user.getAge(), dto.getAge());
+        assertEquals(user.getGender(),Gender.getGender(dto.getGender()).get() );
+        assertEquals(user.getAge(), Age.getAge(dto.getAge()).get());
     }
 }
