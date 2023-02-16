@@ -13,24 +13,24 @@ var count=0;
 var resultpoisData=[];
 var positionBounds;
 
-const SortByHH = document.getElementById("sort_HH");
-const SortByLL = document.getElementById("sort_LL");
-const SortByGG = document.getElementById("sort_GG");
+// const SortByHH = document.getElementById("sort_HH");
+// const SortByLL = document.getElementById("sort_LL");
+// const SortByGG = document.getElementById("sort_GG");
 
-SortByHH.addEventListener('click', sortHhPrice);
-SortByGG.addEventListener('click', sortGgPrice);
-SortByLL.addEventListener('click', sortLlPrice);
+// SortByHH.addEventListener('click', sortHhPrice);
+// SortByGG.addEventListener('click', sortGgPrice);
+// SortByLL.addEventListener('click', sortLlPrice);
 
 // SortByLL.addEventListener('click', SearchNearLPGStation);
 // initTmap();
 
-const MainFrame = document.querySelector(".main__ForMap");
+// const MainFrame = document.querySelector(".main__ForMap");
 
-const SideBarButton = MainFrame.querySelector(".main__SearchBarHideButton");
+// const SideBarButton = MainFrame.querySelector(".main__SearchBarHideButton");
 
-SideBarButton.addEventListener('click', (e) => MoveSideBar(e));
+// SideBarButton.addEventListener('click', (e) => MoveSideBar(e));
 
-document.getElementsByClassName("main__GSTdetailCloseButton")[0].addEventListener('click', closeDetailTab);
+// document.getElementsByClassName("main__GSTdetailCloseButton")[0].addEventListener('click', closeDetailTab);
 
 function closeDetailTab() {
     const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
@@ -61,11 +61,11 @@ function MoveSideBar(e){
     }
 }
 
-const SearchFromCurrentLocationButton = document.querySelector(".main__SearchFromCurrentLocation");
-SearchFromCurrentLocationButton.addEventListener('click', (e) => SelectSearchOption1(e));
+// const SearchFromCurrentLocationButton = document.querySelector(".main__SearchFromCurrentLocation");
+// SearchFromCurrentLocationButton.addEventListener('click', (e) => SelectSearchOption1(e));
 
-const SearchFromRouteButton = document.querySelector(".main__SearchFromRoute");
-SearchFromRouteButton.addEventListener('click', (e) => SelectSearchOption2(e));
+// const SearchFromRouteButton = document.querySelector(".main__SearchFromRoute");
+// SearchFromRouteButton.addEventListener('click', (e) => SelectSearchOption2(e));
 
 function SelectSearchOption1(e){
     const SearchFromCurLocButton = e.target.closest(".main__SearchFromCurrentLocation");
@@ -111,8 +111,6 @@ function SelectSearchOption2(e) {
         isOption1 = false;
     }
 }
-
-
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -207,7 +205,6 @@ function FindAddressofSearchCoords(lon, lat) {
     });
 }
 
-
 function SelectStIdLogo(stId, name, radius){
     return `
         <div class='main__ResultList'> 
@@ -294,7 +291,6 @@ function ShowResult(ResultArray, positionBounds){
     map.fitBounds(positionBounds);	
 }
 
-
 function SearchNearGasStation(){
     if(DetailTabDisplay == true){
         closeDetailTab();
@@ -348,7 +344,6 @@ function ResetMarkerArray(markerArr) {
         markerArr = [];
     }
 }
-
 
 function addEventToResult(ResultArray){
     const GSTArray = document.getElementsByClassName("main__ResultList");
@@ -650,7 +645,6 @@ function transStId(stId){
     }
 }
 
-
 const labels = [
     'January',
     'February',
@@ -676,11 +670,7 @@ const labels = [
     options: {}
   }
 
-  const myChart = new Chart(
-    document.getElementById('myChart'),
-    config
-  );
-
-// function AddEventToMarker(marray){
-    
-// }
+//   const myChart = new Chart(
+//     document.getElementById('myChart'),
+//     config
+//   );

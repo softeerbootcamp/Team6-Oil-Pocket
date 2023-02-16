@@ -9,6 +9,8 @@ import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
 import { _$ } from "./common/function.js";
 import { fecthCheckLogin, isLogin } from "./login/fetch.js";
+import { mapView } from "./mapView/view.js";
+import { initTmap } from "./mapView/helperFunction.js";
 
 const $body = _$("body");
 
@@ -24,6 +26,7 @@ const router = async () => {
         { path: "/chart", view: chartView },
         { path: "/comparison", view: comparisonView },
         { path: "/history", view: historyView },
+        { path: "/mapView", view: mapView },
         { path: "/404", view: notFoundView }
     ];
     
@@ -41,7 +44,12 @@ const router = async () => {
     }
     const getNode = match.route.view;
     const $container = await getNode();
+
     $body.replaceWith($container);
+
+    if(location.pathname === "/mapView") {
+        initTmap();
+    }
 }
 // 페이지 전환 함수
 const navigateTo = url => {
