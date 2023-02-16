@@ -6945,16 +6945,29 @@ a {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 0.8rem;
+    font-size: 0.65rem;
     font-weight: 600;
     border-bottom: 1px solid #F5F5F5;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span {
-    font-size: 1.1rem;
+    width: 18%;
+    font-size: 0.9rem;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span:nth-child(1) {
+    width: 12%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span:nth-child(2) {
+    width: 12%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span:nth-child(3) {
+    width: 25%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span:nth-child(4), .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span:nth-child(5), .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div span:nth-child(6) {
+    width: 10%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div img {
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div:nth-child(2n+1) :last-child {
     color: #3181F6;
