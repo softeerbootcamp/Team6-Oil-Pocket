@@ -40,5 +40,13 @@ public class UserController {
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_FIX_USER));
     }
 
+    @DeleteMapping("/v2/user")
+    public ResponseEntity<CommonResponseDto> deleteUser() {
+        userService.deleteUser();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.DELETE_USER));
+    }
+
+
 
 }
