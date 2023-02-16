@@ -32,7 +32,7 @@ public class FindGasStationResDto implements Serializable {
     @Override
     public boolean equals(Object o) {
         FindGasStationResDto opposite = (FindGasStationResDto) o;
-        return this.stationNo == opposite.stationNo;
+        return this.stationNo.equals(opposite.stationNo);
     }
 
 }
