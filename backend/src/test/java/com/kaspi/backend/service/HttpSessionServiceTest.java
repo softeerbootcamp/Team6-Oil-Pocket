@@ -62,6 +62,15 @@ public class HttpSessionServiceTest {
     }
 
     @Test
+    @DisplayName("세션이 만료된경우 테스트")
+    public void testGetUserFromSessionInvalidSession() {
+        //given,when
+        when(httpSession.isNew()).thenReturn(true);
+        //then
+        assertThrows(AuthenticationException.class, () -> httpSessionService.getUserFromSession());
+    }
+
+    @Test
     @DisplayName("세션 삭제 로직 테스트")
     void deleteSession() {
         //given
