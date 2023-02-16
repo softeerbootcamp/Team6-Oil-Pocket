@@ -6,6 +6,7 @@ import com.kaspi.backend.dto.SignUpRequestDto;
 import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
+import com.kaspi.backend.util.encrypt.PasswordUtil;
 import com.kaspi.backend.util.exception.ParameterException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.Optional;
@@ -33,7 +34,7 @@ public class UserService {
 
         return userDao.save(User.builder()
                 .id(signUpRequestDto.getId())
-                .password(signUpRequestDto.getPassword())
+                .password(PasswordUtil.makeEncryptPw(signUpRequestDto.getPassword()))
                 .gender(gender.get())
                 .age(age.get()).build());
     }

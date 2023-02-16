@@ -28,7 +28,7 @@ public class AuthService {
         log.info("로그인 요청 id:{}, pw:{}", signInRequestDto.getId(), signInRequestDto.getPassword());
         Optional<User> findUser = userDao.findByUserId(signInRequestDto.getId());
         User existUser = checkNotValidUser(findUser);
-        existUser.checkValidLogin(signInRequestDto);
+        existUser.checkValidLogin(signInRequestDto,existUser.getPassword());
         return findUser.get();
     }
 

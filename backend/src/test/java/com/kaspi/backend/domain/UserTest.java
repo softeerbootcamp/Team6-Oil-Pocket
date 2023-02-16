@@ -3,6 +3,7 @@ package com.kaspi.backend.domain;
 import com.kaspi.backend.dto.SignInRequestDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
+import com.kaspi.backend.util.encrypt.PasswordUtil;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,9 +18,10 @@ class UserTest {
         //given
         SignInRequestDto signInRequestDto = SignInRequestDto.builder().id("test").password("password").build();
         User matchUser = User.builder().id("test").password("password").build();
+        String encryptPw = PasswordUtil.makeEncryptPw("password");
         //when
         //then
-        Assertions.assertDoesNotThrow(()->matchUser.checkValidLogin(signInRequestDto));
+        Assertions.assertDoesNotThrow(()->matchUser.checkValidLogin(signInRequestDto,encryptPw));
     }
 
     @Test

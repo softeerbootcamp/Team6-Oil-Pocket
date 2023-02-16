@@ -3,6 +3,7 @@ package com.kaspi.backend.domain;
 import com.kaspi.backend.dto.SignInRequestDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
+import com.kaspi.backend.util.encrypt.PasswordUtil;
 import com.kaspi.backend.util.exception.AuthenticationException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.AllArgsConstructor;
@@ -30,9 +31,9 @@ public class User {
     private Age age;
 
 
-    public void checkValidLogin(SignInRequestDto signInRequestDto) {
+    public void checkValidLogin(SignInRequestDto signInRequestDto,String encryptPassword) {
         if (!this.getId().equals(signInRequestDto.getId())
-                || !this.getPassword().equals(signInRequestDto.getPassword())) {
+                || !PasswordUtil.matchPw(encryptPassword,signInRequestDto.getPassword())) {
             throw new AuthenticationException(ErrorCode.LOGIN_FAIL);
         }
     }
