@@ -68,6 +68,19 @@ class UserDaoTest {
         Optional<List<Long>> optionalUserNoList = userDao.findUserNoByGenderAndAge(Gender.MALE, Age.FORTY);
         List<Long> userNoList = optionalUserNoList.get();
 
-        Assertions.assertThat(userNoList.size()).isEqualTo(3);
+        assertThat(userNoList.size()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("회원 삭제 쿼리 테스트")
+    void deleteUser() {
+        //given
+        User user = User.builder().id("123").password("123").age(Age.FORTY).gender(Gender.MALE).build();
+        User saveUser = userDao.save(user);
+        //when
+        userDao.delete(user);
+        //then
+        Optional<User> notUser = userDao.findById(saveUser.getUserNo());
+        assertThat(notUser.isEmpty()).isTrue();
     }
 }
