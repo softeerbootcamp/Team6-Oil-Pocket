@@ -64,20 +64,24 @@ public class HttpSessionService {
         } catch (AuthenticationException e) {
             return; //로그인이 되어 있지 않으면 패스
         }
-        List<FindGasStationResDto> recentGasStation = (List<FindGasStationResDto>) httpSession.getAttribute(SESSION_RECENT_VIEW_STATION_KEY);
-        recentGasStation = updateRecentGasStation(gasStationDto, recentGasStation);
-        httpSession.setAttribute(SESSION_RECENT_VIEW_STATION_KEY, recentGasStation);
+        httpSession.setAttribute(SESSION_RECENT_VIEW_STATION_KEY, updateRecentGasStation(gasStationDto));
     }
 
-    private List<FindGasStationResDto> updateRecentGasStation(GasStationDto gasStationDto, List<FindGasStationResDto> recentGasStation) {
-        if (recentGasStation == null||recentGasStation.size()==0) {
-            recentGasStation = new ArrayList<>(); //처음 조회한 경우
-        }
+    private List<FindGasStationResDto> updateRecentGasStation(GasStationDto gasStationDto) {
+        List<FindGasStationResDto> recentGasStations = getRecentGsListFromSession();
         FindGasStationResDto findGasStationResDto = FindGasStationResDto.toFindDto(gasStationDto);
         findGasStationResDto.getStationNo();
-        if (!recentGasStation.contains(findGasStationResDto)) {
-            recentGasStation.add(findGasStationResDto); //이전에 조회하지않았다면 session에 저장
+        if (!recentGasStations.contains(findGasStationResDto)) {
+            recentGasStations.add(findGasStationResDto); //이전에 조회하지않았다면 session에 저장
             log.info("사용자가 주유소를 조회했습니다. 세션에 저장됩니다. 최근 본 주유소:{}", gasStationDto.getName());
+        }
+        return recentGasStations;
+    }
+
+    public List<FindGasStationResDto> getRecentGsListFromSession() {
+        List<FindGasStationResDto> recentGasStation = (List<FindGasStationResDto>) httpSession.getAttribute(SESSION_RECENT_VIEW_STATION_KEY);
+        if (recentGasStation == null || recentGasStation.size() == 0) {
+            recentGasStation = new ArrayList<>(); //처음 조회한 경우
         }
         return recentGasStation;
     }
