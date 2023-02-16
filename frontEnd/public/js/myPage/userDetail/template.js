@@ -2,6 +2,9 @@ import { userId, userAge, userGender } from "../../login/fetch";
 
 const getUserDetailTemplate = () => `
     <section class="oilInfoArea">
+        <div class="myPage__SuccessModal">
+            프로필이 수정되었습니다.
+        </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
                 <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/userDetail" data-link>프로필 수정</a></div>
