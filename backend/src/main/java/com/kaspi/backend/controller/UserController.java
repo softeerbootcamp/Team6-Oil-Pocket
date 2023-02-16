@@ -4,6 +4,7 @@ import static com.google.common.net.HttpHeaders.SET_COOKIE;
 
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignUpRequestDto;
+import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.service.UserService;
 import com.kaspi.backend.util.response.CommonResponseDto;
@@ -13,10 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -33,6 +31,13 @@ public class UserController {
         httpSessionService.makeHttpSession(makeUser.getUserNo());
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_SIGNUP));
+    }
+
+    @PatchMapping("/v2/user")
+    public ResponseEntity<CommonResponseDto> userUpdate(@RequestBody UserUpdateReqDto userUpdateReqDto) {
+        userService.updateUser(userUpdateReqDto);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_FIX_USER));
     }
 
 
