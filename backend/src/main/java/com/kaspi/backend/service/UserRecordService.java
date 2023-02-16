@@ -108,7 +108,8 @@ public class UserRecordService {
         LocalDate date = LocalDate.now();
 
         // 이번 달 유저가 속한 (나이대, 성별) 그룹원을 반환합니다
-        List<EcoRecord> rankSavingPrices = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date).get();
+        List<EcoRecord> rankSavingPrices = userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)
+                .orElseThrow(() -> new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND));
         // 리스트에서 유저의 레코드를 뽑아냅니다
         int userIndex = rankSavingPrices.indexOf(EcoRecord.builder().userNo(user.getUserNo()).build());
         EcoRecord userEcoRecord = rankSavingPrices.get(userIndex);
