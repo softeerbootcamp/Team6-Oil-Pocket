@@ -43,8 +43,6 @@ const fetchOilRegister = ($container) => {
                 "gasStationNo": $gasStationText.dataset.stationNo
             }),
             credentials: "include"
-        }).then((res) => {
-            console.log(res);
         })
     }
     else {
