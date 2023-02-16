@@ -15,7 +15,7 @@ const fetchComparisonCardData = async ($container) => {
             return {data: {}};
         }
         return res.json();
-    }).then(({data : {userId, gender, age, refuelingPrice, myEcoPrice, averageEcoPrice, imageUrl, rankPercentage}}) => {
+    }).then(({data : {userId, gender, age, refuelingPrice, myEcoPrice, averageEcoPrice, rankPercentage}}) => {
         if(userId) {
             makeComparisonCards($container, refuelingPrice, averageEcoPrice, myEcoPrice, rankPercentage, age, gender, userId);
         }
