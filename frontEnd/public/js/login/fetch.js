@@ -1,7 +1,7 @@
 import { _$, changeCSS, isReleaseMode } from "../common/function";
 import { BASE_COMMON_URL, RELEASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
 
-let isLogin = "";
+let isLogin = false;
 let userId = ""
 let userGender = "";
 let userAge = "";
