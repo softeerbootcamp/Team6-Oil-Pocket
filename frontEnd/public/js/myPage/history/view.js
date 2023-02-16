@@ -1,5 +1,6 @@
 import { navBarView } from "../../navbar/view.js";
-import { getHistoryTemplate } from "./template.js";
+import { fetchOilHistory } from "./fetch.js";
+import { getHistoryRowTemplate, getHistoryTemplate } from "./template.js";
 
 const historyView = async () => {
     const $historyContainer = document.createElement("section");
@@ -11,7 +12,24 @@ const historyView = async () => {
     $historyContainer.appendChild(navBarView());
     $historyContainer.appendChild($historyContent);
 
+    await fetchOilHistory($historyContainer);
+
     return $historyContainer;
 }
 
-export { historyView }
+const historyContentView = () => {
+    const $historyContent = document.createElement("div");
+
+    return $historyContent;
+}
+
+const historyRowView = (chargeDate, brand, gasStationName, gasType, recordGasAmount, refuelingPrice, savingPrice) => {
+    const $historyRow = document.createElement("div");
+    $historyRow.innerHTML = getHistoryRowTemplate(
+        chargeDate, brand, gasStationName, gasType, recordGasAmount, refuelingPrice, savingPrice
+    );
+
+    return $historyRow;
+}
+
+export { historyView, historyContentView, historyRowView }
