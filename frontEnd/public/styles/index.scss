@@ -6779,6 +6779,25 @@ a {
             z-index: 10;
         }
 
+        & .oilInput__successModal {
+            top: 0;
+            left: 40%;
+            transition: 0.8s;
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
         & .oilInfoArea__background {
             width: 60%;
             height: 100%;
