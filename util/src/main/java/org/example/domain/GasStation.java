@@ -34,7 +34,7 @@ public class GasStation {
                 attribute[AttributeIndex.NAME.getIndex()],
                 attribute[AttributeIndex.ADDRESS.getIndex()],
                 attribute[AttributeIndex.BRAND.getIndex()],
-                isSelf(attribute[AttributeIndex.SELF.getIndex()]));
+                checkSelf(attribute[AttributeIndex.SELF.getIndex()]));
     }
 
     public static GasStation parseNowGasStation(String[] attribute) {
@@ -42,10 +42,10 @@ public class GasStation {
                 attribute[SchedulerIndex.NAME.getIndex()],
                 attribute[SchedulerIndex.ADDRESS.getIndex()],
                 attribute[SchedulerIndex.BRAND.getIndex()],
-                isSelf(attribute[SchedulerIndex.SELF.getIndex()]));
+                checkSelf(attribute[SchedulerIndex.SELF.getIndex()]));
     }
 
-    private static boolean isSelf(String attribute) {
+    private static boolean checkSelf(String attribute) {
         if (attribute.equals("셀프")) {
             return true;
         }
