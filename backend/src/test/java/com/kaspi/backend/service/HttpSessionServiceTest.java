@@ -2,8 +2,7 @@ package com.kaspi.backend.service;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.GasStationDto;
@@ -80,6 +79,9 @@ public class HttpSessionServiceTest {
     void deleteSession() {
         //given
         httpSessionService.makeHttpSession(1L);
+        when(httpSession.getAttribute("userNo")).thenReturn(1L);
+        when(userDao.findById(1L)).thenReturn(Optional.empty());
+        when(authService.checkNotValidUser(Optional.empty())).thenThrow(AuthenticationException.class);
         //when
         httpSessionService.deleteSession();
         //then
