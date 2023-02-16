@@ -5,6 +5,7 @@ import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.service.GasStationService;
+import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import java.time.LocalDate;
@@ -24,9 +25,8 @@ import java.util.List;
 
 import static java.time.LocalDate.now;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,6 +40,9 @@ class GasStationControllerTest {
     MockMvc mockMvc;
     @MockBean
     GasStationService gasStationService;
+
+    @MockBean
+    HttpSessionService httpSessionService;
 
 
     @Test
@@ -78,6 +81,7 @@ class GasStationControllerTest {
                         new GasDetailDto(GasType.LPG, 0, date)));
         // "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true);
         when(gasStationService.findGasStationDto(name, roadName, buildNum, brand)).thenReturn(gasStationDto);
+        doNothing().when(httpSessionService).addRecentStationView(gasStationDto);
         mockMvc.perform(get("/api/v1/gas-station/평창주유소/평창문화로/135/현대오일뱅크"))
                 .andExpect(jsonPath("code").value(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL.getCode()))
                 .andExpect(jsonPath("message").value(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL.getMessage()));
