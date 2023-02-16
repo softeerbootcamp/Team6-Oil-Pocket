@@ -11,9 +11,14 @@ const fetchComparisonCardData = async ($container) => {
         method: METHOD.GET,
         credentials: "include"
     }).then((res) => {
+        if(res.status === 500) {
+            return {data: {}};
+        }
         return res.json();
     }).then(({data : {userId, gender, age, refuelingPrice, myEcoPrice, averageEcoPrice, imageUrl, rankPercentage}}) => {
-        makeComparisonCards($container, refuelingPrice, averageEcoPrice, myEcoPrice, rankPercentage, age, gender, userId);
+        if(userId) {
+            makeComparisonCards($container, refuelingPrice, averageEcoPrice, myEcoPrice, rankPercentage, age, gender, userId);
+        }
     })
 }
 
