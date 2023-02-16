@@ -4,31 +4,46 @@ import lombok.RequiredArgsConstructor;
 import org.example.dao.GasDetailDao;
 import org.example.dao.GasStationDao;
 import org.example.domain.GasStation;
+import org.example.enums.AttributeIndex;
+import org.example.enums.GasType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
 import java.io.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class FileUploadService {
 
     public static final String PATH_PREFIX = "/Users/historyData/";
     private static final String PATH_SUFFIX = ".csv";
-    private static final String OIL_FILE = "과거_판매가격(주유소)1";
-    private static final String LPG_FILE = "과거_판매가격(충전소)1";
+    private static final String OIL_FILE = "과거_판매가격(주유소)";
+    private static final String LPG_FILE = "과거_판매가격(충전소)";
     private final Map<String, GasStation> gasStationInfos = new HashMap<>();
     private final GasStationDao gasStationDao;
     private final GasDetailDao gasDetailDao;
-    public void fileOpen() {
-        File oilFile = new File(PATH_PREFIX + OIL_FILE + PATH_SUFFIX);
-        fileRead(oilFile, new NomalGasDetailCallback());
-        File lpgFile = new File(PATH_PREFIX + LPG_FILE + PATH_SUFFIX);
-        fileRead(lpgFile, new LpgDetailCallback());
+
+    public void fileOpen() throws IOException {
+        File csv = new File("/Users/download/new.csv");
+        BufferedWriter bw = null;
+        List<GasStation> gasStations = gasStationDao.findAllGasStation().orElseThrow(() -> new RuntimeException());
+        try {
+            bw = new BufferedWriter(new FileWriter(csv, false));
+            File oilFile = new File(PATH_PREFIX + OIL_FILE + PATH_SUFFIX);
+            makeGasDetailCsv(gasStations, bw, oilFile, false);
+            File lpgFile = new File(PATH_PREFIX + LPG_FILE + PATH_SUFFIX);
+            makeGasDetailCsv(gasStations, bw, lpgFile, true);
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            throw new IOException("파일 업로드 IOException 발생", e);
+        }
     }
+
     @Transactional
     public void fileRead(File file, GasDetailCallback callback) {
         try {
@@ -64,6 +79,45 @@ public class FileUploadService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void makeGasDetailCsv(List<GasStation> gasStations, BufferedWriter bw, File file, boolean lpg) {
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), "euc-kr"));
+            br.readLine();
+            br.readLine(); //두줄은 데이터 제목들이어서 건너뜁니다.
+
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                line = removeDoubleQuotationMarks(line);
+                String[] attribute = line.split(",");
+                if (attribute.length <= 1) break;
+                attribute[3] = extractRoadNameAndBuildingNum(attribute[3]);
+
+                GasStation gasStation = GasStation.parseGasStation(attribute);
+                int index = gasStations.indexOf(gasStation);
+                if (index == -1) continue;
+
+                GasStation dbGasStation = gasStations.get(index);
+                if (lpg) {
+                    bw.write(toCsv(dbGasStation, attribute, GasType.LPG, AttributeIndex.LPG));
+                    continue;
+                }
+                bw.write(toCsv(dbGasStation, attribute, GasType.PREMIUM_GASOLINE, AttributeIndex.PREMIUM_GASOLINE));
+                bw.write(toCsv(dbGasStation, attribute, GasType.GASOLINE, AttributeIndex.GASOLINE));
+                bw.write(toCsv(dbGasStation, attribute, GasType.DIESEL, AttributeIndex.DIESEL));
+            }
+            br.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("파일을 찾을 수 없습니다.");
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String toCsv(GasStation gasStation, String[] attribute, GasType gasType, AttributeIndex gasTypeIndex) {
+        return gasStation.getStationNo() + "," + gasType + "," + attribute[gasTypeIndex.getIndex()] + "," + attribute[AttributeIndex.DATE.getIndex()] + "\n";
     }
 
     public String removeDoubleQuotationMarks(String line) {
