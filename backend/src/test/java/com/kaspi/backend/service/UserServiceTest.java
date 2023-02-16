@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 
@@ -77,5 +78,18 @@ class UserServiceTest {
         verify(httpSessionService, times(1)).getUserFromSession();
         assertEquals(user.getGender(),Gender.getGender(dto.getGender()).get() );
         assertEquals(user.getAge(), Age.getAge(dto.getAge()).get());
+    }
+
+    @Test
+    @DisplayName("회원 삭제")
+    void deleteUser() {
+        //given
+        User existUser = User.builder().build();
+        when(httpSessionService.getUserFromSession()).thenReturn(existUser);
+        //when
+        userService.deleteUser();
+        //then
+        verify(userDao, Mockito.times(1)).delete(existUser);
+        verify(httpSessionService, Mockito.times(1)).deleteSession();
     }
 }
