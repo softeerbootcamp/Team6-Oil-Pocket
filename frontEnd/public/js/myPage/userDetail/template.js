@@ -43,8 +43,8 @@ const getUserDetailTemplate = () => `
                         </div>
                     </div>
                     <div class="oilInfoArea__profileBtnBox">
-                        <button>취소</button>
-                        <button>적용</button>
+                        <button class="oilInfoArea__profileBtn--cancel">취소</button>
+                        <button class="oilInfoArea__profileBtn--register">적용</button>
                     </div>
                 </div>
             </div>

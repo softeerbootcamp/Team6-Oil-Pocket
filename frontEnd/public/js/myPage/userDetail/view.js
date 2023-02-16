@@ -1,4 +1,5 @@
 import { navBarView } from "../../navbar/view.js";
+import { eventToUserDetailModifyBtn } from "./event.js";
 import { getUserDetailTemplate } from "./template.js";
 
 const userDetailView = async () => {
@@ -9,6 +10,8 @@ const userDetailView = async () => {
 
     $userDetailContainer.appendChild(navBarView());
     $userDetailContainer.appendChild($userDetailContent);
+
+    eventToUserDetailModifyBtn($userDetailContainer)
 
     return $userDetailContainer;
 }
