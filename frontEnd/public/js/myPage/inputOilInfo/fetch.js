@@ -1,4 +1,4 @@
-import { isReleaseMode, _$ } from "../../common/function.js";
+import { changeCSS, isReleaseMode, _$ } from "../../common/function.js";
 import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../common/variable.js";
 import { gasNameMapper, validateOilInput } from "./helperFunction.js";
 import { gasStationSearchView } from "./view.js";
@@ -43,6 +43,18 @@ const fetchOilRegister = ($container) => {
                 "gasStationNo": $gasStationText.dataset.stationNo
             }),
             credentials: "include"
+        }).then((res) => {
+            if(res.status === 201) {
+                // 성공 모달
+                const $successModal = _$(".oilInput__successModal", $container);
+                changeCSS($successModal, "top", 0);
+                setTimeout(() => {
+                    changeCSS($successModal, "top", "-30%")
+                }, 1000);
+                setTimeout(() => {
+                    location.assign("/inputOilInfo");
+                }, 1800);
+            }
         })
     }
     else {

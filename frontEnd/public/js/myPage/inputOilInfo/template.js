@@ -1,5 +1,8 @@
 const getInputOilInfoTemplate = () => `
     <section class="oilInfoArea">
+        <div class="oilInput__successModal">
+            성공적으로 입력되었습니다.
+        </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
                 <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
