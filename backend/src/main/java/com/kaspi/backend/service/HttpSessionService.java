@@ -2,6 +2,7 @@ package com.kaspi.backend.service;
 
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
+
 import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class HttpSessionService {
     public static final String SESSION_KEY = "userNo";
+    public static final String SESSION_RECENT_VIEW_STATION_KEY = "recentViewStations";
 
     private final HttpSession httpSession;
     private final UserDao userDao;
@@ -24,19 +26,19 @@ public class HttpSessionService {
 
     public void makeHttpSession(Long userNo) {
         httpSession.setAttribute(SESSION_KEY, userNo);
-        log.info("세션 생성 - 요청 userNO:{}",userNo);
+        log.info("세션 생성 - 요청 userNO:{}", userNo);
     }
 
     public User getUserFromSession() {
+        checkSessionValid();
         Long userNo = (Long) httpSession.getAttribute(SESSION_KEY);
-        checkSession(userNo);
         Optional<User> findUser = userDao.findById(userNo);
         authService.checkNotValidUser(findUser);
         return findUser.get();
     }
 
-    private static void checkSession(Long userNo) {
-        if (userNo == null) {
+    private void checkSessionValid() {
+        if (httpSession == null || httpSession.isNew()) {
             log.error("세션이 만료되었습니다.");
             throw new AuthenticationException(ErrorCode.AUTH_ERROR);
         }
