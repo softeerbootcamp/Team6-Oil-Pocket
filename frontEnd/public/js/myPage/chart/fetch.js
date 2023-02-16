@@ -1,6 +1,6 @@
 import { isReleaseMode } from "../../common/function"
 import { BASE_COOKIE_URL, METHOD, RELEASE_COOKIE_URL } from "../../common/variable"
-import { getMonthNumberFromDate } from "./helperFunction";
+import { getMonthNumberFromDate, makeMonthArray } from "./helperFunction";
 import { userOilArray, commonOilArray } from "./view";
 
 const fetchChart = async () => {
@@ -21,12 +21,14 @@ const fetchChart = async () => {
     }).then(({data}) => {
         const dataArray = [...data];
 
-        console.log(dataArray)
-
-        dataArray.forEach(({monthDate, totalRefuelingPrice, totalNationalAvgPrice}) => {
+        dataArray.forEach(({monthDate, totalRefuelingPrice, totalNationalAvgPrice}, index) => {
             const month = getMonthNumberFromDate(monthDate);
-            userOilArray[month - 1] = totalRefuelingPrice;
-            commonOilArray[month - 1] = totalNationalAvgPrice;
+            userOilArray[userOilArray.length - 1 - index] = totalRefuelingPrice;
+            commonOilArray[commonOilArray.length - 1 - index] = totalNationalAvgPrice;
+
+            if(index === 0 ) {
+                makeMonthArray(month);
+            }
         })
     })
 }
