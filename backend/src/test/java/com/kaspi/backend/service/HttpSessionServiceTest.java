@@ -1,5 +1,6 @@
 package com.kaspi.backend.service;
 
+import static com.kaspi.backend.service.HttpSessionService.SESSION_RECENT_VIEW_STATION_KEY;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -101,5 +102,47 @@ public class HttpSessionServiceTest {
         httpSessionService.addRecentStationView(gasStationDto);
         //then
         verify(httpSession).setAttribute(SESSION_RECENT_VIEW_STATION_KEY,recentGasStation);
+    }
+
+    @Test
+    @DisplayName("세션으로 부터 최근 본 주유소 들고오기 테스트")
+    void testGetRecentGsListFromSession() {
+        List<FindGasStationResDto> recentGasStations = new ArrayList<>();
+        recentGasStations.add(FindGasStationResDto.builder().stationNo(1L).build());
+
+        when(httpSession.getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY))).thenReturn(recentGasStations);
+
+        List<FindGasStationResDto> result = httpSessionService.getRecentGsListFromSession();
+
+        verify(httpSession, times(1)).getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY));
+        verifyNoMoreInteractions(httpSession);
+
+        assertEquals(recentGasStations, result);
+    }
+
+    @Test
+    @DisplayName("세션으로 부터 최근 본 주유소 들고오기 테스트 null값")
+    void testGetRecentGsListFromSessionWhenNull() {
+        when(httpSession.getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY))).thenReturn(null);
+
+        List<FindGasStationResDto> result = httpSessionService.getRecentGsListFromSession();
+
+        verify(httpSession, times(1)).getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY));
+        verifyNoMoreInteractions(httpSession);
+
+        assertEquals(new ArrayList<>(), result);
+    }
+
+    @Test
+    @DisplayName("세션으로 부터 최근 본 주유소 들고오기 테스트 empty")
+    void testGetRecentGsListFromSessionWhenEmpty() {
+        when(httpSession.getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY))).thenReturn(new ArrayList<>());
+
+        List<FindGasStationResDto> result = httpSessionService.getRecentGsListFromSession();
+
+        verify(httpSession, times(1)).getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY));
+        verifyNoMoreInteractions(httpSession);
+
+        assertEquals(new ArrayList<>(), result);
     }
 }
