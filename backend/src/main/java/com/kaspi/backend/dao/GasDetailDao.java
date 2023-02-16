@@ -21,6 +21,6 @@ public interface GasDetailDao extends CrudRepository<GasDetail, Long> {
     @Query("select * from gas_detail where station_no = :stationNo and created_date = :date")
     Optional<List<GasDetail>> findByStationNoAndDate(@Param("stationNo") Long stationNo, @Param("date") LocalDate date);
 
-    @Query("select * from gas_detail where station_no = :stationNo and created_date >= date_add( :date, interval -1 month)")
+    @Query("select * from gas_detail where station_no = :stationNo and created_date >= date_add( :date, interval -1 month) order by created_date")
     Optional<List<GasDetail>> findByStationAndOneMonth(@Param("stationNo") Long stationNo, @Param("date") LocalDate date);
 }
