@@ -43,6 +43,12 @@ public class GasStationController {
                 .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION, matchingGasStations));
     }
 
+    @GetMapping("/v2/gas-station/recent")
+    public ResponseEntity<CommonResponseDto> findGasStationRecent() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(CommonResponseDto.toResponse(DefaultCode.FIND_RECENT_GAS_STATION, httpSessionService.getRecentGsListFromSession()));
+    }
+
     @GetMapping("/v1/gas-station/{name}/{roadName}/{buildNum}/{brand}/month")
     public ResponseEntity<CommonResponseDto> getGasStationInfoMonth(@PathVariable("name") String name,
                                                                     @PathVariable("roadName") String roadName,
@@ -54,4 +60,6 @@ public class GasStationController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL, gasStationDto));
     }
+
+
 }
