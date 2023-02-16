@@ -1,7 +1,7 @@
 import { _$, _$_ALL, changeCSS, parseNumberToMoneyString } from "../../common/function.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
-const OIL_UPPER_PRICE = 200_000;
+const OIL_UPPER_PRICE = 500_000;
 
 const makeChart = ($container, userOilArray, commonOilArray) => {
     const $charts = _$_ALL(".oilInfoArea__chart", $container);    

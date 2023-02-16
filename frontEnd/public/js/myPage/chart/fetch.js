@@ -21,6 +21,8 @@ const fetchChart = async () => {
     }).then(({data}) => {
         const dataArray = [...data];
 
+        console.log(dataArray)
+
         dataArray.forEach(({monthDate, totalRefuelingPrice, totalNationalAvgPrice}) => {
             const month = getMonthNumberFromDate(monthDate);
             userOilArray[month - 1] = totalRefuelingPrice;
