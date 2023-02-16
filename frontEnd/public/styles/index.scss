@@ -6473,8 +6473,7 @@ a {
                             border-radius: 0.2vh 0 0 0.2vh;
                             background-color: #12BD7E;
                         }
-    
-    
+
                         & div {
                             & div {
                                 height: 20%;
@@ -7477,6 +7476,7 @@ a {
                         height: 65%;
                         text-align: center;
                         overflow-y: scroll;
+
                         &::-webkit-scrollbar {
                             width: 0.5vw;
                         }
@@ -7494,17 +7494,36 @@ a {
                                 display: flex;
                                 justify-content: space-around;
                                 align-items: center;
-                                font-size: 0.8rem;
+                                font-size: 0.65rem;
                                 font-weight: 600;
                                 border-bottom: 1px solid #F5F5F5;
     
                                 & span {
-                                    font-size: 1.1rem;
+                                    width: 18%;
+                                    font-size: 0.9rem;
+
+                                    &:nth-child(1) {
+                                        width: 12%;
+                                    }
+
+                                    &:nth-child(2) {
+                                        width: 12%;
+                                    }
+
+                                    &:nth-child(3) {
+                                        width: 25%;
+                                    }
+
+                                    &:nth-child(4),
+                                    &:nth-child(5),
+                                    &:nth-child(6) {
+                                        width: 10%;
+                                    }
                                 }
     
                                 & img {
-                                    width: 100%;
-                                    height: 100%;
+                                    width: 50%;
+                                    height: 50%;
                                 }
     
                                 &:nth-child(2n + 1) {
