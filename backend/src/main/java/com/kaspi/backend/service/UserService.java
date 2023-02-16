@@ -3,6 +3,7 @@ package com.kaspi.backend.service;
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignUpRequestDto;
+import com.kaspi.backend.dto.UserUpdateReqDto;
 import com.kaspi.backend.enums.Age;
 import com.kaspi.backend.enums.Gender;
 import com.kaspi.backend.util.response.code.ErrorCode;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     private final UserDao userDao;
+    private final HttpSessionService httpSessionService;
 
     @Transactional
     public User makeUser(SignUpRequestDto signUpRequestDto) {
@@ -39,6 +41,11 @@ public class UserService {
         if(age.isEmpty()|| gender.isEmpty()){
             throw new IllegalArgumentException(ErrorCode.PARAMETER_ERROR.getMessage());
         }
+    }
+
+    public void updateUser(UserUpdateReqDto userUpdateReqDto) {
+        User user = httpSessionService.getUserFromSession();
+        user.updateUser(userUpdateReqDto.getGender(), userUpdateReqDto.getAge());
     }
 
 
