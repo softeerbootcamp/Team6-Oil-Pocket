@@ -1,8 +1,8 @@
-import { addEvent, changeCSS, _$, _$_ALL } from "../common/function"
-import { distanceOption } from "./helperFunction";
+import { addEvent, changeCSS, _$, _$_ALL } from "../common/function";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 
+let distanceOption = 3;
 const btnPosMapper = [0, 20, 35, 50, 65, 80, 100];
 
 const changeBtnColor = ($btns, index) => {
@@ -22,7 +22,7 @@ const eventToSeekBarBtns = ($container) => {
         addEvent($btn, [
             () => changeCSS($backGround, "width", `${btnPosMapper[index]}%`),
             () => changeBtnColor($btns, index),
-            () => distanceOption = index + 1,
+            () => distanceOption = index + 1
         ])
     });
 }
