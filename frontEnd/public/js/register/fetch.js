@@ -9,7 +9,7 @@ function fetchValidateID($IDInput, $IDValidateBtn, $registerBtn) {
                         BASE_COMMON_URL + "/auth";
 
 
-    fetch(FETCH_URL + `?id="${$IDInput.value}"`, {
+    fetch(FETCH_URL + `?id=${$IDInput.value}`, {
         method: METHOD.GET
     }).then((res) => {
         if(res.status === 200) {

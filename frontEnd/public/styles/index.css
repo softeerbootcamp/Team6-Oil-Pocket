@@ -6296,6 +6296,85 @@ a {
     background-color: #80E3C3;
     z-index: 10;
   }
+  .oilInfoArea .oilInput__preferModal {
+    transition: 0.5s;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.15);
+    position: fixed;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent {
+    background-color: #fff;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    width: 80%;
+    height: 90%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    height: 100%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround .preferModal__closeBtn {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround .preferModal__closeBtn:hover {
+    transform: rotate(180deg);
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 85%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+    outline: 0.2vh solid #14BD72;
+    border-radius: 0.5vh;
+    margin-bottom: 1%;
+    cursor: pointer;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li img {
+    width: 10%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    width: 50%;
+    text-align: center;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li span {
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: 30%;
+    text-align: center;
+  }
   .oilInfoArea .oilInfoArea__background {
     width: 60%;
     height: 100%;
@@ -6348,10 +6427,24 @@ a {
     color: #000;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea {
+    position: relative;
     width: 100%;
     height: 80%;
     box-shadow: 0 0.5vh 1vw 0 #D4D4D4;
     border-radius: 0 1.5vh 0 0;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__preferBtnArea {
+    position: absolute;
+    top: 1.5vw;
+    right: 5.8vw;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__preferBtnArea button {
+    padding: 1vh 0.5vw;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 0.5vh;
+    color: #fff;
+    background-color: #4BC0C0;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentTitle {
     height: 15%;
@@ -6493,11 +6586,14 @@ a {
     border-bottom: 0.2vh solid #000;
     cursor: pointer;
   }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue img {
+    width: 7.5%;
+  }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue h1 {
-    font-size: 1.2rem;
+    font-size: 0.85rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue span {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox:focus {
     outline: 0.2vh solid #14BD72;
