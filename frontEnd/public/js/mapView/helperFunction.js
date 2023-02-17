@@ -11,7 +11,7 @@ let ResultHtml = "";
 let SideBarDisplay = true;
 let isOption1 = true;
 let isOption2 = false; 
-let count = 0;
+let distanceOption = 3;
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -753,4 +753,4 @@ function ShowChart(response){
     )
 }
 
-export { initTmap }
+export { initTmap, distanceOption }
