@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 import com.kaspi.backend.dao.UserDao;
 import com.kaspi.backend.domain.User;
 import com.kaspi.backend.dto.SignInRequestDto;
+import com.kaspi.backend.util.encrypt.PasswordUtil;
 import com.kaspi.backend.util.exception.AuthenticationException;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
@@ -45,14 +46,14 @@ class AuthServiceTest {
     public void validSingIn() {
         //given
         SignInRequestDto signInRequestDto = SignInRequestDto.builder().id("test").password("password").build();
-        User existUser = User.builder().id("test").password("password").build();
+        User existUser = User.builder().id("test").password(PasswordUtil.makeEncryptPw("password")).build();
         Optional<User> findUser = Optional.of(existUser);
         when(userDao.findByUserId(signInRequestDto.getId())).thenReturn(findUser);
         //when
         User actualUser = authService.signIn(signInRequestDto);
         //then
         assertThat(actualUser.getId()).isEqualTo(signInRequestDto.getId());
-        assertThat(actualUser.getPassword()).isEqualTo(signInRequestDto.getPassword());
+        assertThat(PasswordUtil.matchPw(existUser.getPassword(), signInRequestDto.getPassword()));
     }
 
     @Test
@@ -71,7 +72,7 @@ class AuthServiceTest {
     public void InvalidSignInNotCorrectPassword() {
         //given
         SignInRequestDto signInRequestDto = SignInRequestDto.builder().id("test").password("password").build();
-        User existUser = User.builder().id("test").password("password2").build();
+        User existUser = User.builder().id("test").password(PasswordUtil.makeEncryptPw("password2")).build();
         Optional<User> findUser = Optional.of(existUser);
         when(userDao.findByUserId(signInRequestDto.getId())).thenReturn(findUser);
         //when,then
