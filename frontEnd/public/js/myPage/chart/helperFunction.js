@@ -34,7 +34,6 @@ const makeChart = ($container, userOilArray, commonOilArray, monthArray) => {
 const getMonthNumberFromDate = (dateString) => parseInt(dateString.split(".")[1]);
 
 const makeMonthArray = (lastMonth) => {
-    
     let startMonth = lastMonth + 3;
     for(let i=0;i<10;i++, startMonth++) {
         if(startMonth > 12) {

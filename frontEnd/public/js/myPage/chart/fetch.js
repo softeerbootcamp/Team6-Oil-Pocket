@@ -19,7 +19,7 @@ const fetchChart = async () => {
             return {};
         }
     }).then(({data}) => {
-        if(data.length) {
+        if(data && data.length) {
             const dataArray = [...data];
 
             dataArray.forEach(({monthDate, totalRefuelingPrice, totalNationalAvgPrice}, index) => {
