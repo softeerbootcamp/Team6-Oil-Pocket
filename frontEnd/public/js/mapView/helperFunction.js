@@ -253,10 +253,22 @@ function ShowResult(ResultArray, positionBounds){
     map.fitBounds(positionBounds);	
 }
 
+const brandLogoMapper = {
+    "알뜰": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/알뜰.png",
+    "오일뱅크": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/오일뱅크.png",
+    "custom": "./img/GasStation_Image/custom.png",
+    "E1": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/E1.png",
+    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.pngw",
+    "ex": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
+    "GS": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/GS.png",
+    "S-Oil": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/S-Oil.png",
+    "SK": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/SK_Gas.png",
+}
+
 function SelectStIdLogo(stId, name, radius){
     return `
         <div class='main__ResultList'> 
-            <img class='main__ResultList__Title_Logo' src = './img/GasStation_Image/${stId}.png'>
+            <img class='main__ResultList__Title_Logo' src = ${brandLogoMapper[stId]}>
             <div class='main__ResultList_TitlenContents'>
                 <div class='main__ResultList__Title'>  
                     <div id="stName">${name}</div>
