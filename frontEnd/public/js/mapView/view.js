@@ -1,5 +1,4 @@
 import { navBarView } from "../navbar/view";
-import { initTmap } from "./helperFunction";
 import { getMapContentTemplate } from "./template";
 
 

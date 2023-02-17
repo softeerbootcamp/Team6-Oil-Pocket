@@ -2695,22 +2695,23 @@ a {
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input {
     -webkit-appearance: none;
     transition: opacity 0.2s;
+    height: 0.3vh;
     background: #ddd;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 0.6vw;
+    height: 0.6vw;
     background: #4CAF50;
     cursor: pointer;
     border-radius: 50%;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input::-moz-range-thumb:active {
-    background: red;
+    background: #14BD72;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input::-webkit-slider-thumb:active {
-    background: red;
+    background: #14BD72;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocationAddress {
     background-color: white;
