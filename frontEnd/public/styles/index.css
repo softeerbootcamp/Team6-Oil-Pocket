@@ -6587,12 +6587,20 @@ a {
     cursor: pointer;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue img {
-    width: 7.5%;
+    width: 0.5%;
+    flex-grow: 0.5;
+    margin-right: 5%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue h1 {
+    text-align: left;
+    font-weight: 600;
     font-size: 0.85rem;
+    flex-grow: 3;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue span {
+    text-align: right;
+    font-weight: 500;
+    flex-grow: 1;
     font-size: 0.6rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox:focus {

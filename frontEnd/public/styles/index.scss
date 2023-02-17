@@ -7121,15 +7121,22 @@ a {
                                     cursor: pointer;
     
                                     & img {
-                                        width: 7.5%;
-                                        
+                                        width: 0.5%;
+                                        flex-grow: 0.5;
+                                        margin-right: 5%;
                                     }
 
                                     & h1 {
+                                        text-align: left;
+                                        font-weight: 600;
                                         font-size: 0.85rem;
+                                        flex-grow: 3;
                                     }
     
                                     & span {
+                                        text-align: right;
+                                        font-weight: 500;
+                                        flex-grow: 1;
                                         font-size: 0.6rem;
                                     }
                                 }
