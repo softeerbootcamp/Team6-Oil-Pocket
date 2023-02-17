@@ -21,6 +21,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.Arrays;
 import java.util.List;
 
@@ -83,7 +85,6 @@ class GasStationControllerTest {
                         new GasDetailDto(GasType.LPG, 0, date)));
         // "서울 종로구", "㈜지에스이앤알 평창주유소", "평창문화로 135", "현대오일뱅크", true);
         when(gasStationService.findGasStationDto(name, roadName, buildNum, brand)).thenReturn(gasStationDto);
-        doNothing().when(httpSessionService).addRecentStationView(gasStationDto);
         mockMvc.perform(get("/api/v1/gas-station/평창주유소/평창문화로/135/현대오일뱅크"))
                 .andExpect(jsonPath("code").value(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL.getCode()))
                 .andExpect(jsonPath("message").value(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL.getMessage()));
