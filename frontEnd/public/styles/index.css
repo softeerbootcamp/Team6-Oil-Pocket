@@ -2680,10 +2680,8 @@ a {
     height: 2vh;
     margin-left: 2vw;
     margin-top: 3vh;
-    background-color: #14BD7E;
-    color: white;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 1rem;
+    font-weight: 600;
     text-align: center;
     align-items: center;
   }
@@ -2693,7 +2691,26 @@ a {
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar {
     width: 80%;
     height: 100%;
-    background-color: black;
+  }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input {
+    -webkit-appearance: none;
+    transition: opacity 0.2s;
+    background: #ddd;
+  }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input::-moz-range-thumb:active {
+    background: red;
+  }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar input::-webkit-slider-thumb:active {
+    background: red;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__CurrentLocationAddress {
     background-color: white;
