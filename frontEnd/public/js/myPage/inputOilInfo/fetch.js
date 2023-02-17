@@ -19,7 +19,7 @@ const fetchGasStationSearch = ($oilSearchResultBox, gasStationName) => {
         const InfoArray = [...data];
         $oilSearchResultBox.innerHTML = ``;
         InfoArray.forEach((info) => $oilSearchResultBox.appendChild(
-            gasStationSearchView(info["name"], info["address"], info["stationNo"])
+            gasStationSearchView(info["name"], info["address"], info["stationNo"], info["brand"])
         ));
     })
 }

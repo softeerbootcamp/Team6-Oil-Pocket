@@ -1,6 +1,6 @@
 import { navBarView } from "../../navbar/view.js";
-import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput, eventToRegisterBtn, eventToSearchValue } from "./event.js";
-import { getInputOilInfoTemplate, getSearchTemplate } from "./template.js";
+import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput, eventToRegisterBtn, eventToSearchValue, eventToPreferBtn, eventToPreferModalCloseBtn } from "./event.js";
+import { getInputOilInfoTemplate, getSearchTemplate, preferModalTemplate } from "./template.js";
 
 const inputOilInfoView = async () => {
     const $inputOilInputContainer = document.createElement("section");
@@ -16,15 +16,17 @@ const inputOilInfoView = async () => {
     eventToOilPriceInput($inputOilInputContent);
     eventToOilSearchInput($inputOilInputContent);
     eventToRegisterBtn($inputOilInputContent);
+    eventToPreferBtn($inputOilInputContent);
+    eventToPreferModalCloseBtn($inputOilInputContent)
 
     return $inputOilInputContainer;
 }
 
-const gasStationSearchView = (stationName, address, stationNo) => {
+const gasStationSearchView = (stationName, address, stationNo, brandImageURL) => {
     const $gasSearchSection = document.createElement("section");
     $gasSearchSection.classList.add("oilInfoArea__oilSearchValue");
     $gasSearchSection.dataset.stationNo = stationNo;
-    $gasSearchSection.innerHTML = getSearchTemplate(stationName, address);
+    $gasSearchSection.innerHTML = getSearchTemplate(stationName, address, brandImageURL);
 
     eventToSearchValue($gasSearchSection);
 
