@@ -15,6 +15,8 @@ public enum DefaultCode implements Code {
 
     DELETE_USER("M007", "유저삭제 성공"),
 
+    FIND_RECENT_GAS_STATION("M008", "최근 본 주유소 조회 성공"),
+
     SUCCESS_TO_FIND_GAS_DETAIL("G001", "주유소 가격 상세정보를 찾았습니다.");
 
     private String code;

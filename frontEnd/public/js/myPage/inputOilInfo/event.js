@@ -1,6 +1,6 @@
-import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/function";
-import { fetchGasStationSearch, fetchOilRegister } from "./fetch";
-import { parseOilPriceIntoKorean } from "./helperFunction";
+import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/function.js";
+import { fetchGasStationSearch, fetchOilRegister } from "./fetch.js";
+import { parseOilPriceIntoKorean } from "./helperFunction.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 let debounceTimer = "";
@@ -98,4 +98,22 @@ const eventToRegisterBtn = ($container) => {
     addEvent($registerBtn, [() => fetchOilRegister($container)]); 
 }
 
-export { eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput, eventToSearchValue, eventToRegisterBtn }
+const eventToPreferBtn = ($container) => {
+    const $preferBtn = _$(".oilInfoArea__preferModalBtn", $container);
+    const $preferModal = _$(".oilInput__preferModal", $container);
+
+    addEvent($preferBtn, [() => changeCSS($preferModal, "top", 0)]);
+}
+
+const eventToPreferModalCloseBtn = ($container) => {
+    const $closeBtn = _$(".preferModal__closeBtn", $container);
+    const $preferModal = _$(".oilInput__preferModal", $container);
+
+    addEvent($closeBtn, [() => changeCSS($preferModal, "top", "-100%")]);
+}
+
+export { 
+    eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput, 
+    eventToSearchValue, eventToRegisterBtn, 
+    eventToPreferBtn, eventToPreferModalCloseBtn
+}
