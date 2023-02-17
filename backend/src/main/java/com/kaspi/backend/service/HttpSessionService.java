@@ -7,6 +7,8 @@ import com.kaspi.backend.domain.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.kaspi.backend.dto.FindGasStationResDto;
@@ -34,16 +36,15 @@ public class HttpSessionService {
     }
 
     public User getUserFromSession() {
-        checkSessionValid();
         Long userNo = (Long) httpSession.getAttribute(SESSION_KEY);
         Optional<User> findUser = userDao.findById(userNo);
         authService.checkNotValidUser(findUser);
         return findUser.get();
     }
 
-    private void checkSessionValid() {
-        if (httpSession == null || httpSession.isNew()) {
-            log.error("세션이 만료되었습니다.");
+    private void checkSessionValid(HttpSession session) {
+        if (session == null) {
+            log.error("세션이 만료되거나 없습니다.");
             throw new AuthenticationException(ErrorCode.AUTH_ERROR);
         }
     }
@@ -58,9 +59,9 @@ public class HttpSessionService {
      * 추후 주유기록 입력시에 최근 본 주유소를 리스트로 보여주기 위함
      * 로그인 되어 있지 않으면 실행되지 않는 함수
      */
-    public void addRecentStationView(GasStationDto gasStationDto) {
+    public void addRecentStationView(GasStationDto gasStationDto,HttpSession session) {
         try {
-            checkSessionValid();
+            checkSessionValid(session);
         } catch (AuthenticationException e) {
             return; //로그인이 되어 있지 않으면 패스
         }

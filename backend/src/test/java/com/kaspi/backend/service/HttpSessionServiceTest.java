@@ -12,6 +12,7 @@ import com.kaspi.backend.domain.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.kaspi.backend.dto.FindGasStationResDto;
@@ -33,6 +34,8 @@ public class HttpSessionServiceTest {
     private AuthService authService;
     @Mock
     private UserDao userDao;
+
+
     @InjectMocks
     private HttpSessionService httpSessionService;
 
@@ -66,14 +69,6 @@ public class HttpSessionServiceTest {
         assertThat(user).isEqualTo(resultUser);
     }
 
-    @Test
-    @DisplayName("세션이 만료된경우 테스트")
-    public void testGetUserFromSessionInvalidSession() {
-        //given,when
-        when(httpSession.isNew()).thenReturn(true);
-        //then
-        assertThrows(AuthenticationException.class, () -> httpSessionService.getUserFromSession());
-    }
 
     @Test
     @DisplayName("세션 삭제 로직 테스트")
@@ -97,11 +92,13 @@ public class HttpSessionServiceTest {
         GasStationDto gasStationDto = GasStationDto.builder().stationNo(1L).brand(GasBrand.SK_GAS.getDbName()).name("주유소").address("주소").area("지역").build();
         List<FindGasStationResDto> recentGasStation = new ArrayList<>();
         recentGasStation.add(FindGasStationResDto.toFindDto(gasStationDto));
+        HttpSession session = mock(HttpSession.class);
         when(httpSession.getAttribute(SESSION_RECENT_VIEW_STATION_KEY)).thenReturn(recentGasStation);
         //when
-        httpSessionService.addRecentStationView(gasStationDto);
+
+        httpSessionService.addRecentStationView(gasStationDto, session);
         //then
-        verify(httpSession).setAttribute(SESSION_RECENT_VIEW_STATION_KEY,recentGasStation);
+        verify(httpSession).setAttribute(SESSION_RECENT_VIEW_STATION_KEY, recentGasStation);
     }
 
     @Test

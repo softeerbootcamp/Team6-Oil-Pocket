@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -53,10 +55,11 @@ public class GasStationController {
     public ResponseEntity<CommonResponseDto> getGasStationInfoMonth(@PathVariable("name") String name,
                                                                     @PathVariable("roadName") String roadName,
                                                                     @PathVariable("buildNum") String buildNum,
-                                                                    @PathVariable("brand") String brand) {
+                                                                    @PathVariable("brand") String brand,
+                                                                    HttpServletRequest request) {
         GasStationDto gasStationDto = gasStationService.findOntMonthGasStationDto(name, roadName, buildNum, brand);
         //로그인 되었을때 최근 본 주유소 세션 저장
-        httpSessionService.addRecentStationView(gasStationDto);
+        httpSessionService.addRecentStationView(gasStationDto,request.getSession(false));
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL, gasStationDto));
     }
