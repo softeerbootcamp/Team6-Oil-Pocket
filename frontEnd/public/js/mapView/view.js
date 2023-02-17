@@ -1,4 +1,5 @@
 import { navBarView } from "../navbar/view";
+import { eventToSeekBarBtns } from "./event";
 import { getMapContentTemplate } from "./template";
 
 
@@ -12,6 +13,8 @@ const mapView = async () => {
     $mapViewContainer.appendChild($mapContentcontainer);
 
     $mapContentcontainer.innerHTML = getMapContentTemplate();
+    
+    eventToSeekBarBtns($mapViewContainer);
 
     return $mapViewContainer;
 }

@@ -18,6 +18,37 @@ const getMapContentTemplate = () => `
                                     </div>
                                     <div class="main__AdjustBar">
                                         <input type="range" step=1 min=1 max=10 value=3>
+                                        <div class="adjustBar__background"></div>
+                                        <div class="adjustBar__infoContainer">
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>1</h5>
+                                            </div>
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>&nbsp;</h5>
+                                            </div>
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>&nbsp;</h5>
+                                            </div>
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>4</h5>
+                                            </div>
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>&nbsp;</h5>
+                                            </div>
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>&nbsp;</h5>
+                                            </div>
+                                            <div class="adjustBar__infoBox">
+                                                <span>&nbsp;</span>
+                                                <h5>7</h5>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="main__SearchOptionButtonGroup">

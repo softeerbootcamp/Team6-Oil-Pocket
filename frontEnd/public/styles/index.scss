@@ -2685,33 +2685,77 @@ a {
                             & .main__Radius{
                                 width:20%;
                             }
+
                             & .main__AdjustBar {
+                                position: relative;
                                 width:80%;
                                 height:100%;
+                                display: flex;
+                                justify-content: center;
+                                align-content: center;
+
+                                & .adjustBar__infoContainer {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+
+                                    & .adjustBar__infoBox {
+                                        display: flex;
+                                        flex-direction: column;
+                                        margin-top: 8%;
+                                        z-index: 1;
+    
+                                        & span {
+                                            display: inline-block;
+                                            width: 0.5vw;
+                                            height: 0.5vw;
+                                            border-radius: 50%;
+                                            background-color: #ddd;
+                                            cursor: pointer;                                            
+                                        }
+
+                                        &:nth-child(1),
+                                        &:nth-child(2),
+                                        &:nth-child(3) {
+                                            span {
+                                                background-color: #008000;
+                                            }
+                                        }
+                                        
+                                        & h5 {
+                                            font-size: 0.5rem;
+                                            font-weight: 700;
+                                        }
+                                    }
+                                }
+
+                                & .adjustBar__background {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    width: 35%;
+                                    margin: auto 0;
+                                    transition: opacity .2s;
+                                    height: 0.3vh;
+                                    transition: 0.5s;
+                                    background-color: #14BD72;
+                                }
 
                                 & input {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    width: 100%;
+                                    margin: auto 0;
                                     -webkit-appearance: none;
                                     -webkit-transition: .2s;
                                     transition: opacity .2s;
                                     height: 0.3vh;
-                                    background: #ddd;
+                                    background-color: #ddd;
 
                                     &::-webkit-slider-thumb {
-                                        -webkit-appearance: none;
-                                        appearance: none;
-                                        width: 0.6vw;
-                                        height: 0.6vw;
-                                        background: #4CAF50;
-                                        cursor: pointer;
-                                        border-radius: 50%;
-                                    }
-
-                                    &::-moz-range-thumb:active {
-                                        background: #14BD72;
-                                    }
-                                      
-                                    &::-webkit-slider-thumb:active {
-                                        background: #14BD72;
+                                        display: none;
                                     }
                                 }
                             }
