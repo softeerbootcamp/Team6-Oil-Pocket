@@ -13,6 +13,7 @@ import com.kaspi.backend.domain.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -143,6 +144,40 @@ public class HttpSessionServiceTest {
         when(httpSession.getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY))).thenReturn(new ArrayList<>());
 
         List<FindGasStationResDto> result = httpSessionService.getRecentGsListFromSession();
+
+        verify(httpSession, times(1)).getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY));
+        verifyNoMoreInteractions(httpSession);
+
+        assertEquals(new ArrayList<>(), result);
+    }
+
+    @Test
+    @DisplayName("세션으로부터 최근 본 주유소 들고오기 GasType 일치 함수")
+    void getRecentGsListFromSession() {
+        List<FindGasStationResDto> recentGasStations = new ArrayList<>();
+        recentGasStations.add(FindGasStationResDto.builder().stationNo(1L)
+                .gasTypes(Set.of(GasType.GASOLINE))
+                .build());
+        when(httpSession.getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY))).thenReturn(recentGasStations);
+
+        List<FindGasStationResDto> result = httpSessionService.getRecentGsListFromSession(GasType.GASOLINE);
+
+        verify(httpSession, times(1)).getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY));
+        verifyNoMoreInteractions(httpSession);
+
+        assertEquals(recentGasStations, result);
+    }
+
+    @Test
+    @DisplayName("세션으로부터 최근 본 주유소 들고오기 GasType 불일치 함수")
+    void getRecentGsListFromSessionNotMatchGasType() {
+        List<FindGasStationResDto> recentGasStations = new ArrayList<>();
+        recentGasStations.add(FindGasStationResDto.builder().stationNo(1L)
+                .gasTypes(Set.of(GasType.LPG))
+                .build());
+        when(httpSession.getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY))).thenReturn(recentGasStations);
+
+        List<FindGasStationResDto> result = httpSessionService.getRecentGsListFromSession(GasType.GASOLINE);
 
         verify(httpSession, times(1)).getAttribute(eq(SESSION_RECENT_VIEW_STATION_KEY));
         verifyNoMoreInteractions(httpSession);

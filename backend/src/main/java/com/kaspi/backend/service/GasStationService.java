@@ -6,6 +6,7 @@ import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasBrand;
+import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.NoSuchElementException;
@@ -27,9 +28,9 @@ public class GasStationService {
     private final GasStationDao gasStationDao;
     private final GasDetailService gasDetailService;
 
-    public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName,String requestGasType) {
+    public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName, GasType requestGasType) {
         log.info("주유소 이름 검색 요청 name:{}, gasType:{}", reqGasStationName,requestGasType);
-        return gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName),requestGasType);
+        return gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName),requestGasType.name());
     }
 
 

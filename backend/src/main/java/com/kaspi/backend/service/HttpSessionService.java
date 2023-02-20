@@ -94,18 +94,34 @@ public class HttpSessionService {
 
     public List<FindGasStationResDto> getRecentGsListFromSession() {
         List<FindGasStationResDto> recentGasStation = (List<FindGasStationResDto>) httpSession.getAttribute(SESSION_RECENT_VIEW_STATION_KEY);
+        recentGasStation = checkNewGsList(recentGasStation);
+        return recentGasStation;
+    }
+
+    private List<FindGasStationResDto> checkNewGsList(List<FindGasStationResDto> recentGasStation) {
         if (recentGasStation == null || recentGasStation.size() == 0) {
             recentGasStation = new ArrayList<>(); //처음 조회한 경우
         }
         return recentGasStation;
     }
 
+    /**
+     * 요청 GasType과 일치하는 GasStation 찾기 로직
+     */
     public List<FindGasStationResDto> getRecentGsListFromSession(GasType gasType) {
-        List<FindGasStationResDto> recentGasStation = (List<FindGasStationResDto>) httpSession.getAttribute(SESSION_RECENT_VIEW_STATION_KEY);
-        if (recentGasStation == null || recentGasStation.size() == 0) {
-            recentGasStation = new ArrayList<>(); //처음 조회한 경우
+        List<FindGasStationResDto> recentGsListFromSession = getRecentGsListFromSession();
+        List<FindGasStationResDto> matchingGasTypeForRecent = matchingGasType(gasType, recentGsListFromSession);
+        return matchingGasTypeForRecent;
+    }
+
+    private List<FindGasStationResDto> matchingGasType(GasType gasType, List<FindGasStationResDto> recentGasStation) {
+        List<FindGasStationResDto> matchingGasTypeForRecent = new ArrayList<>();
+        for (FindGasStationResDto findGasStationResDto : recentGasStation) {
+            if (findGasStationResDto.getGasTypes().contains(gasType)) {
+                matchingGasTypeForRecent.add(findGasStationResDto);
+            }
         }
-        return recentGasStation;
+        return matchingGasTypeForRecent;
     }
 
 

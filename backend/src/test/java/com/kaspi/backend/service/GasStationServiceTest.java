@@ -40,7 +40,7 @@ class GasStationServiceTest {
         String requestGasStation = "유진";
         when(gasStationDao.findGastationForGasSearch("%"+requestGasStation+"%", GasType.GASOLINE.name())).thenReturn(expectedMatchingGasStations);
         //when
-        List<FindGasStationResDto> actualMatchingGasStations = gasStationService.getGasStationByContainingName(requestGasStation,GasType.GASOLINE.name());
+        List<FindGasStationResDto> actualMatchingGasStations = gasStationService.getGasStationByContainingName(requestGasStation,GasType.GASOLINE);
         //then
         assertThat(actualMatchingGasStations.size()).isEqualTo(2);
         assertThat(actualMatchingGasStations.get(0).getName()).isEqualTo(expectedMatchingGasStations.get(0).getName());
