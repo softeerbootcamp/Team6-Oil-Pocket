@@ -24,11 +24,11 @@ const getRegisterTemplate = () => `
                 </div>
                 <div class="registerArea__dropDownArea">
                     <div class="registerArea__genderArea">
-                        ${genderValues.forEach((gender) => {`<div class="registerArea__genderValue">${gender}</div>`})}
+                        ${genderValues.map((gender) => `<div class="registerArea__genderValue">${gender}</div>`).join("")}
                         <div class="registerArea__genderTitle">성별</div>
                     </div>
                     <div class="registerArea__ageArea">
-                        ${ageValues.forEach((age) => {`<div class="registerArea__ageValue">${age}</div>`})}
+                        ${ageValues.map((age) => `<div class="registerArea__ageValue">${age}</div>`).join("")}
                         <div class="registerArea__ageTitle">나이</div>
                     </div>
                 </div>
