@@ -76,7 +76,7 @@ public class GasStationService {
 
     // 도로명 주소와 건물번호로 Like를 위한 와일드카드(%)를 설정해주는 메소드 입니다
     private String getLikeAddress(String roadNum, String buildNum) {
-        return WILDCARD + roadNum + WILDCARD + buildNum;
+        return WILDCARD + roadNum + WILDCARD + buildNum + WILDCARD;
     }
 
     /**
