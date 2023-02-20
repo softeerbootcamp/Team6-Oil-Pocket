@@ -44,4 +44,15 @@ class FindGasStationResDtoTest {
         //then
         Assertions.assertThat(list.contains(opposite)).isTrue();
     }
+
+    @Test
+    @DisplayName("가스 브랜드 uri로 변경")
+    void updateBrandToImage() {
+        //given
+        FindGasStationResDto findGasStationResDto = FindGasStationResDto.builder().brand(GasBrand.SK_GAS.getDbName()).build();
+        //when
+        findGasStationResDto.updateBrandToImage();
+        //then
+        Assertions.assertThat(findGasStationResDto.getBrand()).isEqualTo(GasBrand.getImgByDbName(GasBrand.SK_GAS.getDbName()));
+    }
 }

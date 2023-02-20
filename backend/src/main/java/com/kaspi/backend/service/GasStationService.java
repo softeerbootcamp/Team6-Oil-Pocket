@@ -30,9 +30,16 @@ public class GasStationService {
 
     public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName, GasType requestGasType) {
         log.info("주유소 이름 검색 요청 name:{}, gasType:{}", reqGasStationName,requestGasType);
-        return gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName),requestGasType.name());
+        List<FindGasStationResDto> gasStationForGasSearch = gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName), requestGasType.name());
+        updateBrandToUri(gasStationForGasSearch);
+        return gasStationForGasSearch;
     }
 
+    private  void updateBrandToUri(List<FindGasStationResDto> gasStationForGasSearch) {
+        for (FindGasStationResDto stationForGasSearch : gasStationForGasSearch) {
+            stationForGasSearch.updateBrandToImage();
+        }
+    }
 
 
     public GasStation getGasStationByNo(Long gasStationNo) {
