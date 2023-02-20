@@ -98,7 +98,7 @@ class UserGasRecordDaoTest {
     void findSavingPriceByGenderAndAge_SUCCESS() {
         List<EcoRecord> ecoRecords = userGasRecordDao.findSavingPriceByGenderAndAge(Gender.MALE, Age.FORTY,
                 LocalDate.now()).get();
-        assertThat(ecoRecords.get(0).getSRank()).isEqualTo(1);
+        assertThat(ecoRecords.get(0).getSavingRank()).isEqualTo(1);
         assertThat(ecoRecords.size()).isEqualTo(1);
 
     }

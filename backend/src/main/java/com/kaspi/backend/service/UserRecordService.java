@@ -118,7 +118,7 @@ public class UserRecordService {
         long refuelingPrice = userEcoRecord.getRefuelingPrice();
 
         long average = getAverage(rankSavingPrices);
-        double perRank = (double) Math.round((double) userEcoRecord.getSRank() / (double) rankSavingPrices.size() * 10000) / 100;
+        double perRank = (double) Math.round((double) userEcoRecord.getSavingRank() / (double) rankSavingPrices.size() * 10000) / 100;
 
         FoodImage foodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(Math.abs(ecoPrice)))
                 .orElseThrow(() -> new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE));

@@ -230,9 +230,9 @@ class UserRecordServiceTest {
         User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
         LocalDate date = LocalDate.now();
         List<EcoRecord> rankSavingPrices = Arrays.asList(
-                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).sRank(1).build(),
-                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).sRank(2).build(),
-                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).sRank(3).build()
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
         );
         when(httpSessionService.getUserFromSession()).thenReturn(user);
         when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
@@ -258,9 +258,9 @@ class UserRecordServiceTest {
         User user2 = new User(2L, "user2", "password", Gender.MALE, Age.FORTY);
         LocalDate date = LocalDate.now();
         List<EcoRecord> rankSavingPrices = Arrays.asList(
-                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).sRank(1).build(),
-                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).sRank(2).build(),
-                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).sRank(3).build()
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
         );
         when(httpSessionService.getUserFromSession()).thenReturn(user2);
         when(userGasRecordDao.findSavingPriceByGenderAndAge(user2.getGender(), user2.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
@@ -286,9 +286,9 @@ class UserRecordServiceTest {
         User user3 = new User(3L, "user3", "password", Gender.MALE, Age.FORTY);
         LocalDate date = LocalDate.now();
         List<EcoRecord> rankSavingPrices = Arrays.asList(
-                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).sRank(1).build(),
-                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).sRank(2).build(),
-                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).sRank(3).build()
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
         );
         when(httpSessionService.getUserFromSession()).thenReturn(user3);
         when(userGasRecordDao.findSavingPriceByGenderAndAge(user3.getGender(), user3.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
@@ -313,9 +313,9 @@ class UserRecordServiceTest {
         User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
         LocalDate date = LocalDate.now();
         List<EcoRecord> rankSavingPrices = Arrays.asList(
-                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).sRank(1).build(),
-                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).sRank(2).build(),
-                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).sRank(3).build()
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
         );
         when(httpSessionService.getUserFromSession()).thenReturn(user);
         when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));

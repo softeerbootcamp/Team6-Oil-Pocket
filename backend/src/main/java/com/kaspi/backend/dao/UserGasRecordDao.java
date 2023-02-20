@@ -22,7 +22,7 @@ public interface UserGasRecordDao extends CrudRepository<UserGasRecord, Long> {
     @Query("select * from user_gas_record where user_no = :userNo and month(charge_date) = month(:date) and year(charge_date) = year(:date)")
     Optional<List<UserGasRecord>> findByMonthOfNow(@Param("user_no") Long userNo, @Param("date") LocalDate date);
 
-    @Query("select u.user_no, gender, age, refueling_price, saving_price, rank() over (order by saving_price desc) as s_rank from users u JOIN " +
+    @Query("select u.user_no, gender, age, refueling_price, saving_price, rank() over (order by saving_price desc) as saving_rank from users u JOIN " +
             "(select user_no, sum(refueling_price) refueling_price, sum(saving_price) saving_price from user_gas_record ugr where month(charge_date) = month(:date) and year(charge_date) = year(:date) group by user_no) ugr " +
             "on u.user_no = ugr.user_no where gender = :gender and age = :age")
     Optional<List<EcoRecord>> findSavingPriceByGenderAndAge(@Param("gender") Gender gender, @Param("age") Age age, @Param("date") LocalDate date);
