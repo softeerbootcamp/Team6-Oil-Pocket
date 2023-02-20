@@ -116,8 +116,23 @@ const eventToPreferModalCloseBtn = async ($container) => {
     addEvent($closeBtn, [() => changeCSS($preferModal, "top", "-100%")]);
 }
 
+const eventToRecentRow = ($parent, $recentRow) => {
+    const $container = $parent.closest(".oilInfoArea");
+    const $modal = _$(".oilInput__preferModal", $container);
+    const $searchInput = $container.querySelector(".oilInfoArea__searchInput");
+    const gasStationName = $recentRow.querySelector("h2").innerHTML;
+
+    addEvent($recentRow, [
+        () => changeCSS($modal, "top", "-100%"),
+        () => $searchInput.dataset.stationNo = $recentRow.dataset.stationNo,
+        () => $searchInput.value = gasStationName,
+        () => $searchInput.disabled = true
+    ])
+}
+
 export { 
     eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput, 
     eventToSearchValue, eventToRegisterBtn, 
-    eventToPreferBtn, eventToPreferModalCloseBtn
+    eventToPreferBtn, eventToPreferModalCloseBtn,
+    eventToRecentRow
 }

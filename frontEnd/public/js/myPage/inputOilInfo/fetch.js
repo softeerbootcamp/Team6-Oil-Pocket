@@ -83,8 +83,8 @@ const fetchRecentGasStation = ($container) => {
         return {};
     }).then(({data}) => {
         if(data) {
-            data.forEach(({address, name, brand}) => {
-                $oilRecentModalContent.appendChild(recentGasStationView(brand, name, address));
+            data.forEach(({address, name, brand, stationNo}) => {
+                $oilRecentModalContent.appendChild(recentGasStationView($oilRecentModalContent, brand, name, address, stationNo));
             })
         }
     })
