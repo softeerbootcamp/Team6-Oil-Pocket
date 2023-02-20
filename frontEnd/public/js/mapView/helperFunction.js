@@ -259,7 +259,7 @@ const brandLogoMapper = {
     "오일뱅크": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/오일뱅크.png",
     "custom": "./img/GasStation_Image/custom.png",
     "E1": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/E1.png",
-    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.pngw",
+    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
     "ex": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
     "GS": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/GS.png",
     "S-Oil": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/S-Oil.png",
