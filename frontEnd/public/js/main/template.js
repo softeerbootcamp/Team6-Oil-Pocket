@@ -1,5 +1,19 @@
 import { isLogin } from "../login/fetch";
 
+const explainTexts = [
+    ["간단한 회원가입 폼", "ID와 비밀번호만을 통해 가입할 수 있어요."],
+    ["근처 주유소 검색", "주행자님 근처의 저렴한 주유소를 <br>보기 편하게 찾아드려요."],
+    ["편안한 주유 입력", "기름 종류, 주유액, 주유소를 입력하고 <br>나만의 차계부를 관리할 수 있어요."],
+    ["이번 달 주유 금액 분석", "평균 주유 금액을 통해 <br>주행자님의 소비 습관을 분석해요. <br>친근한 음식을 통해 <br>한 눈에 절약 금액을 파악할 수 있어요."],
+    ["월별 사용량 비교", "전국 주유소 평균 가격과 나의 사용량을 <br>월별 차트를 통해 확인할 수 있어요."]
+];
+
+const chatTexts = [
+    "마이 페이지는 어떻게 활용하나요?",
+    "주변 주유소 검색은 어떻게 활용하나요?",
+    "그 밖에 문의를 하고 싶어요."
+];
+
 const getMainViewContentTemplate = () => `
     <section class="main">
         <section class="searchBar">
@@ -19,58 +33,18 @@ const getMainViewContentTemplate = () => `
                     <h1>근처 주유소 검색</h1>
                 </div>
             </a>
-            </section>
-            <img class="chatBotArea__img" src="./public/img/main/chatBot/openBtn.png" alt="chatBot">
-            <section class="explainAreaArray">
-            <section class="explainArea" id="explainArea--1">
-                <div class="explainArea__text">
-                    <h1>간단한 회원가입 폼</h1>
-                    <h2>ID와 비밀번호만을 통해 가입할 수 있어요.</h2>
-                </div>
-                <img class="explainArea__phone" src="./public/img/main/phoneAnimation/01.png" alt="phone_01">
-            </section>
-            <section class="explainArea" id="explainArea--2">
-                <div class="explainArea__text">
-                    <h1>근처 주유소 검색</h1>
-                    <h2>
-                        주행자님 근처의 저렴한 주유소를 <br>
-                        보기 편하게 찾아드려요.
-                    </h2>
-                </div>
-                <img class="explainArea__phone" src="./public/img/main/phoneAnimation/02.png" alt="phone_02">
-            </section>
-            <section class="explainArea" id="explainArea--3">
-                <div class="explainArea__text">
-                    <h1>편안한 주유 입력</h1>
-                    <h2>
-                        기름 종류, 주유액, 주유소를 입력하고 <br>
-                        나만의 차계부를 관리할 수 있어요.
-                    </h2>
-                </div>
-                <img class="explainArea__phone" src="./public/img/main/phoneAnimation/03.png" alt="phone_03">
-            </section>
-            <section class="explainArea" id="explainArea--4">
-                <div class="explainArea__text">
-                    <h1>이번 달 주유 금액 분석</h1>
-                    <h2>
-                        평균 주유 금액을 통해 <br>
-                        주행자님의 소비 습관을 분석해요. <br>
-                        친근한 음식을 통해 <br>
-                        한 눈에 절약 금액을 파악할 수 있어요.
-                    </h2>
-                </div>
-                <img class="explainArea__phone" src="./public/img/main/phoneAnimation/04.png" alt="phone_04">
-            </section>
-            <section class="explainArea" id="explainArea--5">
-                <div class="explainArea__text">
-                    <h1>월별 사용량 비교</h1>
-                    <h2>
-                        전국 주유소 평균 가격과 나의 사용량을 <br>
-                        월별 차트를 통해 확인할 수 있어요.
-                    </h2>
-                </div>
-                <img class="explainArea__phone" src="./public/img/main/phoneAnimation/05.png" alt="phone_05">
-            </section>
+        </section>
+        <img class="chatBotArea__img" src="./public/img/main/chatBot/openBtn.png" alt="chatBot">
+        <section class="explainAreaArray">
+            ${explainTexts.map((explainText, index) => `
+                <section class="explainArea" id="explainArea--${index+1}">
+                    <div class="explainArea__text">
+                        <h1>${explainText[0]}</h1>
+                        <h2>${explainText[1]}</h2>
+                    </div>
+                    <img class="explainArea__phone" src="./public/img/main/phoneAnimation/0${index+1}.png" alt="phone_0${index+1}}">
+                </section>
+            `).join('')}
         </section>
     </section>
 `;
@@ -85,15 +59,11 @@ const getChatBotTemplate = () => `
             <img src="./img/main/chatBot/managerProfile.png" alt="profile">
             <span>안녕하세요 주행자님. 어떤 것을 도와드릴까요?</span>
         </div>
-        <div class="chatBotArea__chat">
-            <span>마이 페이지는 어떻게 활용하나요?</span>
-        </div>
-        <div class="chatBotArea__chat">
-            <span>주변 주유소 검색은 어떻게 활용하나요?</span>
-        </div>
-        <div class="chatBotArea__chat">
-            <span>그 밖에 문의를 하고 싶어요.</span>
-        </div>
+        ${chatTexts.map((chatText) => `
+            <div class="chatBotArea__chat">
+                <span>${chatText}</span>
+            </div>
+        `).join("")}
     </div>
 `;
 
