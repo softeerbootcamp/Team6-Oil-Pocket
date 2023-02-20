@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 import com.kaspi.backend.dao.UserDao;
+import com.kaspi.backend.domain.GasDetailDto;
 import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.domain.User;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasBrand;
+import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.util.exception.AuthenticationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -89,7 +91,12 @@ public class HttpSessionServiceTest {
     void addRecentStationView() {
         //given
         String SESSION_RECENT_VIEW_STATION_KEY = "recentViewStations";
-        GasStationDto gasStationDto = GasStationDto.builder().stationNo(1L).brand(GasBrand.SK_GAS.getDbName()).name("주유소").address("주소").area("지역").build();
+        GasStationDto gasStationDto = GasStationDto.builder().stationNo(1L).brand(GasBrand.SK_GAS.getDbName())
+                .name("주유소")
+                .address("주소")
+                .area("지역")
+                .details(List.of(GasDetailDto.makeEmptyDetailDto(GasType.GASOLINE)))
+                .build();
         List<FindGasStationResDto> recentGasStation = new ArrayList<>();
         recentGasStation.add(FindGasStationResDto.toFindDto(gasStationDto));
         HttpSession session = mock(HttpSession.class);
