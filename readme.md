@@ -2,7 +2,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://www.oilpocket.kro.kr/">
     <img src="https://user-images.githubusercontent.com/74173976/216799361-7934e2c4-85b8-4640-bf8b-e7d80d7be275.png" alt="Logo" width="70%" height="70%">
   </a>
 
