@@ -380,7 +380,7 @@ function FillSTDetail(ResultArrayElem){
     ST_phone.innerHTML = psTelNo;
 
     const ST_url = document.getElementById("GSTdetail_url");
-    ST_url.innerHTML = `www.${ResultArrayElem.stId}.com`;
+    ST_url.innerHTML = `https://www.${ResultArrayElem.stId}.com`;
 
     const ST_PriceTable = document.getElementsByClassName("main__GSTdetail__Contents__OilPriceTable__Contents");
     ST_PriceTable[0].innerHTML = "";
