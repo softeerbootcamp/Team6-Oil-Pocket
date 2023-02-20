@@ -1,4 +1,4 @@
-import { _$, changeCSS, isReleaseMode } from "../common/function";
+import { _$, changeCSS, isReleaseMode } from "../common/utils";
 import { BASE_COMMON_URL, RELEASE_COMMON_URL, HEADER, METHOD, RELEASE_COOKIE_URL, BASE_COOKIE_URL } from "../common/variable";
 
 let isLogin = false;
@@ -6,13 +6,13 @@ let userId = ""
 let userGender = "";
 let userAge = "";
 
-const fetchLoginID = ($IDInput, $PWInput) => {
+const fetchLoginID = async ($IDInput, $PWInput) => {
     const $loginErrorModal = _$(".loginArea__errorModal");
     const FETCH_URL = isReleaseMode() ? 
                         RELEASE_COMMON_URL + "/auth" :
                         BASE_COMMON_URL + "/auth";
 
-    fetch(FETCH_URL, {
+    await fetch(FETCH_URL, {
         method: METHOD.POST,
         headers: HEADER.POST, 
         body: JSON.stringify({
@@ -60,6 +60,24 @@ const fecthCheckLogin = async () => {
     })
 }
 
+const routerCheckLogin = async () => {
+    const FETCH_URL = isReleaseMode() ? 
+                            RELEASE_COMMON_URL + "/auth/status" : 
+                            BASE_COMMON_URL + "/auth/status";
+
+    await fetch(FETCH_URL, {
+        method: METHOD.GET,
+        credentials: "include"
+    }).then((res) => {
+        if(res.status === 200) {
+            location.assign("/");
+        }
+        else {
+            
+        }
+    })
+}
+
 const fetchLogoutID = () => {
     const FETCH_URL = isReleaseMode() ? 
                         RELEASE_COOKIE_URL + "/auth" :
@@ -76,6 +94,6 @@ const fetchLogoutID = () => {
 }
 
 export { 
-    fetchLoginID, fecthCheckLogin, fetchLogoutID,
+    fetchLoginID, fecthCheckLogin, fetchLogoutID, routerCheckLogin,
     isLogin, userId, userGender, userAge
 }

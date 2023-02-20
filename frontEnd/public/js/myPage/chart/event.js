@@ -1,4 +1,4 @@
-import { _$, _$_ALL, addEvent, toggleArrayClass } from "../../common/function";
+import { _$, _$_ALL, addEvent, toggleArrayClass } from "../../common/utils";
 
 const eventToChartLegend = ($container) => {
     const $commonLegend = _$(".oilInfoArea__legend--common", $container);

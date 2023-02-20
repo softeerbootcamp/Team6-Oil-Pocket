@@ -1,4 +1,4 @@
-import { addEvent, _$ } from "../../common/function"
+import { addEvent, _$ } from "../../common/utils"
 import { fetchModifyUserDetail } from "./fetch";
 import { getGenderFromLabel, getAgeFromLabel } from "./helperFunction";
 

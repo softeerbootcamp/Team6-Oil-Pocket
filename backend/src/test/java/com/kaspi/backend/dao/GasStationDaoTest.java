@@ -1,6 +1,9 @@
 package com.kaspi.backend.dao;
 
+import com.kaspi.backend.domain.GasDetail;
 import com.kaspi.backend.domain.GasStation;
+import com.kaspi.backend.dto.FindGasStationResDto;
+import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -12,6 +15,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @DataJdbcTest
@@ -23,6 +28,8 @@ class GasStationDaoTest {
 
     @Autowired
     GasStationDao gasStationDao;
+    @Autowired
+    GasDetailDao gasDetailDao;
     @Test
     @DisplayName("save 테스트")
     void saveTest() {
@@ -53,4 +60,14 @@ class GasStationDaoTest {
         Assertions.assertThat(optionalGasStation.isEmpty()).isEqualTo(true);
     }
 
+    @Test
+    @DisplayName("주유기록 검색 쿼리 테스트")
+    void findGastationForGasSearch() {
+        //given
+//        data.sql에 포함
+        //when
+        List<FindGasStationResDto> gastationForGasSearch = gasStationDao.findGastationForGasSearch("%평창%", GasType.GASOLINE.name());
+        //then
+        Assertions.assertThat(gastationForGasSearch.size()).isEqualTo(1);
+    }
 }

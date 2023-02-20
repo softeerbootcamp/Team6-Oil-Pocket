@@ -1,3 +1,11 @@
+const tabObjArray = [
+    {choosed: false, text: "프로필 수정", path: "/userDetail"},
+    {choosed: true, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: false, text: "이번 달 분석", path: "/comparison"},
+    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "주유 기록 열람", path: "/history"}
+];
+
 const getInputOilInfoTemplate = () => `
     <section class="oilInfoArea">
         <div class="oilInput__preferModal">
@@ -30,11 +38,11 @@ const getInputOilInfoTemplate = () => `
         </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
-                <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
-                <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
-                <div class="oilInfoArea__tab"><a href="/comparison" data-link>이번 달 분석</a></div>
-                <div class="oilInfoArea__tab"><a href="/chart" data-link>월별 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
+                ${tabObjArray.map(({choosed, text, path}) => `
+                    <div class="oilInfoArea__tab ${choosed ? "oilInfoArea__choosedTab" : ""}">
+                        <a href=${path} data-link>${text}</a>
+                    </div>
+                `).join("")}
             </div>
             <div class="oilInfoArea__contentArea">
                 <div class="oilInfoArea__preferBtnArea">
@@ -53,7 +61,7 @@ const getInputOilInfoTemplate = () => `
                             <div class="oilInfoArea__oilValue">경유</div>
                             <div class="oilInfoArea__oilValue">LPG</div>
                             <div class="oilInfoArea__oilSelect">
-                                <span>기름 종류</span>
+                                <span>휘발유</span>
                                 <img src="../../img/dropDownBtn.png">
                             </div>
                         </div>

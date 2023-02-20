@@ -2,6 +2,7 @@ package com.kaspi.backend.controller;
 
 import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
+import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.service.GasStationService;
 import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.util.response.CommonResponseDto;
@@ -39,16 +40,16 @@ public class GasStationController {
     }
 
     @GetMapping("/v2/gas-station")
-    public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name) {
-        List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
+    public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name,@RequestParam("gasType") GasType gasType) {
+        List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name,gasType);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION, matchingGasStations));
     }
 
     @GetMapping("/v2/gas-station/recent")
-    public ResponseEntity<CommonResponseDto> findGasStationRecent() {
+    public ResponseEntity<CommonResponseDto> findGasStationRecent(@RequestParam("gasType") GasType gasType) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(CommonResponseDto.toResponse(DefaultCode.FIND_RECENT_GAS_STATION, httpSessionService.getRecentGsListFromSession()));
+                .body(CommonResponseDto.toResponse(DefaultCode.FIND_RECENT_GAS_STATION, httpSessionService.getRecentGsListFromSession(gasType)));
     }
 
     @GetMapping("/v1/gas-station/{name}/{roadName}/{buildNum}/{brand}/month")

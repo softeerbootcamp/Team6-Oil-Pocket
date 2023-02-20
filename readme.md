@@ -2,17 +2,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://www.oilpocket.kro.kr/">
     <img src="https://user-images.githubusercontent.com/74173976/216799361-7934e2c4-85b8-4640-bf8b-e7d80d7be275.png" alt="Logo" width="70%" height="70%">
   </a>
 
-  <h3 align="center">⛽️ 유류비 절약 플랫폼</h3>
+  <h3 align="center"><a href="https://www.oilpocket.kro.kr/">⛽️ 유류비 절약 플랫폼</a></h3>
 
   <p align="center">
     <a href="https://youtu.be/D2eJQR__sO4">View 1st Demo</a>
-    ·
+    &nbsp;·&nbsp;
+    <a href="https://youtu.be/f9LQ9UuMMdw">View 2nd Demo</a>
+    &nbsp;·&nbsp;
     <a href="https://github.com/softeerbootcamp/Team6/discussions/landing">Report Bug</a>
-    ·
+    &nbsp;·&nbsp;
     <a href="https://hyundaibootcamp06.notion.site/6-Oil-Pocket-c7076bc7e7e64e51aeee7f10237f37a0">Team Notion</a>
   </p>
 </div>
@@ -21,9 +23,17 @@
 
 ## 📑 &nbsp; About The Project
 
-https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-bcd2-d206ad04ae5d.mov
+#### 메인화면
 
-##### 5주차 결과물
+https://user-images.githubusercontent.com/74173976/220026872-30cf758a-0448-445b-87aa-b97b55a0c6af.mov
+
+#### 로그인 / 회원가입
+
+https://user-images.githubusercontent.com/74173976/220026787-be4ea910-a243-4c5c-835f-e46d822b8b2d.mov
+
+#### 마이페이지
+
+https://user-images.githubusercontent.com/74173976/220026714-540d982c-2e78-47a4-a208-a51c0cacecdd.mov
 
 <br>
 
@@ -59,11 +69,14 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 <br>
 
 ## 📝 &nbsp; Functions
-#### 1️⃣ 현재 위치 주변 최저가 주유소 탐색 (지도)
-#### 2️⃣ 월별 사용량 비교 (차트)
-#### 3️⃣ 이번 달 평균 주유가와의 비교 (카드) 
-#### 4️⃣ 사용자 주유 기록 확인 (표)
-#### 5️⃣ 유가 정보 1일 단위로 자동 다운로드 (셀레니움 + 스프링 스케줄러 활용)
+#### 1️⃣ 주변 주유소 유류비 검색 및 비교
+#### 2️⃣ 로그인 / 로그아웃
+#### 3️⃣ 사용자 프로필 수정
+#### 4️⃣ 사용자 주유 기록 입력
+#### 5️⃣ 사용자 유류비 다른 사용자와 비교
+#### 6️⃣ 사용자 유류비 월별 차트
+#### 7️⃣ 사용자 주유 내역 확인
+#### 8️⃣ 유가 정보 1일 단위로 자동 다운로드 (셀레니움 + 스프링 스케줄러 활용)
 
 <br>
 
@@ -83,8 +96,6 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 #### <a href="https://github.com/softeerbootcamp/Team6/issues">Github Issues</a> <br>
 #### <a href="https://github.com/orgs/softeerbootcamp/projects/14">Github Project 간판보드</a> <br>
 #### <a href="https://www.figma.com/file/HNqNdLbIeWnWxMnB94uHwJ/User-Flow?node-id=366%3A596&t=xycFfE7TcGXamIa1-1">Design Detail</a> <br>
-
-<a href=""></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

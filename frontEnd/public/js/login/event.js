@@ -1,4 +1,4 @@
-import { addEvent, giveErrorStyle, _$ } from "../common/function";
+import { addEvent, giveErrorStyle, _$ } from "../common/utils.js";
 import { fetchLoginID } from "./fetch";
 
 const eventToLoginBtn = ($container) => {

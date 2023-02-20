@@ -1,3 +1,5 @@
+import { isReleaseMode } from "../common/utils";
+
 let map = "";
 let DetailTabDisplay = false;
 let searchOption = 0;
@@ -257,7 +259,7 @@ const brandLogoMapper = {
     "오일뱅크": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/오일뱅크.png",
     "custom": "./img/GasStation_Image/custom.png",
     "E1": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/E1.png",
-    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.pngw",
+    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
     "ex": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
     "GS": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/GS.png",
     "S-Oil": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/S-Oil.png",
@@ -329,10 +331,13 @@ function ShowGSTDetail(event, ResultArray){
 
     FillSTDetail(ResultArray[k]);
 
-    console.log("요청 보낸다~~");
+    const HOST_URL = isReleaseMode() ? 
+                        "https://www.oilpocket.kro.kr" :
+                        "http://localhost:8080" ;
+
     $.ajax({
         method:"GET",
-        url:"http://localhost:8080/api/v1/gas-station/" + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
+        url:`${HOST_URL}/api/v1/gas-station/` + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
         + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId) + "/month", 
         success:function(response) {
             console.log(response);
@@ -342,7 +347,6 @@ function ShowGSTDetail(event, ResultArray){
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
-    
 }
 
 function FillSTDetail(ResultArrayElem){
@@ -380,7 +384,7 @@ function FillSTDetail(ResultArrayElem){
     ST_phone.innerHTML = psTelNo;
 
     const ST_url = document.getElementById("GSTdetail_url");
-    ST_url.innerHTML = `www.${ResultArrayElem.stId}.com`;
+    ST_url.innerHTML = `https://www.${ResultArrayElem.stId}.com`;
 
     const ST_PriceTable = document.getElementsByClassName("main__GSTdetail__Contents__OilPriceTable__Contents");
     ST_PriceTable[0].innerHTML = "";

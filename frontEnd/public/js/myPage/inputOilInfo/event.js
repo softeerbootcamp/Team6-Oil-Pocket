@@ -1,4 +1,4 @@
-import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/function.js";
+import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/utils.js";
 import { fetchGasStationSearch, fetchOilRegister } from "./fetch.js";
 import { parseOilPriceIntoKorean } from "./helperFunction.js";
 

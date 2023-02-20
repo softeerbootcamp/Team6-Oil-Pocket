@@ -1,4 +1,4 @@
-import { _$_ALL, addEvent, changeCSS, makeNodeArrayLighterSubsequently, pipe, _$ } from "../common/function.js";
+import { _$_ALL, addEvent, changeCSS, makeNodeArrayLighterSubsequently, pipe, _$ } from "../common/utils.js";
 import { deleteChatNode, getChatTextArray } from "./helperFunction.js";
 import { 
     chatBotAnswerView__myPage01, chatBotAnswerView__myPage02, 

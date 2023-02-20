@@ -52,18 +52,18 @@ class GasStationControllerTest {
     @Test
     @DisplayName("주유소 네이밍 기준 검색 API 테스트")
     void findGasStationByName() throws Exception {
-        // Given
+        //given
         List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
                 FindGasStationResDto.builder().name("유진 주유소").brand("s-oil").stationNo(1L).address("노원구").area("서울").build(),
                 FindGasStationResDto.builder().name("서울 유진 주유소").brand("s-oil").stationNo(2L).address("도봉구").area("서울").build()
         );
-        given(gasStationService.getGasStationByContainingName("유진"))
+        given(gasStationService.getGasStationByContainingName("유진",GasType.GASOLINE))
                 .willReturn(expectedMatchingGasStations);
-
-        // When
-        // Then
+        //when
+        //then
         mockMvc.perform(get("/api/v2/gas-station")
-                        .param("name", "유진"))
+                        .param("name", "유진")
+                        .param("gasType",GasType.GASOLINE.name()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("code").value(DefaultCode.CHECK_MATCH_GAS_STATION.getCode()))
                 .andExpect(jsonPath("message").value(DefaultCode.CHECK_MATCH_GAS_STATION.getMessage()));
@@ -97,7 +97,8 @@ class GasStationControllerTest {
     @DisplayName("최근 본 주유소 가져오기 api")
     public void testFindGasStationRecent() throws Exception {
         // Call the endpoint and expect a successful response
-        mockMvc.perform(get("/api/v2/gas-station/recent"))
+        mockMvc.perform(get("/api/v2/gas-station/recent")
+                        .param("gasType",GasType.GASOLINE.name()))
                 .andExpect(status().isOk());
 
     }

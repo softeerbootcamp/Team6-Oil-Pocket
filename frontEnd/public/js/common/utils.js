@@ -52,7 +52,14 @@ const parseNumberToMoneyString = (number) => {
 
     parsedString = parsedString.split("").reverse().join("");
 
-    return `${parsedString} 원`;
+    if(parsedString[0] === ",") {
+        parsedString = parsedString.substring(1, );
+    }
+    else if(parsedString[0] ==="-" && parsedString[1] === ",") {
+        parsedString = parsedString[0] + parsedString.substring(2, );
+    }
+
+    return `${parsedString}`;
 }
 
 const isReleaseMode = () => location.hostname === RELEASE_HOST_URL;
