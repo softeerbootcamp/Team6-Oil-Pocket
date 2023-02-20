@@ -118,7 +118,7 @@ public class UserRecordService {
 
         long average = getAverage(rankSavingPrices);
 
-        FoodImage foodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(ecoPrice))
+        FoodImage foodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(Math.abs(ecoPrice)))
                 .orElseThrow(() -> new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE));
 
         return UserEcoRecordResDto.builder().userId(user.getId())
