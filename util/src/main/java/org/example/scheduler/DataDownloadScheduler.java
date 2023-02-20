@@ -79,14 +79,14 @@ public class DataDownloadScheduler {
         WebElement button = driver.findElement(By.xpath("//*[@id=\"priceInfoVO\"]/div/div[2]/table/tbody/tr/td[2]/a[2]"));
         button.sendKeys(Keys.ENTER);
         driver.switchTo().alert().accept();
-        gasDataService.insertGasInfo(oilStation, new NomalGasDataCallback());
+        gasDataService.batchInsertGasInfo(oilStation, false);
 
 
         WebElement casRadio = driver.findElement(By.xpath("//*[@id=\"rdo2_1\"]"));
         casRadio.click();
         button.sendKeys(Keys.ENTER);
         driver.switchTo().alert().accept();
-        gasDataService.insertGasInfo(lpgStation, new LpgGasDataCallback()); //TODO --> 싱글톤 & 함수형 인터페이스
+        gasDataService.batchInsertGasInfo(lpgStation, true);
     }
     private void notifyToSlack(String message) {
         SlackAttachment slackAttachment = new SlackAttachment();
