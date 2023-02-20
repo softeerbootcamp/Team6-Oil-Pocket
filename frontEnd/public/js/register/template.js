@@ -1,3 +1,6 @@
+const genderValues = ["남자", "여자"];
+const ageValues = ["20대", "30대", "40대", "50대", "60대 이상"];
+
 const getRegisterTemplate = () => `
     <section class="registerArea">
         <div class="registerArea__errorModal--IDvalidation">
@@ -21,16 +24,11 @@ const getRegisterTemplate = () => `
                 </div>
                 <div class="registerArea__dropDownArea">
                     <div class="registerArea__genderArea">
-                        <div class="registerArea__genderValue">남자</div>
-                        <div class="registerArea__genderValue">여자</div>
+                        ${genderValues.forEach((gender) => {`<div class="registerArea__genderValue">${gender}</div>`})}
                         <div class="registerArea__genderTitle">성별</div>
                     </div>
                     <div class="registerArea__ageArea">
-                        <div class="registerArea__ageValue">20대</div>
-                        <div class="registerArea__ageValue">30대</div>
-                        <div class="registerArea__ageValue">40대</div>
-                        <div class="registerArea__ageValue">50대</div>
-                        <div class="registerArea__ageValue">60대 이상</div>
+                        ${ageValues.forEach((age) => {`<div class="registerArea__ageValue">${age}</div>`})}
                         <div class="registerArea__ageTitle">나이</div>
                     </div>
                 </div>

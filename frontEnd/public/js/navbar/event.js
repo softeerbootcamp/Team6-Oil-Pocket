@@ -1,4 +1,4 @@
-import { addEvent, _$ } from "../common/function"
+import { addEvent, _$ } from "../common/utils"
 import { fetchLogoutID } from "../login/fetch";
 
 const eventToLogoutBtn = ($container) => {

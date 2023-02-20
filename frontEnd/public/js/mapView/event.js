@@ -1,4 +1,4 @@
-import { addEvent, changeCSS, _$, _$_ALL } from "../common/function";
+import { addEvent, changeCSS, _$, _$_ALL } from "../common/utils";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 

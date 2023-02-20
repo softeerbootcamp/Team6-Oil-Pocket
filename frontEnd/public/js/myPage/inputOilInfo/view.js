@@ -1,6 +1,8 @@
 import { navBarView } from "../../navbar/view.js";
-import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput, eventToRegisterBtn, eventToSearchValue, eventToPreferBtn, eventToPreferModalCloseBtn } from "./event.js";
-import { getInputOilInfoTemplate, getSearchTemplate, preferModalTemplate } from "./template.js";
+import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput, 
+    eventToRegisterBtn, eventToSearchValue, eventToPreferBtn, eventToPreferModalCloseBtn 
+} from "./event.js";
+import { getInputOilInfoTemplate, getSearchTemplate } from "./template.js";
 
 const inputOilInfoView = async () => {
     const $inputOilInputContainer = document.createElement("section");

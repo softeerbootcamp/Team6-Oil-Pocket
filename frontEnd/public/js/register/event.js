@@ -1,4 +1,4 @@
-import { _$, _$_ALL, addEvent, changeCSS, changeArrayCSS } from "../common/function"
+import { _$, _$_ALL, addEvent, changeCSS, changeArrayCSS } from "../common/utils"
 import { fetchRegisterID, fetchValidateID } from "./fetch";
 import { getRegisterFetchBody, isSamePWInputs } from "./helperFunction";
 

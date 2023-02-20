@@ -1,5 +1,4 @@
-import { _$_ALL, changeCSS, pipe } from "../common/function";
-import { getChatBotTemplate } from "./template";
+import { _$_ALL, changeCSS, pipe } from "../common/utils";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 

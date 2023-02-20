@@ -1,4 +1,4 @@
-import { _$, changeCSS, isReleaseMode } from "../common/function";
+import { _$, changeCSS, isReleaseMode } from "../common/utils";
 import { BASE_COMMON_URL, RELEASE_COMMON_URL, HEADER, METHOD, RELEASE_COOKIE_URL, BASE_COOKIE_URL } from "../common/variable";
 
 let isLogin = false;

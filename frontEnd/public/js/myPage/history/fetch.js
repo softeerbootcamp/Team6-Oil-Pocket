@@ -1,6 +1,6 @@
-import { isReleaseMode, _$ } from "../../common/function.js";
+import { isReleaseMode, _$ } from "../../common/utils.js";
 import { BASE_COOKIE_URL, METHOD, RELEASE_COOKIE_URL } from "../../common/variable.js";
-import { historyContentView, historyRowView } from "./view.js";
+import { historyRowView } from "./view.js";
 
 const fetchOilHistory = async ($container) => {
     const FETCH_URL = isReleaseMode() ? 

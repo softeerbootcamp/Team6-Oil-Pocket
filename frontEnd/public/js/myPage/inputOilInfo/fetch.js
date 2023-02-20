@@ -1,4 +1,4 @@
-import { changeCSS, isReleaseMode, _$ } from "../../common/function.js";
+import { changeCSS, isReleaseMode, _$ } from "../../common/utils.js";
 import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../common/variable.js";
 import { gasNameMapper, validateOilInput } from "./helperFunction.js";
 import { gasStationSearchView } from "./view.js";
