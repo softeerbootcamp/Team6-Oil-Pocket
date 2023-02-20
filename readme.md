@@ -80,12 +80,6 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 
 <br>
 
-<!-- GETTING STARTED & installaton -->
-## 👨‍💻 &nbsp; Getting Started
-추후 작성
-
-<br>
-
 ## 🛠 ERD
 <img width="809" alt="image" src="https://user-images.githubusercontent.com/35219960/218905377-26c50bec-8491-4f72-a320-5827c270e38b.png">
 
