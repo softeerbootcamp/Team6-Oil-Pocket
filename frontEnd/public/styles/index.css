@@ -3153,9 +3153,6 @@ a {
     margin-left: 65px;
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HG #img_HG:hover {
-    background-color: red;
-  }
   .main .main__ForMap .main__MapDiv .Map_Marker_HG #H {
     position: absolute;
     width: 40px;
