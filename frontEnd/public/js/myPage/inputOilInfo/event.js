@@ -1,5 +1,5 @@
 import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/utils.js";
-import { fetchGasStationSearch, fetchOilRegister } from "./fetch.js";
+import { fetchGasStationSearch, fetchOilRegister, fetchRecentGasStation } from "./fetch.js";
 import { parseOilPriceIntoKorean } from "./helperFunction.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
@@ -103,10 +103,13 @@ const eventToPreferBtn = ($container) => {
     const $preferBtn = _$(".oilInfoArea__preferModalBtn", $container);
     const $preferModal = _$(".oilInput__preferModal", $container);
 
-    addEvent($preferBtn, [() => changeCSS($preferModal, "top", 0)]);
+    addEvent($preferBtn, [
+        () => fetchRecentGasStation($container),
+        () => changeCSS($preferModal, "top", 0)
+    ]);
 }
 
-const eventToPreferModalCloseBtn = ($container) => {
+const eventToPreferModalCloseBtn = async ($container) => {
     const $closeBtn = _$(".preferModal__closeBtn", $container);
     const $preferModal = _$(".oilInput__preferModal", $container);
 

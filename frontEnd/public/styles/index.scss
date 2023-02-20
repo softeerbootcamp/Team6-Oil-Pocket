@@ -353,7 +353,6 @@ a {
     100% { opacity: 1; }
 }
 
-
 /* main */
 // extra small - 모바일 및 소형 기기
 @media(max-width:575.98px) {
@@ -7044,6 +7043,13 @@ a {
                                 width: 30%;
                                 text-align: center;
                             }
+                        }
+
+                        & h3 {
+                            margin-top: 20%;
+                            font-size: 1.8rem;
+                            color: #14BD72;
+                            font-weight: 700;
                         }
                     }
                 }
