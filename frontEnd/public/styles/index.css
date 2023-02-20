@@ -3144,12 +3144,13 @@ a {
     height: 40%;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__addOilingInfo {
-    width: 30%;
-    height: 10%;
+    width: 150px;
+    height: 30px;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 680px;
     border-radius: 20px;
     border: 1px solid #14BD72;
     background-color: #14BD7E;
