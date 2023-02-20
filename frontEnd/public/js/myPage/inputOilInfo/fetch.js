@@ -76,14 +76,13 @@ const fetchRecentGasStation = ($container) => {
         headers: HEADER.GET,
         credentials: "include"
     }).then((res) => {
+        $oilRecentModalContent.innerHTML = ``;
         if(res.status === 200) {
             return res.json();
         }
         return {};
     }).then(({data}) => {
         if(data) {
-            $oilRecentModalContent.innerHTML = ``;
-
             data.forEach(({address, name, brand}) => {
                 $oilRecentModalContent.appendChild(recentGasStationView(brand, name, address));
             })
