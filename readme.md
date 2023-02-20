@@ -10,9 +10,11 @@
 
   <p align="center">
     <a href="https://youtu.be/D2eJQR__sO4">View 1st Demo</a>
-    ·
+    &nbsp;·&nbsp;
+    <a href="https://youtu.be/f9LQ9UuMMdw">View 2nd Demo</a>
+    &nbsp;·&nbsp;
     <a href="https://github.com/softeerbootcamp/Team6/discussions/landing">Report Bug</a>
-    ·
+    &nbsp;·&nbsp;
     <a href="https://hyundaibootcamp06.notion.site/6-Oil-Pocket-c7076bc7e7e64e51aeee7f10237f37a0">Team Notion</a>
   </p>
 </div>
