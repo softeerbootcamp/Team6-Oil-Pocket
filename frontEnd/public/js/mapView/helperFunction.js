@@ -267,7 +267,6 @@ const brandLogoMapper = {
 }
 
 function SelectStIdLogo(stId, name, radius){
-    console.log(stId    )
     return `
         <div class='main__ResultList'> 
             <img class='main__ResultList__Title_Logo' src = ${brandLogoMapper[stId]}>
