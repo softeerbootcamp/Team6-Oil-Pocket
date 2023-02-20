@@ -1,3 +1,5 @@
+import { isReleaseMode } from "../common/function";
+
 let map = "";
 let DetailTabDisplay = false;
 let searchOption = 0;
@@ -329,10 +331,13 @@ function ShowGSTDetail(event, ResultArray){
 
     FillSTDetail(ResultArray[k]);
 
-    console.log("요청 보낸다~~");
+    const HOST_URL = isReleaseMode() ? 
+                        "https://www.oilpocket.kro.kr" :
+                        "http://localhost:8080" ;
+
     $.ajax({
         method:"GET",
-        url:"http://localhost:8080/api/v1/gas-station/" + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
+        url:`${HOST_URL}/api/v1/gas-station/` + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
         + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId) + "/month", 
         success:function(response) {
             console.log(response);
@@ -342,7 +347,6 @@ function ShowGSTDetail(event, ResultArray){
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
-    
 }
 
 function FillSTDetail(ResultArrayElem){

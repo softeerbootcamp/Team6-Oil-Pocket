@@ -45,8 +45,17 @@ const getImageName = (savePrice) => {
 const setImageByName = ($image, imageName) => $image.setAttribute("src", imageLocationMapper[imageName]);
 
 const adjustChartsOnCard = (myPrice, commonPrice, $container) => {
-    const $myChart = _$(".oilInfoArea__myChart", $container);
-    const $commonChart = _$(".oilInfoArea__otherChart", $container);
+    const $myChart = myPrice > 0 ?
+                        _$(".oilInfoArea__myChart", $container) : 
+                        _$(".oilInfoArea__myMinusChart", $container) ;
+
+    const $commonChart = commonPrice > 0 ?
+                        _$(".oilInfoArea__otherChart", $container) :
+                        _$(".oilInfoArea__otherMinusChart", $container);
+
+    myPrice = Math.abs(myPrice);
+    commonPrice = Math.abs(commonPrice);
+
     const upperBound = Math.max(myPrice, commonPrice);
 
     let myPercent = myPrice / upperBound * 100;
@@ -54,17 +63,18 @@ const adjustChartsOnCard = (myPrice, commonPrice, $container) => {
 
     changeCSS($myChart, "height", `${myPercent}%`);
     changeCSS($commonChart, "height", `${commonPercent}%`);
+    changeCSS($commonChart, "outline", "0.25vh solid #14BD72");
 }
 
 const makeComparisonTitle = ($title, userSavePrice) => 
     $title.innerHTML = getCompareText(userSavePrice);
 
 const makeUserOilExpenditureCard = ($userPriceText, userPrice) => 
-    $userPriceText.innerHTML = parseNumberToMoneyString(userPrice);
+    $userPriceText.innerHTML = `${parseNumberToMoneyString(userPrice)}원`;
 
 const makeUserSaveCard = ($container, userSavePrice) => {
     const $commonPriceText = _$(".oilInfoArea__compareMySaveBox > h1", $container);
-    $commonPriceText.innerHTML = parseNumberToMoneyString(userSavePrice);
+    $commonPriceText.innerHTML = `${parseNumberToMoneyString(userSavePrice)}원`;
 
     let priceDiffColor = "red";
     if(userSavePrice < 0) {
@@ -85,19 +95,14 @@ const makeCommonSaveCard = ($card, age, gender, commonSavePrice) => {
     const $cardContent = _$("h1", $card);
 
     $cardTitle.innerHTML = `<span>${age} ${genderMapper[gender]}</span> 절약 금액`;
-    $cardContent.innerHTML = parseNumberToMoneyString(commonSavePrice);
+    $cardContent.innerHTML = `${parseNumberToMoneyString(commonSavePrice)}원`;
 }
 
 const makeChartCard = ($card, userSavePrice, commonSavePrice, userID, age, gender) => {
-    const $userText = _$(".oilInfoArea__chartValueText--user", $card);
-    const $commonText = _$(".oilInfoArea__chartValueText--common", $card);
     const $userInfoText = _$(".oilInfoArea__chartNameArea--name", $card);
     const $commonInfoText = _$(".oilInfoArea__chartNameArea--info", $card);
-
-    $userText.innerHTML = parseNumberToMoneyString(userSavePrice);
-    $commonText.innerHTML = parseNumberToMoneyString(commonSavePrice);
-    $userInfoText.innerHTML = userID;
-    $commonInfoText.innerHTML = `${age} ${gender}`;
+    $userInfoText.innerHTML = `${userID}님`;
+    $commonInfoText.innerHTML = `${age} ${genderMapper[gender]}`;
 
     adjustChartsOnCard(userSavePrice, commonSavePrice, $card);
 }
@@ -117,6 +122,11 @@ const makeComparisonCards = ($container, userOilPrice, averageEcoPrice, userSave
     makeCommonSaveCard($commonSaveCard, age, gender, averageEcoPrice);
     makeChartCard($chartBox, userSavePrice, averageEcoPrice, userID, age, gender);
     setImageByName($compareImage, getImageName(Math.abs(userSavePrice)));
+
+    if(userSavePrice < 0) {
+        const $banImage = _$(".oilInfoArea__ban", $container);
+        changeCSS($banImage, "display", "block");
+    }
 }
 
 export { makeComparisonCards }

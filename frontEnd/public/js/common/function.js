@@ -52,6 +52,13 @@ const parseNumberToMoneyString = (number) => {
 
     parsedString = parsedString.split("").reverse().join("");
 
+    if(parsedString[0] === ",") {
+        parsedString = parsedString.substring(1, );
+    }
+    else if(parsedString[0] ==="-" && parsedString[1] === ",") {
+        parsedString = parsedString[0] + parsedString.substring(2, );
+    }
+
     return `${parsedString}`;
 }
 

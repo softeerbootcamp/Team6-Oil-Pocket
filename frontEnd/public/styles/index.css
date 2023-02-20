@@ -6915,7 +6915,7 @@ a {
     padding: 1.5vh 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     border-radius: 2vh;
     outline: 0.2vh solid #F2F2F2;
@@ -6928,7 +6928,7 @@ a {
     align-items: flex-end;
     width: 60%;
     padding: 0 10%;
-    height: 95%;
+    height: 45%;
     border-bottom: 0.3vh solid #14BD72;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartArea .oilInfoArea__myChart {
@@ -6940,7 +6940,24 @@ a {
     width: 15%;
     height: 0%;
     background-color: #fff;
-    outline: 0.25vh solid #14BD72;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartMinusArea {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 60%;
+    padding: 0 10%;
+    height: 45%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartMinusArea .oilInfoArea__myMinusChart {
+    width: 15%;
+    height: 0%;
+    background-color: #14BD72;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartMinusArea .oilInfoArea__otherMinusChart {
+    width: 15%;
+    height: 0%;
+    background-color: #fff;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartValueTextArea {
     display: flex;
@@ -6960,7 +6977,7 @@ a {
     width: 60%;
     margin-top: 0.5vh;
     padding: 0 10%;
-    height: 5%;
+    height: 8%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__boxArea .oilInfoArea__chartBox .oilInfoArea__chartNameArea span {
     text-align: center;
@@ -6984,6 +7001,7 @@ a {
     box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
     background-color: #FDF1CC;
     transition: 0.5s;
+    position: relative;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox:hover {
     margin-top: -2vh;
@@ -6993,6 +7011,12 @@ a {
     transition: 0.5s;
     width: 90%;
     height: 90%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox .oilInfoArea__ban {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__profileContainer {
     width: 100%;
