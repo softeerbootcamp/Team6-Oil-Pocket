@@ -6,7 +6,7 @@
     <img src="https://user-images.githubusercontent.com/74173976/216799361-7934e2c4-85b8-4640-bf8b-e7d80d7be275.png" alt="Logo" width="70%" height="70%">
   </a>
 
-  <h3 align="center">⛽️ 유류비 절약 플랫폼</h3>
+  <h3 align="center"><a href="https://www.oilpocket.kro.kr/">⛽️ 유류비 절약 플랫폼</a></h3>
 
   <p align="center">
     <a href="https://youtu.be/D2eJQR__sO4">View 1st Demo</a>
