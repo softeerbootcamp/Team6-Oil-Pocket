@@ -52,7 +52,7 @@ const parseNumberToMoneyString = (number) => {
 
     parsedString = parsedString.split("").reverse().join("");
 
-    return `${parsedString} 원`;
+    return `${parsedString}`;
 }
 
 const isReleaseMode = () => location.hostname === RELEASE_HOST_URL;

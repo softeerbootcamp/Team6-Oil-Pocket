@@ -18,7 +18,7 @@ const getCompareText = (mySavePrice) => {
         return `이번 달은 <span>${getImageName(mySavePrice)}</span> 만큼 절약했어요! 😁`;
     }
     else if(mySavePrice < 0) {
-        return `이번 달은 <span>${getImageName(mySavePrice)}</span> 만큼 더 소비했어요! 🥲`;
+        return `이번 달은 <span>${getImageName(Math.abs(mySavePrice))}</span> 만큼 더 소비했어요! 🥲`;
     }
 
     return "이번 달은 다른 사람들만큼 사용했네요!";
@@ -116,7 +116,7 @@ const makeComparisonCards = ($container, userOilPrice, averageEcoPrice, userSave
     makeComparisonSecondTitle($secondTitle, age, gender, percent);
     makeCommonSaveCard($commonSaveCard, age, gender, averageEcoPrice);
     makeChartCard($chartBox, userSavePrice, averageEcoPrice, userID, age, gender);
-    setImageByName($compareImage, getImageName(userSavePrice));
+    setImageByName($compareImage, getImageName(Math.abs(userSavePrice)));
 }
 
 export { makeComparisonCards }
