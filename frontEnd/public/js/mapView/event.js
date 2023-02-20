@@ -27,4 +27,4 @@ const eventToSeekBarBtns = ($container) => {
     });
 }
 
-export { eventToSeekBarBtns }
+export { eventToSeekBarBtns, distanceOption}

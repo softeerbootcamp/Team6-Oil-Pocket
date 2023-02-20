@@ -14,7 +14,6 @@ const getMapContentTemplate = () => `
                             <div class="main__ShowCurrentLocation">
                                 <div class="main__AdjustRadius">
                                     <div class="main__Radius">
-                                        반경
                                     </div>
                                     <div class="main__AdjustBar">
                                         <input type="range" step=1 min=1 max=10 value=3>
@@ -34,7 +33,7 @@ const getMapContentTemplate = () => `
                                             </div>
                                             <div class="adjustBar__infoBox">
                                                 <span>&nbsp;</span>
-                                                <h5>4</h5>
+                                                <h5>&nbsp;</h5>
                                             </div>
                                             <div class="adjustBar__infoBox">
                                                 <span>&nbsp;</span>

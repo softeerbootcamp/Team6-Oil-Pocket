@@ -1,4 +1,5 @@
 import { isReleaseMode } from "../common/utils";
+import { distanceOption } from "./event";
 
 let map = "";
 let DetailTabDisplay = false;
@@ -144,7 +145,7 @@ function SearchNearGasStation(){
             "resCoordType" : "EPSG3857",
             "searchType" : "name",
             "searchtypCd" : "A",
-            "radius" : 3,
+            "radius" : distanceOption,
             "reqCoordType" : "WGS84GEO",
             "centerLon" : map.getCenter()._lng,
             "centerLat" : map.getCenter()._lat,
@@ -448,6 +449,7 @@ function transStId(stId){
         case 'GS' : return 'GS칼텍스';
         case '자가상표' : return '자가상표';
         case 'E1' : return 'E1';
+        default : return 'SK가스';
     }
 }
 
@@ -686,19 +688,13 @@ function SelectSearchOption2(e) {
 }
 
 function ShowChart(response){
-
     const dateLabels = [];
-
-    for(var k=0;k<30;k++){
-      dateLabels.push(k);
-    }
     const PREGasolineData = [];
     const GasolineData = [];
     const DiselData = [];
     const LPGData = [];
-
+    let data;
     const PriceInformation = response.data.details;
-    console.log(PriceInformation[5].price);
     for(var k in PriceInformation){
         if(PriceInformation[k].gasType == 'PREMIUM_GASOLINE'){
             PREGasolineData.push(PriceInformation[k].price);
@@ -714,33 +710,89 @@ function ShowChart(response){
         }
     }
 
-    const data = {
-      labels: dateLabels,
-      datasets: [
-        {
-            label: '고급유',
-            backgroundColor: '#dbead5',
-            borderColor: '#dbead5',
-            data: PREGasolineData,
-            fill:false,
-        },
-        {
-            label: '휘발유',
-            backgroundColor: '#93bf85',
-            borderColor: '#93bf85',
-            data: GasolineData,
-            fill:false,
-        },
-        {
-            label: '경유',
-            backgroundColor: '#008000',
-            borderColor: '#008000',
-            data: DiselData,
-            fill:false,
+    var Preflag=0;
+    for(var index=0; index<30;index++){
+        if(PREGasolineData[index]==0){
+            continue;
         }
-    ]
-    };
-  
+        else Preflag=1;
+    }
+
+    if(GasolineData.length == 0){
+        for(var k =0;k<30;k++){
+            dateLabels.push(PriceInformation[k].date.slice(-2));
+        }
+        data = {
+            labels: dateLabels,
+            datasets: [
+              {
+                label: 'LPG',
+                backgroundColor: '#008000',
+                borderColor: '#008000',
+                data: LPGData,
+                fill:false,
+              }
+          ]
+        };
+    }
+    else {
+        if(Preflag ==0){
+            for(var k =0;k<60;k = k+=2){
+                dateLabels.push(PriceInformation[k].date.slice(-2));
+            }
+            data = {
+                labels: dateLabels,
+                datasets: [
+                  {
+                      label: '휘발유',
+                      backgroundColor: '#93bf85',
+                      borderColor: '#93bf85',
+                      data: GasolineData,
+                      fill:false,
+                  },
+                  {
+                      label: '경유',
+                      backgroundColor: '#008000',
+                      borderColor: '#008000',
+                      data: DiselData,
+                      fill:false,
+                  }
+              ]
+            };
+        }
+        else {
+            for(var k =0;k<90;k+=3){
+                dateLabels.push(PriceInformation[k].date.slice(-2));
+            }
+            data = {
+                labels: dateLabels,
+                datasets: [
+                  {
+                      label: '고급유',
+                      backgroundColor: '#dbead5',
+                      borderColor: '#dbead5',
+                      data: PREGasolineData,
+                      fill:false,
+                  },
+                  {
+                      label: '휘발유',
+                      backgroundColor: '#93bf85',
+                      borderColor: '#93bf85',
+                      data: GasolineData,
+                      fill:false,
+                  },
+                  {
+                      label: '경유',
+                      backgroundColor: '#008000',
+                      borderColor: '#008000',
+                      data: DiselData,
+                      fill:false,
+                  }
+              ]
+            };
+        }
+    }
+
     const config = {
       type: 'line',
       data: data,
@@ -749,7 +801,7 @@ function ShowChart(response){
         pointStyle:false,
         }
     }
-  
+
     const myChart = new Chart(
       document.getElementById('myChart'),
       config
@@ -757,3 +809,5 @@ function ShowChart(response){
 }
 
 export { initTmap }
+
+
