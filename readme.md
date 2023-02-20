@@ -23,9 +23,15 @@
 
 ## 📑 &nbsp; About The Project
 
-https://user-images.githubusercontent.com/74173976/216800277-46680ee3-2846-4494-bcd2-d206ad04ae5d.mov
+https://user-images.githubusercontent.com/74173976/218913447-d71c97b6-1e5f-4a29-8bc9-282016d76fc5.mov
 
-##### 5주차 결과물
+#### 로그인 / 회원가입
+
+https://user-images.githubusercontent.com/74173976/218913482-41e7421f-228d-426d-9bb7-83a6fe1b02d3.mov
+
+#### 마이페이지
+
+https://user-images.githubusercontent.com/74173976/218913513-e487662f-5ede-48b2-a05a-c500663b80b8.mov
 
 <br>
 
@@ -61,11 +67,14 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 <br>
 
 ## 📝 &nbsp; Functions
-#### 1️⃣ 현재 위치 주변 최저가 주유소 탐색 (지도)
-#### 2️⃣ 월별 사용량 비교 (차트)
-#### 3️⃣ 이번 달 평균 주유가와의 비교 (카드) 
-#### 4️⃣ 사용자 주유 기록 확인 (표)
-#### 5️⃣ 유가 정보 1일 단위로 자동 다운로드 (셀레니움 + 스프링 스케줄러 활용)
+#### 1️⃣ 주변 주유소 유류비 검색 및 비교
+#### 2️⃣ 로그인 / 로그아웃
+#### 3️⃣ 사용자 프로필 수정
+#### 4️⃣ 사용자 주유 기록 입력
+#### 5️⃣ 사용자 유류비 다른 사용자와 비교
+#### 6️⃣ 사용자 유류비 월별 차트
+#### 7️⃣ 사용자 주유 내역 확인
+#### 8️⃣ 유가 정보 1일 단위로 자동 다운로드 (셀레니움 + 스프링 스케줄러 활용)
 
 <br>
 
@@ -85,8 +94,6 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 #### <a href="https://github.com/softeerbootcamp/Team6/issues">Github Issues</a> <br>
 #### <a href="https://github.com/orgs/softeerbootcamp/projects/14">Github Project 간판보드</a> <br>
 #### <a href="https://www.figma.com/file/HNqNdLbIeWnWxMnB94uHwJ/User-Flow?node-id=366%3A596&t=xycFfE7TcGXamIa1-1">Design Detail</a> <br>
-
-<a href=""></a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
