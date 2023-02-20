@@ -6,6 +6,7 @@ import com.kaspi.backend.domain.GasStation;
 import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasBrand;
+import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
 import java.util.NoSuchElementException;
@@ -27,28 +28,12 @@ public class GasStationService {
     private final GasStationDao gasStationDao;
     private final GasDetailService gasDetailService;
 
-    public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName) {
-        List<FindGasStationResDto> matchingGasStations = new ArrayList<>();
-        String name = "%" + reqGasStationName + "%";
-        Iterable<GasStation> gasStationMatchingName = gasStationDao.findAllLikeName(getLikeGasStationName(reqGasStationName));
-        log.info("주유소 이름 검색 요청 name:{}", reqGasStationName);
-        for (GasStation gasStation : gasStationMatchingName) {
-            insertMatchingGasStation(gasStation, matchingGasStations);
-        }
-        log.info("matching된 주유소 name:{}", matchingGasStations.stream().map(FindGasStationResDto::getName).collect(Collectors.toList()));
-        return matchingGasStations;
+    public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName, GasType requestGasType) {
+        log.info("주유소 이름 검색 요청 name:{}, gasType:{}", reqGasStationName,requestGasType);
+        return gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName),requestGasType.name());
     }
 
-    private void insertMatchingGasStation(GasStation gasStation, List<FindGasStationResDto> matchingGasStations) {
-        matchingGasStations.add(FindGasStationResDto.builder()
-                .stationNo(gasStation.getStationNo())
-                .brand(GasBrand.getImgByDbName(gasStation.getBrand()))
-                .name(gasStation.getName())
-                .area(gasStation.getArea())
-                .address(gasStation.getAddress())
-                .build());
 
-    }
 
     public GasStation getGasStationByNo(Long gasStationNo) {
         Optional<GasStation> findGasStation = gasStationDao.findById(gasStationNo);
