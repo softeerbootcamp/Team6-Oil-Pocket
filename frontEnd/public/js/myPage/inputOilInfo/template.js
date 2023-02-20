@@ -53,7 +53,7 @@ const getInputOilInfoTemplate = () => `
                             <div class="oilInfoArea__oilValue">경유</div>
                             <div class="oilInfoArea__oilValue">LPG</div>
                             <div class="oilInfoArea__oilSelect">
-                                <span>기름 종류</span>
+                                <span>휘발유</span>
                                 <img src="../../img/dropDownBtn.png">
                             </div>
                         </div>
