@@ -58,6 +58,9 @@ function initTmap() {
 
         const SearchFromRouteButton = document.querySelector(".main__SearchFromRoute");
         SearchFromRouteButton.addEventListener('click', (e) => SelectSearchOption2(e));
+
+        const AddOilingButton = document.getElementsByClassName("main__addOilingInfo")[0];
+        AddOilingButton.addEventListener('click', MakeOilingInformation);
     });
 
     const SearchButton = document.getElementById("main__btn_select");
@@ -299,14 +302,10 @@ function ShowGSTDetail(event, ResultArray){
         DetailTabDisplay = true;
     }
 
-    console.log("1");
     document.getElementById('myChart').remove();
-    console.log("1");
     const newChart = document.createElement('canvas');
-    console.log("1");
     newChart.id= 'myChart'; 
 
-    console.log(newChart);
     document.getElementsByClassName('main__GSTdetail__Contents__Chart')[0].append(newChart);
     const ResultTitle = event.target.closest(".main__ResultList");
     const SelectedTitle = ResultTitle.querySelector("#stName");
@@ -331,7 +330,8 @@ function ShowGSTDetail(event, ResultArray){
     map.zoomIn();
 
     FillSTDetail(ResultArray[k]);
-
+    console.log(ResultArray[k].roadName);
+    console.log(ResultArray[k].buildingNo1);
     const HOST_URL = isReleaseMode() ? 
                         "https://www.oilpocket.kro.kr" :
                         "http://localhost:8080" ;
@@ -351,6 +351,11 @@ function ShowGSTDetail(event, ResultArray){
 }
 
 function FillSTDetail(ResultArrayElem){
+
+    if(searchOption == 0){
+        const AddOilingButton = document.getElementsByClassName("main__addOilingInfo")[0];
+        AddOilingButton.style.display = 'none';
+    }
     const ST_name = document.getElementById("GSTdetail__Name");
     ST_name.innerHTML = ResultArrayElem.name;
 
@@ -445,10 +450,7 @@ function transStId(stId, type){
         case '알뜰' : return '알뜰주유소';
         case 'ex-OIL' : return '알뜰(ex)';
         case 'NH-OIL' : return 'NH-OIL';
-        case 'SK' : if(type ==0) {
-                        return 'SK가스';
-                    }
-                    else return 'SK에너지'   
+        case 'SK' : return 'SK'; 
         case 'GS' : return 'GS칼텍스';
         case '자가상표' : return '자가상표';
         case 'E1' : return 'E1';

@@ -119,6 +119,9 @@ const getMapContentTemplate = () => `
                                     최근 가격 추이
                                     <canvas id="myChart"></canvas>
                                 </div>
+                                <button class="main__addOilingInfo">
+                                    주유 정보 입력
+                                </button>
                             </div>
                         </div>
                     </div>

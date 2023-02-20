@@ -3182,6 +3182,20 @@ a {
                                     height:40%;
                                 }
                             }
+
+                            & .main__addOilingInfo {
+                                width:30%;
+                                height:10%;
+                                display:flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-top: 25px;
+                                border-radius: 20px;
+                                border:1px solid #14BD72;
+                                background-color: #14BD7E;
+                                font-size: 1rem;
+                                color:white;
+                            }
                         }
                     }
                 }
