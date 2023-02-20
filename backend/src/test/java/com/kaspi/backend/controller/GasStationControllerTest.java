@@ -5,6 +5,7 @@ import com.kaspi.backend.domain.GasStationDto;
 import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.service.GasStationService;
+import com.kaspi.backend.service.HttpSessionService;
 import com.kaspi.backend.util.config.TestRedisConfiguration;
 import com.kaspi.backend.util.response.code.DefaultCode;
 import java.time.LocalDate;
@@ -16,17 +17,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import java.util.Arrays;
 import java.util.List;
 
 import static java.time.LocalDate.now;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,6 +44,9 @@ class GasStationControllerTest {
     MockMvc mockMvc;
     @MockBean
     GasStationService gasStationService;
+
+    @MockBean
+    HttpSessionService httpSessionService;
 
 
     @Test
@@ -83,6 +90,15 @@ class GasStationControllerTest {
                 .andExpect(jsonPath("message").value(DefaultCode.SUCCESS_TO_FIND_GAS_DETAIL.getMessage()));
 
         verify(gasStationService, times(1)).findGasStationDto(name,roadName,buildNum,brand);
+
+    }
+
+    @Test
+    @DisplayName("최근 본 주유소 가져오기 api")
+    public void testFindGasStationRecent() throws Exception {
+        // Call the endpoint and expect a successful response
+        mockMvc.perform(get("/api/v2/gas-station/recent"))
+                .andExpect(status().isOk());
 
     }
 }

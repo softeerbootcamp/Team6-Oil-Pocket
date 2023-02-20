@@ -10,12 +10,15 @@ const RELEASE_COOKIE_URL = "https://www.oilpocket.kro.kr/api/v2";
 // fetch method
 const METHOD = {
     POST: "POST", 
-    GET: "GET"
+    GET: "GET",
+    PATCH: "PATCH",
+    DELETE: "DELETE"
 }
 
 // fetch header
 const HEADER = {
     POST : { 'Content-Type': 'application/json' },
+    PATCH : { 'Content-Type': 'application/json' }
 }
 
 export {

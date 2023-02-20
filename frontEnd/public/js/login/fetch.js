@@ -1,5 +1,5 @@
 import { _$, changeCSS, isReleaseMode } from "../common/function";
-import { BASE_COMMON_URL, RELEASE_COMMON_URL, HEADER, METHOD } from "../common/variable";
+import { BASE_COMMON_URL, RELEASE_COMMON_URL, HEADER, METHOD, RELEASE_COOKIE_URL, BASE_COOKIE_URL } from "../common/variable";
 
 let isLogin = false;
 let userId = ""
@@ -48,10 +48,9 @@ const fecthCheckLogin = async () => {
             isLogin = true;
             return res.json();
         }
-        else if(res.status === 401) {
-            isLogin = false;
-            return {};
-        }
+        isLogin = false;
+        
+        return {};
     }).then(({data}) => {
         if(data) {
             userId = data.userId;
@@ -61,7 +60,22 @@ const fecthCheckLogin = async () => {
     })
 }
 
+const fetchLogoutID = () => {
+    const FETCH_URL = isReleaseMode() ? 
+                        RELEASE_COOKIE_URL + "/auth" :
+                        BASE_COOKIE_URL + "/auth";
+
+    fetch(FETCH_URL, {
+        method: METHOD.DELETE,
+        credentials: "include"
+    }).then((res) => {
+        if(res.status === 200) {
+            location.assign("/")
+        }
+    })
+}
+
 export { 
-    fetchLoginID, fecthCheckLogin, 
+    fetchLoginID, fecthCheckLogin, fetchLogoutID,
     isLogin, userId, userGender, userAge
 }

@@ -1,5 +1,33 @@
 const getInputOilInfoTemplate = () => `
     <section class="oilInfoArea">
+        <div class="oilInput__preferModal">
+            <div class="oilInput__preferContent">
+                <div class="oilInput__preferContentBackGround">
+                    <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
+                    <h1>최근 본 주유소</h1>
+                    <ul class="oilInput__preferContentBox">
+                        <li>
+                            <img src="" alt="브랜드 이미지">
+                            <h2>주유소 이름</h2>
+                            <span>주유소 위치</span>
+                        </li>
+                        <li>
+                            <img src="" alt="브랜드 이미지">
+                            <h2>주유소 이름</h2>
+                            <span>주유소 위치</span>
+                        </li>
+                        <li>
+                            <img src="" alt="브랜드 이미지">
+                            <h2>주유소 이름</h2>
+                            <span>주유소 위치</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="oilInput__successModal">
+            성공적으로 입력되었습니다.
+        </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
                 <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
@@ -9,6 +37,9 @@ const getInputOilInfoTemplate = () => `
                 <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
             </div>
             <div class="oilInfoArea__contentArea">
+                <div class="oilInfoArea__preferBtnArea">
+                    <button class="oilInfoArea__preferModalBtn">최근 본 주유소 확인</button>
+                </div>
                 <h1 class="oilInfoArea__contentTitle">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 48" fill="none" id="oil--svg">
                         <path d="M17.5 0L15.5167 1.98333C14.875 2.625 0 17.675 0 30.45C0 40.075 7.875 47.95 17.5 47.95C27.125 47.95 35 40.075 35 30.45C35 17.7333 20.125 2.625 19.4833 1.98333L17.5 0ZM8.75 27.5333C10.3833 27.5333 11.6667 28.8167 11.6667 30.45C11.6667 33.6583 14.2917 36.2833 17.5 36.2833C19.1333 36.2833 20.4167 37.5667 20.4167 39.2C20.4167 40.8333 19.1333 42.1167 17.5 42.1167C11.0833 42.1167 5.83333 36.8667 5.83333 30.45C5.83333 28.8167 7.11667 27.5333 8.75 27.5333Z" fill="#14BD7E"/>
@@ -69,9 +100,37 @@ const getInputOilInfoTemplate = () => `
     </section>
 `;
 
-const getSearchTemplate = (gasStationName, address) => `
+const getSearchTemplate = (gasStationName, address, brandImageURL) => `
+    <img src="${brandImageURL}" alt="주유소 브랜드 로고">
     <h1>${gasStationName}</h1>
     <span>${address}</span>
-`
+`;
 
-export { getInputOilInfoTemplate, getSearchTemplate }
+const preferModalTemplate = () => `
+    <div class="oilInput__preferContent">
+        <div class="oilInput__preferContentBackGround">
+            <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
+            <h1>선호 주유소</h1>
+            <ul class="oilInput__preferContentBox">
+                <li>
+                    <img src="" alt="브랜드 이미지">
+                    <h2>주유소 이름</h2>
+                    <span>주유소 위치</span>
+                </li>
+                <li>
+                    <img src="" alt="브랜드 이미지">
+                    <h2>주유소 이름</h2>
+                    <span>주유소 위치</span>
+                </li>
+                <li>
+                    <img src="" alt="브랜드 이미지">
+                    <h2>주유소 이름</h2>
+                    <span>주유소 위치</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+`;
+ 
+
+export { getInputOilInfoTemplate, getSearchTemplate, preferModalTemplate }

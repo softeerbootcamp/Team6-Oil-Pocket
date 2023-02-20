@@ -15,94 +15,6 @@ const getHistoryTemplate = () => `
                     </div>
                     <div class="oilInfoArea__oilHistoryTable">
                         <div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="./public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="/public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>+3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                            <span>2022.02.01</span>
-                            <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                            <span>유진 주유소</span>
-                            <span>휘발유 30L</span>
-                            <span>42,000원</span>
-                            <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
-                            <div>
-                                <span>2022.02.01</span>
-                                <span><img src="public/img/Mask group.png" alt="주유소 브랜드 이미지"></span>
-                                <span>유진 주유소</span>
-                                <span>휘발유 30L</span>
-                                <span>42,000원</span>
-                                <span>-3,000원</span>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,4 +23,15 @@ const getHistoryTemplate = () => `
     </section>
 `;
 
-export { getHistoryTemplate }
+const getHistoryRowTemplate = (date, imgSrc, gasStationName, gasType, gasAmount, spendPrice, savePrice) => `
+    <div>
+        <span>${date}</span>
+        <span><img src="${imgSrc}" alt="주유소 브랜드 이미지"></span>
+        <span>${gasStationName}</span>
+        <span>${gasType} ${gasAmount}</span>
+        <span>${spendPrice}</span>
+        <span>${savePrice}</span>
+    </div>
+`;
+
+export { getHistoryTemplate, getHistoryRowTemplate }

@@ -8,11 +8,16 @@ const imageLocationMapper = {
     "치킨": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/chicken.png",
 };
 
+const genderMapper = {
+    "MALE": "남자",
+    "FEMALE": "여자"
+}
+
 const getCompareText = (mySavePrice) => {
-    if(mySavePrice < 0) {
+    if(mySavePrice > 0) {
         return `이번 달은 <span>${getImageName(mySavePrice)}</span> 만큼 절약했어요! 😁`;
     }
-    else if(mySavePrice > 0) {
+    else if(mySavePrice < 0) {
         return `이번 달은 <span>${getImageName(mySavePrice)}</span> 만큼 더 소비했어요! 🥲`;
     }
 
@@ -62,7 +67,7 @@ const makeUserSaveCard = ($container, userSavePrice) => {
     $commonPriceText.innerHTML = parseNumberToMoneyString(userSavePrice);
 
     let priceDiffColor = "red";
-    if(userSavePrice > 0) {
+    if(userSavePrice < 0) {
         priceDiffColor = "#3181F6";
     }
     else if(userSavePrice === 0) {
@@ -73,13 +78,13 @@ const makeUserSaveCard = ($container, userSavePrice) => {
 }
 
 const makeComparisonSecondTitle = ($title, age, gender, percent) => 
-    $title.innerHTML = `절약 금액은 ${age} ${gender} 중  <span>상위 ${percent}%</span>  입니다.`;
+    $title.innerHTML = `절약 금액은 ${age} ${genderMapper[gender]} 중  <span>상위 ${percent}%</span>  입니다.`;
 
 const makeCommonSaveCard = ($card, age, gender, commonSavePrice) => {
     const $cardTitle = _$("h3", $card);
     const $cardContent = _$("h1", $card);
 
-    $cardTitle.innerHTML = `<span>${age} ${gender}</span> 절약 금액`;
+    $cardTitle.innerHTML = `<span>${age} ${genderMapper[gender]}</span> 절약 금액`;
     $cardContent.innerHTML = parseNumberToMoneyString(commonSavePrice);
 }
 

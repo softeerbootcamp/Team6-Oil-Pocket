@@ -11,7 +11,6 @@ let ResultHtml = "";
 let SideBarDisplay = true;
 let isOption1 = true;
 let isOption2 = false; 
-let count = 0;
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -20,7 +19,8 @@ function initTmap() {
 		height : "82vh",
 		zoom : 17,
 		zoomControl : true,
-		scrollwheel : true
+		scrollwheel : true,
+        responsive : false
 	});
 
     map.on("ConfigLoad", function() {
@@ -101,18 +101,18 @@ function FindAddressofSearchCoords(lon, lat) {
             newRoadAddr += ' ' + arrResult.roadName + ' '
                     + arrResult.buildingIndex;
 
-            if (arrResult.legalDong != ''
-                    && (lastLegal != "읍" && lastLegal != "면")) {
+            // if (arrResult.legalDong != ''
+            //         && (lastLegal != "읍" && lastLegal != "면")) {
 
-                if (arrResult.buildingName != '') {
-                    newRoadAddr += (' (' + arrResult.legalDong
-                            + ', ' + arrResult.buildingName + ') ');
-                } else {
-                    newRoadAddr += (' (' + arrResult.legalDong + ')');
-                }
-            } else if (arrResult.buildingName != '') {
-                newRoadAddr += (' (' + arrResult.buildingName + ') ');
-            }
+            //     if (arrResult.buildingName != '') {
+            //         newRoadAddr += (' (' + arrResult.legalDong
+            //                 + ', ' + arrResult.buildingName + ') ');
+            //     } else {
+            //         newRoadAddr += (' (' + arrResult.legalDong + ')');
+            //     }
+            // } else if (arrResult.buildingName != '') {
+            //     newRoadAddr += (' (' + arrResult.buildingName + ') ');
+            // }
 
             var result = "<div>" + newRoadAddr + "</div>";
             const curAddr = document.getElementsByClassName("main__CurrentLocationAddress");
@@ -212,7 +212,7 @@ function ShowResult(ResultArray, positionBounds){
         if(ResultArray[k].llPrice != 0){
             LPGmarker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker'><img src="../img/mapInfo.png"><span id="LL">LPG : ${ResultArray[k].llPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_LPG'><img id='img_LPG' src="../img/marker_LPG.png"><span id="LL">${ResultArray[k].llPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -222,7 +222,8 @@ function ShowResult(ResultArray, positionBounds){
         else {
             HGmarker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker'><img src ='/public/img/mapInfo.png'><span id="HG">휘 : ${ResultArray[k].hhPrice} &nbsp; 경 : ${ResultArray[k].ggPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_HG'><img id='img_HG' src ='/public/img/marker_HG.png'><span id="H">${ResultArray[k].hhPrice}</span>
+                            <span id='G'>${ResultArray[k].ggPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -233,14 +234,14 @@ function ShowResult(ResultArray, positionBounds){
                         휘발유: <span> ${ResultArray[k].hhPrice == 0 ? '-' : ResultArray[k].hhPrice} </span>
                         <i class="fa-solid fa-circle-check"></i>&nbsp;
                         경유: <span> ${ResultArray[k].ggPrice == 0 ? '-' : ResultArray[k].ggPrice} </span>&nbsp;&nbsp;
-                        LPG: <span> ${ResultArray[k].llPrice == 0 ? '-' : ResultArray[k].llPrice} </span></div></div>`;
+                        LPG: <span> ${ResultArray[k].llPrice == 0 ? '-' : ResultArray[k].llPrice} </span></div></div></div>`;
 
         }
         else {
             ResultHtml += `<div class='main__ResultList__Contents'>
                         휘발유: <span> ${ResultArray[k].hhPrice == 0 ? '-' : ResultArray[k].hhPrice} </span>&nbsp;&nbsp;
                         경유: <span> ${ResultArray[k].ggPrice == 0 ? '-' : ResultArray[k].ggPrice} </span>&nbsp;&nbsp;
-                        LPG: <span> ${ResultArray[k].llPrice == 0 ? '-' : ResultArray[k].llPrice} </span></div></div>`;
+                        LPG: <span> ${ResultArray[k].llPrice == 0 ? '-' : ResultArray[k].llPrice} </span></div></div></div>`;
 
         }
         positionBounds.extend(markerPosition);
@@ -251,16 +252,28 @@ function ShowResult(ResultArray, positionBounds){
     map.fitBounds(positionBounds);	
 }
 
+const brandLogoMapper = {
+    "알뜰": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/알뜰.png",
+    "오일뱅크": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/오일뱅크.png",
+    "custom": "./img/GasStation_Image/custom.png",
+    "E1": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/E1.png",
+    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.pngw",
+    "ex": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
+    "GS": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/GS.png",
+    "S-Oil": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/S-Oil.png",
+    "SK": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/SK_Gas.png",
+}
+
 function SelectStIdLogo(stId, name, radius){
     return `
         <div class='main__ResultList'> 
-            <div class='main__ResultList__Title'>
-                <img class='main__ResultList__Title_Logo' src = './img/GasStation_Image/${stId}.png'>
-                <div class="main__TitleArea">
+            <img class='main__ResultList__Title_Logo' src = ${brandLogoMapper[stId]}>
+            <div class='main__ResultList_TitlenContents'>
+                <div class='main__ResultList__Title'>  
                     <div id="stName">${name}</div>
                     <div id="stRadius">${Math.round(radius*10)/10}km</div>
                 </div>
-            </div>
+                
     `;
 }
 
@@ -274,11 +287,24 @@ function addEventToResult(ResultArray){
 }
 
 function ShowGSTDetail(event, ResultArray){
-    const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
-    GSTDetailTab[0].style.marginLeft = "0vw";
-    const SideSearchBar = document.getElementsByClassName("main__SideSearchBar");
-    SideSearchBar[0].style.borderRadius = "0";
-    DetailTabDisplay = true;
+
+    if(DetailTabDisplay==false){
+        const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
+        GSTDetailTab[0].style.marginLeft = "0vw";
+        const SideSearchBar = document.getElementsByClassName("main__SideSearchBar");
+        SideSearchBar[0].style.borderRadius = "0";
+        DetailTabDisplay = true;
+    }
+
+    console.log("1");
+    document.getElementById('myChart').remove();
+    console.log("1");
+    const newChart = document.createElement('canvas');
+    console.log("1");
+    newChart.id= 'myChart'; 
+
+    console.log(newChart);
+    document.getElementsByClassName('main__GSTdetail__Contents__Chart')[0].append(newChart);
     const ResultTitle = event.target.closest(".main__ResultList");
     const SelectedTitle = ResultTitle.querySelector("#stName");
 
@@ -303,12 +329,14 @@ function ShowGSTDetail(event, ResultArray){
 
     FillSTDetail(ResultArray[k]);
 
+    console.log("요청 보낸다~~");
     $.ajax({
         method:"GET",
         url:"http://localhost:8080/api/v1/gas-station/" + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
         + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId) + "/month", 
         success:function(response) {
-            
+            console.log(response);
+            ShowChart(response);
         },
         error:function(request, error){
             console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -516,44 +544,61 @@ function ShowResultByOption(ResultArray) {
 
         marker = new Tmapv3.Marker({
             position : map.getCenter(),
-            iconHTML: "<div class='Map_Marker'><img src ='/public/img/mapInfo.png'><span id='Name'>현위치</span></div>",
-            iconSize : Tmapv3.Size(10, 20),
+            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_m.png",
             map:map
             });
         markerArr.push(marker);
-
-        marker = new Tmapv3.Marker({
-            position : markerPosition,
-            iconHTML: `<div class='Map_Marker'><img src ='/public/img/mapInfo.png'><span id="Name">${ResultArray[k].name}</span></div>`,
-            iconSize : Tmapv3.Size(10, 20),
-            map:map
-        });
-        markerArr.push(marker);
-        i++;
 
         if(searchOption==1){
             if(ResultArray[k].highHhSale != 0){
                 ResultHtml += `<div class='main__ResultList__Contents'>
                         휘발유: <span>${ResultArray[k].hhPrice == 0 ? '-' : ResultArray[k].hhPrice}</span>
                         <i class="fa-solid fa-circle-check"></i>
-                        </div></div>`;
+                        </div></div></div>`;
+
+                marker = new Tmapv3.Marker({
+                    position : markerPosition,
+                    iconHTML: `<div class='Map_Marker_HGprice'><img id='img_HnG' src ='/public/img/marker_hPrice.png'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                    iconSize : Tmapv3.Size(10, 20),
+                    map:map
+                });
             }
             else{
                 ResultHtml += `<div class='main__ResultList__Contents'>
                         휘발유: <span>${ResultArray[k].hhPrice == 0 ? '-' : ResultArray[k].hhPrice}</span>
-                        </div></div>`;
+                        </div></div></div>`;
+                marker = new Tmapv3.Marker({
+                    position : markerPosition,
+                    iconHTML: `<div class='Map_Marker_HGprice'><img id='img_HnG' src ='/public/img/marker_hPrice.png'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                    iconSize : Tmapv3.Size(10, 20),
+                    map:map
+                });
             } 
         }
         else if(searchOption==2){
             ResultHtml += `<div class='main__ResultList__Contents'>
                         경유: <span> ${ResultArray[k].ggPrice == 0 ? '-' : ResultArray[k].ggPrice} </span>&nbsp;&nbsp;
-                        </div></div>`;
+                        </div></div></div>`;
+            marker = new Tmapv3.Marker({
+                position : markerPosition,
+                iconHTML: `<div class='Map_Marker_HGprice'><img id='img_HnG' src ='/public/img/marker_gPrice.png'><span id="Price">${ResultArray[k].ggPrice}</span></div>`,
+                iconSize : Tmapv3.Size(10, 20),
+                map:map
+            });
         }
         else if(searchOption==3){
             ResultHtml += `<div class='main__ResultList__Contents'>
                         LPG: <span> ${ResultArray[k].llPrice == 0 ? '-' : ResultArray[k].llPrice} </span>&nbsp;&nbsp;
-                        </div></div>`;
+                        </div></div></div>`;
+            marker = new Tmapv3.Marker({
+                position : markerPosition,
+                iconHTML: `<div class='Map_Marker_LPG'><img id='img_LPG' src ='/public/img/marker_LPG.png'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
+                iconSize : Tmapv3.Size(10, 20),
+                map:map
+            });
         }
+        markerArr.push(marker);
+        i++;
         positionBounds.extend(markerPosition);
     }
     // AddEventToMarker(markerArr);
@@ -636,29 +681,75 @@ function SelectSearchOption2(e) {
     }
 }
 
-const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-];
+function ShowChart(response){
 
-const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-};
+    const dateLabels = [];
 
-const config = {
-    type: 'line',
-    data: data,
-    options: {}
-};
+    for(var k=0;k<30;k++){
+      dateLabels.push(k);
+    }
+    const PREGasolineData = [];
+    const GasolineData = [];
+    const DiselData = [];
+    const LPGData = [];
+
+    const PriceInformation = response.data.details;
+    console.log(PriceInformation[5].price);
+    for(var k in PriceInformation){
+        if(PriceInformation[k].gasType == 'PREMIUM_GASOLINE'){
+            PREGasolineData.push(PriceInformation[k].price);
+        }
+        else if(PriceInformation[k].gasType == 'GASOLINE'){
+            GasolineData.push(PriceInformation[k].price);
+        }
+        else if(PriceInformation[k].gasType == 'DIESEL'){
+            DiselData.push(PriceInformation[k].price);
+        }
+        else if(PriceInformation[k].gasType == 'LPG'){
+            LPGData.push(PriceInformation[k].price);
+        }
+    }
+
+    const data = {
+      labels: dateLabels,
+      datasets: [
+        {
+            label: '고급유',
+            backgroundColor: '#dbead5',
+            borderColor: '#dbead5',
+            data: PREGasolineData,
+            fill:false,
+        },
+        {
+            label: '휘발유',
+            backgroundColor: '#93bf85',
+            borderColor: '#93bf85',
+            data: GasolineData,
+            fill:false,
+        },
+        {
+            label: '경유',
+            backgroundColor: '#008000',
+            borderColor: '#008000',
+            data: DiselData,
+            fill:false,
+        }
+    ]
+    };
+  
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: false,
+        pointStyle:false,
+        }
+    }
+  
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    )
+}
 
 export { initTmap }

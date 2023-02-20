@@ -77,14 +77,6 @@ a {
     transition: 0.4s;
 }
 
-html {
-    font-family: 'Do Hyeon', sans-serif;
-}
-
-a, button, select, input {
-    font-family: 'Do Hyeon', sans-serif;
-}
-
 
 /* nav bar */
 @media(max-width:575.98px) {
@@ -914,11 +906,11 @@ a, button, select, input {
                             }
         
                             & .main__ResultList { // 결과를 카드 형식으로 출력
-                                display: inherit;
+                                display: flex;
                                 justify-content: center;
-                                flex-direction: column;
-                                width:15vw ;
-                                height:10vh;
+                                flex-direction: row;
+                                width:15vw;
+                                height:7vh;
                                 margin-bottom: 1px;
                                 margin-left:0.3vw;
                                 box-sizing: content-box;
@@ -945,8 +937,8 @@ a, button, select, input {
                                     line-height: 1.5vh;
     
                                     & img {
-                                        width: 1.5vw;
-                                        height: 1.5vw;
+                                        width: 10.0vw;
+                                        height: 10.0vw;
                                         margin-top:3vh;
                                         margin-left : -0.7vw;
                                         margin-right: 0.25vw;
@@ -2158,11 +2150,24 @@ a, button, select, input {
                     width:180px;
                     height:50px;
     
-                    & img {
-                        margin-left: 64px;
+                    & #img_HG {
+                        margin-left: 65px;
                         margin-bottom : 25px;
                     }
-                    & #HG {
+
+                    & #img_LPG {
+                        margin-left: 65px;
+                        margin-bottom : 25px;
+                    }
+                    & #H {
+                        width:40px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        line-height: 30px;
+                        margin-top:-20px;
+                    }
+
+                    & #G {
                         width:180px;
                         font-size: 1.2rem;
                         font-weight: 500;
@@ -2592,6 +2597,7 @@ a, button, select, input {
             }
         }
     
+        // 지도 상세 페이지
         & .main__ForMap{
             margin-top:auto;
             display:flex;
@@ -2664,18 +2670,97 @@ a, button, select, input {
                         display:flex;
                         flex-direction:column;
                         font-size:14px;
-                        & .main__CurrentLocation {
-                            width:6vw;
-                            height:3vh;
+                        & .main__AdjustRadius {
+                            display:flex;
+                            flex-direction: row;
+                            width:15vw;
+                            height:2vh;
                             margin-left:2vw;
                             margin-top:3vh;
-                            background-color: #14BD7E;
-                            color:white;
-                            font-size:20px;
+                            font-size: 1rem;
+                            font-weight: 600;
                             text-align: center;
-                            border-radius: 20px;
-                            line-height: 3vh;
+                            align-items: center;
+
+                            & .main__Radius{
+                                width:20%;
+                            }
+
+                            & .main__AdjustBar {
+                                position: relative;
+                                width:80%;
+                                height:100%;
+                                display: flex;
+                                justify-content: center;
+                                align-content: center;
+
+                                & .adjustBar__infoContainer {
+                                    width: 100%;
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+
+                                    & .adjustBar__infoBox {
+                                        display: flex;
+                                        flex-direction: column;
+                                        margin-top: 8%;
+                                        z-index: 1;
+    
+                                        & span {
+                                            display: inline-block;
+                                            width: 0.5vw;
+                                            height: 0.5vw;
+                                            border-radius: 50%;
+                                            background-color: #ddd;
+                                            cursor: pointer;                                            
+                                        }
+
+                                        &:nth-child(1),
+                                        &:nth-child(2),
+                                        &:nth-child(3) {
+                                            span {
+                                                background-color: #008000;
+                                            }
+                                        }
+                                        
+                                        & h5 {
+                                            font-size: 0.5rem;
+                                            font-weight: 700;
+                                        }
+                                    }
+                                }
+
+                                & .adjustBar__background {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    width: 35%;
+                                    margin: auto 0;
+                                    transition: opacity .2s;
+                                    height: 0.3vh;
+                                    transition: 0.5s;
+                                    background-color: #14BD72;
+                                }
+
+                                & input {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 0;
+                                    width: 100%;
+                                    margin: auto 0;
+                                    -webkit-appearance: none;
+                                    -webkit-transition: .2s;
+                                    transition: opacity .2s;
+                                    height: 0.3vh;
+                                    background-color: #ddd;
+
+                                    &::-webkit-slider-thumb {
+                                        display: none;
+                                    }
+                                }
+                            }
                         }
+
                         & .main__CurrentLocationAddress {
                             background-color:white;
                             border: 2px solid #14BD7E;
@@ -2683,44 +2768,51 @@ a, button, select, input {
                             width:15vw;
                             height:4vh;
                             margin-left:2vw;
-                            margin-top:2vh;
-                            font-size:13px;
+                            margin-top:0;
+                            font-size:15px;
                             padding-top:3px;
                         }
                         & .main__SearchOptionButtonGroup{
+                            display:flex;
+                            flex-direction: row;
                             background-color:white;
                             width:15vw;
-                            height:3vh;
+                            height:3.5vh;
                             margin-left:2vw;
                             margin-top:2vh;
                             & #sort_HH {
                                 box-sizing: border-box;
-                                width:4.5vw;
+                                width:4.9vw;
                                 height:3vh;
                                 border:1px solid #14BD7E;
                                 border-radius: 5px;
-                                margin:0;
+                                margin-right: 0.15vw;
                                 background-color: rgba(20, 189, 114, 0.5);
+                                font-size: 20px;
+                                font-weight: 500;
                                 opacity:0.5;
                             }
                             & #sort_GG {
                                 box-sizing: border-box;
-                                width:4.5vw;
+                                width:4.9vw;
                                 height:3vh;
                                 border:1px solid #14BD7E;
                                 border-radius: 5px;
-                                margin:0;
+                                margin-right: 0.15vw;
                                 background-color: rgba(20, 189, 114, 0.5);
+                                font-size: 20px;
+                                font-weight: 500;
                                 opacity:0.5;
                             }
                             & #sort_LL {
                                 box-sizing: border-box;
-                                width:4.5vw;
+                                width:4.8vw;
                                 height:3vh;
                                 border:1px solid #14BD7E;
                                 border-radius: 5px;
-                                margin:0;
                                 background-color: rgba(20, 189, 114, 0.5);
+                                font-size: 20px;
+                                font-weight: 500;
                                 opacity:0.5;
                             }
                         }
@@ -2730,15 +2822,16 @@ a, button, select, input {
                             box-sizing: content-box;
                             border:2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
-                            height:59vh;
-                            margin-left:2vw;
+                            width:100%;
+                            height:55vh;
+                            margin-left:-10%;
+                            margin-right:10%;
                             margin-top:3vh;
                             background-color: white;
-                            padding:0;
+                            padding-top:5px;
                             overflow-x: hidden;
-                            overflow-y:scroll;
-        
+                            overflow-y: scroll;
+                            
                             &::-webkit-scrollbar {
                                 width: 0.5vw;
                             }
@@ -2749,81 +2842,84 @@ a, button, select, input {
                             }
         
                             & .main__ResultList { // 결과를 카드 형식으로 출력
-                                display: inherit;
+                                display: flex;
                                 justify-content: center;
-                                flex-direction: column;
-                                width:15vw ;
-                                height:10vh;
-                                margin-bottom: 1px;
+                                flex-direction: row;
+                                width:97%;
+                                background-color:white;
+                                //margin-bottom: 5px;
                                 margin-left:0.3vw;
+                                margin-top:10px;
                                 box-sizing: content-box;
-                                padding: 0.5vh 0;
-                                
+                                border-radius: 10px;
+                                padding-top: 0.5vh;
+                                //border-bottom: 0.5px solid lightgrey;
                                 &:hover {
                                     cursor:pointer;
                                     background-color: lightblue;
                                 }
-    
-                                & .main__ResultList__Title {
-                                    transition : none;
-                                    padding: 0 1vw;
-                                    display: flex;
-                                    justify-content: flex-start;
-                                    flex-direction: row;
-                                    align-items: center;
-                                    width:13vw;
-                                    height:1.5vh;
-                                    font-size: 15px;
-                                    font-weight: bold;
-                                    padding-bottom: 10px;
-                                    color : black;
-                                    line-height: 1.5vh;
-    
-                                    & img {
-                                        width: 1.5vw;
-                                        height: 1.5vw;
-                                        margin-top:3vh;
-                                        margin-left : -0.7vw;
-                                        margin-right: 0.25vw;
-                                    }
-                                    & .main__TitleArea {
-                                        display:flex;
-                                        flex-direction: row;
-                                        width:13vw;
+                                
+                                & img {
+                                    width: 3vw;
+                                    height: 3vw;
+                                    //margin-top:3vh;
+                                    // margin-left : 1vw;
+                                }
+                                & .main__ResultList_TitlenContents {
+                                    display:flex;
+                                    flex-direction: column;
+                                    width:80%;
+                                    height:90%;
+                                    & .main__ResultList__Title {
+                                        transition : none;
+                                        padding: 0 1vw;
+                                        display: flex;
                                         justify-content: space-between;
+                                        flex-direction: row;
+                                        align-items: center;
+                                        width:90%;
+                                        height:1.8vh;
+                                        font-size: 15px;
+                                        font-weight: bold;
+                                        padding-bottom: 10px;
+                                        color : black;
+                                        line-height: 1.8vh;
+
                                         & #stName {
                                             overflow:hidden;
-                                            width:7vw;
-                                            margin-left: 0.25vw;
+                                            width:80%;
                                             font-size: 1rem;
+                                            padding-top: 2px;
                                             white-space: nowrap;
                                             text-overflow: ellipsis;
                                         }
+
                                         & #stRadius {
-                                            margin-left: auto;
-                                            font-size:0.9rem;
+                                            font-size:0.8rem;
                                             color:grey;
                                         }
                                     }
-                                }
-                                & .main__ResultList__Contents {
-                                    padding: 0.1vh 0;
-                                    width:15vw;
-                                    height:2vh;
-                                    font-size: 0.85rem;
-                                    color: grey;
-                                    line-height: 20px;
-                                    padding-left: 10px;
-                                    margin-left:1.8vw;
-                                    & span {
-                                        color: #000;
-                                        font-weight: 700;
+
+                                    & .main__ResultList__Contents {
+                                        padding: 0.1vh 0;
+                                        width:100%;
+                                        height:2vh;
+                                        font-size: 0.85rem;
+                                        color: grey;
+                                        line-height: 2vh;
+                                        padding-left: 10px;
+                                        margin-bottom: 10%;
+                                        & span {
+                                            color: #000;
+                                            font-weight: 700;
+                                        }
+        
+                                        & i {
+                                            color : rgb(90, 90, 208);
+                                        }
                                     }
-    
-                                    & i {
-                                        color : rgb(90, 90, 208);
-                                    }
                                 }
+                               
                             }
                         }
                     }
@@ -2864,18 +2960,19 @@ a, button, select, input {
                         width:95%;
                         height:100%;
                         margin-left: 2.5%;
-    
+                        margin-right:2.5%;
                         & .main__GSTdetail__Title {
                             display:flex;
                             justify-content: center;
                             align-items: center;
                             width:100%;
                             height:3vh;
-                            font-size:25px;
-                            font-weight: 700;
+                            font-size:30px;
+                            font-weight: 500;
                             line-height: 3vh;
                             margin-bottom: 10px;
                             background-color: white;
+                            margin-top: -0.5vh;
                         }
     
                         & .main__GSTdetail__Contents {
@@ -2883,8 +2980,8 @@ a, button, select, input {
                             flex-direction: column;
                             width:100%;
     
-                            font-size:20px;
-                            font-weight: 400;
+                            // font-size:20px;
+                            // font-weight: 400;
                             align-items: center;
     
                             & .main__GSTdetail__Contents__Oilprice {
@@ -2892,19 +2989,23 @@ a, button, select, input {
                                 width:17vw;
                                 height:3vh;
                                 justify-content: center;
-                                color:#12BD7E;
-                                background-color: white;
+                                color:white;
+                                background-color: #14BD7E;
+                                border-radius: 20px;
                                 font-size:20px;
-                                font-weight: 600;
+                                font-weight: 400;
                                 line-height: 3vh;
                                 margin-bottom: 20px;
+                                margin-top : 10px;
     
                                 & i{
+                                    display:flex;
                                     width:20px;
                                     height:20px;
-                                    margin-top: 6px;
-                                    margin-right:10px;
+                                    margin-right:20px;
+                                    margin-top: -1px;
                                     justify-content: center;
+                                    line-height: 3vh;
                                 }
                             }
                             
@@ -2913,97 +3014,103 @@ a, button, select, input {
                                 display:flex;
                                 flex-direction: column;
                                 width:100%;
-                                margin:1px;
                                 margin-bottom: 10px;
                                 & .main__GSTdetail__Contents__Basic__Address {
-                                    font-size:15px;
-                                    font-weight: 400;
+                                    font-size:16px;
+                                    font-weight: 350;
                                     margin-top: 10px;
-                                    margin-bottom: 5px;
-                                    border-bottom: 1px solid lightgrey;
+                                    margin-bottom: 3px;
+                                    border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
+                                    height:30px;
                                     & img {
-                                        width:15px;
-                                        height:15px;
-                                        margin-right: 5px;
+                                        width:20px;
+                                        height:20px;
+                                        margin-right: 3px;
+                                        margin-bottom: -3px;
                                     }
                                 }
                                 & .main__GSTdetail__Contents__Basic__Time {
-                                    font-size:14px;
+                                    font-size:16px;
                                     font-weight: 350;
-                                    margin-bottom: 5px;
-                                    border-bottom: 1px solid lightgrey;
+                                    margin-top: 10px;
+                                    margin-bottom: 3px;
+                                    border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
+                                    height:30px;
                                     color:lightgrey;
                                     & img {
-                                        width:14px;
-                                        height:14px;
-                                        margin-right: 5px;
+                                        width:20px;
+                                        height:20px;
+                                        margin-right: 3px;
+                                        margin-bottom: -3px;
                                     }
                                 }
                                 & .main__GSTdetail__Contents__Basic__Phone {
-                                    font-size:14px;
+                                    font-size:16px;
                                     font-weight: 350;
-                                    margin-bottom: 5px;
-                                    border-bottom: 1px solid lightgrey;
+                                    margin-top: 10px;
+                                    margin-bottom: 3px;
+                                    border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
+                                    height:30px;
                                     & img {
-                                        width:14px;
-                                        height:14px;
-                                        margin-right: 5px;
+                                        width:20px;
+                                        height:20px;
+                                        margin-right: 3px;
+                                        margin-bottom: -3px;
                                     }
                                 }
                                 & .main__GSTdetail__Contents__Basic__Url {
-                                    font-size:14px;
+                                    font-size:16px;
                                     font-weight: 350;
-                                    transition:0.3s;
-                                    border-bottom: 1px solid lightgrey;
+                                    margin-top: 10px;
+                                    margin-bottom: 3px;
+                                    border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
-                                    color: #14BD7E;
+                                    height:30px;
+                                    color : #14bd72;
                                     & img {
-                                        width:14px;
-                                        height:14px;
-                                        margin-right: 5px;
-                                    }
-                                    & :hover {
-                                        transform :scale(1.5);
-                                        cursor:pointer;
+                                        width:20px;
+                                        height:20px;
+                                        margin-right: 3px;
+                                        margin-bottom: -3px;
                                     }
                                 }
                             }
                             & .main__GSTdetail__Contents__OilPriceTable {
-                                width:100%;
                                 background-color: white;
-                                display: flex;
+                                display:flex;
                                 flex-direction: column;
-                                margin-top: 20px;
+                                width:100%;
+                                margin-top:10px;
+                                font-size: 20px;
+                                font-weight: 500;
+                                margin-bottom: 10px;
                                 & .main__GSTdetail__Contents__OilPriceTable__TableHead {
                                     display:flex;
                                     flex-direction: row;
-                                    // background-color: #14BD7E;
-                                    // outline: 0.1vh solid #14bd72;
-                                    font-size:20px;
-                                    font-weight: 500;
                                     height:4vh;
                                     color:white;
-                                    margin-top: 5px;
+                                    margin-top: 10px;
                                     & .main__GSTdetail__Contents__OilPriceTable__TableHead_Oil{
-                                        background-color: #14BD7E;
-                                        outline: 0.1vh solid #14BD7E;
+                                        background-color: #1ad18e;
+                                        outline: 0.05vh solid #14BD7E;
                                         color : white;
-                                        font-size:22px;
-                                        width:20%;
+                                        font-size:15px;
+                                        font-weight: 400;
+                                        width:calc(30.75% - 0.05vh);
                                         text-align: center;
                                         line-height: 4vh;
-                                        opacity:0.8;
                                     }
                                     & .main__GSTdetail__Contents__OilPriceTable__TableHead_Price{
-                                        background-color: #14BD72;
-                                        outline: 0.1vh solid #14BD72;
-                                        font-size:22px;
-                                        width:80%;
+                                        background-color: #1ad18e;
+                                        font-size:15px;
+                                        font-weight: 400;
+                                        width:71%;
                                         text-align: center;
                                         line-height: 4vh;
+                                        outline: 0.05vh solid #14BD72;
                                     }
                                 }
                                 & .main__GSTdetail__Contents__OilPriceTable__Contents {
@@ -3015,32 +3122,45 @@ a, button, select, input {
                                         display: flex;
                                         flex-direction: row;
                                         justify-content: space-between;
-                                        height:3vh;
+                                        height:2.95vh;
     
                                         & .main__GSTdetail__Contents__OilPriceTable__Contents__Oil {
                                             display: flex;
                                             justify-content: center;
                                             align-items: center;
                                             border-right: none;
-                                            width:calc(20% - 0.05vh);
-                                            font-size: 20px;
-                                            font-size: 0.7rem;
-                                            font-weight: 500;
+                                            width:calc(30% - 0.05vh);
+                                            font-size: 15px;
+                                            font-weight: 400;
                                             text-align: center;
                                             outline: 0.05vh solid #14BD7E;
-    
                                         }
     
                                         & .main__GSTdetail__Contents__OilPriceTable__Contents__Price {
                                             display: flex;
                                             justify-content: center;
                                             align-items: center;
-                                            font-size: 0.7rem;
-                                            width:calc(80% - 0.05vh);
+                                            font-size: 15px;
+                                            font-weight: 400;
+                                            width:calc(70% - 0.05vh);
                                             text-align:center;
-                                            outline: 0.1vh solid #14BD7E;
+                                            outline: 0.05vh solid #14BD7E;
                                         }
                                     }
+                                }
+                            }
+
+                            & .main__GSTdetail__Contents__Chart {
+                                display:flex;
+                                flex-direction: column;
+                                width:100%;
+                                height:30%;
+                                font-size: 20px;
+                                font-weight: 500;
+                                margin-top: 10px;
+                                & #myChart {
+                                    width:100%;
+                                    height:40%;
                                 }
                             }
                         }
@@ -3070,44 +3190,83 @@ a, button, select, input {
                 //     width:120px;
                 //     height:40px;
                 // }
-                & .Map_Marker{
+                & .Map_Marker_HG{
                     width:180px;
                     height:50px;
     
-                    & img {
-                        margin-left: 64px;
+                    & #img_HG {
+                        margin-left: 65px;
+                        margin-bottom : 25px;
+
+                        &:hover {
+                            background-color: red;
+                        }
+                    }
+                    & #H {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        //line-height: 30px;
+                        margin-top:-70px;
+                        margin-left:100px;
+                    }
+
+                    & #G {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left: 180px;
+                    }
+
+                    // & #Name {
+                    //     overflow: hidden;
+                    //     width:162px;
+                    //     font-size: 1.2rem;
+                    //     font-weight: 500;
+                    //     display:block;
+                    //     padding-left:70px;
+                    //     line-height: 30px;
+                    //     margin-top:-70px;
+                    //     white-space: nowrap;
+                    //     text-overflow: ellipsis;
+                    // }
+                }
+
+                & .Map_Marker_LPG {
+                    width:120px;
+                    height:50px;
+                    & #img_LPG {
+                        margin-left: 35px;
                         margin-bottom : 25px;
                     }
-                    & #HG {
-                        width:180px;
-                        font-size: 1.2rem;
-                        font-weight: 500;
-                        display:block;
-                        padding-left:70px;
-                        line-height: 30px;
-                        margin-top:-70px;
-                    }
                     & #LL {
-                        width:108px;
-                        font-size: 1.2rem;
-                        font-weight: 500;
-                        display:block;
-                        padding-left:70px;
-                        line-height: 30px;
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
                         margin-top:-70px;
+                        margin-left:105px;
                     } 
-                    & #Name {
-                        overflow: hidden;
-                        width:162px;
-                        font-size: 1.2rem;
-                        font-weight: 500;
-                        display:block;
-                        padding-left:70px;
-                        line-height: 30px;
-                        margin-top:-70px;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
+                }
+
+                & .Map_Marker_HGprice {
+                    width:100px;
+                    height:50px;
+                    & #img_HnG {
+                        margin-left: 25px;
+                        margin-bottom : 25px;
                     }
+                    & #Price {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left:70px;
+                    } 
                 }
             }
     
@@ -3127,7 +3286,6 @@ a, button, select, input {
                 transition : 0.4s;
             }
         }
-    
     }   
 }
 
@@ -4675,6 +4833,25 @@ a, button, select, input {
         width: 100%;
         height: 100%;
     
+        & .myPage__SuccessModal {
+            top: 0;
+            left: 40%;
+            transition: 0.8s;
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
         & .oilInfoArea__background {
             width: 90%;
             height: 100%;
@@ -5709,6 +5886,25 @@ a, button, select, input {
     .oilInfoArea {
         width: 100%;
         height: 100%;
+
+        & .myPage__SuccessModal {
+            top: 0;
+            left: 40%;
+            transition: 0.8s;
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
     
         & .oilInfoArea__background {
             width: 60%;
@@ -6482,8 +6678,7 @@ a, button, select, input {
                             border-radius: 0.2vh 0 0 0.2vh;
                             background-color: #12BD7E;
                         }
-    
-    
+
                         & div {
                             & div {
                                 height: 20%;
@@ -6728,9 +6923,138 @@ a, button, select, input {
 // extra large - 데스크탑
 @media(min-width:1200px) {
     .oilInfoArea {
+        position: relative;
         width: 100%;
         height: 100%;
     
+        & .myPage__SuccessModal {
+            top: 0;
+            left: 40%;
+            transition: 0.8s;
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
+        & .oilInput__successModal {
+            top: 0;
+            left: 40%;
+            transition: 0.8s;
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
+        & .oilInput__preferModal {
+            transition: 0.5s;
+            z-index: 5;
+            background-color: rgba(0, 0, 0, 0.15);
+            position: fixed;
+            left: 0;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+
+            & .oilInput__preferContent {
+                background-color: #fff;
+                position: absolute;
+                left: 10%;
+                top: 5%;
+                width: 80%;
+                height: 90%;
+
+                & .oilInput__preferContentBackGround {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin: 0 auto;
+                    width: 70%;
+                    height: 100%;
+
+                    & .preferModal__closeBtn {
+                        position: absolute;
+                        right: 2%;
+                        top: 2%;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    & h1 {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 15%;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                    }
+
+                    & ul.oilInput__preferContentBox {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        height: 85%;
+
+                        & li {
+                            width: 60%;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            height: 10%;
+                            outline: 0.2vh solid #14BD72;
+                            border-radius: 0.5vh;
+                            margin-bottom: 1%;
+                            cursor: pointer;
+
+                            & img {
+                                width: 10%;
+                            }
+
+                            & h2 {
+                                font-size: 1rem;
+                                font-weight: 700;
+                                width: 50%;
+                                text-align: center;
+                            }
+
+                            & span {
+                                font-size: 0.8rem;
+                                font-weight: 500;
+                                width: 30%;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         & .oilInfoArea__background {
             width: 60%;
             height: 100%;
@@ -6790,10 +7114,26 @@ a, button, select, input {
             }
     
             & .oilInfoArea__contentArea {   
+                position: relative;
                 width: 100%;
                 height: 80%;
                 box-shadow: 0 0.5vh 1vw 0 #D4D4D4;
                 border-radius: 0 1.5vh 0 0;
+
+                & .oilInfoArea__preferBtnArea {
+                    position: absolute;
+                    top: 1.5vw;
+                    right: 5.8vw;
+                    
+                    & button {
+                        padding: 1vh 0.5vw;
+                        font-size: 1rem;
+                        font-weight: 700;
+                        border-radius: 0.5vh;
+                        color: #fff;
+                        background-color: #4BC0C0;
+                    }
+                }
     
                 & .oilInfoArea__contentTitle {
                     height: 15%;
@@ -6947,12 +7287,24 @@ a, button, select, input {
                                     border-bottom: 0.2vh solid #000;
                                     cursor: pointer;
     
+                                    & img {
+                                        width: 0.5%;
+                                        flex-grow: 0.5;
+                                        margin-right: 5%;
+                                    }
+
                                     & h1 {
-                                        font-size: 1.2rem;
+                                        text-align: left;
+                                        font-weight: 600;
+                                        font-size: 0.85rem;
+                                        flex-grow: 3;
                                     }
     
                                     & span {
-                                        font-size: 0.9rem;
+                                        text-align: right;
+                                        font-weight: 500;
+                                        flex-grow: 1;
+                                        font-size: 0.6rem;
                                     }
                                 }
     
@@ -7486,6 +7838,7 @@ a, button, select, input {
                         height: 65%;
                         text-align: center;
                         overflow-y: scroll;
+
                         &::-webkit-scrollbar {
                             width: 0.5vw;
                         }
@@ -7503,17 +7856,36 @@ a, button, select, input {
                                 display: flex;
                                 justify-content: space-around;
                                 align-items: center;
-                                font-size: 0.8rem;
+                                font-size: 0.65rem;
                                 font-weight: 600;
                                 border-bottom: 1px solid #F5F5F5;
     
                                 & span {
-                                    font-size: 1.1rem;
+                                    width: 18%;
+                                    font-size: 0.9rem;
+
+                                    &:nth-child(1) {
+                                        width: 12%;
+                                    }
+
+                                    &:nth-child(2) {
+                                        width: 12%;
+                                    }
+
+                                    &:nth-child(3) {
+                                        width: 25%;
+                                    }
+
+                                    &:nth-child(4),
+                                    &:nth-child(5),
+                                    &:nth-child(6) {
+                                        width: 10%;
+                                    }
                                 }
     
                                 & img {
-                                    width: 100%;
-                                    height: 100%;
+                                    width: 50%;
+                                    height: 50%;
                                 }
     
                                 &:nth-child(2n + 1) {
