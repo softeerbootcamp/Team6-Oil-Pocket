@@ -34,8 +34,8 @@ class GasStationServiceTest {
     void getGasStationByContainingName() {
         //given
         List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
-                FindGasStationResDto.builder().name("유진 주유소").build(),
-                FindGasStationResDto.builder().name("서울 유진 주유소").build()
+                FindGasStationResDto.builder().name("유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build(),
+                FindGasStationResDto.builder().name("서울 유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build()
         );
         String requestGasStation = "유진";
         when(gasStationDao.findGastationForGasSearch("%"+requestGasStation+"%", GasType.GASOLINE.name())).thenReturn(expectedMatchingGasStations);

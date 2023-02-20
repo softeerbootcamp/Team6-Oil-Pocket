@@ -54,6 +54,7 @@ const eventToOilPriceInput = ($container) => {
 const eventToOilSearchInput = ($container) => {
     const $oilSearchInput = _$(".oilInfoArea__searchInput", $container);
     const $oilSearchResultBox = _$(".oilInfoArea__oilSearchResultBox", $container);
+    const $oilSelectBox = _$(".oilInfoArea__oilSelect > span", $container);
 
     addEvent($oilSearchInput, [
         () => {
@@ -68,7 +69,7 @@ const eventToOilSearchInput = ($container) => {
             else {
                 debounceTimer = setTimeout(() => {
                     // 검색 관련 통신 함수
-                    fetchGasStationSearch($oilSearchResultBox, $oilSearchInput.value);
+                    fetchGasStationSearch($oilSearchResultBox, $oilSearchInput.value, $oilSelectBox.innerHTML);
 
                     // 검색 결과 불러와서 넣어주는 함수
                     makeLighter($oilSearchResultBox);

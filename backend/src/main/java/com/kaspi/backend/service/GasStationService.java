@@ -9,10 +9,8 @@ import com.kaspi.backend.enums.GasBrand;
 import com.kaspi.backend.enums.GasType;
 import com.kaspi.backend.util.exception.SqlNotFoundException;
 import com.kaspi.backend.util.response.code.ErrorCode;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -31,8 +29,16 @@ public class GasStationService {
     private final GasDetailService gasDetailService;
 
     public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName, GasType requestGasType) {
-        log.info("주유소 이름 검색 요청 name:{}, gasType:{}", reqGasStationName, requestGasType);
-        return gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName), requestGasType.name());
+        log.info("주유소 이름 검색 요청 name:{}, gasType:{}", reqGasStationName,requestGasType);
+        List<FindGasStationResDto> gasStationForGasSearch = gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName), requestGasType.name());
+        updateBrandToUri(gasStationForGasSearch);
+        return gasStationForGasSearch;
+    }
+
+    private  void updateBrandToUri(List<FindGasStationResDto> gasStationForGasSearch) {
+        for (FindGasStationResDto stationForGasSearch : gasStationForGasSearch) {
+            stationForGasSearch.updateBrandToImage();
+        }
     }
 
 

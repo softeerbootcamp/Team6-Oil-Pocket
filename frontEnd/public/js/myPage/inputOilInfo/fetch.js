@@ -3,10 +3,10 @@ import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../commo
 import { gasNameMapper, validateOilInput } from "./helperFunction.js";
 import { gasStationSearchView } from "./view.js";
 
-const fetchGasStationSearch = ($oilSearchResultBox, gasStationName) => {
+const fetchGasStationSearch = ($oilSearchResultBox, gasStationName, gasType) => {
     const FETCH_URL = isReleaseMode() ? 
-                        `${RELEASE_COOKIE_URL}/gas-station/?name=${gasStationName}` :
-                        `${BASE_COOKIE_URL}/gas-station/?name=${gasStationName}`;
+                        `${RELEASE_COOKIE_URL}/gas-station/?name=${gasStationName}&gasType=${gasNameMapper(gasType)}` :
+                        `${BASE_COOKIE_URL}/gas-station/?name=${gasStationName}&gasType=${gasNameMapper(gasType)}`;
 
     fetch(FETCH_URL, {
         method: METHOD.GET,

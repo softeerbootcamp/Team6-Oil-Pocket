@@ -36,6 +36,10 @@ public class FindGasStationResDto implements Serializable {
                 .build();
     }
 
+    public void updateBrandToImage() {
+        this.brand = GasBrand.getImgByDbName(this.brand);
+    }
+
     @Override
     public boolean equals(Object o) {
         FindGasStationResDto opposite = (FindGasStationResDto) o;

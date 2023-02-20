@@ -64,7 +64,7 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 
 ## 📖 &nbsp; api 명세서
 #### <img width="1093" alt="명세서 사진" src="https://user-images.githubusercontent.com/35219960/218905730-93371ea5-0d8d-451e-b514-91de862fb1f6.png">
-#### <a href="https://cotton-smoke-d3a.notion.site/API-9f0f154f923341749dfce02ee37f1cf0">명세서 자세히 보기</a>
+#### <a href="https://hyundaibootcamp06.notion.site/API-9f0f154f923341749dfce02ee37f1cf0">명세서 자세히 보기</a>
 
 <br>
 
@@ -77,12 +77,6 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 #### 6️⃣ 사용자 유류비 월별 차트
 #### 7️⃣ 사용자 주유 내역 확인
 #### 8️⃣ 유가 정보 1일 단위로 자동 다운로드 (셀레니움 + 스프링 스케줄러 활용)
-
-<br>
-
-<!-- GETTING STARTED & installaton -->
-## 👨‍💻 &nbsp; Getting Started
-추후 작성
 
 <br>
 
