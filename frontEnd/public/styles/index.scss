@@ -2683,7 +2683,26 @@ a {
                             align-items: center;
 
                             & .main__Radius{
+                                display:flex;
+                                flex-direction: row;
                                 width:20%;
+                                height:100%;
+                                //border:1px solid black;
+                                margin-top: 10px;
+                                font-size: 13px;
+                                color:#808080;
+
+                                & .main__Radius__number {
+                                    width:40%;
+                                    height:100%;
+                                    font-size:15px;
+                                    background-color: #008000;
+                                    color:white;
+                                    border-radius: 10px;
+                                    margin-left:2px;
+                                    margin-top: -3px;
+                                    padding-top: 1px;
+                                }
                             }
 
                             & .main__AdjustBar {

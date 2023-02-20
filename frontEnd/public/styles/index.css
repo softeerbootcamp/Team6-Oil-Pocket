@@ -2686,7 +2686,24 @@ a {
     align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__Radius {
+    display: flex;
+    flex-direction: row;
     width: 20%;
+    height: 100%;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #808080;
+  }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__Radius .main__Radius__number {
+    width: 40%;
+    height: 100%;
+    font-size: 15px;
+    background-color: #008000;
+    color: white;
+    border-radius: 10px;
+    margin-left: 2px;
+    margin-top: -3px;
+    padding-top: 1px;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar .main__AdjustRadius .main__AdjustBar {
     position: relative;

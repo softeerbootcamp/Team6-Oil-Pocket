@@ -130,7 +130,7 @@ function FindAddressofSearchCoords(lon, lat) {
 }
 
 function SearchNearGasStation(){
-    if(DetailTabDisplay == true){
+    if(DetailTabDisplay == true && SideBarDisplay ==true){
         closeDetailTab();
     }
     searchOption=0;
@@ -339,7 +339,7 @@ function ShowGSTDetail(event, ResultArray){
     $.ajax({
         method:"GET",
         url:`${HOST_URL}/api/v1/gas-station/` + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
-        + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId) + "/month", 
+        + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId, ResultArray[k].hhPrice) + "/month", 
         success:function(response) {
             console.log(response);
             ShowChart(response);
@@ -438,18 +438,21 @@ function FillSTDetail(ResultArrayElem){
     }
 }
 
-function transStId(stId){
+function transStId(stId, type){
     switch(stId){
         case 'S-Oil': return 'S-OIL';
         case '오일뱅크' : return '현대오일뱅크';
         case '알뜰' : return '알뜰주유소';
         case 'ex-OIL' : return '알뜰(ex)';
         case 'NH-OIL' : return 'NH-OIL';
-        case 'SK' : return 'SK에너지';
+        case 'SK' : if(type ==0) {
+                        return 'SK가스';
+                    }
+                    else return 'SK에너지'   
         case 'GS' : return 'GS칼텍스';
         case '자가상표' : return '자가상표';
         case 'E1' : return 'E1';
-        default : return 'SK가스';
+        default : '자가상표';
     }
 }
 

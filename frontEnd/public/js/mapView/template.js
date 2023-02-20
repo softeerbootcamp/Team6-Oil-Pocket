@@ -14,6 +14,10 @@ const getMapContentTemplate = () => `
                             <div class="main__ShowCurrentLocation">
                                 <div class="main__AdjustRadius">
                                     <div class="main__Radius">
+                                        거리
+                                        <div class="main__Radius__number">
+                                            3
+                                        </div>
                                     </div>
                                     <div class="main__AdjustBar">
                                         <input type="range" step=1 min=1 max=10 value=3>
