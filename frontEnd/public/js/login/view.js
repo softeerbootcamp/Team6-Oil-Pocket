@@ -1,4 +1,4 @@
-import { _$ } from "../common/function";
+import { _$ } from "../common/utils";
 import { eventToLoginBtn } from "./event";
 import { getLoginTemplate } from "./template";
 

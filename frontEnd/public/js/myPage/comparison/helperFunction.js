@@ -1,4 +1,4 @@
-import { _$, parseNumberToMoneyString, changeCSS } from "../../common/function";
+import { _$, parseNumberToMoneyString, changeCSS } from "../../common/utils";
 
 const imageLocationMapper = {
     "사탕": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/food/candy.png",

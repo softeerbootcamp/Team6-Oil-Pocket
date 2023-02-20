@@ -1,6 +1,5 @@
 import { navBarView } from "../../navbar/view.js";
 import { fetchComparisonCardData } from "./fetch.js";
-import { makeComparisonCards } from "./helperFunction.js";
 import { getComparisonTemplate } from "./template.js";
 
 const comparisonView = async () => {

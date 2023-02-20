@@ -1,4 +1,4 @@
-import { _$, _$_ALL } from "../../common/function"
+import { _$, _$_ALL } from "../../common/utils"
 
 NodeList.prototype.find = Array.prototype.find;
 

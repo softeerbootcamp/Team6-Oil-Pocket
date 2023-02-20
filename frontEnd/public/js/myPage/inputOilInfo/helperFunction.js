@@ -1,4 +1,4 @@
-import { _$ } from "../../common/function";
+import { _$ } from "../../common/utils";
 
 String.prototype.foreach = Array.prototype.forEach;
 const OIL_PRICE_UPPER_BOUND = 150_000;

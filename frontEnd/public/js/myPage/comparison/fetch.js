@@ -1,4 +1,4 @@
-import { isReleaseMode } from "../../common/function";
+import { isReleaseMode } from "../../common/utils";
 import { BASE_COOKIE_URL, METHOD, RELEASE_COOKIE_URL } from "../../common/variable"
 import { makeComparisonCards } from "./helperFunction";
 

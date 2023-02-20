@@ -1,4 +1,4 @@
-import { isReleaseMode } from "../common/function";
+import { isReleaseMode } from "../common/utils";
 
 let map = "";
 let DetailTabDisplay = false;
