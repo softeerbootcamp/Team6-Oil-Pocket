@@ -58,4 +58,16 @@ public class GasDetail {
     public static GasDetail parseLpgGasDetail(GasStation gasStation, String[] attribute, LocalDate date) {
         return new GasDetail(gasStation, Integer.valueOf(attribute[SchedulerIndex.LPG.getIndex()]), GasType.LPG, date);
     }
+
+    public static List<GasDetail> stationAndDetailSetToGasDetails(List<StationAndDetailSet> notYetList) {
+        List<GasDetail> list = new ArrayList<>();
+        for (StationAndDetailSet stationAndDetailSet : notYetList) {
+            if (stationAndDetailSet.isLpg()) {
+                list.add(parseLpgGasDetail(stationAndDetailSet.getGasStation(), stationAndDetailSet.getAttribute(), stationAndDetailSet.getDate()));
+                continue;
+            }
+            list.addAll(parseListGasDetail(stationAndDetailSet.getGasStation(), stationAndDetailSet.getAttribute(), stationAndDetailSet.getDate()));
+        }
+        return list;
+    }
 }
