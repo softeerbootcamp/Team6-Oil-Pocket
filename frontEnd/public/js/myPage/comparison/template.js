@@ -1,12 +1,20 @@
+const tabObjArray = [
+    {choosed: false, text: "프로필 수정", path: "/userDetail"},
+    {choosed: false, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: true, text: "이번 달 분석", path: "/comparison"},
+    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "주유 기록 열람", path: "/history"}
+];
+
 const getComparisonTemplate = () => `
     <section class="oilInfoArea">
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
-                <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
-                <div class="oilInfoArea__tab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
-                <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/comparison" data-link>이번 달 분석</a></div>
-                <div class="oilInfoArea__tab"><a href="/chart" data-link>월별 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
+                ${tabObjArray.map(({choosed, text, path}) => `
+                    <div class="oilInfoArea__tab ${choosed ? "oilInfoArea__choosedTab" : ""}">
+                        <a href=${path} data-link>${text}</a>
+                    </div>
+                `).join("")}
             </div>
             <div class="oilInfoArea__contentArea">
                 <h1 class="oilInfoArea__contentTitle">
@@ -63,12 +71,5 @@ const getComparisonTemplate = () => `
         </section>
     </section>
 `;
-
-`
-<div class="oilInfoArea__chartValueTextArea">
-                                        <span class="oilInfoArea__chartValueText--user"></span>
-                                        <span class="oilInfoArea__chartValueText--common"></span>
-                                    </div>
-`
 
 export { getComparisonTemplate }

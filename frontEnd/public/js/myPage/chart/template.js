@@ -1,12 +1,27 @@
+const tabObjArray = [
+    {choosed: false, text: "프로필 수정", path: "/userDetail"},
+    {choosed: false, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: false, text: "이번 달 분석", path: "/comparison"},
+    {choosed: true, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "주유 기록 열람", path: "/history"}
+];
+
+const chartIDs = [
+    "Month--01", "Month--02", "Month--03", "Month--04", "Month--05", 
+    "Month--06", "Month--07", "Month--08", "Month--09", "Month--10"
+];
+
+const monthNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
 const getChartTemplate = () => `
     <section class="oilInfoArea">
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
-                <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
-                <div class="oilInfoArea__tab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
-                <div class="oilInfoArea__tab"><a href="/comparison" data-link>이번 달 분석</a></div>
-                <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/chart" data-link>월별 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
+                ${tabObjArray.map(({choosed, text, path}) => `
+                    <div class="oilInfoArea__tab ${choosed ? "oilInfoArea__choosedTab" : ""}">
+                        <a href=${path} data-link>${text}</a>
+                    </div>
+                `).join("")}
             </div>
             <div class="oilInfoArea__contentArea">
                 <div class="oilInfoArea__oilChartContainer">
@@ -25,58 +40,15 @@ const getChartTemplate = () => `
                     </div>
                     <div class="oilInfoArea__oilChartArea">
                         <div class="oilInfoArea__chartZone">
-                            <div class="oilInfoArea__chart" id="Month--01">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--02">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--03">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--04">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--05">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--06">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--07">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--08">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--09">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
-                            <div class="oilInfoArea__chart" id="Month--10">
-                                <div class="oilInfoArea__averageChart"><span></span></div>
-                                <div class="oilInfoArea__myChart"><span></span></div>
-                            </div>
+                            ${chartIDs.map((chartID) => `
+                                <div class="oilInfoArea__chart" id=${chartID}>
+                                    <div class="oilInfoArea__averageChart"><span></span></div>
+                                    <div class="oilInfoArea__myChart"><span></span></div>
+                                </div>
+                            `).join("")}
                         </div>
                         <div class="oilInfoArea__monthZone">
-                            <span>1월</span>
-                            <span>2월</span>
-                            <span>3월</span>
-                            <span>4월</span>
-                            <span>5월</span>
-                            <span>6월</span>
-                            <span>7월</span>
-                            <span>8월</span>
-                            <span>9월</span>
-                            <span>10월</span>
+                            ${monthNumbers.map((monthNumber) => `<span>${monthNumber}월</span>`).join("")}
                         </div>
                     </div>
                 </div>
