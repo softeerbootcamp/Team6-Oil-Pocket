@@ -1,3 +1,4 @@
+import { routerCheckLogin } from "../login/fetch.js";
 import { 
     eventToIDValidateBtn, eventToTermOfUseBtn, 
     eventToSelects, eventToSelectValues, eventToRegisterBtn,
@@ -5,6 +6,8 @@ import {
 import { getRegisterTemplate } from "./template.js";
 
 const registerView = async () => {
+    await routerCheckLogin();
+
     const $registerContainer = document.createElement("section");
     $registerContainer.classList.add("main");
     $registerContainer.innerHTML = getRegisterTemplate();
