@@ -23,15 +23,17 @@
 
 ## 📑 &nbsp; About The Project
 
-https://user-images.githubusercontent.com/74173976/218913447-d71c97b6-1e5f-4a29-8bc9-282016d76fc5.mov
+#### 메인화면
+
+https://user-images.githubusercontent.com/74173976/220026872-30cf758a-0448-445b-87aa-b97b55a0c6af.mov
 
 #### 로그인 / 회원가입
 
-https://user-images.githubusercontent.com/74173976/218913482-41e7421f-228d-426d-9bb7-83a6fe1b02d3.mov
+https://user-images.githubusercontent.com/74173976/220026787-be4ea910-a243-4c5c-835f-e46d822b8b2d.mov
 
 #### 마이페이지
 
-https://user-images.githubusercontent.com/74173976/218913513-e487662f-5ede-48b2-a05a-c500663b80b8.mov
+https://user-images.githubusercontent.com/74173976/220026714-540d982c-2e78-47a4-a208-a51c0cacecdd.mov
 
 <br>
 
