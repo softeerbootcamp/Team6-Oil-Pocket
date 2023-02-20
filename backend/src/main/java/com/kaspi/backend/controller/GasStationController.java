@@ -39,8 +39,8 @@ public class GasStationController {
     }
 
     @GetMapping("/v2/gas-station")
-    public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name) {
-        List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name);
+    public ResponseEntity<CommonResponseDto> findGasStationByName(@RequestParam("name") String name,@RequestParam("gasType") String gasType) {
+        List<FindGasStationResDto> matchingGasStations = gasStationService.getGasStationByContainingName(name,gasType);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(CommonResponseDto.toResponse(DefaultCode.CHECK_MATCH_GAS_STATION, matchingGasStations));
     }
