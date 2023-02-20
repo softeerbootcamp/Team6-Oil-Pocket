@@ -6497,6 +6497,12 @@ a {
     width: 30%;
     text-align: center;
   }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox h3 {
+    margin-top: 20%;
+    font-size: 1.8rem;
+    color: #14BD72;
+    font-weight: 700;
+  }
   .oilInfoArea .oilInfoArea__background {
     width: 60%;
     height: 100%;

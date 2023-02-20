@@ -1,7 +1,7 @@
 import { changeCSS, isReleaseMode, _$ } from "../../common/utils.js";
 import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../common/variable.js";
 import { gasNameMapper, validateOilInput } from "./helperFunction.js";
-import { gasStationSearchView } from "./view.js";
+import { gasStationSearchView, recentGasStationView } from "./view.js";
 
 const fetchGasStationSearch = ($oilSearchResultBox, gasStationName, gasType) => {
     const FETCH_URL = isReleaseMode() ? 
@@ -62,4 +62,33 @@ const fetchOilRegister = ($container) => {
     }
 }
 
-export { fetchGasStationSearch, fetchOilRegister }
+const fetchRecentGasStation = ($container) => {
+    const $oilSelect = _$(".oilInfoArea__oilSelect > span", $container);
+    const $oilRecentModalContent = _$(".oilInput__preferContentBox", $container);
+
+    let gasType = gasNameMapper($oilSelect.innerHTML);
+
+    const FETCH_URL = isReleaseMode() ? 
+                        RELEASE_COOKIE_URL + `/gas-station/recent/?gasType=${gasType}` :
+                        BASE_COOKIE_URL + `/gas-station/recent/?gasType=${gasType}`;
+
+    fetch(FETCH_URL, {
+        headers: HEADER.GET,
+        credentials: "include"
+    }).then((res) => {
+        if(res.status === 200) {
+            return res.json();
+        }
+        return {};
+    }).then(({data}) => {
+        if(data) {
+            $oilRecentModalContent.innerHTML = ``;
+
+            data.forEach(({address, name, brand}) => {
+                $oilRecentModalContent.appendChild(recentGasStationView(brand, name, address));
+            })
+        }
+    })
+}
+
+export { fetchGasStationSearch, fetchOilRegister, fetchRecentGasStation }

@@ -2,7 +2,7 @@ import { navBarView } from "../../navbar/view.js";
 import { eventToOilPriceInput, eventToOilSelectArea, eventToOilSearchInput, 
     eventToRegisterBtn, eventToSearchValue, eventToPreferBtn, eventToPreferModalCloseBtn 
 } from "./event.js";
-import { getInputOilInfoTemplate, getSearchTemplate } from "./template.js";
+import { getInputOilInfoTemplate, getRecentGasStationRow, getSearchTemplate } from "./template.js";
 
 const inputOilInfoView = async () => {
     const $inputOilInputContainer = document.createElement("section");
@@ -35,4 +35,11 @@ const gasStationSearchView = (stationName, address, stationNo, brandImageURL) =>
     return $gasSearchSection;
 }
 
-export { inputOilInfoView, gasStationSearchView }
+const recentGasStationView = (brandURL, gasStationName, location) => {
+    const $recentRow = document.createElement("li");
+    $recentRow.innerHTML = getRecentGasStationRow(brandURL, gasStationName, location);
+
+    return  $recentRow;
+}
+
+export { inputOilInfoView, gasStationSearchView, recentGasStationView }
