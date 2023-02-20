@@ -14,7 +14,7 @@ public interface GasStationDao extends CrudRepository<GasStation, Long> {
     @Query("select * from gas_station where address = :address and brand = :brand")
     Optional<GasStation> findByAddressAndBrand(@Param("address") String address, @Param("brand") String brand);
 
-    @Query("select * from gas_station where address like :address and brand = :brand")
+    @Query("select * from gas_station where address like :address and brand like :brand")
     Optional<GasStation> findByLikeAddressAndBrand(@Param("address") String address, @Param("brand") String brand);
 
 

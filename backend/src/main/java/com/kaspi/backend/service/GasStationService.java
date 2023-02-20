@@ -66,7 +66,7 @@ public class GasStationService {
         String address = roadNum + SPACE + buildNum;
         Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand(address, brand);
         if (optionalGasStation.isEmpty()) {
-            optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand);
+            optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand + WILDCARD);
             if (optionalGasStation.isEmpty()) {
                 throw new SqlNotFoundException(SqlNotFoundException.class.getSimpleName(), ErrorCode.NOT_FOUND_GAS_STATION);
             }
@@ -79,6 +79,9 @@ public class GasStationService {
         return WILDCARD + roadNum + WILDCARD + buildNum;
     }
 
+    /**
+     * 해당 주유소의 상세 가격 정보를 GasStationDto로 반환하는 메소드입니다.
+     */
     public GasStationDto findOntMonthGasStationDto(String name, String roadNum, String buildNum, String brand) {
         GasStation gasStation = findGasStation(roadNum, buildNum, brand);
         List<GasDetailDto> gasDetailDtoList = gasDetailService.findOneMonthGasDetailList(gasStation);
