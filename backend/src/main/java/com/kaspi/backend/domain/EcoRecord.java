@@ -15,7 +15,7 @@ public class EcoRecord {
     private Age age;
     private long refuelingPrice;
     private long savingPrice;
-    private double perRank;
+    private long sRank;
 
     @Override
     public boolean equals(Object obj) {
