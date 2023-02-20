@@ -46,6 +46,13 @@ dependencies {
 	//encrypt password
 	implementation 'org.mindrot:jbcrypt:0.4'
 
+	implementation 'net.logstash.logback:logstash-logback-encoder:6.6'
+
+
+
+
+
+
 
 
 
