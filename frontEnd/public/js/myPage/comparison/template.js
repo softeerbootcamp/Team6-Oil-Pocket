@@ -42,18 +42,19 @@ const getComparisonTemplate = () => `
                                         <div class="oilInfoArea__myChart"></div>
                                         <div class="oilInfoArea__otherChart"></div>
                                     </div>
-                                    <div class="oilInfoArea__chartValueTextArea">
-                                        <span class="oilInfoArea__chartValueText--user"></span>
-                                        <span class="oilInfoArea__chartValueText--common"></span>
+                                    <div class="oilInfoArea__chartMinusArea">
+                                        <div class="oilInfoArea__myMinusChart"></div>
+                                        <div class="oilInfoArea__otherMinusChart"></div>
                                     </div>
                                     <div class="oilInfoArea__chartNameArea">
-                                        <span class="oilInfoArea__chartNameArea--name"></span>
-                                        <span class="oilInfoArea__chartNameArea--info"></span>
+                                        <span class="oilInfoArea__chartNameArea--name">나</span>
+                                        <span class="oilInfoArea__chartNameArea--info">공통</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="oilInfoArea__compareImgBox">
                                 <img src="./" alt="이미지가 존재하지 않습니다.">
+                                <img src="./public/img/myProfile_Image/ban.png" class="oilInfoArea__ban" alt="금지 이미지">
                             </div>
                         </div>
                     </div>
@@ -62,5 +63,12 @@ const getComparisonTemplate = () => `
         </section>
     </section>
 `;
+
+`
+<div class="oilInfoArea__chartValueTextArea">
+                                        <span class="oilInfoArea__chartValueText--user"></span>
+                                        <span class="oilInfoArea__chartValueText--common"></span>
+                                    </div>
+`
 
 export { getComparisonTemplate }

@@ -3207,7 +3207,6 @@ a {
                         width:40px;
                         font-size: 20px;
                         font-weight: 350;
-                        //line-height: 30px;
                         margin-top:-70px;
                         margin-left:100px;
                     }
@@ -7523,7 +7522,7 @@ a {
                                     padding: 1.5vh 0;
                                     display: flex;
                                     flex-direction: column;
-                                    justify-content: space-around;
+                                    justify-content: center;
                                     align-items: center;
                                     border-radius: 2vh;
                                     outline: 0.2vh solid #F2F2F2;
@@ -7536,7 +7535,7 @@ a {
                                         align-items: flex-end;
                                         width: 60%;
                                         padding: 0 10%;
-                                        height: 95%;
+                                        height: 45%;
                                         border-bottom: 0.3vh solid #14BD72;
                                         
                                         & .oilInfoArea__myChart {
@@ -7549,7 +7548,27 @@ a {
                                             width: 15%;
                                             height: 0%;
                                             background-color: #fff;
-                                            outline: 0.25vh solid #14BD72;
+                                        }
+                                    }
+
+                                    & .oilInfoArea__chartMinusArea {
+                                        display: flex;
+                                        justify-content: space-around;
+                                        align-items: flex-start;
+                                        width: 60%;
+                                        padding: 0 10%;
+                                        height: 45%;
+                                        
+                                        & .oilInfoArea__myMinusChart {
+                                            width: 15%;
+                                            height: 0%;
+                                            background-color: #14BD72;
+                                        }
+    
+                                        & .oilInfoArea__otherMinusChart {
+                                            width: 15%;
+                                            height: 0%;
+                                            background-color: #fff;
                                         }
                                     }
         
@@ -7573,7 +7592,7 @@ a {
                                         width: 60%;
                                         margin-top: 0.5vh;
                                         padding: 0 10%;
-                                        height: 5%;
+                                        height: 8%;
     
                                         & span {
                                             text-align: center;
@@ -7602,6 +7621,7 @@ a {
                                 box-shadow: 0.25vw -0.25vh 0 0 #F2F2F2;
                                 background-color: #FDF1CC;
                                 transition: 0.5s;
+                                position: relative;
     
                                 &:hover {
                                     margin-top: -2vh;
@@ -7612,6 +7632,13 @@ a {
                                     transition: 0.5s;
                                     width: 90%;
                                     height: 90%;
+                                }
+
+                                & .oilInfoArea__ban {
+                                    display: none;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
                                 }
                             }
                         }
