@@ -219,22 +219,22 @@ function ShowResult(ResultArray, positionBounds){
         if(ResultArray[k].llPrice != 0){
             LPGmarker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img id='img_LPG' src="../img/marker_LPG.png"><span id="LL">${ResultArray[k].llPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img id='img_LPG'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
-            LPGmarkerArr.push(LPGmarker);
+            markerArr.push(LPGmarker);
             
         }
         else {
             HGmarker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_HG' id='${ResultArray[k].name}'><img id='img_HG' src ='/public/img/marker_HG.png'><span id="H">${ResultArray[k].hhPrice}</span>
+                iconHTML: `<div class='Map_Marker_HG' id='${ResultArray[k].name}'><img id='img_HG'><span id="H">${ResultArray[k].hhPrice}</span>
                             <span id='G'>${ResultArray[k].ggPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
-            HGmarkerArr.push(HGmarker);
+            markerArr.push(HGmarker);
         }
         if(ResultArray[k].highHhSale != 0){
             ResultHtml += `<div class='main__ResultList__Contents'>
@@ -294,7 +294,7 @@ function addEventToResult(ResultArray){
 }
 
 function ShowGSTDetail(event, ResultArray){
-
+    map.setZoom(17);
     if(DetailTabDisplay==false){
         const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
         GSTDetailTab[0].style.marginLeft = "0vw";
@@ -328,19 +328,17 @@ function ShowGSTDetail(event, ResultArray){
     var markerPosition = new Tmapv3.LatLng(lat, lon);
 
     if(searchOption==0){
-        ShowOnlyCurMarker(event);
+        ShowOnlyCurMarker(SelectedTitle.innerHTML);
     }
     else {
-        ToggleCurMarker(event);
+        ToggleCurMarker(SelectedTitle.innerHTML);
     }
 
     map.setCenter(markerPosition);
 
-    map.zoomIn(15);
-
+    map.zoomIn();
+    //map.setPitch(90);
     FillSTDetail(ResultArray[k]);
-    console.log(ResultArray[k].roadName);
-    console.log(ResultArray[k].buildingNo1);
     const HOST_URL = isReleaseMode() ? 
                         "https://www.oilpocket.kro.kr" :
                         "http://localhost:8080" ;
@@ -581,7 +579,7 @@ function ShowResultByOption(ResultArray) {
 
                 marker = new Tmapv3.Marker({
                     position : markerPosition,
-                    iconHTML: `<div class='Map_Marker_HGprice' id='${ResultArray[k].name}'><img id='img_HnG' src ='/public/img/marker_hPrice.png'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img id='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
                     iconSize : Tmapv3.Size(10, 20),
                     map:map
                 });
@@ -592,7 +590,7 @@ function ShowResultByOption(ResultArray) {
                         </div></div></div>`;
                 marker = new Tmapv3.Marker({
                     position : markerPosition,
-                    iconHTML: `<div class='Map_Marker_HGprice' id='${ResultArray[k].name}'><img id='img_HnG' src ='/public/img/marker_hPrice.png'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img id='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
                     iconSize : Tmapv3.Size(10, 20),
                     map:map
                 });
@@ -604,7 +602,7 @@ function ShowResultByOption(ResultArray) {
                         </div></div></div>`;
             marker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_HGprice' id='${ResultArray[k].name}'><img id='img_HnG' src ='/public/img/marker_gPrice.png'><span id="Price">${ResultArray[k].ggPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_gprice' id='${ResultArray[k].name}'><img id='img_HnG'><span id="Price">${ResultArray[k].ggPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -615,7 +613,7 @@ function ShowResultByOption(ResultArray) {
                         </div></div></div>`;
             marker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img id='img_LPG' src ='/public/img/marker_LPG.png'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img id='img_LPG'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -825,21 +823,44 @@ function ShowChart(response){
     )
 }
 
-function ShowOnlyCurMarker(markerPosition){
-    for(var k in markerArr){
-        if(markerArr[k].getPosition()._lat == markerPosition._lat && markerArr[k].getPosition()._lng == markerPosition._lng) {
-            console.log("일치하는 마커는?");
-            markerArr[k].setVisible(1);
-        }
-        else {
-            //changeCSS(markerArr[k])
-            markerArr[k].setVisible(0);
-        }
+function ShowOnlyCurMarker(SelectedTitle){
+    const selectedmarker = document.getElementById(SelectedTitle);
+
+    const HGmarkerARR = document.getElementsByClassName('Map_Marker_HG');
+    for(var k=0;k<HGmarkerARR.length;k++){
+        HGmarkerARR[k].style.display = 'none';
     }
+    const LmarkerARR = document.getElementsByClassName('Map_Marker_LPG');
+    for(var k=0;k<LmarkerARR.length;k++){
+        LmarkerARR[k].style.display = 'none';
+    }
+    selectedmarker.style.display = "";
 }
 
-function ToggleCurMarker(){
+function ToggleCurMarker(SelectedTitle){
+    const selectedmarker = document.getElementById(SelectedTitle);
 
+    if(searchOption==1){
+        const HmarkerARR = document.getElementsByClassName('Map_Marker_hprice');
+        for(var k=0;k<HmarkerARR.length;k++){
+            HmarkerARR[k].classList.remove('selected__Map_Marker_hprice');
+        }
+        selectedmarker.classList.toggle('selected__Map_Marker_hprice');
+    }
+    else if(searchOption==2){
+        const GmarkerARR = document.getElementsByClassName('Map_Marker_gprice');
+        for(var k=0;k<GmarkerARR.length;k++){
+            GmarkerARR[k].classList.remove('selected__Map_Marker_gprice');
+        }
+        selectedmarker.classList.toggle('selected__Map_Marker_gprice');
+    }
+    else if(searchOption==3){
+        const LmarkerARR = document.getElementsByClassName('Map_Marker_LPG');
+        for(var k=0;k<LmarkerARR.length;k++){
+            LmarkerARR[k].classList.remove('selected__Map_Marker_LPG');
+        }
+        selectedmarker.classList.toggle('selected__Map_Marker_LPG');
+    }
 }
 function addEventtoMarker(marker) {
     marker.addEventListener('click', () => console.log('jaewon'));

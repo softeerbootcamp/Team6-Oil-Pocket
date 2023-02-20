@@ -3181,6 +3181,7 @@ a {
     height: 50px;
   }
   .main .main__ForMap .main__MapDiv .Map_Marker_HG #img_HG {
+    content: url(/public/img/marker_HG.png);
     margin-left: 65px;
     margin-bottom: 25px;
   }
@@ -3205,6 +3206,7 @@ a {
     height: 50px;
   }
   .main .main__ForMap .main__MapDiv .Map_Marker_LPG #img_LPG {
+    content: url(/public/img/marker_LPG.png);
     margin-left: 35px;
     margin-bottom: 25px;
   }
@@ -3216,21 +3218,90 @@ a {
     margin-top: -70px;
     margin-left: 105px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HGprice {
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HGprice #img_HnG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice #img_HnG {
+    content: url(/public/img/marker_hPrice.png);
     margin-left: 25px;
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HGprice #Price {
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice #Price {
     position: absolute;
     width: 40px;
     font-size: 20px;
     font-weight: 350;
     margin-top: -70px;
     margin-left: 70px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice {
+    width: 100px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice #img_HnG {
+    content: url(/public/img/marker_gPrice.png);
+    margin-left: 25px;
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice #Price {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 70px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice {
+    width: 100px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice #img_HnG {
+    content: url(/public/img/marker_hPrice_sel.png);
+    margin-left: 25px;
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice #Price {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 70px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice {
+    width: 100px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice #img_HnG {
+    content: url(/public/img/marker_gPrice_sel.png);
+    margin-left: 25px;
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice #Price {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 70px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG {
+    width: 120px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG #img_LPG {
+    content: url(/public/img/marker_LPG_sel.png);
+    margin-left: 35px;
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG #LL {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 105px;
   }
   .main .main__ForMap #main__btn_select {
     z-index: 5;
