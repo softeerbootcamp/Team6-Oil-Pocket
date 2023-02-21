@@ -57,7 +57,7 @@ const getChatBotTemplate = () => `
     <div class="chatBotArea__background">
         <div class="chatBotArea__profile">
             <img src="./img/main/chatBot/managerProfile.png" alt="profile">
-            <span>안녕하세요 주행자님. 어떤 것을 도와드릴까요?</span>
+            <span>어떤 것을 도와드릴까요?</span>
         </div>
         ${chatTexts.map((chatText) => `
             <div class="chatBotArea__chat">
