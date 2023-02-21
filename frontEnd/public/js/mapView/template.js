@@ -89,10 +89,6 @@ const getMapContentTemplate = () => `
                                         <img src='./public/img/🦆 icon _map_.svg'>
                                         <span id = "GSTdetail_addr"></span>
                                     </div>
-                                    <div class="main__GSTdetail__Contents__Basic__Time">
-                                        <img src='./public/img/🦆 icon _clock_.svg'>
-                                        이용 시간을 알려주세요
-                                    </div>
                                     <div class="main__GSTdetail__Contents__Basic__Phone">
                                         <img src='./public/img/🦆 icon _phone_.svg'>
                                         <span id="GSTdetail_phone"></span>
