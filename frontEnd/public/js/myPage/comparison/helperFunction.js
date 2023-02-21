@@ -42,7 +42,10 @@ const getImageName = (savePrice) => {
     }
 }
 
-const setImageByName = ($image, imageName) => $image.setAttribute("src", imageLocationMapper[imageName]);
+const setImageByName = ($image, imageName) => {
+    $image.setAttribute("src", imageLocationMapper[imageName]);
+    changeCSS($image, "opacity", 1);
+};
 
 const adjustChartsOnCard = (myPrice, commonPrice, $container) => {
     const $myChart = myPrice > 0 ?
