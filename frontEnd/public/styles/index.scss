@@ -470,7 +470,7 @@ a {
                     & span {
                         width: 90%;
                         text-align: center;
-                        font-size: 0.85rem;
+                        font-size: 0.65rem;
                         font-weight: 600;
                     }
                 }
@@ -491,7 +491,7 @@ a {
                     cursor: pointer;
         
                     & span {
-                        font-size: 0.9rem;
+                        font-size: 0.7rem;
                         font-weight: 600;
                         line-height: 1.2;
                     }
@@ -505,7 +505,7 @@ a {
                 & .chatBotArea__answer {
                     transition: 0.5s;
                     margin: 1.5vh auto;
-                    padding: 0.5vh 1.5vw;
+                    padding: 1vh 1.5vw;
                     width: 85%;
                     height: 5vh;
                     background-color: #14BD7E;
@@ -517,7 +517,7 @@ a {
                     opacity: 0;
     
                     & span {
-                        font-size: 0.8rem;
+                        font-size: 0.7rem;
                         font-weight: 600;
                         line-height: 1.2;
     
@@ -4909,6 +4909,25 @@ a {
     
         & .myPage__SuccessModal {
             top: 0;
+            left: 20%;
+            transition: 0.8s;
+            position: absolute;
+            width: 60%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
+        & .oilInput__successModal {
+            top: 0;
             left: 40%;
             transition: 0.8s;
             position: absolute;
@@ -4926,6 +4945,116 @@ a {
             z-index: 10;
         }
 
+        & .oilInput__preferModal {
+            transition: 0.5s;
+            z-index: 5;
+            background-color: rgba(0, 0, 0, 0.15);
+            position: fixed;
+            left: 0;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+
+            & .oilInput__preferContent {
+                background-color: #fff;
+                position: absolute;
+                left: 10%;
+                top: 5%;
+                width: 80%;
+                height: 60%;
+
+                & .oilInput__preferContentBackGround {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin: 0 auto;
+                    width: 70%;
+                    height: 100%;
+
+                    & .preferModal__closeBtn {
+                        position: absolute;
+                        right: 2%;
+                        top: 2%;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    & h1 {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 15%;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                    }
+
+                    & ul.oilInput__preferContentBox {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        overflow-y: scroll;
+                        padding: 2% 0;
+                        width: 100%;
+                        height: 80%;
+
+                        &::-webkit-scrollbar {
+                            width: 0;
+                        }
+
+                        & li {
+                            padding: 1% 0;
+                            width: 95%;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            height: 10%;
+                            outline: 0.2vh solid #14BD72;
+                            border-radius: 0.5vh;
+                            margin-bottom: 3%;
+                            cursor: pointer;
+
+                            & img {
+                                width: 5%;
+                            }
+
+                            & h2 {
+                                font-size: 0.5rem;
+                                font-weight: 500;
+                                width: 65%;
+                                text-align: left;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+
+                            & span {
+                                font-size: 0.4rem;
+                                font-weight: 400;
+                                width: 25%;
+                                text-align: right;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        & h3 {
+                            margin-top: 20%;
+                            font-size: 1.8rem;
+                            color: #14BD72;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+
         & .oilInfoArea__background {
             width: 90%;
             height: 100%;
@@ -4939,27 +5068,27 @@ a {
                 
                 & .oilInfoArea__tab {
                     height: 80%;
-                    width: 16%;
+                    width: 20%;
                     border-radius: 1vh 1vh 0 0;
                     background-color: #14BD7E;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
-                    font-size: 0.55rem;
-                    padding: 0 1vw;
+                    font-size: 0.5rem;
+                    padding: 0 0.5vw;
                     color: #fff;
-                    font-weight: 600;
+                    font-weight: 500;
                     border: 0.05vh solid #FAFAFB;
     
                     & a {
-                        width: 100%;
+                        width: 90%;
                         height: 100%;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         color: #fff;
-    
+
                         &:visited {
                             color: #fff;
                         }
@@ -4968,7 +5097,8 @@ a {
                     &.oilInfoArea__choosedTab {
                         color:#000;
                         height: 90%;
-                        font-size: 0.65rem;
+                        width: 20%;
+                        font-size: 0.5rem;
                         margin: 0 -0.25vw;
                         background-color: #fff;
                         box-shadow: 0 -0.5vh 0.5vw 0 #D4D4D4;
@@ -4990,7 +5120,23 @@ a {
                 height: 45%;
                 box-shadow: 0 0.5vh 1vw 0 #D4D4D4;
                 border-radius: 0 1.5vh 0 0;
+                position: relative;
     
+                & .oilInfoArea__preferBtnArea {
+                    position: absolute;
+                    top: 1.5vh;
+                    right: 5.8vw;
+                    
+                    & button {
+                        padding: 0.5vh 0.5vw;
+                        font-size: 0.4rem;
+                        font-weight: 700;
+                        border-radius: 1vw;
+                        color: #fff;
+                        background-color: #4BC0C0;
+                    }
+                }
+
                 & .oilInfoArea__contentTitle {
                     height: 15%;
                     width: 100%;
@@ -5146,17 +5292,26 @@ a {
                                     align-items: center;
                                     padding: 0 1vw;
                                     width: 90%;
-                                    height: 20%;
+                                    height: 30%;
                                     border-bottom: 0.2vh solid #000;
                                     cursor: pointer;
     
+                                    & img {
+                                        width: 10%;
+                                    }
+
                                     & h1 {
+                                        width: 85%;
+                                        white-space: nowrap;
                                         font-size: 0.5rem;
+                                        font-weight: 400;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
                                     }
     
                                     & span {
+                                        display: none;
+                                        width: 30%;
                                         font-size: 0.5rem;
                                     }
                                 }
@@ -5725,19 +5880,13 @@ a {
                                 }
     
                                 & img {
-                                    width: 40%;
-                                    height: 40%;
+                                    width: 20%;
+                                    height: 20%;
                                 }
     
-                                &:nth-child(2n + 1) {
+                                &:nth-child(n) {
                                     & :last-child {
                                         color: #3181F6;
-                                    }
-                                }
-    
-                                &:nth-child(2n) {
-                                    & :last-child {
-                                        color: red;
                                     }
                                 }
                             }
