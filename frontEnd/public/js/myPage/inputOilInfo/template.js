@@ -1,3 +1,17 @@
+const tabObjArray = [
+    {choosed: false, text: "프로필 수정", path: "/userDetail"},
+    {choosed: true, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: false, text: "이번 달 분석", path: "/comparison"},
+    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "주유 기록 열람", path: "/history"}
+];
+
+const getRecentGasStationRow = (brandURL, gasStationName, location) => `
+    <img src="${brandURL}" alt="브랜드 이미지">
+    <h2>${gasStationName}</h2>
+    <span>${location}</span>
+`
+
 const getInputOilInfoTemplate = () => `
     <section class="oilInfoArea">
         <div class="oilInput__preferModal">
@@ -6,21 +20,7 @@ const getInputOilInfoTemplate = () => `
                     <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
                     <h1>최근 본 주유소</h1>
                     <ul class="oilInput__preferContentBox">
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
+                        <h3>정보를 불러오고 있습니다.</h3>
                     </ul>
                 </div>
             </div>
@@ -30,11 +30,11 @@ const getInputOilInfoTemplate = () => `
         </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
-                <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
-                <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
-                <div class="oilInfoArea__tab"><a href="/comparison" data-link>이번 달 분석</a></div>
-                <div class="oilInfoArea__tab"><a href="/chart" data-link>월별 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
+                ${tabObjArray.map(({choosed, text, path}) => `
+                    <div class="oilInfoArea__tab ${choosed ? "oilInfoArea__choosedTab" : ""}">
+                        <a href=${path} data-link>${text}</a>
+                    </div>
+                `).join("")}
             </div>
             <div class="oilInfoArea__contentArea">
                 <div class="oilInfoArea__preferBtnArea">
@@ -53,7 +53,7 @@ const getInputOilInfoTemplate = () => `
                             <div class="oilInfoArea__oilValue">경유</div>
                             <div class="oilInfoArea__oilValue">LPG</div>
                             <div class="oilInfoArea__oilSelect">
-                                <span>기름 종류</span>
+                                <span>휘발유</span>
                                 <img src="../../img/dropDownBtn.png">
                             </div>
                         </div>
@@ -112,25 +112,10 @@ const preferModalTemplate = () => `
             <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
             <h1>선호 주유소</h1>
             <ul class="oilInput__preferContentBox">
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
             </ul>
         </div>
     </div>
 `;
  
 
-export { getInputOilInfoTemplate, getSearchTemplate, preferModalTemplate }
+export { getInputOilInfoTemplate, getRecentGasStationRow, getSearchTemplate, preferModalTemplate }

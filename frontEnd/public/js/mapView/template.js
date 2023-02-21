@@ -14,7 +14,10 @@ const getMapContentTemplate = () => `
                             <div class="main__ShowCurrentLocation">
                                 <div class="main__AdjustRadius">
                                     <div class="main__Radius">
-                                        반경
+                                        거리
+                                        <div class="main__Radius__number">
+                                            3
+                                        </div>
                                     </div>
                                     <div class="main__AdjustBar">
                                         <input type="range" step=1 min=1 max=10 value=3>
@@ -34,7 +37,7 @@ const getMapContentTemplate = () => `
                                             </div>
                                             <div class="adjustBar__infoBox">
                                                 <span>&nbsp;</span>
-                                                <h5>4</h5>
+                                                <h5>&nbsp;</h5>
                                             </div>
                                             <div class="adjustBar__infoBox">
                                                 <span>&nbsp;</span>
@@ -86,10 +89,6 @@ const getMapContentTemplate = () => `
                                         <img src='./public/img/🦆 icon _map_.svg'>
                                         <span id = "GSTdetail_addr"></span>
                                     </div>
-                                    <div class="main__GSTdetail__Contents__Basic__Time">
-                                        <img src='./public/img/🦆 icon _clock_.svg'>
-                                        이용 시간을 알려주세요
-                                    </div>
                                     <div class="main__GSTdetail__Contents__Basic__Phone">
                                         <img src='./public/img/🦆 icon _phone_.svg'>
                                         <span id="GSTdetail_phone"></span>
@@ -116,6 +115,9 @@ const getMapContentTemplate = () => `
                                     최근 가격 추이
                                     <canvas id="myChart"></canvas>
                                 </div>
+                                <button class="main__addOilingInfo">
+                                    주유 정보 입력
+                                </button>
                             </div>
                         </div>
                     </div>

@@ -20,11 +20,6 @@ const toggleClass = ($target, className) => $target.classList.toggle(className);
 const toggleArrayClass = ($targetArray, className) => 
     $targetArray.forEach(($target) => toggleClass($target, className));
 
-const pipe = (...functionList) => (firstParam) => 
-    functionList.reduce((curValue, curFunc) => { 
-        return curFunc(curValue);
-    }, firstParam);
-
 const makeLighter = ($target) => $target.style.opacity = 1;
 
 const makeNodeArrayLighterSubsequently = (nodeArray, time) => 
@@ -52,7 +47,14 @@ const parseNumberToMoneyString = (number) => {
 
     parsedString = parsedString.split("").reverse().join("");
 
-    return `${parsedString} 원`;
+    if(parsedString[0] === ",") {
+        parsedString = parsedString.substring(1, );
+    }
+    else if(parsedString[0] ==="-" && parsedString[1] === ",") {
+        parsedString = parsedString[0] + parsedString.substring(2, );
+    }
+
+    return `${parsedString}`;
 }
 
 const isReleaseMode = () => location.hostname === RELEASE_HOST_URL;
@@ -60,8 +62,7 @@ const isReleaseMode = () => location.hostname === RELEASE_HOST_URL;
 export {
     _$, _$_ALL,
     addEvent, changeCSS, changeArrayCSS,
-    toggleArrayClass,
-    pipe, makeLighter,
+    toggleArrayClass, makeLighter,
     makeNodeArrayLighterSubsequently, giveErrorStyle, parseNumberToMoneyString,
     isReleaseMode
 }

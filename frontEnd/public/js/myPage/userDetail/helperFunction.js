@@ -1,4 +1,4 @@
-import { _$, _$_ALL } from "../../common/function"
+import { _$, _$_ALL } from "../../common/utils"
 
 NodeList.prototype.find = Array.prototype.find;
 
@@ -14,6 +14,10 @@ const getAgeFromLabel = ($container) => {
     const $ageInputs = _$_ALL(".oilInfoArea__inputBoxArea--age > input", $container);
     let age = $ageInputs
         .find(($ageInput) => $ageInput.checked).value;
+
+    if(age === "60대") {
+        return "60대 이상"
+    }
 
     return age;
 }

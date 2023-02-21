@@ -6,6 +6,8 @@ import com.kaspi.backend.dto.FindGasStationResDto;
 import com.kaspi.backend.enums.GasBrand;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import com.kaspi.backend.enums.GasType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,18 +33,14 @@ class GasStationServiceTest {
     @DisplayName("주유기록 입력시 주유소 검색 기능 테스트")
     void getGasStationByContainingName() {
         //given
-        List<GasStation> gasStations = Arrays.asList(
-                GasStation.builder().name("유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build(),
-                GasStation.builder().name("서울 유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build()
-        );
         List<FindGasStationResDto> expectedMatchingGasStations = Arrays.asList(
-                FindGasStationResDto.builder().name("유진 주유소").build(),
-                FindGasStationResDto.builder().name("서울 유진 주유소").build()
+                FindGasStationResDto.builder().name("유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build(),
+                FindGasStationResDto.builder().name("서울 유진 주유소").brand(GasBrand.SK_GAS.getDbName()).build()
         );
         String requestGasStation = "유진";
-        when(gasStationDao.findAllLikeName("%"+requestGasStation+"%")).thenReturn(gasStations);
+        when(gasStationDao.findGastationForGasSearch("%"+requestGasStation+"%", GasType.GASOLINE.name())).thenReturn(expectedMatchingGasStations);
         //when
-        List<FindGasStationResDto> actualMatchingGasStations = gasStationService.getGasStationByContainingName(requestGasStation);
+        List<FindGasStationResDto> actualMatchingGasStations = gasStationService.getGasStationByContainingName(requestGasStation,GasType.GASOLINE);
         //then
         assertThat(actualMatchingGasStations.size()).isEqualTo(2);
         assertThat(actualMatchingGasStations.get(0).getName()).isEqualTo(expectedMatchingGasStations.get(0).getName());

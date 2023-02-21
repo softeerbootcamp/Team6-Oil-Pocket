@@ -7,8 +7,8 @@ import { comparisonView } from "./myPage/comparison/view.js";
 import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
-import { _$ } from "./common/function.js";
-import { fecthCheckLogin, isLogin } from "./login/fetch.js";
+import { _$ } from "./common/utils.js";
+import { fecthCheckLogin } from "./login/fetch.js";
 import { mapView } from "./mapView/view.js";
 import { initTmap } from "./mapView/helperFunction.js";
 

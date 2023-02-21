@@ -42,7 +42,7 @@ public class UserRecordService {
         Optional<Long> todayGasPrice = gasDetailDao.findTodayGasPrice(gasStation.getStationNo(),
                 userGasRecordReqDto.getGasType().name(),
                 GasDetail.getNowDateToStr());//오늘 날짜로 계산
-        if (todayGasPrice.isEmpty()||todayGasPrice.get()==0) {
+        if (todayGasPrice.isEmpty() || todayGasPrice.get() == 0) {
             log.error("DB에 오늘날짜에 해당되는 주유 가격 정보가 존재하지 않음 가스타입:{}, 주유소PK:{}", userGasRecordReqDto.getGasType().name(), gasStation.getStationNo());
             throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
         }
@@ -101,6 +101,7 @@ public class UserRecordService {
         }
         return gasStation.get();
     }
+
     public UserEcoRecordResDto calMonthUserEcoPrice() {
         User user = httpSessionService.getUserFromSession();
         LocalDate date = LocalDate.now();
@@ -115,13 +116,14 @@ public class UserRecordService {
         long refuelingPrice = userEcoRecord.getRefuelingPrice();
 
         long average = getAverage(rankSavingPrices);
+        double perRank = (double) Math.round((double) userEcoRecord.getSavingRank() / (double) rankSavingPrices.size() * 10000) / 100;
 
-        FoodImage foodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(ecoPrice))
+        FoodImage foodImage = foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(Math.abs(ecoPrice)))
                 .orElseThrow(() -> new SqlNotFoundException(ErrorCode.NOT_FOUND_FOOD_IMAGE));
 
         return UserEcoRecordResDto.builder().userId(user.getId())
                 .gender(user.getGender()).age(user.getAge().getAgeBound()).refuelingPrice(refuelingPrice).myEcoPrice(ecoPrice)
-                .averageEcoPrice(average).imageUrl(foodImage.getImageUrl()).rankPercentage(userEcoRecord.getPerRank())
+                .averageEcoPrice(average).imageUrl(foodImage.getImageUrl()).rankPercentage(perRank)
                 .build();
     }
 
@@ -142,7 +144,7 @@ public class UserRecordService {
     }
 
     private void checkUserRecordPerMonth(User user, Optional<List<UserGasRecordMonthResDto>> sumRecordGroupByMonth) {
-        if(sumRecordGroupByMonth.isEmpty()){
+        if (sumRecordGroupByMonth.isEmpty()) {
             log.debug("사용자의 월별 주유기록 부분에서 sql쿼리문에서 문제가 생겼습니다. 사용자 PK:{}", user.getUserNo());
             throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
         }

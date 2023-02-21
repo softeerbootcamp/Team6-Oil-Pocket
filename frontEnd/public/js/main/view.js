@@ -1,4 +1,4 @@
-import { _$ } from "../common/function.js";
+import { _$ } from "../common/utils.js";
 import { navBarView } from "../navbar/view.js";
 import { eventToChatBot, eventToSaveChat, eventToSearchChat, eventToClientChat } from "./event.js";
 import { 

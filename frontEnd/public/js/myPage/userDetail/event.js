@@ -1,4 +1,4 @@
-import { addEvent, _$ } from "../../common/function"
+import { addEvent, _$ } from "../../common/utils"
 import { fetchModifyUserDetail } from "./fetch";
 import { getGenderFromLabel, getAgeFromLabel } from "./helperFunction";
 
@@ -9,7 +9,7 @@ const eventToUserDetailModifyBtn = ($container) => {
         () => {
             const modifiedGender = getGenderFromLabel($container);
             const modifiedAge = getAgeFromLabel($container);
-
+            console.log(modifiedGender, modifiedAge);
             fetchModifyUserDetail(modifiedGender, modifiedAge, $container);
         }
     ])

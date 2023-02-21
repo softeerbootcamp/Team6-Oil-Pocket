@@ -1,4 +1,4 @@
-import { _$_ALL, addEvent, changeCSS, makeNodeArrayLighterSubsequently, pipe, _$ } from "../common/function.js";
+import { _$_ALL, addEvent, changeCSS, makeNodeArrayLighterSubsequently, _$ } from "../common/utils.js";
 import { deleteChatNode, getChatTextArray } from "./helperFunction.js";
 import { 
     chatBotAnswerView__myPage01, chatBotAnswerView__myPage02, 
@@ -47,14 +47,12 @@ const eventToChatBot = ($chatBotImg) => {
     })
 }
 
-const eventToChatBotText = ($chatBotContent) => pipe(
-    () => getChatTextArray($chatBotContent),
-    ([$saveChat, $searchChat, $clientChat]) => {
-        eventToSaveChat($saveChat);
-        eventToSearchChat($searchChat);
-        eventToClientChat($clientChat);
-    }
-)();
+const eventToChatBotText = ($chatBotContent) => {
+    const [$saveChat, $searchChat, $clientChat] = getChatTextArray($chatBotContent);
+    eventToSaveChat($saveChat);
+    eventToSearchChat($searchChat);
+    eventToClientChat($clientChat);
+}
 
 const eventToSaveChat = ($saveChat) => addEvent($saveChat, [
     () => deleteChatNode(),

@@ -1,4 +1,4 @@
-import { _$, changeCSS, isReleaseMode } from "../common/function";
+import { _$, changeCSS, isReleaseMode } from "../common/utils";
 import { BASE_COMMON_URL, HEADER, METHOD, RELEASE_COMMON_URL } from "../common/variable";
 import { setTargetDisabled } from "./helperFunction";
 

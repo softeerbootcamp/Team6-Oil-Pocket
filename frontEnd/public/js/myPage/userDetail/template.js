@@ -1,5 +1,15 @@
 import { userId, userAge, userGender } from "../../login/fetch";
 
+const tabObjArray = [
+    {choosed: true, text: "프로필 수정", path: "/userDetail"},
+    {choosed: false, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: false, text: "이번 달 분석", path: "/comparison"},
+    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "주유 기록 열람", path: "/history"}
+];
+
+const ageTextArray = ["20대", "30대", "40대", "50대", "60대 이상"];
+
 const getUserDetailTemplate = () => `
     <section class="oilInfoArea">
         <div class="myPage__SuccessModal">
@@ -7,11 +17,11 @@ const getUserDetailTemplate = () => `
         </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
-                <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/userDetail" data-link>프로필 수정</a></div>
-                <div class="oilInfoArea__tab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
-                <div class="oilInfoArea__tab"><a href="/comparison" data-link>이번 달 분석</a></div>
-                <div class="oilInfoArea__tab"><a href="/chart" data-link>월별 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
+                ${tabObjArray.map(({choosed, text, path}) => `
+                    <div class="oilInfoArea__tab ${choosed ? "oilInfoArea__choosedTab" : ""}">
+                        <a href=${path} data-link>${text}</a>
+                    </div>
+                `).join("")}
             </div>
             <div class="oilInfoArea__contentArea">
                 <div class="oilInfoArea__profileContainer">
@@ -32,16 +42,10 @@ const getUserDetailTemplate = () => `
                         <div class="oilInfoArea__profileContentBox--age">
                             <h2>나이</h2>
                             <div class="oilInfoArea__inputBoxArea--age">
-                                <input type="radio" name="age" value="20대" id="radioAge--20" ${userAge === "20대" ? "checked" : ""}>
-                                <label for="radioAge--20">20대</label>
-                                <input type="radio" name="age" value="30대" id="radioAge--30" ${userAge === "30대" ? "checked" : ""}>
-                                <label for="radioAge--30">30대</label>
-                                <input type="radio" name="age" value="40대" id="radioAge--40" ${userAge === "40대" ? "checked" : ""}>
-                                <label for="radioAge--40">40대</label>
-                                <input type="radio" name="age" value="50대" id="radioAge--50" ${userAge === "50대" ? "checked" : ""}>
-                                <label for="radioAge--50">50대</label>
-                                <input type="radio" name="age" value="60대 이상" id="radioAge--60" ${userAge === "60대 이상" ? "checked" : ""}>
-                                <label for="radioAge--60">60대 이상</label>
+                                ${ageTextArray.map((ageText) => `
+                                    <input type="radio" name="age" value=${ageText} id="radioAge--${parseInt(ageText)}" ${userAge === ageText ? "checked" : ""}>
+                                    <label for="radioAge--${parseInt(ageText)}">${ageText}</label>
+                                `).join("")}
                             </div>
                         </div>
                     </div>

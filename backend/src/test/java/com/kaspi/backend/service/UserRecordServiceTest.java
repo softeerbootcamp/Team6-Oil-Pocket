@@ -228,9 +228,9 @@ class UserRecordServiceTest {
         User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
         LocalDate date = LocalDate.now();
         List<EcoRecord> rankSavingPrices = Arrays.asList(
-                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).perRank(0).build(),
-                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).perRank(0.5).build(),
-                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(200).perRank(1).build()
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
         );
         when(httpSessionService.getUserFromSession()).thenReturn(user);
         when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
@@ -244,10 +244,93 @@ class UserRecordServiceTest {
         assertEquals(Gender.MALE, result.getGender());
         assertEquals(Age.FORTY.getAgeBound(), result.getAge());
         assertEquals(20000, result.getRefuelingPrice());
-        assertEquals(200, result.getMyEcoPrice());
-        assertEquals(320, result.getAverageEcoPrice());
+        assertEquals(-200, result.getMyEcoPrice());
+        assertEquals(186, result.getAverageEcoPrice());
         assertEquals("http://example.com/food1.jpg", result.getImageUrl());
-        assertEquals(1, result.getRankPercentage(), 0.001);
+        assertEquals(100, result.getRankPercentage(), 0.001);
+    }
+    @Test
+    @DisplayName("절약 정보 1등 조회 테스트")
+    public void calMonthUserEcoPrice_ShouldReturnUserEcoRecordResDto_First() {
+        User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
+        User user2 = new User(2L, "user2", "password", Gender.MALE, Age.FORTY);
+        LocalDate date = LocalDate.now();
+        List<EcoRecord> rankSavingPrices = Arrays.asList(
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
+        );
+        when(httpSessionService.getUserFromSession()).thenReturn(user2);
+        when(userGasRecordDao.findSavingPriceByGenderAndAge(user2.getGender(), user2.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
+        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(400))).thenReturn(Optional.of(FoodImage.builder().food_no(1).imageUrl("http://example.com/food1.jpg").build()));
+
+        // Act
+        UserEcoRecordResDto result = userRecordService.calMonthUserEcoPrice();
+
+        // Assert
+        assertEquals("user2", result.getUserId());
+        assertEquals(Gender.MALE, result.getGender());
+        assertEquals(Age.FORTY.getAgeBound(), result.getAge());
+        assertEquals(50000, result.getRefuelingPrice());
+        assertEquals(400, result.getMyEcoPrice());
+        assertEquals(186, result.getAverageEcoPrice());
+        assertEquals("http://example.com/food1.jpg", result.getImageUrl());
+        assertEquals(33.33, result.getRankPercentage(), 0.001);
+    }
+    @Test
+    @DisplayName("절약 정보 2등 조회 테스트")
+    public void calMonthUserEcoPrice_ShouldReturnUserEcoRecordResDto_Second() {
+        User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
+        User user3 = new User(3L, "user3", "password", Gender.MALE, Age.FORTY);
+        LocalDate date = LocalDate.now();
+        List<EcoRecord> rankSavingPrices = Arrays.asList(
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
+        );
+        when(httpSessionService.getUserFromSession()).thenReturn(user3);
+        when(userGasRecordDao.findSavingPriceByGenderAndAge(user3.getGender(), user3.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
+        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(360))).thenReturn(Optional.of(FoodImage.builder().food_no(1).imageUrl("http://example.com/food1.jpg").build()));
+
+        // Act
+        UserEcoRecordResDto result = userRecordService.calMonthUserEcoPrice();
+
+        // Assert
+        assertEquals("user3", result.getUserId());
+        assertEquals(Gender.MALE, result.getGender());
+        assertEquals(Age.FORTY.getAgeBound(), result.getAge());
+        assertEquals(20000, result.getRefuelingPrice());
+        assertEquals(360, result.getMyEcoPrice());
+        assertEquals(186, result.getAverageEcoPrice());
+        assertEquals("http://example.com/food1.jpg", result.getImageUrl());
+        assertEquals(66.67, result.getRankPercentage(), 0.001);
+    }
+    @Test
+    @DisplayName("절약 금액 음수일때 사진정보 테스트")
+    public void calMonthUserEcoPrice_Minus_Image() {
+        User user = new User(1L, "user1", "password", Gender.MALE, Age.FORTY);
+        LocalDate date = LocalDate.now();
+        List<EcoRecord> rankSavingPrices = Arrays.asList(
+                EcoRecord.builder().userNo(2L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(50000).savingPrice(400).savingRank(1).build(),
+                EcoRecord.builder().userNo(3L).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(360).savingRank(2).build(),
+                EcoRecord.builder().userNo(user.getUserNo()).gender(Gender.MALE).age(Age.FORTY).refuelingPrice(20000).savingPrice(-200).savingRank(3).build()
+        );
+        when(httpSessionService.getUserFromSession()).thenReturn(user);
+        when(userGasRecordDao.findSavingPriceByGenderAndAge(user.getGender(), user.getAge(), date)).thenReturn(Optional.of(rankSavingPrices));
+        when(foodImageDao.findFoodImageByEcoPrice(BigDecimal.valueOf(200))).thenReturn(Optional.of(FoodImage.builder().food_no(1).imageUrl("http://example.com/food1.jpg").build()));
+
+        // Act
+        UserEcoRecordResDto result = userRecordService.calMonthUserEcoPrice();
+
+        // Assert
+        assertEquals("user1", result.getUserId());
+        assertEquals(Gender.MALE, result.getGender());
+        assertEquals(Age.FORTY.getAgeBound(), result.getAge());
+        assertEquals(20000, result.getRefuelingPrice());
+        assertEquals(-200, result.getMyEcoPrice());
+        assertEquals(186, result.getAverageEcoPrice());
+        assertEquals("http://example.com/food1.jpg", result.getImageUrl());
+        assertEquals(100, result.getRankPercentage(), 0.001);
     }
 
     @Test

@@ -1,12 +1,12 @@
-import { changeCSS, isReleaseMode, _$ } from "../../common/function.js";
+import { changeCSS, isReleaseMode, _$ } from "../../common/utils.js";
 import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../common/variable.js";
 import { gasNameMapper, validateOilInput } from "./helperFunction.js";
-import { gasStationSearchView } from "./view.js";
+import { gasStationSearchView, recentGasStationView } from "./view.js";
 
-const fetchGasStationSearch = ($oilSearchResultBox, gasStationName) => {
+const fetchGasStationSearch = ($oilSearchResultBox, gasStationName, gasType) => {
     const FETCH_URL = isReleaseMode() ? 
-                        `${RELEASE_COOKIE_URL}/gas-station/?name=${gasStationName}` :
-                        `${BASE_COOKIE_URL}/gas-station/?name=${gasStationName}`;
+                        `${RELEASE_COOKIE_URL}/gas-station/?name=${gasStationName}&gasType=${gasNameMapper(gasType)}` :
+                        `${BASE_COOKIE_URL}/gas-station/?name=${gasStationName}&gasType=${gasNameMapper(gasType)}`;
 
     fetch(FETCH_URL, {
         method: METHOD.GET,
@@ -62,4 +62,32 @@ const fetchOilRegister = ($container) => {
     }
 }
 
-export { fetchGasStationSearch, fetchOilRegister }
+const fetchRecentGasStation = ($container) => {
+    const $oilSelect = _$(".oilInfoArea__oilSelect > span", $container);
+    const $oilRecentModalContent = _$(".oilInput__preferContentBox", $container);
+
+    let gasType = gasNameMapper($oilSelect.innerHTML);
+
+    const FETCH_URL = isReleaseMode() ? 
+                        RELEASE_COOKIE_URL + `/gas-station/recent/?gasType=${gasType}` :
+                        BASE_COOKIE_URL + `/gas-station/recent/?gasType=${gasType}`;
+
+    fetch(FETCH_URL, {
+        headers: HEADER.GET,
+        credentials: "include"
+    }).then((res) => {
+        $oilRecentModalContent.innerHTML = ``;
+        if(res.status === 200) {
+            return res.json();
+        }
+        return {};
+    }).then(({data}) => {
+        if(data) {
+            data.forEach(({address, name, brand, stationNo}) => {
+                $oilRecentModalContent.appendChild(recentGasStationView($oilRecentModalContent, brand, name, address, stationNo));
+            })
+        }
+    })
+}
+
+export { fetchGasStationSearch, fetchOilRegister, fetchRecentGasStation }

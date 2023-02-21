@@ -1,4 +1,4 @@
-import { changeCSS, _$, _$_ALL } from "../../common/function.js";
+import { changeCSS, _$, _$_ALL } from "../../common/utils.js";
 import { navBarView } from "../../navbar/view.js";
 import { fetchOilHistory } from "./fetch.js";
 import { getHistoryRowTemplate, getHistoryTemplate } from "./template.js";

@@ -1,4 +1,4 @@
-import { isReleaseMode, _$, changeCSS } from "../../common/function"
+import { isReleaseMode, _$, changeCSS } from "../../common/utils"
 import { BASE_COOKIE_URL, HEADER, METHOD, RELEASE_COOKIE_URL } from "../../common/variable"
 
 const fetchModifyUserDetail = (modifiedGender, modifiedAge, $container) => {
