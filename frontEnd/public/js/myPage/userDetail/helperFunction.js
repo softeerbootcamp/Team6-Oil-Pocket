@@ -15,6 +15,10 @@ const getAgeFromLabel = ($container) => {
     let age = $ageInputs
         .find(($ageInput) => $ageInput.checked).value;
 
+    if(age === "60대") {
+        return "60대 이상"
+    }
+
     return age;
 }
 
