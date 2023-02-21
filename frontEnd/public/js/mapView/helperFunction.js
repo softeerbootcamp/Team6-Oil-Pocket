@@ -12,8 +12,9 @@ let HGmarkerArr = [];
 let markerArr = [];
 let ResultHtml = "";
 let SideBarDisplay = true;
-let isOption1 = true;
-let isOption2 = false; 
+// let isOption1 = true;
+// let isOption2 = false; 
+let curzIndex = 101;
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -53,11 +54,11 @@ function initTmap() {
 
         document.getElementsByClassName("main__GSTdetailCloseButton")[0].addEventListener('click', closeDetailTab);
 
-        const SearchFromCurrentLocationButton = document.querySelector(".main__SearchFromCurrentLocation");
-        SearchFromCurrentLocationButton.addEventListener('click', (e) => SelectSearchOption1(e));
+        // const SearchFromCurrentLocationButton = document.querySelector(".main__SearchFromCurrentLocation");
+        // SearchFromCurrentLocationButton.addEventListener('click', (e) => SelectSearchOption1(e));
 
         const SearchFromRouteButton = document.querySelector(".main__SearchFromRoute");
-        SearchFromRouteButton.addEventListener('click', (e) => SelectSearchOption2(e));
+        SearchFromRouteButton.addEventListener('click', (e) => MoveToinitialPoint(e));
 
         const AddOilingButton = document.getElementsByClassName("main__addOilingInfo")[0];
         AddOilingButton.addEventListener('click', MakeOilingInformation);
@@ -92,33 +93,17 @@ function FindAddressofSearchCoords(lon, lat) {
         success : function(response) {
             var arrResult = response.addressInfo;
 
-            var lastLegal = arrResult.legalDong
-                    .charAt(arrResult.legalDong.length - 1);
+            var lastLegal = arrResult.legalDong.charAt(arrResult.legalDong.length - 1);
 
-            var newRoadAddr = arrResult.city_do + ' '
-                    + arrResult.gu_gun + ' ';
+            var newRoadAddr = arrResult.city_do + ' ' + arrResult.gu_gun + ' ';
 
-            if (arrResult.eup_myun == ''
-                    && (lastLegal == "읍" || lastLegal == "면")) {
+            if (arrResult.eup_myun == '' && (lastLegal == "읍" || lastLegal == "면")) {
                 newRoadAddr += arrResult.legalDong;
-            } else {
+            } 
+            else {
                 newRoadAddr += arrResult.eup_myun;
             }
-            newRoadAddr += ' ' + arrResult.roadName + ' '
-                    + arrResult.buildingIndex;
-
-            // if (arrResult.legalDong != ''
-            //         && (lastLegal != "읍" && lastLegal != "면")) {
-
-            //     if (arrResult.buildingName != '') {
-            //         newRoadAddr += (' (' + arrResult.legalDong
-            //                 + ', ' + arrResult.buildingName + ') ');
-            //     } else {
-            //         newRoadAddr += (' (' + arrResult.legalDong + ')');
-            //     }
-            // } else if (arrResult.buildingName != '') {
-            //     newRoadAddr += (' (' + arrResult.buildingName + ') ');
-            // }
+            newRoadAddr += ' ' + arrResult.roadName + ' ' + arrResult.buildingIndex;
 
             var result = "<div>" + newRoadAddr + "</div>";
             const curAddr = document.getElementsByClassName("main__CurrentLocationAddress");
@@ -157,7 +142,7 @@ function SearchNearGasStation(){
         },
         success:function(response) {
             FindAddressofSearchCoords(map.getCenter()._lng,map.getCenter()._lat);
-
+            console.log(response);
             if(response==null){
                 const NoResult = "검색 결과가 존재하지 않습니다.";
                 document.getElementById("searchResult").innerHTML = NoResult;
@@ -215,7 +200,6 @@ function ShowResult(ResultArray, positionBounds){
             });
         markerArr.push(marker);
 
-        
         if(ResultArray[k].llPrice != 0){
             LPGmarker = new Tmapv3.Marker({
                 position : markerPosition,
@@ -224,7 +208,6 @@ function ShowResult(ResultArray, positionBounds){
                 map:map
             });
             markerArr.push(LPGmarker);
-            
         }
         else {
             HGmarker = new Tmapv3.Marker({
@@ -253,28 +236,42 @@ function ShowResult(ResultArray, positionBounds){
         }
         positionBounds.extend(markerPosition);
     }
-    addEventtoMarker();
+    addmouseOverEventtoMarker();
+    addClickEventToMarker(ResultArray);
     resultArea.innerHTML = ResultHtml;
     addEventToResult(ResultArray);
     map.fitBounds(positionBounds);	
 }
 
-const brandLogoMapper = {
-    "알뜰": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/알뜰.png",
-    "오일뱅크": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/오일뱅크.png",
-    "custom": "./img/GasStation_Image/custom.png",
-    "E1": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/E1.png",
-    "ex-OIL": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
-    "ex": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png",
-    "GS": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/GS.png",
-    "S-Oil": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/S-Oil.png",
-    "SK": "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/SK_Gas.png",
+const brandLogoMapper = (brandName) => {
+    switch(brandName) {
+        case "알뜰":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/알뜰.png";
+        case "오일뱅크":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/오일뱅크.png";
+        case "E1":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/E1.png";
+        case "ex-OIL":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png";
+        case "ex":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/ex.png";
+        case "GS":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/GS.png";
+        case "S-Oil":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/S-Oil.png";
+        case "SK":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/SK_Gas.png";
+        case "NH-OIL":
+            return "https://team6-public-image.s3.ap-northeast-2.amazonaws.com/주유소+로고_0213/NH-OIL.png";
+    }
+
+    return "./img/GasStation_Image/custom.png";
 }
 
 function SelectStIdLogo(stId, name, radius){
     return `
         <div class='main__ResultList'> 
-            <img class='main__ResultList__Title_Logo' src = ${brandLogoMapper[stId]}>
+            <img class='main__ResultList__Title_Logo' src = ${brandLogoMapper(stId)}>
             <div class='main__ResultList_TitlenContents'>
                 <div class='main__ResultList__Title'>  
                     <div id="stName">${name}</div>
@@ -351,7 +348,10 @@ function ShowGSTDetail(event, ResultArray){
             withCredentials: true
         },
         success:function(response) {
-            console.log(response);
+            // console.log(transStId(ResultArray[k].stId));
+            // console.log(ResultArray[k].roadName);
+            // console.log(ResultArray[k].buildingNo1);
+            // console.log(response);
             ShowChart(response);
         },
         error:function(request, error){
@@ -360,7 +360,6 @@ function ShowGSTDetail(event, ResultArray){
     });
 }
 
-// function ShowGSTDetailByMarker()
 
 function FillSTDetail(ResultArrayElem){
 
@@ -458,7 +457,7 @@ function FillSTDetail(ResultArrayElem){
     }
 }
 
-function transStId(stId, type){
+function transStId(stId){
     switch(stId){
         case 'S-Oil': return 'S-OIL';
         case '오일뱅크' : return '현대오일뱅크';
@@ -469,8 +468,8 @@ function transStId(stId, type){
         case 'GS' : return 'GS칼텍스';
         case '자가상표' : return '자가상표';
         case 'E1' : return 'E1';
-        default : '자가상표';
     }
+    return '자가상표';
 }
 
 function sortHhPrice() {
@@ -568,38 +567,24 @@ function ShowResultByOption(ResultArray) {
 
         var markerPosition = new Tmapv3.LatLng(lat, lon);
 
-        marker = new Tmapv3.Marker({
-            position : map.getCenter(),
-            icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_m.png",
-            map:map
-            });
-        markerArr.push(marker);
-
         if(searchOption==1){
             if(ResultArray[k].highHhSale != 0){
                 ResultHtml += `<div class='main__ResultList__Contents'>
                         휘발유: <span>${ResultArray[k].hhPrice == 0 ? '-' : ResultArray[k].hhPrice}</span>
                         <i class="fa-solid fa-circle-check"></i>
                         </div></div></div>`;
-
-                marker = new Tmapv3.Marker({
-                    position : markerPosition,
-                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img class='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
-                    iconSize : Tmapv3.Size(10, 20),
-                    map:map
-                });
             }
-            else{
+            else {
                 ResultHtml += `<div class='main__ResultList__Contents'>
                         휘발유: <span>${ResultArray[k].hhPrice == 0 ? '-' : ResultArray[k].hhPrice}</span>
                         </div></div></div>`;
-                marker = new Tmapv3.Marker({
-                    position : markerPosition,
-                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img class='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
-                    iconSize : Tmapv3.Size(10, 20),
-                    map:map
-                });
-            } 
+            }
+            marker = new Tmapv3.Marker({
+                position : markerPosition,
+                iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img class='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                iconSize : Tmapv3.Size(10, 20),
+                map:map
+            }); 
         }
         else if(searchOption==2){
             ResultHtml += `<div class='main__ResultList__Contents'>
@@ -627,7 +612,8 @@ function ShowResultByOption(ResultArray) {
         i++;
         positionBounds.extend(markerPosition);
     }
-    // AddEventToMarker(markerArr);
+    addmouseOverEventtoMarker();
+    addClickEventToMarker(ResultArray);
     resultArea.innerHTML = ResultHtml;
     addEventToResult(ResultArray);
     map.fitBounds(positionBounds);	
@@ -662,51 +648,6 @@ function closeDetailTab() {
     DetailTabDisplay = false;
 }
 
-function SelectSearchOption1(e){
-    const SearchFromCurLocButton = e.target.closest(".main__SearchFromCurrentLocation");
-    if(isOption1){
-        return;
-    }
-    else {
-        const Option2button = document.querySelector(".main__SearchFromRoute");
-        Option2button.style.height = "4.6vh";
-        Option2button.style.width = "1.9vw";
-        Option2button.style.backgroundColor = "white";
-        Option2button.querySelector("#Option2").style.height = "14px";
-        Option2button.querySelector("#Option2").style.width = "14px";
-        SearchFromCurLocButton.style.height = "5vh";
-        SearchFromCurLocButton.style.width = "3vw";
-        SearchFromCurLocButton.style.backgroundColor = "#14BD7E";
-        SearchFromCurLocButton.querySelector("#Option1").style.height = "30px";
-        SearchFromCurLocButton.querySelector("#Option1").style.width = "30px";
-        isOption1 = true;
-        isOption2 = false;
-    }
-}
-
-function SelectSearchOption2(e) {
-    const SearchFromRouteButton = e.target.closest(".main__SearchFromRoute");
-
-    if(isOption2){
-        return;
-    }
-    else {
-        const Option1button = document.querySelector(".main__SearchFromCurrentLocation");
-        Option1button.style.height = "4.6vh";
-        Option1button.style.width = "1.9vw";
-        Option1button.style.backgroundColor = "white";
-        Option1button.querySelector("#Option1").style.height = "14px";
-        Option1button.querySelector("#Option1").style.width = "14px";
-        SearchFromRouteButton.style.height = "5vh";
-        SearchFromRouteButton.style.width = "3vw";
-        SearchFromRouteButton.style.backgroundColor = "#14BD7E";
-        SearchFromRouteButton.querySelector("#Option2").style.height = "30px";
-        SearchFromRouteButton.querySelector("#Option2").style.width = "30px";
-        isOption2 = true;
-        isOption1 = false;
-    }
-}
-
 function ShowChart(response){
     const dateLabels = [];
     const PREGasolineData = [];
@@ -729,7 +670,7 @@ function ShowChart(response){
             LPGData.push(PriceInformation[k].price);
         }
     }
-
+    console.log("여기까지는 되냐?");
     var Preflag=0;
     for(var index=0; index<30;index++){
         if(PREGasolineData[index]==0){
@@ -867,20 +808,168 @@ function ToggleCurMarker(SelectedTitle){
         selectedmarker.classList.toggle('selected__Map_Marker_LPG');
     }
 }
-function addEventtoMarker() {
-    const mapmarkerarr = document.getElementsByClassName('img_HG');
-    for(var k=0;k<mapmarkerarr.length;k++){
-        mapmarkerarr[k].addEventListener('mouseenter', (e) => bringMarkerToFront(e));
-        // mapmarkerarr[k].addEventListener('mouseout', (e) => bringMarkerToBack(e));
+function addmouseOverEventtoMarker() {
+    const HGmapmarkerarr = document.getElementsByClassName('img_HG');
+    const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
+    const HnGmapmarkerarr = document.getElementsByClassName('img_HnG');
+    for(var k=0;k<HGmapmarkerarr.length;k++){
+        HGmapmarkerarr[k].addEventListener('mouseover', (e) => bringMarkerToFront(e));
+    }
+    for(var k=0;k<LPGmapmarkerarr.length;k++){
+        LPGmapmarkerarr[k].addEventListener('mouseover', (e) => bringMarkerToFront(e));
+    }
+    for(var k=0;k<HnGmapmarkerarr.length;k++){
+        HnGmapmarkerarr[k].addEventListener('mouseover', (e) => bringMarkerToFront(e));
     }
 }
 
 function bringMarkerToFront(e) {
     const MouseonMarker = e.target.closest('.vsm-marker');
-    const Mapdiv = document.getElementsByClassName('vsm-canvas-container');
-    Mapdiv[0].append(MouseonMarker);
+    // console.log(MouseonMarker);
+    MouseonMarker.style.zIndex = `${curzIndex}`;
+    curzIndex++;
 }
 
+function addClickEventToMarker(ResultArray){
+    if(searchOption==0){
+        const HGmapmarkerarr = document.getElementsByClassName('img_HG');
+        const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
+        for(var k=0;k<HGmapmarkerarr.length;k++){
+            HGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+        }
+        for(var k=0;k<LPGmapmarkerarr.length;k++){
+            LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+        }
+    }
+    else if(searchOption==1 || searchOption ==2){
+        const HnGmapmarkerarr = document.getElementsByClassName('img_HnG');
+        for(var k=0;k<HnGmapmarkerarr.length;k++){
+            HnGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+        }
+    }
+    else if(searchOption==3){
+        const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
+        for(var k=0;k<LPGmapmarkerarr.length;k++){
+            LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+        }
+    }
+}
+
+function ShowGSTDetailByMarker(e, ResultArray){
+    if(searchOption==0){
+        const HGmarkerGSTname = e.target.closest('.Map_Marker_HG');
+        const LPGmarkerGSTname = e.target.closest('.Map_Marker_LPG');
+        if(HGmarkerGSTname){
+            ShowDetail(ResultArray, HGmarkerGSTname);
+        }
+        else {
+            ShowDetail(ResultArray, LPGmarkerGSTname);
+        }
+    }
+    else if(searchOption==1){
+        const Hmarkername = e.target.closest('.Map_Marker_hprice');
+        ShowDetail(ResultArray, Hmarkername);
+    }
+    else if(searchOption==2){
+        const Gmarkername = e.target.closest('.Map_Marker_gprice');
+        ShowDetail(ResultArray, Gmarkername);
+    }
+    else if(searchOption==3){
+        const Lmarkername = e.target.closest('.Map_Marker_LPG');
+        ShowDetail(ResultArray, Lmarkername);
+    }
+}
+
+
+function ShowDetail(ResultArray, markername){
+    //map.setZoom(17);
+
+    if(DetailTabDisplay==false){
+        const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
+        GSTDetailTab[0].style.marginLeft = "0vw";
+        const SideSearchBar = document.getElementsByClassName("main__SideSearchBar");
+        SideSearchBar[0].style.borderRadius = "0";
+        DetailTabDisplay = true;
+    }
+
+    document.getElementById('myChart').remove();
+    const newChart = document.createElement('canvas');
+    newChart.id= 'myChart'; 
+    document.getElementsByClassName('main__GSTdetail__Contents__Chart')[0].append(newChart);
+    
+    //console.log(HGmarkerGSTname.id);
+    for(var k=0;k<ResultArray.length;k++){
+        if(ResultArray[k].name == markername.id){
+            break;
+        }
+    }
+    // var noorLat = Number(ResultArray[k].noorLat);
+    // var noorLon = Number(ResultArray[k].noorLon);
+
+    // var pointCng = new Tmapv3.Point(noorLon, noorLat);
+    // var projectionCng = new Tmapv3.Projection.convertEPSG3857ToWGS84GEO(pointCng);
+    
+    // var lat = projectionCng._lat;
+    // var lon = projectionCng._lng;
+
+    // var markerPosition = new Tmapv3.LatLng(lat, lon);
+
+    // if(searchOption==0){
+    //     ShowOnlyCurMarker(markername.id);
+    // }
+    // else {
+    //     ToggleCurMarker(markername.id);
+    // }
+
+    // map.setCenter(markerPosition);
+
+    // map.zoomIn();
+
+    // console.log(ResultArray[k]);
+    FillSTDetail(ResultArray[k]);
+    const HOST_URL = isReleaseMode() ? 
+                        "https://www.oilpocket.kro.kr" :
+                        "http://localhost:8080" ;
+
+    $.ajax({
+        method:"GET",
+        url:`${HOST_URL}/api/v1/gas-station/` + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
+        + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId) + "/month",
+        xhrFields: {
+            withCredentials: true
+        },
+        success:function(response) {
+            ShowChart(response);
+        },
+        error:function(request, error){
+            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+    });
+}
+
+function MoveToinitialPoint(e){
+    ResetMarkerArray(markerArr);
+    let longitude = localStorage.getItem("longitude");
+    let latitude = localStorage.getItem("latitude");
+
+    if(longitude && latitude) {
+        FindAddressofSearchCoords(longitude, latitude);
+    }
+    else {
+        navigator.geolocation.getCurrentPosition((position) => {
+            FindAddressofSearchCoords(position.coords.longitude, position.coords.latitude);
+        });
+    }
+    const resultArea = document.querySelector(".main__SearchResult");
+    resultArea.innerHTML = "";
+
+    marker = new Tmapv3.Marker({
+        position : map.getCenter(),
+        icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_m.png",
+        map:map
+        });
+    markerArr.push(marker);
+}
 export { initTmap }
 
 

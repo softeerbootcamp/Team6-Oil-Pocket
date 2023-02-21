@@ -836,7 +836,7 @@ a {
                             background-color:white;
                             border: 2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
+                            width:calc(15vw - 2px);
                             height:4vh;
                             margin-left:2vw;
                             margin-top:2vh;
@@ -2628,7 +2628,7 @@ a {
                         background-color: transparent;
                         & .main__SearchFromCurrentLocation {
                             display:flex;
-                            margin-top: 3vh;
+                            margin-top: 5vh;
                             width:3vw;
                             height:5vh;
                             background-color: #14BD7E;
@@ -2638,17 +2638,19 @@ a {
                             align-items: center;
                             justify-content: center;
                             & #Option1 {
+                                display:flex;
                                 transition: 0.5s;
                                 transition-timing-function: linear;
-                                width:10px;
-                                height:10px;
+                                font-size: 30px;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
         
                         & .main__SearchFromRoute {
                             display:flex;
-                            width:1.9vw;
-                            height:4.6vh;
+                            width:3vw;
+                            height:5vh;
                             background-color: white;
                             box-shadow: 1px 0 2px -1px ;
                             transition: 0.4s;
@@ -2656,10 +2658,12 @@ a {
                             align-items: center;
                             justify-content: center;
                             & #Option2 {
+                                display:flex;
                                 transition: 0.5s;
                                 transition-timing-function: linear;
-                                width:10px;
-                                height:10px;
+                                font-size:25px;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
                     }
@@ -2783,7 +2787,7 @@ a {
                             background-color:white;
                             border: 2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
+                            width:calc(15vw - 4px);
                             height:4vh;
                             margin-left:2vw;
                             margin-top:0;

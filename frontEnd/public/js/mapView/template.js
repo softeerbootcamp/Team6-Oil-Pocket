@@ -7,7 +7,7 @@ const getMapContentTemplate = () => `
                                 <span id="Option1"><i class="fa-solid fa-location-dot"></i></span>
                             </button>
                             <button class="main__SearchFromRoute">
-                                <span id="Option2"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                <span id="Option2"><i class="fa-solid fa-arrow-rotate-left"></i></i></span>
                             </button>
                         </div>
                         <div class="main__InputandResultinSearchBar">

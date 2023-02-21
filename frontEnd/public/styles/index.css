@@ -1010,7 +1010,7 @@ a {
     background-color: white;
     border: 2px solid #14BD7E;
     border-radius: 5px;
-    width: 15vw;
+    width: calc(15vw - 2px);
     height: 4vh;
     margin-left: 2vw;
     margin-top: 2vh;
@@ -2634,7 +2634,7 @@ a {
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation {
     display: flex;
-    margin-top: 3vh;
+    margin-top: 5vh;
     width: 3vw;
     height: 5vh;
     background-color: #14BD7E;
@@ -2645,15 +2645,17 @@ a {
     justify-content: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation #Option1 {
+    display: flex;
     transition: 0.5s;
     transition-timing-function: linear;
-    width: 10px;
-    height: 10px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute {
     display: flex;
-    width: 1.9vw;
-    height: 4.6vh;
+    width: 3vw;
+    height: 5vh;
     background-color: white;
     box-shadow: 1px 0 2px -1px;
     transition: 0.4s;
@@ -2662,10 +2664,12 @@ a {
     justify-content: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute #Option2 {
+    display: flex;
     transition: 0.5s;
     transition-timing-function: linear;
-    width: 10px;
-    height: 10px;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar {
     width: 19vw;
@@ -2769,7 +2773,7 @@ a {
     background-color: white;
     border: 2px solid #14BD7E;
     border-radius: 5px;
-    width: 15vw;
+    width: calc(15vw - 4px);
     height: 4vh;
     margin-left: 2vw;
     margin-top: 0;
