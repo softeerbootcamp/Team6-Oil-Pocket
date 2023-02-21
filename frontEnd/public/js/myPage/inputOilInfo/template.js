@@ -112,21 +112,6 @@ const preferModalTemplate = () => `
             <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
             <h1>선호 주유소</h1>
             <ul class="oilInput__preferContentBox">
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
             </ul>
         </div>
     </div>
