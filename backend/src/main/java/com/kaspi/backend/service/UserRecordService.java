@@ -52,7 +52,7 @@ public class UserRecordService {
     }
 
     public Long calUserSavingAmount(Long userRefuelingPrice, Long userGasAmount, Long nationalAvgOilPrice) {
-        return userRefuelingPrice - nationalAvgOilPrice * userGasAmount;
+        return nationalAvgOilPrice * userGasAmount-userRefuelingPrice;
     }
 
 
