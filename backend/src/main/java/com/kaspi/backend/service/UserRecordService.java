@@ -79,8 +79,6 @@ public class UserRecordService {
         User user = httpSessionService.getUserFromSession();
         List<UserGasRecord> matchingUserGasRecords = userGasRecordDao.findGasRecordListByUserId(user.getUserNo());
         List<UserGasRecordResDto> userGasRecordResDtos = toUserGasRecordResDtos(matchingUserGasRecords);
-        //날짜 최신순 정렬
-        Collections.sort(userGasRecordResDtos);
         return userGasRecordResDtos;
     }
 
