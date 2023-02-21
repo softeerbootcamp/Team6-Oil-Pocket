@@ -17,7 +17,8 @@ import java.util.Optional;
 @Repository
 public interface UserGasRecordDao extends CrudRepository<UserGasRecord, Long> {
     @Query("select charge_date,gas_station_no, record_gas_type ,record_gas_amount ,refueling_price ,saving_price  from user_gas_record ugr " +
-            "where user_no = :userNo;")
+            "where user_no = :userNo \n" +
+            "order by ugr.user_gas_record_no DESC")
     List<UserGasRecord> findGasRecordListByUserId(@Param("userNo") Long userNo);
     @Query("select * from user_gas_record where user_no = :userNo and month(charge_date) = month(:date) and year(charge_date) = year(:date)")
     Optional<List<UserGasRecord>> findByMonthOfNow(@Param("user_no") Long userNo, @Param("date") LocalDate date);
