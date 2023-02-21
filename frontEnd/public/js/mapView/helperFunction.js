@@ -14,6 +14,7 @@ let ResultHtml = "";
 let SideBarDisplay = true;
 let isOption1 = true;
 let isOption2 = false; 
+let curZindex = 50;
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -253,7 +254,7 @@ function ShowResult(ResultArray, positionBounds){
         }
         positionBounds.extend(markerPosition);
     }
-    
+    addEventtoMarker();
     resultArea.innerHTML = ResultHtml;
     addEventToResult(ResultArray);
     map.fitBounds(positionBounds);	
@@ -862,8 +863,26 @@ function ToggleCurMarker(SelectedTitle){
         selectedmarker.classList.toggle('selected__Map_Marker_LPG');
     }
 }
-function addEventtoMarker(marker) {
-    marker.addEventListener('click', () => console.log('jaewon'));
+function addEventtoMarker() {
+    const mapmarkerarr = document.getElementsByClassName('Map_Marker_HG');
+    for(var k=0;k<mapmarkerarr.length;k++){
+        mapmarkerarr[k].addEventListener('mouseenter', (e) => bringMarkerToFront(e));
+        // mapmarkerarr[k].addEventListener('mouseout', (e) => bringMarkerToBack(e));
+    }
+}
+
+function bringMarkerToFront(e) {
+    const MouseonMarker = e.target.closest('.vsm-marker');
+    //const cloneMarker = MouseonMarker.cloneNode();
+    //MouseonMarker.remove();
+    const Mapdiv = document.getElementsByClassName('vsm-canvas-container');
+    // console.log(Mapdiv);
+    Mapdiv[0].append(MouseonMarker);
+}
+
+function bringMarkerToBack(e) {
+    const MouseleaveMarker = e.target.closest('.Map_Marker_HG');
+    MouseleaveMarker.style.zIndex = 0;
 }
 
 export { initTmap }
