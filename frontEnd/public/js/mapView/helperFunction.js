@@ -14,7 +14,6 @@ let ResultHtml = "";
 let SideBarDisplay = true;
 let isOption1 = true;
 let isOption2 = false; 
-let curZindex = 50;
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -338,7 +337,7 @@ function ShowGSTDetail(event, ResultArray){
     map.setCenter(markerPosition);
 
     map.zoomIn();
-    //map.setPitch(90);
+
     FillSTDetail(ResultArray[k]);
     const HOST_URL = isReleaseMode() ? 
                         "https://www.oilpocket.kro.kr" :
@@ -360,6 +359,8 @@ function ShowGSTDetail(event, ResultArray){
         }
     });
 }
+
+// function ShowGSTDetailByMarker()
 
 function FillSTDetail(ResultArrayElem){
 
@@ -879,11 +880,6 @@ function bringMarkerToFront(e) {
     const Mapdiv = document.getElementsByClassName('vsm-canvas-container');
     Mapdiv[0].append(MouseonMarker);
 }
-
-// function bringMarkerToBack(e) {
-//     const MouseleaveMarker = e.target.closest('.Map_Marker_HG');
-//     MouseleaveMarker.style.zIndex = 0;
-// }
 
 export { initTmap }
 
