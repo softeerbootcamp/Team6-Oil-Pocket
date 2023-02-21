@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class LoggingAspect {
 
-    @Timed(value = "api request")
+    @Timed(value = "controller.api")
     @Around("execution(* com.kaspi.backend.controller.*.*(..))")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();

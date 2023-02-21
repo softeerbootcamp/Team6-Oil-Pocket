@@ -6562,10 +6562,16 @@ a {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    overflow-y: scroll;
+    padding: 2% 0;
     width: 100%;
-    height: 85%;
+    height: 80%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox::-webkit-scrollbar {
+    width: 0;
   }
   .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li {
+    padding: 1% 0;
     width: 60%;
     display: flex;
     justify-content: space-around;
@@ -6577,7 +6583,7 @@ a {
     cursor: pointer;
   }
   .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li img {
-    width: 10%;
+    width: 6.5%;
   }
   .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li h2 {
     font-size: 1rem;
