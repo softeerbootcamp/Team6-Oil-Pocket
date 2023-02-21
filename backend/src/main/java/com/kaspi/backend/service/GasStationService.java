@@ -30,9 +30,16 @@ public class GasStationService {
 
     public List<FindGasStationResDto> getGasStationByContainingName(String reqGasStationName, GasType requestGasType) {
         log.info("주유소 이름 검색 요청 name:{}, gasType:{}", reqGasStationName,requestGasType);
-        return gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName),requestGasType.name());
+        List<FindGasStationResDto> gasStationForGasSearch = gasStationDao.findGastationForGasSearch(getLikeGasStationName(reqGasStationName), requestGasType.name());
+        updateBrandToUri(gasStationForGasSearch);
+        return gasStationForGasSearch;
     }
 
+    private  void updateBrandToUri(List<FindGasStationResDto> gasStationForGasSearch) {
+        for (FindGasStationResDto stationForGasSearch : gasStationForGasSearch) {
+            stationForGasSearch.updateBrandToImage();
+        }
+    }
 
 
     public GasStation getGasStationByNo(Long gasStationNo) {
@@ -59,7 +66,7 @@ public class GasStationService {
         String address = roadNum + SPACE + buildNum;
         Optional<GasStation> optionalGasStation = gasStationDao.findByAddressAndBrand(address, brand);
         if (optionalGasStation.isEmpty()) {
-            optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand);
+            optionalGasStation = gasStationDao.findByLikeAddressAndBrand(getLikeAddress(roadNum, buildNum), brand + WILDCARD);
             if (optionalGasStation.isEmpty()) {
                 throw new SqlNotFoundException(SqlNotFoundException.class.getSimpleName(), ErrorCode.NOT_FOUND_GAS_STATION);
             }
@@ -69,9 +76,12 @@ public class GasStationService {
 
     // 도로명 주소와 건물번호로 Like를 위한 와일드카드(%)를 설정해주는 메소드 입니다
     private String getLikeAddress(String roadNum, String buildNum) {
-        return WILDCARD + roadNum + WILDCARD + buildNum;
+        return WILDCARD + roadNum + WILDCARD + buildNum + WILDCARD;
     }
 
+    /**
+     * 해당 주유소의 상세 가격 정보를 GasStationDto로 반환하는 메소드입니다.
+     */
     public GasStationDto findOntMonthGasStationDto(String name, String roadNum, String buildNum, String brand) {
         GasStation gasStation = findGasStation(roadNum, buildNum, brand);
         List<GasDetailDto> gasDetailDtoList = gasDetailService.findOneMonthGasDetailList(gasStation);

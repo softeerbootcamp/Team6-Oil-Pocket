@@ -72,6 +72,9 @@ const routerCheckLogin = async () => {
         if(res.status === 200) {
             location.assign("/");
         }
+        else {
+            
+        }
     })
 }
 
