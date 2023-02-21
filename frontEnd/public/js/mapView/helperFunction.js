@@ -14,7 +14,6 @@ let ResultHtml = "";
 let SideBarDisplay = true;
 let isOption1 = true;
 let isOption2 = false; 
-let curZindex = 50;
 
 function initTmap() {
 	map = new Tmapv3.Map("map_div", {
@@ -220,7 +219,7 @@ function ShowResult(ResultArray, positionBounds){
         if(ResultArray[k].llPrice != 0){
             LPGmarker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img id='img_LPG'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img class='img_LPG'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -230,7 +229,7 @@ function ShowResult(ResultArray, positionBounds){
         else {
             HGmarker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_HG' id='${ResultArray[k].name}'><img id='img_HG'><span id="H">${ResultArray[k].hhPrice}</span>
+                iconHTML: `<div class='Map_Marker_HG' id='${ResultArray[k].name}'><img class='img_HG'><span id="H">${ResultArray[k].hhPrice}</span>
                             <span id='G'>${ResultArray[k].ggPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
@@ -338,7 +337,7 @@ function ShowGSTDetail(event, ResultArray){
     map.setCenter(markerPosition);
 
     map.zoomIn();
-    //map.setPitch(90);
+
     FillSTDetail(ResultArray[k]);
     const HOST_URL = isReleaseMode() ? 
                         "https://www.oilpocket.kro.kr" :
@@ -360,6 +359,8 @@ function ShowGSTDetail(event, ResultArray){
         }
     });
 }
+
+// function ShowGSTDetailByMarker()
 
 function FillSTDetail(ResultArrayElem){
 
@@ -583,7 +584,7 @@ function ShowResultByOption(ResultArray) {
 
                 marker = new Tmapv3.Marker({
                     position : markerPosition,
-                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img id='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img class='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
                     iconSize : Tmapv3.Size(10, 20),
                     map:map
                 });
@@ -594,7 +595,7 @@ function ShowResultByOption(ResultArray) {
                         </div></div></div>`;
                 marker = new Tmapv3.Marker({
                     position : markerPosition,
-                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img id='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
+                    iconHTML: `<div class='Map_Marker_hprice' id='${ResultArray[k].name}'><img class='img_HnG'><span id="Price">${ResultArray[k].hhPrice}</span></div>`,
                     iconSize : Tmapv3.Size(10, 20),
                     map:map
                 });
@@ -606,7 +607,7 @@ function ShowResultByOption(ResultArray) {
                         </div></div></div>`;
             marker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_gprice' id='${ResultArray[k].name}'><img id='img_HnG'><span id="Price">${ResultArray[k].ggPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_gprice' id='${ResultArray[k].name}'><img class='img_HnG'><span id="Price">${ResultArray[k].ggPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -617,7 +618,7 @@ function ShowResultByOption(ResultArray) {
                         </div></div></div>`;
             marker = new Tmapv3.Marker({
                 position : markerPosition,
-                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img id='img_LPG'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
+                iconHTML: `<div class='Map_Marker_LPG' id='${ResultArray[k].name}'><img class='img_LPG'><span id="LL">${ResultArray[k].llPrice}</span></div>`,
                 iconSize : Tmapv3.Size(10, 20),
                 map:map
             });
@@ -756,7 +757,7 @@ function ShowChart(response){
     }
     else {
         if(Preflag ==0){
-            for(var k =0;k<60;k = k+=2){
+            for(var k =0;k<90; k+=3){
                 dateLabels.push(PriceInformation[k].date.slice(-2));
             }
             data = {
@@ -867,7 +868,7 @@ function ToggleCurMarker(SelectedTitle){
     }
 }
 function addEventtoMarker() {
-    const mapmarkerarr = document.getElementsByClassName('Map_Marker_HG');
+    const mapmarkerarr = document.getElementsByClassName('img_HG');
     for(var k=0;k<mapmarkerarr.length;k++){
         mapmarkerarr[k].addEventListener('mouseenter', (e) => bringMarkerToFront(e));
         // mapmarkerarr[k].addEventListener('mouseout', (e) => bringMarkerToBack(e));
@@ -876,16 +877,8 @@ function addEventtoMarker() {
 
 function bringMarkerToFront(e) {
     const MouseonMarker = e.target.closest('.vsm-marker');
-    //const cloneMarker = MouseonMarker.cloneNode();
-    //MouseonMarker.remove();
     const Mapdiv = document.getElementsByClassName('vsm-canvas-container');
-    // console.log(Mapdiv);
     Mapdiv[0].append(MouseonMarker);
-}
-
-function bringMarkerToBack(e) {
-    const MouseleaveMarker = e.target.closest('.Map_Marker_HG');
-    MouseleaveMarker.style.zIndex = 0;
 }
 
 export { initTmap }

@@ -2149,7 +2149,7 @@ a {
                     width:180px;
                     height:50px;
     
-                    & #img_HG {
+                    & .img_HG {
                         margin-left: 65px;
                         margin-bottom : 25px;
                     }
@@ -2985,12 +2985,12 @@ a {
                             align-items: center;
                             width:100%;
                             height:3vh;
-                            font-size:30px;
-                            font-weight: 500;
+                            font-size:22px;
+                            font-weight: 700;
                             line-height: 3vh;
                             margin-bottom: 10px;
                             background-color: white;
-                            margin-top: -0.5vh;
+                            margin-top: 20px;
                         }
     
                         & .main__GSTdetail__Contents {
@@ -3041,22 +3041,6 @@ a {
                                     border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
                                     height:30px;
-                                    & img {
-                                        width:20px;
-                                        height:20px;
-                                        margin-right: 3px;
-                                        margin-bottom: -3px;
-                                    }
-                                }
-                                & .main__GSTdetail__Contents__Basic__Time {
-                                    font-size:16px;
-                                    font-weight: 350;
-                                    margin-top: 10px;
-                                    margin-bottom: 3px;
-                                    border-bottom: 1px solid rgba(211, 211, 211, 0.4);
-                                    line-height: 30px;
-                                    height:30px;
-                                    color:lightgrey;
                                     & img {
                                         width:20px;
                                         height:20px;
@@ -3115,7 +3099,7 @@ a {
                                         background-color: #1ad18e;
                                         outline: 0.05vh solid #14BD7E;
                                         color : white;
-                                        font-size:15px;
+                                        font-size:16px;
                                         font-weight: 400;
                                         width:calc(30.75% - 0.05vh);
                                         text-align: center;
@@ -3123,7 +3107,7 @@ a {
                                     }
                                     & .main__GSTdetail__Contents__OilPriceTable__TableHead_Price{
                                         background-color: #1ad18e;
-                                        font-size:15px;
+                                        font-size:16px;
                                         font-weight: 400;
                                         width:71%;
                                         text-align: center;
@@ -3148,7 +3132,7 @@ a {
                                             align-items: center;
                                             border-right: none;
                                             width:calc(30% - 0.05vh);
-                                            font-size: 15px;
+                                            font-size: 16px;
                                             font-weight: 400;
                                             text-align: center;
                                             outline: 0.05vh solid #14BD7E;
@@ -3158,7 +3142,7 @@ a {
                                             display: flex;
                                             justify-content: center;
                                             align-items: center;
-                                            font-size: 15px;
+                                            font-size: 16px;
                                             font-weight: 400;
                                             width:calc(70% - 0.05vh);
                                             text-align:center;
@@ -3189,12 +3173,13 @@ a {
                                 display:flex;
                                 align-items: center;
                                 justify-content: center;
-                                margin-top : 680px;
+                                margin-top : 650px;
                                 border-radius: 20px;
                                 border:1px solid #14BD72;
                                 background-color: #14BD7E;
                                 font-size: 1rem;
                                 color:white;
+                                display:none;
                             }
                         }
                     }
@@ -3220,11 +3205,10 @@ a {
                 height:82vh;
 
                 & .Map_Marker_HG{
-                    //position : relative;
                     width:180px;
                     height:50px;
     
-                    & #img_HG {
+                    & .img_HG {
                         content : url(/public/img/marker_HG.png);
                         margin-left: 65px;
                         margin-bottom : 25px;
@@ -3251,7 +3235,7 @@ a {
                 & .Map_Marker_LPG {
                     width:120px;
                     height:50px;
-                    & #img_LPG {
+                    & .img_LPG {
                         content : url(/public/img/marker_LPG.png);
                         margin-left: 35px;
                         margin-bottom : 25px;
@@ -3269,7 +3253,7 @@ a {
                 & .Map_Marker_hprice {
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_hPrice.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3287,7 +3271,7 @@ a {
                 & .Map_Marker_gprice {
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_gPrice.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3305,7 +3289,7 @@ a {
                 & .selected__Map_Marker_hprice{
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_hPrice_sel.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3313,6 +3297,7 @@ a {
                     & #Price {
                         position:absolute;
                         width:40px;
+                        color:white;
                         font-size: 20px;
                         font-weight: 350;
                         margin-top:-70px;
@@ -3323,7 +3308,7 @@ a {
                 & .selected__Map_Marker_gprice{
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_gPrice_sel.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3331,6 +3316,7 @@ a {
                     & #Price {
                         position:absolute;
                         width:40px;
+                        color:white;
                         font-size: 20px;
                         font-weight: 350;
                         margin-top:-70px;
@@ -3341,7 +3327,7 @@ a {
                 & .selected__Map_Marker_LPG{
                     width:120px;
                     height:50px;
-                    & #img_LPG {
+                    & .img_LPG {
                         content : url(/public/img/marker_LPG_sel.png);
                         margin-left: 35px;
                         margin-bottom : 25px;
@@ -3349,6 +3335,7 @@ a {
                     & #LL {
                         position:absolute;
                         width:40px;
+                        color:white;
                         font-size: 20px;
                         font-weight: 350;
                         margin-top:-70px;
