@@ -2212,7 +2212,7 @@ a {
     width: 180px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker #img_HG {
+  .main .main__ForMap .main__MapDiv .Map_Marker .img_HG {
     margin-left: 65px;
     margin-bottom: 25px;
   }
@@ -3180,7 +3180,7 @@ a {
     width: 180px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HG #img_HG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_HG .img_HG {
     content: url(/public/img/marker_HG.png);
     margin-left: 65px;
     margin-bottom: 25px;
@@ -3205,7 +3205,7 @@ a {
     width: 120px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_LPG #img_LPG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_LPG .img_LPG {
     content: url(/public/img/marker_LPG.png);
     margin-left: 35px;
     margin-bottom: 25px;
@@ -3222,7 +3222,7 @@ a {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_hprice #img_HnG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice .img_HnG {
     content: url(/public/img/marker_hPrice.png);
     margin-left: 25px;
     margin-bottom: 25px;
@@ -3239,7 +3239,7 @@ a {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_gprice #img_HnG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice .img_HnG {
     content: url(/public/img/marker_gPrice.png);
     margin-left: 25px;
     margin-bottom: 25px;
@@ -3256,7 +3256,7 @@ a {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice #img_HnG {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice .img_HnG {
     content: url(/public/img/marker_hPrice_sel.png);
     margin-left: 25px;
     margin-bottom: 25px;
@@ -3273,7 +3273,7 @@ a {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice #img_HnG {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice .img_HnG {
     content: url(/public/img/marker_gPrice_sel.png);
     margin-left: 25px;
     margin-bottom: 25px;
@@ -3290,7 +3290,7 @@ a {
     width: 120px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG #img_LPG {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG .img_LPG {
     content: url(/public/img/marker_LPG_sel.png);
     margin-left: 35px;
     margin-bottom: 25px;

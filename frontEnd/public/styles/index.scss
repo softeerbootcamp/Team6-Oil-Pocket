@@ -2150,7 +2150,7 @@ a {
                     width:180px;
                     height:50px;
     
-                    & #img_HG {
+                    & .img_HG {
                         margin-left: 65px;
                         margin-bottom : 25px;
                     }
@@ -3225,7 +3225,7 @@ a {
                     width:180px;
                     height:50px;
     
-                    & #img_HG {
+                    & .img_HG {
                         content : url(/public/img/marker_HG.png);
                         margin-left: 65px;
                         margin-bottom : 25px;
@@ -3252,7 +3252,7 @@ a {
                 & .Map_Marker_LPG {
                     width:120px;
                     height:50px;
-                    & #img_LPG {
+                    & .img_LPG {
                         content : url(/public/img/marker_LPG.png);
                         margin-left: 35px;
                         margin-bottom : 25px;
@@ -3270,7 +3270,7 @@ a {
                 & .Map_Marker_hprice {
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_hPrice.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3288,7 +3288,7 @@ a {
                 & .Map_Marker_gprice {
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_gPrice.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3306,7 +3306,7 @@ a {
                 & .selected__Map_Marker_hprice{
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_hPrice_sel.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3324,7 +3324,7 @@ a {
                 & .selected__Map_Marker_gprice{
                     width:100px;
                     height:50px;
-                    & #img_HnG {
+                    & .img_HnG {
                         content : url(/public/img/marker_gPrice_sel.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
@@ -3342,7 +3342,7 @@ a {
                 & .selected__Map_Marker_LPG{
                     width:120px;
                     height:50px;
-                    & #img_LPG {
+                    & .img_LPG {
                         content : url(/public/img/marker_LPG_sel.png);
                         margin-left: 35px;
                         margin-bottom : 25px;
