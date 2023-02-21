@@ -7105,6 +7105,7 @@ a {
     margin-bottom: 2vh;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox img {
+    opacity: 0;
     transition: 0.5s;
     width: 90%;
     height: 90%;
