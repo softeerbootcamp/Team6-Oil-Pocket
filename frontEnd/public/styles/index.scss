@@ -2682,7 +2682,26 @@ a {
                             align-items: center;
 
                             & .main__Radius{
+                                display:flex;
+                                flex-direction: row;
                                 width:20%;
+                                height:100%;
+                                //border:1px solid black;
+                                margin-top: 10px;
+                                font-size: 13px;
+                                color:#808080;
+
+                                & .main__Radius__number {
+                                    width:40%;
+                                    height:100%;
+                                    font-size:15px;
+                                    background-color: #008000;
+                                    color:white;
+                                    border-radius: 10px;
+                                    margin-left:2px;
+                                    margin-top: -3px;
+                                    padding-top: 1px;
+                                }
                             }
 
                             & .main__AdjustBar {
@@ -3162,6 +3181,21 @@ a {
                                     height:40%;
                                 }
                             }
+
+                            & .main__addOilingInfo {
+                                width:150px;
+                                height:30px;
+                                position :fixed;
+                                display:flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-top : 680px;
+                                border-radius: 20px;
+                                border:1px solid #14BD72;
+                                background-color: #14BD7E;
+                                font-size: 1rem;
+                                color:white;
+                            }
                         }
                     }
                 }
@@ -3184,16 +3218,14 @@ a {
                 background-color: #14BD7E;
                 width:100vw;
                 height:82vh;
-    
-                // & div {
-                //     width:120px;
-                //     height:40px;
-                // }
+
                 & .Map_Marker_HG{
+                    //position : relative;
                     width:180px;
                     height:50px;
     
                     & #img_HG {
+                        content : url(/public/img/marker_HG.png);
                         margin-left: 65px;
                         margin-bottom : 25px;
                     }
@@ -3214,25 +3246,13 @@ a {
                         margin-top:-70px;
                         margin-left: 180px;
                     }
-
-                    // & #Name {
-                    //     overflow: hidden;
-                    //     width:162px;
-                    //     font-size: 1.2rem;
-                    //     font-weight: 500;
-                    //     display:block;
-                    //     padding-left:70px;
-                    //     line-height: 30px;
-                    //     margin-top:-70px;
-                    //     white-space: nowrap;
-                    //     text-overflow: ellipsis;
-                    // }
                 }
 
                 & .Map_Marker_LPG {
                     width:120px;
                     height:50px;
                     & #img_LPG {
+                        content : url(/public/img/marker_LPG.png);
                         margin-left: 35px;
                         margin-bottom : 25px;
                     }
@@ -3246,10 +3266,11 @@ a {
                     } 
                 }
 
-                & .Map_Marker_HGprice {
+                & .Map_Marker_hprice {
                     width:100px;
                     height:50px;
                     & #img_HnG {
+                        content : url(/public/img/marker_hPrice.png);
                         margin-left: 25px;
                         margin-bottom : 25px;
                     }
@@ -3260,6 +3281,78 @@ a {
                         font-weight: 350;
                         margin-top:-70px;
                         margin-left:70px;
+                    } 
+                }
+
+                & .Map_Marker_gprice {
+                    width:100px;
+                    height:50px;
+                    & #img_HnG {
+                        content : url(/public/img/marker_gPrice.png);
+                        margin-left: 25px;
+                        margin-bottom : 25px;
+                    }
+                    & #Price {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left:70px;
+                    } 
+                }
+
+                & .selected__Map_Marker_hprice{
+                    width:100px;
+                    height:50px;
+                    & #img_HnG {
+                        content : url(/public/img/marker_hPrice_sel.png);
+                        margin-left: 25px;
+                        margin-bottom : 25px;
+                    }
+                    & #Price {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left:70px;
+                    } 
+                }
+
+                & .selected__Map_Marker_gprice{
+                    width:100px;
+                    height:50px;
+                    & #img_HnG {
+                        content : url(/public/img/marker_gPrice_sel.png);
+                        margin-left: 25px;
+                        margin-bottom : 25px;
+                    }
+                    & #Price {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left:70px;
+                    } 
+                }
+
+                & .selected__Map_Marker_LPG{
+                    width:120px;
+                    height:50px;
+                    & #img_LPG {
+                        content : url(/public/img/marker_LPG_sel.png);
+                        margin-left: 35px;
+                        margin-bottom : 25px;
+                    }
+                    & #LL {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left:105px;
                     } 
                 }
             }
