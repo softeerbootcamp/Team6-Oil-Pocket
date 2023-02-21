@@ -1,5 +1,5 @@
 import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/utils.js";
-import { fetchGasStationSearch, fetchOilRegister } from "./fetch.js";
+import { fetchGasStationSearch, fetchOilRegister, fetchRecentGasStation } from "./fetch.js";
 import { parseOilPriceIntoKorean } from "./helperFunction.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
@@ -54,6 +54,7 @@ const eventToOilPriceInput = ($container) => {
 const eventToOilSearchInput = ($container) => {
     const $oilSearchInput = _$(".oilInfoArea__searchInput", $container);
     const $oilSearchResultBox = _$(".oilInfoArea__oilSearchResultBox", $container);
+    const $oilSelectBox = _$(".oilInfoArea__oilSelect > span", $container);
 
     addEvent($oilSearchInput, [
         () => {
@@ -68,7 +69,7 @@ const eventToOilSearchInput = ($container) => {
             else {
                 debounceTimer = setTimeout(() => {
                     // 검색 관련 통신 함수
-                    fetchGasStationSearch($oilSearchResultBox, $oilSearchInput.value);
+                    fetchGasStationSearch($oilSearchResultBox, $oilSearchInput.value, $oilSelectBox.innerHTML);
 
                     // 검색 결과 불러와서 넣어주는 함수
                     makeLighter($oilSearchResultBox);
@@ -102,18 +103,36 @@ const eventToPreferBtn = ($container) => {
     const $preferBtn = _$(".oilInfoArea__preferModalBtn", $container);
     const $preferModal = _$(".oilInput__preferModal", $container);
 
-    addEvent($preferBtn, [() => changeCSS($preferModal, "top", 0)]);
+    addEvent($preferBtn, [
+        () => fetchRecentGasStation($container),
+        () => changeCSS($preferModal, "top", 0)
+    ]);
 }
 
-const eventToPreferModalCloseBtn = ($container) => {
+const eventToPreferModalCloseBtn = async ($container) => {
     const $closeBtn = _$(".preferModal__closeBtn", $container);
     const $preferModal = _$(".oilInput__preferModal", $container);
 
     addEvent($closeBtn, [() => changeCSS($preferModal, "top", "-100%")]);
 }
 
+const eventToRecentRow = ($parent, $recentRow) => {
+    const $container = $parent.closest(".oilInfoArea");
+    const $modal = _$(".oilInput__preferModal", $container);
+    const $searchInput = $container.querySelector(".oilInfoArea__searchInput");
+    const gasStationName = $recentRow.querySelector("h2").innerHTML;
+
+    addEvent($recentRow, [
+        () => changeCSS($modal, "top", "-100%"),
+        () => $searchInput.dataset.stationNo = $recentRow.dataset.stationNo,
+        () => $searchInput.value = gasStationName,
+        () => $searchInput.disabled = true
+    ])
+}
+
 export { 
     eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput, 
     eventToSearchValue, eventToRegisterBtn, 
-    eventToPreferBtn, eventToPreferModalCloseBtn
+    eventToPreferBtn, eventToPreferModalCloseBtn,
+    eventToRecentRow
 }

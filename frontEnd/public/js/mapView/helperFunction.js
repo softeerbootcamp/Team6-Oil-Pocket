@@ -347,7 +347,10 @@ function ShowGSTDetail(event, ResultArray){
     $.ajax({
         method:"GET",
         url:`${HOST_URL}/api/v1/gas-station/` + ResultArray[k].name + "/" + ResultArray[k].roadName + "/" 
-        + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId, ResultArray[k].hhPrice) + "/month", 
+        + ResultArray[k].buildingNo1 + "/" + transStId(ResultArray[k].stId) + "/month",
+        xhrFields: {
+            withCredentials: true
+        },
         success:function(response) {
             console.log(response);
             ShowChart(response);

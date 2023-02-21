@@ -353,7 +353,6 @@ a {
     100% { opacity: 1; }
 }
 
-
 /* main */
 // extra small - 모바일 및 소형 기기
 @media(max-width:575.98px) {
@@ -7138,6 +7137,13 @@ a {
                                 text-align: center;
                             }
                         }
+
+                        & h3 {
+                            margin-top: 20%;
+                            font-size: 1.8rem;
+                            color: #14BD72;
+                            font-weight: 700;
+                        }
                     }
                 }
             }
@@ -7368,7 +7374,7 @@ a {
     
                                 & .oilInfoArea__oilSearchValue {
                                     display: flex;
-                                    justify-content: space-between;
+                                    justify-content: left;
                                     align-items: center;
                                     padding: 0 1vw;
                                     width: 90%;
@@ -7377,22 +7383,20 @@ a {
                                     cursor: pointer;
     
                                     & img {
-                                        width: 0.5%;
-                                        flex-grow: 0.5;
+                                        width: 7%;
                                         margin-right: 5%;
                                     }
 
                                     & h1 {
+                                        width: 70%;                       
                                         text-align: left;
                                         font-weight: 600;
                                         font-size: 0.85rem;
-                                        flex-grow: 3;
                                     }
     
                                     & span {
                                         text-align: right;
                                         font-weight: 500;
-                                        flex-grow: 1;
                                         font-size: 0.6rem;
                                     }
                                 }

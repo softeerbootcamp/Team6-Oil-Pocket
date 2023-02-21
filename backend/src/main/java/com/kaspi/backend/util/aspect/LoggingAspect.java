@@ -1,5 +1,6 @@
 package com.kaspi.backend.util.aspect;
 
+import io.micrometer.core.annotation.Timed;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class LoggingAspect {
 
+    @Timed(value = "api request")
     @Around("execution(* com.kaspi.backend.controller.*.*(..))")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
@@ -25,7 +27,7 @@ public class LoggingAspect {
 
             Object result = joinPoint.proceed();
 
-            log.info("response 상태코드:{}, data: {}, request URI:{}",((ResponseEntity) result).getStatusCode(), ((ResponseEntity) result).getBody(), request.getRequestURI() );
+            log.info("response 상태코드:{}, data: {}, request URI:{}", ((ResponseEntity) result).getStatusCode(), ((ResponseEntity) result).getBody(), request.getRequestURI());
 
             return result;
         } catch (IllegalArgumentException e) {

@@ -6,6 +6,12 @@ const tabObjArray = [
     {choosed: false, text: "주유 기록 열람", path: "/history"}
 ];
 
+const getRecentGasStationRow = (brandURL, gasStationName, location) => `
+    <img src="${brandURL}" alt="브랜드 이미지">
+    <h2>${gasStationName}</h2>
+    <span>${location}</span>
+`
+
 const getInputOilInfoTemplate = () => `
     <section class="oilInfoArea">
         <div class="oilInput__preferModal">
@@ -14,21 +20,7 @@ const getInputOilInfoTemplate = () => `
                     <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
                     <h1>최근 본 주유소</h1>
                     <ul class="oilInput__preferContentBox">
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
+                        <h3>정보를 불러오고 있습니다.</h3>
                     </ul>
                 </div>
             </div>
@@ -141,4 +133,4 @@ const preferModalTemplate = () => `
 `;
  
 
-export { getInputOilInfoTemplate, getSearchTemplate, preferModalTemplate }
+export { getInputOilInfoTemplate, getRecentGasStationRow, getSearchTemplate, preferModalTemplate }

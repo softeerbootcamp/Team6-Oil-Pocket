@@ -27,3 +27,10 @@ spring:
     ansi:
       enabled: always
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+
+

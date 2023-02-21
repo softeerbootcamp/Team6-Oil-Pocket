@@ -6599,6 +6599,12 @@ a {
     width: 30%;
     text-align: center;
   }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox h3 {
+    margin-top: 20%;
+    font-size: 1.8rem;
+    color: #14BD72;
+    font-weight: 700;
+  }
   .oilInfoArea .oilInfoArea__background {
     width: 60%;
     height: 100%;
@@ -6803,7 +6809,7 @@ a {
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue {
     display: flex;
-    justify-content: space-between;
+    justify-content: left;
     align-items: center;
     padding: 0 1vw;
     width: 90%;
@@ -6812,20 +6818,18 @@ a {
     cursor: pointer;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue img {
-    width: 0.5%;
-    flex-grow: 0.5;
+    width: 7%;
     margin-right: 5%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue h1 {
+    width: 70%;
     text-align: left;
     font-weight: 600;
     font-size: 0.85rem;
-    flex-grow: 3;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue span {
     text-align: right;
     font-weight: 500;
-    flex-grow: 1;
     font-size: 0.6rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox:focus {
