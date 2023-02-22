@@ -8225,6 +8225,7 @@ a {
                     width: 95%;
                     height: 100%;
                     margin: 0 auto;
+                    position: relative;
     
                     & .oilInfoArea__oilCharttitle {
                         width: 100%;
@@ -8393,6 +8394,15 @@ a {
                                 width: 10%;
                             }
                         }
+                    }
+
+                    & .oilinfoArea__chartInfoText {
+                        color: rgb(170, 170, 170);
+                        font-weight: 700;
+                        font-size: 0.9rem;
+                        position: absolute;
+                        bottom: 0.2vw;
+                        right: 0.2vw;
                     }
                 }
             }

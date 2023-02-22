@@ -24,10 +24,8 @@ const makeChart = ($container, userOilArray, commonOilArray, monthArray) => {
         userPercent = userPercent >= 1 ? 100 : userPercent * 100;
         averagePercent = averagePercent >= 1 ? 100 : averagePercent * 100;
 
-        setTimeout(() => {
-            changeCSS($userPrice, "height", `${userPercent}%`);
-            changeCSS($averagePrice, "height", `${averagePercent}%`);
-        }, 50 * index);
+        changeCSS($userPrice, "height", `${userPercent}%`);
+        changeCSS($averagePrice, "height", `${averagePercent}%`);
     })
 }
 
