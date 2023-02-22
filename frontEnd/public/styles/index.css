@@ -1010,7 +1010,7 @@ a {
     background-color: white;
     border: 2px solid #14BD7E;
     border-radius: 5px;
-    width: 15vw;
+    width: calc(15vw - 2px);
     height: 4vh;
     margin-left: 2vw;
     margin-top: 2vh;
@@ -2634,7 +2634,7 @@ a {
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation {
     display: flex;
-    margin-top: 3vh;
+    margin-top: 5vh;
     width: 3vw;
     height: 5vh;
     background-color: #14BD7E;
@@ -2645,15 +2645,17 @@ a {
     justify-content: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation #Option1 {
+    display: flex;
     transition: 0.5s;
     transition-timing-function: linear;
-    width: 10px;
-    height: 10px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute {
     display: flex;
-    width: 1.9vw;
-    height: 4.6vh;
+    width: 3vw;
+    height: 5vh;
     background-color: white;
     box-shadow: 1px 0 2px -1px;
     transition: 0.4s;
@@ -2662,10 +2664,12 @@ a {
     justify-content: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute #Option2 {
+    display: flex;
     transition: 0.5s;
     transition-timing-function: linear;
-    width: 10px;
-    height: 10px;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar {
     width: 19vw;
@@ -2769,7 +2773,7 @@ a {
     background-color: white;
     border: 2px solid #14BD7E;
     border-radius: 5px;
-    width: 15vw;
+    width: calc(15vw - 4px);
     height: 4vh;
     margin-left: 2vw;
     margin-top: 0;
@@ -3127,6 +3131,13 @@ a {
     width: 100%;
     height: 40%;
   }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Chart #nocharterr {
+    width: 100%;
+    height: 40%;
+    color: grey;
+    font-size: 18px;
+    font-weight: 400;
+  }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__addOilingInfo {
     width: 150px;
     height: 30px;
@@ -3236,6 +3247,33 @@ a {
     font-weight: 350;
     margin-top: -70px;
     margin-left: 70px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG {
+    width: 180px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG .img_HG {
+    content: url(/public/img/marker_HG_sel.png);
+    margin-left: 65px;
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG #H {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 100px;
+    color: white;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG #G {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 180px;
+    color: white;
   }
   .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice {
     width: 100px;
