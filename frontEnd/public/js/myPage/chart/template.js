@@ -1,8 +1,8 @@
 const tabObjArray = [
     {choosed: false, text: "프로필 수정", path: "/userDetail"},
-    {choosed: false, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: false, text: "주유 입력", path: "/inputOilInfo"},
     {choosed: false, text: "이번 달 분석", path: "/comparison"},
-    {choosed: true, text: "월별 비교", path: "/chart"},
+    {choosed: true, text: "평균 유가 비교", path: "/chart"},
     {choosed: false, text: "주유 기록 열람", path: "/history"}
 ];
 
@@ -30,7 +30,7 @@ const getChartTemplate = () => `
                         <div class="oilInfoArea__oilChartInfo">
                             <div class="oilInfoArea__oilChartInfo--common">
                                 <div class="oilInfoArea__legend--common">&nbsp;</div>
-                                <span>평균 주유 금액</span>
+                                <span>유가 평균 기준</span>
                             </div>
                             <div class="oilInfoArea__oilChartInfo--user">
                                 <div class="oilInfoArea__legend--user">&nbsp;</div>
@@ -49,6 +49,9 @@ const getChartTemplate = () => `
                         </div>
                         <div class="oilInfoArea__monthZone">
                             ${monthNumbers.map((monthNumber) => `<span>${monthNumber}월</span>`).join("")}
+                        </div>
+                        <div class="oilinfoArea__chartInfoText">
+                            ※ 주유 당시 전국 유가 평균 기준
                         </div>
                     </div>
                 </div>

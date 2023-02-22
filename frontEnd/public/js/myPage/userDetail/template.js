@@ -2,9 +2,9 @@ import { userId, userAge, userGender } from "../../login/fetch";
 
 const tabObjArray = [
     {choosed: true, text: "프로필 수정", path: "/userDetail"},
-    {choosed: false, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: false, text: "주유 입력", path: "/inputOilInfo"},
     {choosed: false, text: "이번 달 분석", path: "/comparison"},
-    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "평균 유가 비교", path: "/chart"},
     {choosed: false, text: "주유 기록 열람", path: "/history"}
 ];
 

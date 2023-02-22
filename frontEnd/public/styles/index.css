@@ -7530,6 +7530,7 @@ a {
     width: 95%;
     height: 100%;
     margin: 0 auto;
+    position: relative;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer .oilInfoArea__oilCharttitle {
     width: 100%;
@@ -7674,6 +7675,14 @@ a {
     font-weight: 600;
     font-size: 1rem;
     width: 10%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer .oilinfoArea__chartInfoText {
+    color: rgb(170, 170, 170);
+    font-weight: 700;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0.2vw;
+    right: 0.2vw;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea {
     padding: 1vw 0;
