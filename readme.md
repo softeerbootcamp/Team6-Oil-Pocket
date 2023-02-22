@@ -47,7 +47,15 @@ https://user-images.githubusercontent.com/74173976/220026714-540d982c-2e78-47a4-
 <br>
 
 ## 🏗 &nbsp; Architecture
-![image](https://user-images.githubusercontent.com/87477702/217545522-9ee07a90-7011-4591-a2e7-c10499eb90f6.png)
+<img width="777" alt="스크린샷 2023-02-17 오전 10 01 04" src="https://user-images.githubusercontent.com/87477702/219522739-77889ccd-49a2-4d6e-a229-0bd97ab6ef18.png">
+
+- Nginx: 리버스프록시, 프론트 서버
+- Redis: 세션 및 최근본 주유소 저장
+- MYSQL: 회원 및 주유소 저장
+- API SERVER: 비지니스 로직 API
+- Schduler: 일일 주유소 가격 스케줄러
+- GitHubAction: 프론트, 백엔드 CI/CD
+- OpenApi: TMap, 오피넷
 
 <br>
 
