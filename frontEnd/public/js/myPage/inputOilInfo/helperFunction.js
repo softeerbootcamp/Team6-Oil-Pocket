@@ -6,6 +6,12 @@ const OIL_PRICE_UPPER_BOUND = 150_000;
 
 const parseOilPriceIntoKorean = ($input, $effectImage) => {
     let inputValue = $input.value;
+
+    if(inputValue[0] === "-") {
+        $input.value = "";
+        return "음수는 불가능합니다.";
+    }
+
     let inputToNumber = parseInt(inputValue);
     if(isNaN(inputToNumber)) return "숫자를 입력해주세요.";
 
