@@ -1,12 +1,20 @@
+const tabObjArray = [
+    {choosed: false, text: "프로필 수정", path: "/userDetail"},
+    {choosed: false, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: true, text: "이번 달 분석", path: "/comparison"},
+    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "주유 기록 열람", path: "/history"}
+];
+
 const getComparisonTemplate = () => `
     <section class="oilInfoArea">
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
-                <div class="oilInfoArea__tab"><a href="/userDetail" data-link>프로필 수정</a></div>
-                <div class="oilInfoArea__tab"><a href="/inputOilInfo" data-link>주유 기록 입력</a></div>
-                <div class="oilInfoArea__tab oilInfoArea__choosedTab"><a href="/comparison" data-link>이번달 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/chart" data-link>월별 비교</a></div>
-                <div class="oilInfoArea__tab"><a href="/history" data-link>주유 기록 열람</a></div>
+                ${tabObjArray.map(({choosed, text, path}) => `
+                    <div class="oilInfoArea__tab ${choosed ? "oilInfoArea__choosedTab" : ""}">
+                        <a href=${path} data-link>${text}</a>
+                    </div>
+                `).join("")}
             </div>
             <div class="oilInfoArea__contentArea">
                 <h1 class="oilInfoArea__contentTitle">
@@ -19,17 +27,43 @@ const getComparisonTemplate = () => `
                 </h1>
                 <div class="oilInfoArea__contentBody">
                     <div class="oilInfoArea__compareArea">
-                        <h2 class="oilInfoArea__compareTitle">이번 달은 <span>아이스크림</span> 하나 만큼의 기름 값을 절약했어요!</h2>
+                        <h2 class="oilInfoArea__compareTitle">아직은 데이터가 존재하지 않아요!</h2>
                         <div class="oilInfoArea__compareContent">
-                            <div class="oilInfoArea__compareMyBox">
-                                <h3>이번 달 <span>나</span>의 지출액</h3>
-                                <h1>330,000</h1>
+                            <div class="oilInfoArea__boxArea">
+                                <div class="oilInfoArea__compareMyBox">
+                                    <h3><span>나</span>의 지출액</h3>
+                                    <h1></h1>
+                                </div>
+                                <div class="oilInfoArea__compareMySaveBox">
+                                    <h3><span>나</span>의 절약 금액</h3>
+                                    <h1></h1>
+                                </div>
+                                <div class="oilInfoArea__otherText">
+                                    <h2>아직은 데이터가 존재하지 않아요!</h2>
+                                </div>
+                                <div class="oilInfoArea__compareAgeCommonBox">
+                                    <h3></h3>
+                                    <h1></h1>
+                                </div>
+                                <div class="oilInfoArea__chartBox">
+                                    <div class="oilInfoArea__chartArea">
+                                        <div class="oilInfoArea__myChart"></div>
+                                        <div class="oilInfoArea__otherChart"></div>
+                                    </div>
+                                    <div class="oilInfoArea__chartMinusArea">
+                                        <div class="oilInfoArea__myMinusChart"></div>
+                                        <div class="oilInfoArea__otherMinusChart"></div>
+                                    </div>
+                                    <div class="oilInfoArea__chartNameArea">
+                                        <span class="oilInfoArea__chartNameArea--name">나</span>
+                                        <span class="oilInfoArea__chartNameArea--info">공통</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="oilInfoArea__compareCommonBox">
-                                <h3>이번 달 <span>평균</span> 지출액</h3>
-                                <h1>330,000</h1>
+                            <div class="oilInfoArea__compareImgBox">
+                                <img src="./" alt="이미지가 존재하지 않습니다.">
+                                <img src="./public/img/myProfile_Image/ban.png" class="oilInfoArea__ban" alt="금지 이미지">
                             </div>
-                            <div class="oilInfoArea__compareImgBox">img</div>
                         </div>
                     </div>
                 </div>

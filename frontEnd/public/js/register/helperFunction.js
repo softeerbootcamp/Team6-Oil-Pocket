@@ -1,17 +1,21 @@
-const isSamePWInputNodes = ($pwInput, $pwReInput) => $pwInput.value === $pwReInput;
+const setTargetDisabled = ($btn, disableOption) => $btn.disabled = disableOption;
 
-const getGenderFromInput = ($genderInput) => {
-    if($genderInput.value == "남자") return "M";
-    else if($genderInput.value == "여자") return "F";
+const isSamePWInputs = ($pwInput, $pwReInput) => $pwInput.value === $pwReInput.value;
+
+const getGenderValue = ($genderInput) => {
+    let gender = "";
+    $genderInput.innerHTML === "남자" ? gender = "M" : gender = "F";
+
+    return gender;
 }
 
 const getRegisterFetchBody = ($IDInput, $pwInput, $genderInput, $ageInput) => {
     return {
         "id": $IDInput.value,
         "password": $pwInput.value,
-		"gender": getGenderFromInput($genderInput),
-		"age": $ageInput.value
+		"gender": getGenderValue($genderInput),
+		"age": $ageInput.innerHTML
     }
 }
 
-export { isSamePWInputNodes }
+export { setTargetDisabled, isSamePWInputs, getRegisterFetchBody }

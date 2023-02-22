@@ -1,11 +1,14 @@
 package org.example.service;
 
+import org.example.service.fileupload.FileUploadService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.devtools.v85.io.IO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.io.IOException;
+
 @SpringBootTest
 class FileUploadServiceTest {
     @Autowired
@@ -21,7 +24,7 @@ class FileUploadServiceTest {
 
     @Test
     @DisplayName("fileopen 테스트")
-    void test2() {
+    void test2() throws IOException {
         fileUploadService.fileOpen();
     }
 }

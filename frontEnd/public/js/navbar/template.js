@@ -1,16 +1,17 @@
-const getNavBarTemplate = () => `
-    <div class="navbar__logo"><a href="/">Oil Pocket<a/></div>
+const getNonMemberNavBarTemplate = () => `
+    <div class="navbar__logo"><a href="/">Oil Pocket</a></div>
     <div class="navbar__btns">
-        <span><a href="/userDetail">jaewon님 안녕하세요</a></span>
-        <span> | </span>
-        <span class="navbar__myPageBtn"><a href="/login" data-link>마이 페이지</a></span>
-        <span> | </span>
-        <span>한국</span>
-        <span> / </span>
-        <span>영어</span>
-        <span> | </span>
-        <span>다크모드</span>
+        <strong class="navbar__myPageBtn"><a href="/login" data-link>로그인</a></strong>
     </div>
 `;
 
-export { getNavBarTemplate }
+const getMemberNavBarTemplate = (userID) => `
+    <div class="navbar__logo"><a href="/">Oil Pocket</a></div>
+    <div class="navbar__btns">
+        <strong><a href="/userDetail">${userID}님 안녕하세요</a></strong>
+        <span> | </span>
+        <strong class="navbar__myPageBtn">로그아웃</a></strong>
+    </div>
+`;
+
+export { getNonMemberNavBarTemplate, getMemberNavBarTemplate }

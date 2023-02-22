@@ -24,6 +24,18 @@ public class GasDetailDto {
         }
         return list;
     }
+    public static GasDetailDto makeEmptyDetailDto(GasType gasType) {
+        return new GasDetailDto(gasType, 0, LocalDate.now());
+    }
+
+    public static List<GasDetailDto> makeEmptyOilDetailDtoList() {
+        List<GasDetailDto> list = new ArrayList<>();
+        for (GasType value : GasType.values()) {
+            if (value == GasType.LPG) continue;
+            list.add(makeEmptyDetailDto(value));
+        }
+        return list;
+    }
 
     public int getPrice() {
         return price;

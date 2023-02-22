@@ -1,15 +1,20 @@
 import { navBarView } from "../navbar/view";
-import { getMapViewContentTemplate } from "./template";
+import { eventToSeekBarBtns } from "./event";
+import { getMapContentTemplate } from "./template";
 
-const mapView = () => {
+
+const mapView = async () => {
     const $mapViewContainer = document.createElement("section");
-    const $mapViewContent = document.createElement("section");
-    $mapViewContent.classList.add("main");
+    const $mapContentcontainer = document.createElement("section");
 
-    $mapViewContent.innerHTML = getMapViewContentTemplate();
+    $mapContentcontainer.classList.add("main");
 
     $mapViewContainer.appendChild(navBarView());
-    $mapViewContainer.appendChild($mapViewContent);
+    $mapViewContainer.appendChild($mapContentcontainer);
+
+    $mapContentcontainer.innerHTML = getMapContentTemplate();
+    
+    eventToSeekBarBtns($mapViewContainer);
 
     return $mapViewContainer;
 }

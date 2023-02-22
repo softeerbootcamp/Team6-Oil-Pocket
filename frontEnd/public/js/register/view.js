@@ -1,13 +1,20 @@
-import { eventToIDRegisterBtn, eventToIDValidateBtn } from "./event.js";
+import { routerCheckLogin } from "../login/fetch.js";
+import { 
+    eventToIDValidateBtn, eventToTermOfUseBtn, 
+    eventToSelects, eventToSelectValues, eventToRegisterBtn,
+} from "./event.js";
 import { getRegisterTemplate } from "./template.js";
 
-const registerView = () => {
+const registerView = async () => {
     const $registerContainer = document.createElement("section");
     $registerContainer.classList.add("main");
     $registerContainer.innerHTML = getRegisterTemplate();
 
+    eventToTermOfUseBtn($registerContainer);
+    eventToSelects($registerContainer);
+    eventToSelectValues($registerContainer);
     eventToIDValidateBtn($registerContainer);
-    eventToIDRegisterBtn($registerContainer)
+    eventToRegisterBtn($registerContainer);
 
     return $registerContainer;
 }

@@ -1,5 +1,14 @@
+const genderValues = ["남자", "여자"];
+const ageValues = ["20대", "30대", "40대", "50대", "60대 이상"];
+
 const getRegisterTemplate = () => `
     <section class="registerArea">
+        <div class="registerArea__errorModal--IDvalidation">
+            이미 존재하는 ID입니다.
+        </div>
+        <div class="registerArea__errorModal--register">
+            회원가입에 실패하였습니다.
+        </div>
         <section class="registerArea__backGround">
             <div class="registerArea__frame">
                 <h1><a href="/">Oil Pocket</a></h1>
@@ -14,26 +23,21 @@ const getRegisterTemplate = () => `
                     </div>
                 </div>
                 <div class="registerArea__dropDownArea">
-                    <select name="registerArea__genderBtn" id="registerArea__genderBtn">
-                        <option disabled selected value="성별">성별</option>
-                        <option value="남">남자</option>
-                        <option value="여">여자</option>
-                    </select>
-                    <select name="registerArea__ageBtn" id="registerArea__ageBtn">
-                        <option disabled selected value="나이">나이</option>
-                        <option value="20대">20대</option>
-                        <option value="30대">30대</option>
-                        <option value="40대">40대</option>
-                        <option value="50대">50대</option>
-                        <option value="60대 이상">60대 이상</option>
-                    </select>
+                    <div class="registerArea__genderArea">
+                        ${genderValues.map((gender) => `<div class="registerArea__genderValue">${gender}</div>`).join("")}
+                        <div class="registerArea__genderTitle">성별</div>
+                    </div>
+                    <div class="registerArea__ageArea">
+                        ${ageValues.map((age) => `<div class="registerArea__ageValue">${age}</div>`).join("")}
+                        <div class="registerArea__ageTitle">나이</div>
+                    </div>
                 </div>
                 <div class="registerArea__IDArea">
-                    <input type="text" placeholder="ID를 입력해주세요.">
-                    <button class="IDValidateBtn">중복 확인</button>            
+                    <input type="text" placeholder="ID를 입력해주세요." minlength="6" maxlength="20">
+                    <button class="IDValidateBtn">중복 확인</button>          
                 </div>
-                <input type="text" placeholder="PW를 입력해주세요." id="registerArea__pwInput">
-                <input type="text" placeholder="PW를 다시 입력해주세요." id="registerArea__pwReInput">
+                <input type="password" minlength="6" maxlength="12" placeholder="PW를 입력해주세요." id="registerArea__pwInput">
+                <input type="password" minlength="6" maxlength="12" placeholder="PW를 다시 입력해주세요." id="registerArea__pwReInput">
                 <button class="registerBtn" disabled>회원가입</button>
             </div>
         </section>
