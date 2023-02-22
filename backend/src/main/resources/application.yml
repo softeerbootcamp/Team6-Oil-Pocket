@@ -33,4 +33,19 @@ management:
       exposure:
         include: health, info, prometheus
 
+logging:
+  level:
+    org:
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
+            converter:
+              JdbcConverter: TRACE
+          repository:
+            support:
+              SimpleJdbcRepository: DEBUG
+
+
+
 
