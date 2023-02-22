@@ -3131,6 +3131,13 @@ a {
     width: 100%;
     height: 40%;
   }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Chart #nocharterr {
+    width: 100%;
+    height: 40%;
+    color: grey;
+    font-size: 18px;
+    font-weight: 400;
+  }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__addOilingInfo {
     width: 150px;
     height: 30px;
@@ -3240,6 +3247,33 @@ a {
     font-weight: 350;
     margin-top: -70px;
     margin-left: 70px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG {
+    width: 180px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG .img_HG {
+    content: url(/public/img/marker_HG_sel.png);
+    margin-left: 65px;
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG #H {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 100px;
+    color: white;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG #G {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: -70px;
+    margin-left: 180px;
+    color: white;
   }
   .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice {
     width: 100px;

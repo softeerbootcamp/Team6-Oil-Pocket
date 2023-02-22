@@ -1,5 +1,4 @@
-import { addEvent, changeCSS, _$, _$_ALL } from "../common/utils";
-
+import { addEvent, changeCSS, _$, _$_ALL } from "../common/utils";  
 NodeList.prototype.forEach = Array.prototype.forEach;
 
 let distanceOption = 3;
@@ -28,4 +27,4 @@ const eventToSeekBarBtns = ($container) => {
     });
 }
 
-export { eventToSeekBarBtns, distanceOption}
+export { eventToSeekBarBtns, distanceOption};

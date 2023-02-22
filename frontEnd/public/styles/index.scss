@@ -3168,6 +3168,13 @@ a {
                                     width:100%;
                                     height:40%;
                                 }
+                                & #nocharterr {
+                                    width:100%;
+                                    height:40%;
+                                    color : grey;
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                }
                             }
 
                             & .main__addOilingInfo {
@@ -3290,6 +3297,36 @@ a {
                     } 
                 }
 
+                & .selected__Map_Marker_HG {
+                    width:180px;
+                    height:50px;
+    
+                    & .img_HG {
+                        content : url(/public/img/marker_HG_sel.png);
+                        margin-left: 65px;
+                        margin-bottom : 25px;
+                    }
+                    & #H {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left:100px;
+                        color:white;
+                    }
+
+                    & #G {
+                        position:absolute;
+                        width:40px;
+                        font-size: 20px;
+                        font-weight: 350;
+                        margin-top:-70px;
+                        margin-left: 180px;
+                        color:white;
+                    }
+
+                }
                 & .selected__Map_Marker_hprice{
                     width:100px;
                     height:50px;
