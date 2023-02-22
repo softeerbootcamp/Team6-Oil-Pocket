@@ -367,27 +367,35 @@ function addmouseOverEventtoMarker() {
 }
 
 function addClickEventToMarker(ResultArray){
-    if(searchOption==0){
-        const HGmapmarkerarr = document.getElementsByClassName('img_HG');
-        const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
-        for(var k=0;k<HGmapmarkerarr.length;k++){
-            HGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-        }
-        for(var k=0;k<LPGmapmarkerarr.length;k++){
-            LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-        }
-    }
-    else if(searchOption==1 || searchOption ==2){
-        const HnGmapmarkerarr = document.getElementsByClassName('img_HnG');
-        for(var k=0;k<HnGmapmarkerarr.length;k++){
-            HnGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-        }
-    }
-    else if(searchOption==3){
-        const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
-        for(var k=0;k<LPGmapmarkerarr.length;k++){
-            LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-        }
+    // if(searchOption==0){
+    //     const HGmapmarkerarr = document.getElementsByClassName('img_HG');
+    //     const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
+    //     for(var k=0;k<HGmapmarkerarr.length;k++){
+    //         HGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+    //     }
+    //     for(var k=0;k<LPGmapmarkerarr.length;k++){
+    //         LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+    //     }
+    // }
+    // else if(searchOption==1 || searchOption ==2){
+    //     const HnGmapmarkerarr = document.getElementsByClassName('img_HnG');
+    //     for(var k=0;k<HnGmapmarkerarr.length;k++){
+    //         HnGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+    //     }
+    // }
+    // else if(searchOption==3){
+    //     const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
+    //     for(var k=0;k<LPGmapmarkerarr.length;k++){
+    //         LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
+    //     }
+    // }
+    const mArray = document.getElementsByClassName('tmarker');
+    console.log(mArray);
+    for(var k=0;k<mArray.length;k++){
+        mArray[k].addEventListener('click', (e) => {
+            e.preventDefault();
+            ShowGSTDetailByMarker(e, ResultArray)
+        })
     }
 }
 
