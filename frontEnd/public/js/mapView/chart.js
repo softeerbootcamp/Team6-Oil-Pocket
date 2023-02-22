@@ -150,6 +150,6 @@ function ShowErrorMessageAtChartArea(){
     const errorMessage = document.createElement('span');
     errorMessage.id = 'nocharterr';
     errorMessage.innerHTML = '현재 데이터를 준비중입니다.';
-    ChartArea.append(errorMessage);
+    ChartArea[0].append(errorMessage);
 }
 export {getChartData, ShowChart}
