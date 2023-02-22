@@ -3212,7 +3212,7 @@ a {
             }
             & .main__MapDiv {
                 position:absolute;
-                background-color: #14BD7E;
+                background-color: transparent;
                 width:100vw;
                 height:82vh;
 
@@ -3220,169 +3220,205 @@ a {
                     width:180px;
                     height:50px;
     
-                    & .img_HG {
-                        content : url(/public/img/marker_HG.png);
+                    & .tmarker {
+                        height:40px;
+                        width:180px;
                         margin-left: 65px;
-                        margin-bottom : 25px;
-                    }
-                    & #H {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:100px;
-                    }
-
-                    & #G {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left: 180px;
-                    }
+                        & .img_HG {
+                            content : url(/public/img/marker_HG.png);
+                            margin-bottom : 25px;
+                        }
+                        & #H {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-140px;
+                        }
+    
+                        & #G {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        }
+                    }   
                 }
 
                 & .Map_Marker_LPG {
                     width:120px;
                     height:50px;
-                    & .img_LPG {
-                        content : url(/public/img/marker_LPG.png);
+
+                    & .tmarker {
+                        width:120px;
+                        height:40px;
                         margin-left: 35px;
-                        margin-bottom : 25px;
+                        & .img_LPG {
+                            content : url(/public/img/marker_LPG.png);
+                            //margin-left: 35px;
+                            margin-bottom : 25px;
+                        }
+                        & #LL {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-45px;
+                        } 
                     }
-                    & #LL {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:105px;
-                    } 
                 }
 
                 & .Map_Marker_hprice {
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_hPrice.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_hPrice.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .Map_Marker_gprice {
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_gPrice.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_gPrice.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .selected__Map_Marker_HG {
                     width:180px;
                     height:50px;
     
-                    & .img_HG {
-                        content : url(/public/img/marker_HG_sel.png);
+                    & .tmarker {
+                        height:40px;
+                        width:180px;
                         margin-left: 65px;
-                        margin-bottom : 25px;
+                        & .img_HG {
+                            content : url(/public/img/marker_HG_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #H {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-140px;
+                            color:white;
+                        }
+    
+                        & #G {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left: -60px;
+                            color:white;
+                        }
                     }
-                    & #H {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:100px;
-                        color:white;
-                    }
-
-                    & #G {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left: 180px;
-                        color:white;
-                    }
+                    
 
                 }
                 & .selected__Map_Marker_hprice{
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_hPrice_sel.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_hPrice_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                            color:white;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        color:white;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .selected__Map_Marker_gprice{
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_gPrice_sel.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_gPrice_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                            color:white;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        color:white;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .selected__Map_Marker_LPG{
                     width:120px;
                     height:50px;
-                    & .img_LPG {
-                        content : url(/public/img/marker_LPG_sel.png);
+                    & .tmarker {
+                        width:120px;
+                        height:40px;
                         margin-left: 35px;
-                        margin-bottom : 25px;
+                        & .img_LPG {
+                            content : url(/public/img/marker_LPG_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #LL {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-45px;
+                            color:white;
+                        } 
                     }
-                    & #LL {
-                        position:absolute;
-                        width:40px;
-                        color:white;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:105px;
-                    } 
                 }
             }
     
