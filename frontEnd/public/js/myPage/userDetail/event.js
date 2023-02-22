@@ -9,7 +9,6 @@ const eventToUserDetailModifyBtn = ($container) => {
         () => {
             const modifiedGender = getGenderFromLabel($container);
             const modifiedAge = getAgeFromLabel($container);
-            console.log(modifiedGender, modifiedAge);
             fetchModifyUserDetail(modifiedGender, modifiedAge, $container);
         }
     ])

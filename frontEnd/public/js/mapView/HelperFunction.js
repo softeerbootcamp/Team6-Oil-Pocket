@@ -96,7 +96,7 @@ function SearchNearGasStation(){
             }
         },
         error:function(request, error){
-            console.log("code:"+request.status + ", message:" + request.responseText + ", error:"+error);
+            
         }
     });
 }

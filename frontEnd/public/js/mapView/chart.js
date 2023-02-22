@@ -17,13 +17,11 @@ function getChartData(Resultelem){
         },
         error:function(request, error){
             ShowErrorMessageAtChartArea();
-            console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
     });
 }
 
 function ShowChart(response){
-    console.log(response);
     const dateLabels = [];
     const PREGasolineData = [];
     const GasolineData = [];
