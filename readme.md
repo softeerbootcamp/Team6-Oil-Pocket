@@ -47,15 +47,35 @@ https://user-images.githubusercontent.com/74173976/220026714-540d982c-2e78-47a4-
 <br>
 
 ## 🏗 &nbsp; Architecture
-<img width="777" alt="스크린샷 2023-02-17 오전 10 01 04" src="https://user-images.githubusercontent.com/87477702/219522739-77889ccd-49a2-4d6e-a229-0bd97ab6ef18.png">
+<img width="768" alt="스크린샷 2023-02-22 오후 6 31 59" src="https://user-images.githubusercontent.com/87477702/220579767-85df5cc2-7510-4395-917d-35f519d1db05.png">
 
-- Nginx: 리버스프록시, 프론트 서버
-- Redis: 세션 및 최근본 주유소 저장
-- MYSQL: 회원 및 주유소 저장
-- API SERVER: 비지니스 로직 API
-- Schduler: 일일 주유소 가격 스케줄러
-- GitHubAction: 프론트, 백엔드 CI/CD
-- OpenApi: TMap, 오피넷
+- NGiNX
+    - 프론트 웹서버로 사용
+    - 리버스 프록시를 통한 WAS 보호
+    - 정적파일 캐싱 이점
+    - HTTPS 구성이 필요했는데 이를 좀더 원활하게 할 수 있음
+
+- API Server
+    - 비지니스 로직을 처리하는 API Server이다
+
+- Scheduler
+    - 셀레니움을 사용하여 일일 전국 유가 정보 csv파일다운 자동화
+    - 해당 csv파일을 DB형태로 변경하고 Batch Insert를 활용해서 전국 일일 유가 데이터 저장
+    - 매일 저장되는 과정을 slack을 통해 알람기능을 받음
+
+- Redis
+    - 세션 스토리지(쿠키/세션을 사용한 로그인 방식 사용하기 때문)
+    - 사용자 최근 주유소 조회: 세션과 연동하여 지도에서 사용자가 조회한 주유소를 저장하고 주유기록때 보여줌
+
+- MYSQL
+    - 회원정보/주유소 관련 데이터를 저장
+
+- GitHubAction
+    - 프론트 백엔드의 CI/CD 자동화를 구성
+
+- OPENAPI(TMAP, OPINET)
+    - TMAP: 프론트에서 사용하며, 근처 주유소 탐색에서 사용
+    - OPINET: 현재 유가 평균, 주유소 일일 가격 데이터 획득에 사용
 
 <br>
 
