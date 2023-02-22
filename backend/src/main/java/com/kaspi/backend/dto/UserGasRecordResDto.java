@@ -27,7 +27,7 @@ public class UserGasRecordResDto implements Comparable<UserGasRecordResDto> {
         return UserGasRecordResDto.builder()
                 .chargeDate((userGasRecord.getChargeDate()))
                 .gasStationName(gasStation.getName())
-                .gasType(userGasRecord.getRecordGasType().getOpinetGasType())
+                .gasType(userGasRecord.getRecordGasType().getDtoName())
                 .recordGasAmount(userGasRecord.getRecordGasAmount() + "L")
                 .refuelingPrice(userGasRecord.getRefuelingPrice() + "원")
                 .savingPrice(userGasRecord.getSavingPrice() + "원")
