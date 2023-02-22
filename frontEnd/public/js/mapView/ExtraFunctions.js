@@ -132,9 +132,32 @@ function FillBasicPhoneonDetail(ResultArrayElem){
 
 function FillBasicUrlonDetail(ResultArrayElem){
     const ST_url = document.getElementById("GSTdetail_url");
-    ST_url.innerHTML = `https://www.${ResultArrayElem.stId}.com`;
+    ST_url.innerHTML = `${transStidtoUrl(ResultArrayElem.stId)}`;
+    if(transStidtoUrl(ResultArrayElem.stId) == '홈페이지가 존재하지 않습니다.') {
+        ST_url.style.color = 'lightgrey';
+        ST_url.style.pointerEvents = 'none';
+    }
+    else {
+        ST_url.style.pointerEvents = 'auto';
+        ST_url.style.color = '#1ede88';
+        ST_url.setAttribute('href', transStidtoUrl(ResultArrayElem.stId));
+    }
 }
 
+function transStidtoUrl(stId){
+    switch(stId){
+        case 'S-Oil': return 'https://www.s-oil.com/Default.aspx';
+        case '오일뱅크' : return 'https://www.oilbank.co.kr/main/index.do';
+        case '알뜰' : return 'https://ecos.knoc.co.kr/';
+        case 'ex-OIL' : return 'https://ecos.knoc.co.kr/';
+        case 'NH-OIL' : return '홈페이지가 존재하지 않습니다.';
+        case 'SK' : return 'http://www.skenergy.com/'; 
+        case 'GS' : return 'https://www.gscaltex.com/kr/';
+        case '자가상표' : return '홈페이지가 존재하지 않습니다.';
+        case 'E1' : return 'https://www.e1.co.kr/ko/main';
+    }
+    return '홈페이지가 존재하지 않습니다.';
+}
 function FillPriceTableonDetail(ResultArrayElem){
     const ST_PriceTable = document.getElementsByClassName("main__GSTdetail__Contents__OilPriceTable__Contents");
     ST_PriceTable[0].innerHTML = "";

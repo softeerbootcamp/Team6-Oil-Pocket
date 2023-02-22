@@ -3002,8 +3002,6 @@ a {
                             flex-direction: column;
                             width:100%;
     
-                            // font-size:20px;
-                            // font-weight: 400;
                             align-items: center;
     
                             & .main__GSTdetail__Contents__Oilprice {
@@ -3075,13 +3073,16 @@ a {
                                     border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
                                     height:30px;
-                                    color : #14bd72;
                                     & img {
                                         width:20px;
                                         height:20px;
                                         margin-right: 3px;
                                         margin-bottom: -3px;
                                     }
+                                    & a{
+                                        color : #1ede88;
+                                    }
+                                    
                                 }
                             }
                             & .main__GSTdetail__Contents__OilPriceTable {
@@ -3163,8 +3164,9 @@ a {
                                 height:30%;
                                 font-size: 20px;
                                 font-weight: 500;
-                                margin-top: 10px;
+                                margin-top: 15px;
                                 & #myChart {
+                                    margin-top: 15px;
                                     width:100%;
                                     height:40%;
                                 }
@@ -3177,22 +3179,21 @@ a {
                                     font-weight: 400;
                                 }
                             }
-
-                            & .main__addOilingInfo {
-                                width:150px;
-                                height:30px;
-                                position :fixed;
-                                display:flex;
-                                align-items: center;
-                                justify-content: center;
-                                margin-top : 650px;
-                                border-radius: 20px;
-                                border:1px solid #14BD72;
-                                background-color: #14BD7E;
-                                font-size: 1rem;
-                                color:white;
-                                display:none;
-                            }
+                            // & .main__addOilingInfo {
+                            //     width:150px;
+                            //     height:30px;
+                            //     position :fixed;
+                            //     display:flex;
+                            //     align-items: center;
+                            //     justify-content: center;
+                            //     margin-top : 650px;
+                            //     border-radius: 20px;
+                            //     border:1px solid #14BD72;
+                            //     background-color: #14BD7E;
+                            //     font-size: 1rem;
+                            //     color:white;
+                            //     display:none;
+                            // }
                         }
                     }
                 }
