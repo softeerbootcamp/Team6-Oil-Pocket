@@ -10,7 +10,7 @@ import { notFoundView } from "./notFound/view.js";
 import { _$ } from "./common/utils.js";
 import { fecthCheckLogin, routerCheckLogin } from "./login/fetch.js";
 import { mapView } from "./mapView/view.js";
-import { initTmap } from "./mapView/helperFunction.js";
+import { initTmap } from "./mapView/HelperFunction.js";
 
 const $body = _$("body");
 

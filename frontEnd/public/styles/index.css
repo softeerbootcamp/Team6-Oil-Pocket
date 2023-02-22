@@ -1010,7 +1010,7 @@ a {
     background-color: white;
     border: 2px solid #14BD7E;
     border-radius: 5px;
-    width: 15vw;
+    width: calc(15vw - 2px);
     height: 4vh;
     margin-left: 2vw;
     margin-top: 2vh;
@@ -2634,7 +2634,7 @@ a {
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation {
     display: flex;
-    margin-top: 3vh;
+    margin-top: 5vh;
     width: 3vw;
     height: 5vh;
     background-color: #14BD7E;
@@ -2645,15 +2645,17 @@ a {
     justify-content: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromCurrentLocation #Option1 {
+    display: flex;
     transition: 0.5s;
     transition-timing-function: linear;
-    width: 10px;
-    height: 10px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute {
     display: flex;
-    width: 1.9vw;
-    height: 4.6vh;
+    width: 3vw;
+    height: 5vh;
     background-color: white;
     box-shadow: 1px 0 2px -1px;
     transition: 0.4s;
@@ -2662,10 +2664,12 @@ a {
     justify-content: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__SearchOption .main__SearchFromRoute #Option2 {
+    display: flex;
     transition: 0.5s;
     transition-timing-function: linear;
-    width: 10px;
-    height: 10px;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__SideSearchBar .main__InputandResultinSearchBar {
     width: 19vw;
@@ -2769,7 +2773,7 @@ a {
     background-color: white;
     border: 2px solid #14BD7E;
     border-radius: 5px;
-    width: 15vw;
+    width: calc(15vw - 4px);
     height: 4vh;
     margin-left: 2vw;
     margin-top: 0;
@@ -3127,6 +3131,14 @@ a {
     width: 100%;
     height: 40%;
   }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Chart #nocharterr {
+    margin-top: 5%;
+    width: 100%;
+    height: 40%;
+    color: rgb(170, 170, 170);
+    font-size: 18px;
+    font-weight: 400;
+  }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__addOilingInfo {
     width: 150px;
     height: 30px;
@@ -3157,7 +3169,7 @@ a {
   }
   .main .main__ForMap .main__MapDiv {
     position: absolute;
-    background-color: #14BD7E;
+    background-color: transparent;
     width: 100vw;
     height: 82vh;
   }
@@ -3165,131 +3177,190 @@ a {
     width: 180px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HG .img_HG {
-    content: url(/public/img/marker_HG.png);
+  .main .main__ForMap .main__MapDiv .Map_Marker_HG .tmarker {
+    height: 40px;
+    width: 180px;
     margin-left: 65px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_HG .tmarker .img_HG {
+    content: url(/public/img/marker_HG.png);
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HG #H {
+  .main .main__ForMap .main__MapDiv .Map_Marker_HG .tmarker #H {
     position: absolute;
     width: 40px;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 100px;
+    margin-top: 10px;
+    margin-left: -140px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_HG #G {
+  .main .main__ForMap .main__MapDiv .Map_Marker_HG .tmarker #G {
     position: absolute;
     width: 40px;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 180px;
+    margin-top: 10px;
+    margin-left: -60px;
   }
   .main .main__ForMap .main__MapDiv .Map_Marker_LPG {
     width: 120px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_LPG .img_LPG {
-    content: url(/public/img/marker_LPG.png);
+  .main .main__ForMap .main__MapDiv .Map_Marker_LPG .tmarker {
+    width: 120px;
+    height: 40px;
     margin-left: 35px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_LPG .tmarker .img_LPG {
+    content: url(/public/img/marker_LPG.png);
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_LPG #LL {
+  .main .main__ForMap .main__MapDiv .Map_Marker_LPG .tmarker #LL {
     position: absolute;
     width: 40px;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 105px;
+    margin-top: 10px;
+    margin-left: -45px;
   }
   .main .main__ForMap .main__MapDiv .Map_Marker_hprice {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_hprice .img_HnG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice .tmarker {
+    width: 100px;
+    height: 40px;
+    margin-left: 35px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice .tmarker .img_HnG {
     content: url(/public/img/marker_hPrice.png);
-    margin-left: 25px;
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_hprice #Price {
+  .main .main__ForMap .main__MapDiv .Map_Marker_hprice .tmarker #Price {
     position: absolute;
     width: 40px;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 70px;
+    margin-top: 10px;
+    margin-left: -60px;
   }
   .main .main__ForMap .main__MapDiv .Map_Marker_gprice {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_gprice .img_HnG {
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice .tmarker {
+    width: 100px;
+    height: 40px;
+    margin-left: 35px;
+  }
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice .tmarker .img_HnG {
     content: url(/public/img/marker_gPrice.png);
-    margin-left: 25px;
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .Map_Marker_gprice #Price {
+  .main .main__ForMap .main__MapDiv .Map_Marker_gprice .tmarker #Price {
     position: absolute;
     width: 40px;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 70px;
+    margin-top: 10px;
+    margin-left: -60px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG {
+    width: 180px;
+    height: 50px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG .tmarker {
+    height: 40px;
+    width: 180px;
+    margin-left: 65px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG .tmarker .img_HG {
+    content: url(/public/img/marker_HG_sel.png);
+    margin-bottom: 25px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG .tmarker #H {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: 10px;
+    margin-left: -140px;
+    color: white;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_HG .tmarker #G {
+    position: absolute;
+    width: 40px;
+    font-size: 20px;
+    font-weight: 350;
+    margin-top: 10px;
+    margin-left: -60px;
+    color: white;
   }
   .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice .img_HnG {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice .tmarker {
+    width: 100px;
+    height: 40px;
+    margin-left: 35px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice .tmarker .img_HnG {
     content: url(/public/img/marker_hPrice_sel.png);
-    margin-left: 25px;
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice #Price {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_hprice .tmarker #Price {
     position: absolute;
     width: 40px;
-    color: white;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 70px;
+    margin-top: 10px;
+    margin-left: -60px;
+    color: white;
   }
   .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice {
     width: 100px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice .img_HnG {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice .tmarker {
+    width: 100px;
+    height: 40px;
+    margin-left: 35px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice .tmarker .img_HnG {
     content: url(/public/img/marker_gPrice_sel.png);
-    margin-left: 25px;
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice #Price {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_gprice .tmarker #Price {
     position: absolute;
     width: 40px;
-    color: white;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 70px;
+    margin-top: 10px;
+    margin-left: -60px;
+    color: white;
   }
   .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG {
     width: 120px;
     height: 50px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG .img_LPG {
-    content: url(/public/img/marker_LPG_sel.png);
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG .tmarker {
+    width: 120px;
+    height: 40px;
     margin-left: 35px;
+  }
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG .tmarker .img_LPG {
+    content: url(/public/img/marker_LPG_sel.png);
     margin-bottom: 25px;
   }
-  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG #LL {
+  .main .main__ForMap .main__MapDiv .selected__Map_Marker_LPG .tmarker #LL {
     position: absolute;
     width: 40px;
-    color: white;
     font-size: 20px;
     font-weight: 350;
-    margin-top: -70px;
-    margin-left: 105px;
+    margin-top: 10px;
+    margin-left: -45px;
+    color: white;
   }
   .main .main__ForMap #main__btn_select {
     z-index: 5;
@@ -7492,6 +7563,7 @@ a {
     width: 95%;
     height: 100%;
     margin: 0 auto;
+    position: relative;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer .oilInfoArea__oilCharttitle {
     width: 100%;
@@ -7636,6 +7708,14 @@ a {
     font-weight: 600;
     font-size: 1rem;
     width: 10%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer .oilinfoArea__chartInfoText {
+    color: rgb(170, 170, 170);
+    font-weight: 700;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0.2vw;
+    right: 0.2vw;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__buttonArea {
     padding: 1vw 0;

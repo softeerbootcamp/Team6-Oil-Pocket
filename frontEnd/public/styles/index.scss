@@ -836,7 +836,7 @@ a {
                             background-color:white;
                             border: 2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
+                            width:calc(15vw - 2px);
                             height:4vh;
                             margin-left:2vw;
                             margin-top:2vh;
@@ -2628,7 +2628,7 @@ a {
                         background-color: transparent;
                         & .main__SearchFromCurrentLocation {
                             display:flex;
-                            margin-top: 3vh;
+                            margin-top: 5vh;
                             width:3vw;
                             height:5vh;
                             background-color: #14BD7E;
@@ -2638,17 +2638,19 @@ a {
                             align-items: center;
                             justify-content: center;
                             & #Option1 {
+                                display:flex;
                                 transition: 0.5s;
                                 transition-timing-function: linear;
-                                width:10px;
-                                height:10px;
+                                font-size: 30px;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
         
                         & .main__SearchFromRoute {
                             display:flex;
-                            width:1.9vw;
-                            height:4.6vh;
+                            width:3vw;
+                            height:5vh;
                             background-color: white;
                             box-shadow: 1px 0 2px -1px ;
                             transition: 0.4s;
@@ -2656,10 +2658,12 @@ a {
                             align-items: center;
                             justify-content: center;
                             & #Option2 {
+                                display:flex;
                                 transition: 0.5s;
                                 transition-timing-function: linear;
-                                width:10px;
-                                height:10px;
+                                font-size:25px;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
                     }
@@ -2783,7 +2787,7 @@ a {
                             background-color:white;
                             border: 2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
+                            width:calc(15vw - 4px);
                             height:4vh;
                             margin-left:2vw;
                             margin-top:0;
@@ -3164,6 +3168,14 @@ a {
                                     width:100%;
                                     height:40%;
                                 }
+                                & #nocharterr {
+                                    margin-top:5%;
+                                    width:100%;
+                                    height:40%;
+                                    color : rgb(170, 170, 170);
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                }
                             }
 
                             & .main__addOilingInfo {
@@ -3200,7 +3212,7 @@ a {
             }
             & .main__MapDiv {
                 position:absolute;
-                background-color: #14BD7E;
+                background-color: transparent;
                 width:100vw;
                 height:82vh;
 
@@ -3208,139 +3220,205 @@ a {
                     width:180px;
                     height:50px;
     
-                    & .img_HG {
-                        content : url(/public/img/marker_HG.png);
+                    & .tmarker {
+                        height:40px;
+                        width:180px;
                         margin-left: 65px;
-                        margin-bottom : 25px;
-                    }
-                    & #H {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:100px;
-                    }
-
-                    & #G {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left: 180px;
-                    }
+                        & .img_HG {
+                            content : url(/public/img/marker_HG.png);
+                            margin-bottom : 25px;
+                        }
+                        & #H {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-140px;
+                        }
+    
+                        & #G {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        }
+                    }   
                 }
 
                 & .Map_Marker_LPG {
                     width:120px;
                     height:50px;
-                    & .img_LPG {
-                        content : url(/public/img/marker_LPG.png);
+
+                    & .tmarker {
+                        width:120px;
+                        height:40px;
                         margin-left: 35px;
-                        margin-bottom : 25px;
+                        & .img_LPG {
+                            content : url(/public/img/marker_LPG.png);
+                            //margin-left: 35px;
+                            margin-bottom : 25px;
+                        }
+                        & #LL {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-45px;
+                        } 
                     }
-                    & #LL {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:105px;
-                    } 
                 }
 
                 & .Map_Marker_hprice {
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_hPrice.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_hPrice.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .Map_Marker_gprice {
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_gPrice.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_gPrice.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
+                & .selected__Map_Marker_HG {
+                    width:180px;
+                    height:50px;
+    
+                    & .tmarker {
+                        height:40px;
+                        width:180px;
+                        margin-left: 65px;
+                        & .img_HG {
+                            content : url(/public/img/marker_HG_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #H {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-140px;
+                            color:white;
+                        }
+    
+                        & #G {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left: -60px;
+                            color:white;
+                        }
+                    }
+                    
+
+                }
                 & .selected__Map_Marker_hprice{
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_hPrice_sel.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_hPrice_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                            color:white;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        color:white;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .selected__Map_Marker_gprice{
                     width:100px;
                     height:50px;
-                    & .img_HnG {
-                        content : url(/public/img/marker_gPrice_sel.png);
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_gPrice_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                            color:white;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        color:white;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
                 }
 
                 & .selected__Map_Marker_LPG{
                     width:120px;
                     height:50px;
-                    & .img_LPG {
-                        content : url(/public/img/marker_LPG_sel.png);
+                    & .tmarker {
+                        width:120px;
+                        height:40px;
                         margin-left: 35px;
-                        margin-bottom : 25px;
+                        & .img_LPG {
+                            content : url(/public/img/marker_LPG_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #LL {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-45px;
+                            color:white;
+                        } 
                     }
-                    & #LL {
-                        position:absolute;
-                        width:40px;
-                        color:white;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:105px;
-                    } 
                 }
             }
     
@@ -8183,6 +8261,7 @@ a {
                     width: 95%;
                     height: 100%;
                     margin: 0 auto;
+                    position: relative;
     
                     & .oilInfoArea__oilCharttitle {
                         width: 100%;
@@ -8351,6 +8430,15 @@ a {
                                 width: 10%;
                             }
                         }
+                    }
+
+                    & .oilinfoArea__chartInfoText {
+                        color: rgb(170, 170, 170);
+                        font-weight: 700;
+                        font-size: 0.9rem;
+                        position: absolute;
+                        bottom: 0.2vw;
+                        right: 0.2vw;
                     }
                 }
             }
