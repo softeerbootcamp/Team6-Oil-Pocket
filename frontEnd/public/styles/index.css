@@ -3132,9 +3132,10 @@ a {
     height: 40%;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Chart #nocharterr {
+    margin-top: 5%;
     width: 100%;
     height: 40%;
-    color: grey;
+    color: rgb(170, 170, 170);
     font-size: 18px;
     font-weight: 400;
   }
