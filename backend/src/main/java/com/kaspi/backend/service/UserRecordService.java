@@ -52,7 +52,7 @@ public class UserRecordService {
     }
 
     public Long calUserSavingAmount(Long userRefuelingPrice, Long userGasAmount, Long nationalAvgOilPrice) {
-        return userRefuelingPrice - nationalAvgOilPrice * userGasAmount;
+        return nationalAvgOilPrice * userGasAmount-userRefuelingPrice;
     }
 
 
@@ -79,8 +79,6 @@ public class UserRecordService {
         User user = httpSessionService.getUserFromSession();
         List<UserGasRecord> matchingUserGasRecords = userGasRecordDao.findGasRecordListByUserId(user.getUserNo());
         List<UserGasRecordResDto> userGasRecordResDtos = toUserGasRecordResDtos(matchingUserGasRecords);
-        //날짜 최신순 정렬
-        Collections.sort(userGasRecordResDtos);
         return userGasRecordResDtos;
     }
 

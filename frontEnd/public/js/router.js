@@ -8,14 +8,19 @@ import { inputOilInfoView } from "./myPage/inputOilInfo/view.js";
 import { historyView } from "./myPage/history/view.js";
 import { notFoundView } from "./notFound/view.js";
 import { _$ } from "./common/utils.js";
-import { fecthCheckLogin } from "./login/fetch.js";
+import { fecthCheckLogin, routerCheckLogin } from "./login/fetch.js";
 import { mapView } from "./mapView/view.js";
 import { initTmap } from "./mapView/HelperFunction.js";
 
 const $body = _$("body");
 
 const router = async () => {
-    await fecthCheckLogin();
+    if(location.pathname === "/login" || location.pathname === "/register") {
+        await routerCheckLogin();
+    }
+    else {
+        await fecthCheckLogin();
+    }
 
     const routes = [
         { path: "/", view: mainView },
@@ -36,6 +41,7 @@ const router = async () => {
             isMatch: location.pathname === route.path
         };
     }).find((routeObj) => routeObj.isMatch)
+    
     if(!match) {
         match = {
             route: routes[routes.length - 1],

@@ -684,7 +684,7 @@ a {
   .main .chatBotArea .chatBotArea__background .chatBotArea__profile span {
     width: 90%;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.65rem;
     font-weight: 600;
   }
   .main .chatBotArea .chatBotArea__background .chatBotArea__chat {
@@ -703,7 +703,7 @@ a {
     cursor: pointer;
   }
   .main .chatBotArea .chatBotArea__background .chatBotArea__chat span {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-weight: 600;
     line-height: 1.2;
   }
@@ -714,7 +714,7 @@ a {
   .main .chatBotArea .chatBotArea__background .chatBotArea__answer {
     transition: 0.5s;
     margin: 1.5vh auto;
-    padding: 0.5vh 1.5vw;
+    padding: 1vh 1.5vw;
     width: 85%;
     height: 5vh;
     background-color: #14BD7E;
@@ -726,7 +726,7 @@ a {
     opacity: 0;
   }
   .main .chatBotArea .chatBotArea__background .chatBotArea__answer span {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 600;
     line-height: 1.2;
   }
@@ -4726,6 +4726,24 @@ a {
   }
   .oilInfoArea .myPage__SuccessModal {
     top: 0;
+    left: 20%;
+    transition: 0.8s;
+    position: absolute;
+    width: 60%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    border-radius: 1vh;
+    top: -30%;
+    background-color: #80E3C3;
+    z-index: 10;
+  }
+  .oilInfoArea .oilInput__successModal {
+    top: 0;
     left: 40%;
     transition: 0.8s;
     position: absolute;
@@ -4742,6 +4760,103 @@ a {
     background-color: #80E3C3;
     z-index: 10;
   }
+  .oilInfoArea .oilInput__preferModal {
+    transition: 0.5s;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.15);
+    position: fixed;
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent {
+    background-color: #fff;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    width: 80%;
+    height: 60%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    width: 70%;
+    height: 100%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround .preferModal__closeBtn {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround .preferModal__closeBtn:hover {
+    transform: rotate(180deg);
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: scroll;
+    padding: 2% 0;
+    width: 100%;
+    height: 80%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox::-webkit-scrollbar {
+    width: 0;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li {
+    padding: 1% 0;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+    outline: 0.2vh solid #14BD72;
+    border-radius: 0.5vh;
+    margin-bottom: 3%;
+    cursor: pointer;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li img {
+    width: 5%;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li h2 {
+    font-size: 0.5rem;
+    font-weight: 500;
+    width: 65%;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox li span {
+    font-size: 0.4rem;
+    font-weight: 400;
+    width: 25%;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .oilInfoArea .oilInput__preferModal .oilInput__preferContent .oilInput__preferContentBackGround ul.oilInput__preferContentBox h3 {
+    margin-top: 20%;
+    font-size: 1.8rem;
+    color: #14BD72;
+    font-weight: 700;
+  }
   .oilInfoArea .oilInfoArea__background {
     width: 90%;
     height: 100%;
@@ -4755,21 +4870,21 @@ a {
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__tabArea .oilInfoArea__tab {
     height: 80%;
-    width: 16%;
+    width: 20%;
     border-radius: 1vh 1vh 0 0;
     background-color: #14BD7E;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    font-size: 0.55rem;
-    padding: 0 1vw;
+    font-size: 0.5rem;
+    padding: 0 0.5vw;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     border: 0.05vh solid #FAFAFB;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__tabArea .oilInfoArea__tab a {
-    width: 100%;
+    width: 90%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -4782,7 +4897,8 @@ a {
   .oilInfoArea .oilInfoArea__background .oilInfoArea__tabArea .oilInfoArea__tab.oilInfoArea__choosedTab {
     color: #000;
     height: 90%;
-    font-size: 0.65rem;
+    width: 20%;
+    font-size: 0.5rem;
     margin: 0 -0.25vw;
     background-color: #fff;
     box-shadow: 0 -0.5vh 0.5vw 0 #D4D4D4;
@@ -4799,6 +4915,20 @@ a {
     height: 45%;
     box-shadow: 0 0.5vh 1vw 0 #D4D4D4;
     border-radius: 0 1.5vh 0 0;
+    position: relative;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__preferBtnArea {
+    position: absolute;
+    top: 1.5vh;
+    right: 5.8vw;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__preferBtnArea button {
+    padding: 0.5vh 0.5vw;
+    font-size: 0.4rem;
+    font-weight: 700;
+    border-radius: 1vw;
+    color: #fff;
+    background-color: #4BC0C0;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentTitle {
     height: 15%;
@@ -4942,16 +5072,24 @@ a {
     align-items: center;
     padding: 0 1vw;
     width: 90%;
-    height: 20%;
+    height: 30%;
     border-bottom: 0.2vh solid #000;
     cursor: pointer;
   }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue img {
+    width: 10%;
+  }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue h1 {
+    width: 85%;
+    white-space: nowrap;
     font-size: 0.5rem;
+    font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox .oilInfoArea__oilSearchValue span {
+    display: none;
+    width: 30%;
     font-size: 0.5rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__inputBox .oilInfoArea__searchArea .oilInfoArea__oilSearchResultBox:focus {
@@ -5212,9 +5350,16 @@ a {
     margin-bottom: 2vh;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox img {
+    opacity: 0;
     transition: 0.5s;
     width: 70%;
     height: 70%;
+  }
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox .oilInfoArea__ban {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__profileContainer {
     width: 100%;
@@ -5433,14 +5578,11 @@ a {
     font-size: 0.55rem;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div img {
-    width: 40%;
-    height: 40%;
+    width: 20%;
+    height: 20%;
   }
-  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div:nth-child(2n+1) :last-child {
+  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div:nth-child(n) :last-child {
     color: #3181F6;
-  }
-  .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilHistoryContainer .oilInfoArea__oilHistoryTable div div:nth-child(2n) :last-child {
-    color: red;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__oilChartContainer {
     width: 95%;
@@ -6111,6 +6253,7 @@ a {
     margin-bottom: 2vh;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox img {
+    opacity: 0;
     transition: 0.5s;
     width: 90%;
     height: 90%;
@@ -7144,6 +7287,7 @@ a {
     margin-bottom: 2vh;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox img {
+    opacity: 0;
     transition: 0.5s;
     width: 90%;
     height: 90%;
