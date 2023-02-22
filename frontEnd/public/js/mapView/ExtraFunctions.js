@@ -73,9 +73,22 @@ function nohHsaleInfo(Resultelem) {
 
 
 function FillSTDetail(ResultArrayElem){
+
+    FillNameonDetail(ResultArrayElem);
+
+    FillOilPriceonDetail(ResultArrayElem);
+
+    FillBasiconDetail(ResultArrayElem);
+   
+    FillPriceTableonDetail(ResultArrayElem);
+}
+
+function FillNameonDetail(ResultArrayElem){
     const ST_name = document.getElementById("GSTdetail__Name");
     ST_name.innerHTML = ResultArrayElem.name;
+}
 
+function FillOilPriceonDetail(ResultArrayElem){
     const ST_Price = document.getElementsByClassName("main__GSTdetail__Contents__Oilprice");
     var PriceinnerHtml = "";
     PriceinnerHtml += "<i class='fa-solid fa-gas-pump'></i>";
@@ -89,12 +102,22 @@ function FillSTDetail(ResultArrayElem){
         PriceinnerHtml += "LPG : " + ResultArrayElem.llPrice;
     }
     ST_Price[0].innerHTML = PriceinnerHtml;
+}
 
+function FillBasiconDetail(ResultArrayElem){
+    FillBasicAddronDetail(ResultArrayElem);
+    FillBasicPhoneonDetail(ResultArrayElem);
+    FillBasicUrlonDetail(ResultArrayElem);
+}
+
+function FillBasicAddronDetail(ResultArrayElem){
     const ST_addr = document.getElementById("GSTdetail_addr");
     ST_addr.innerHTML = `${ResultArrayElem.upperAddrName} ${ResultArrayElem.middleAddrName} ${ResultArrayElem.lowerAddrName}
                         ${ResultArrayElem.detailAddrName} ${ResultArrayElem.firstNo}
                         ( ${ResultArrayElem.roadName} ${ResultArrayElem.buildingNo1} )`
+}
 
+function FillBasicPhoneonDetail(ResultArrayElem){
     const ST_phone = document.getElementById("GSTdetail_phone");
     var telNolen = ResultArrayElem.telNo.length;
     if(ResultArrayElem.telNo.includes('02')) {
@@ -105,10 +128,14 @@ function FillSTDetail(ResultArrayElem){
     }
 
     ST_phone.innerHTML = psTelNo;
+}
 
+function FillBasicUrlonDetail(ResultArrayElem){
     const ST_url = document.getElementById("GSTdetail_url");
     ST_url.innerHTML = `https://www.${ResultArrayElem.stId}.com`;
+}
 
+function FillPriceTableonDetail(ResultArrayElem){
     const ST_PriceTable = document.getElementsByClassName("main__GSTdetail__Contents__OilPriceTable__Contents");
     ST_PriceTable[0].innerHTML = "";
     if(ResultArrayElem.hhPrice != 0){
@@ -139,7 +166,6 @@ function FillSTDetail(ResultArrayElem){
         ST_PriceTable[0].append(ST_OilPrice);
     }
 }
-
 function addHpriceTotable(ResultArrayElem){
     return `<div class="main__GSTdetail__Contents__OilPriceTable__Contents__Oil">
             휘발유
