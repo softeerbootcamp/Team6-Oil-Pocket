@@ -44,7 +44,7 @@ public class UserRecordService {
                 GasDetail.getNowDateToStr());//오늘 날짜로 계산
         validTodayGasPrice(userGasRecordReqDto, gasStation, todayGasPrice);
         double userGasAmount = (double)userGasRecordReqDto.getRefuelingPrice() / todayGasPrice.get();
-        log.info("사용자가 주유한 가스타입:{}, 주유량:{}", userGasRecordReqDto.getGasType().name(), userGasAmount);
+        log.info("사용자가 주유한 가스타입:{}, 주유량:{}, 오늘 해당 주유소 가격:{}", userGasRecordReqDto.getGasType().name(), userGasAmount,todayGasPrice.get());
         return userGasAmount;
     }
 
@@ -56,7 +56,10 @@ public class UserRecordService {
     }
 
     public Long calUserSavingAmount(Long userRefuelingPrice, double userGasAmount, Long nationalAvgOilPrice) {
-        return (long) (nationalAvgOilPrice * userGasAmount-userRefuelingPrice);
+
+        long savingPrice = (long) (nationalAvgOilPrice * userGasAmount - userRefuelingPrice);
+        log.info("절약금액: {}", savingPrice);
+        return savingPrice;
     }
 
 
