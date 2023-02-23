@@ -3002,8 +3002,6 @@ a {
                             flex-direction: column;
                             width:100%;
     
-                            // font-size:20px;
-                            // font-weight: 400;
                             align-items: center;
     
                             & .main__GSTdetail__Contents__Oilprice {
@@ -3075,13 +3073,16 @@ a {
                                     border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
                                     height:30px;
-                                    color : #14bd72;
                                     & img {
                                         width:20px;
                                         height:20px;
                                         margin-right: 3px;
                                         margin-bottom: -3px;
                                     }
+                                    & a{
+                                        color : #1ede88;
+                                    }
+                                    
                                 }
                             }
                             & .main__GSTdetail__Contents__OilPriceTable {
@@ -3181,7 +3182,6 @@ a {
                                     font-weight: 400;
                                 }
                             }
-
                             // & .main__addOilingInfo {
                             //     width:150px;
                             //     height:30px;

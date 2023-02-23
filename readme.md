@@ -13,6 +13,8 @@
     &nbsp;·&nbsp;
     <a href="https://youtu.be/f9LQ9UuMMdw">View 2nd Demo</a>
     &nbsp;·&nbsp;
+    <a href="https://www.youtube.com/watch?v=qY7qAl-ZX9Y">View Final Demo</a>
+    &nbsp;·&nbsp;
     <a href="https://github.com/softeerbootcamp/Team6/discussions/landing">Report Bug</a>
     &nbsp;·&nbsp;
     <a href="https://hyundaibootcamp06.notion.site/6-Oil-Pocket-c7076bc7e7e64e51aeee7f10237f37a0">Team Notion</a>
@@ -40,7 +42,7 @@ https://user-images.githubusercontent.com/74173976/220026714-540d982c-2e78-47a4-
 ## 👉 &nbsp; User Flow
 <img src="https://user-images.githubusercontent.com/92264609/217170500-849ef0c0-5dce-4a68-b6a5-a9343be0ad45.png" alt="">
 
-##### 🔥 열심히 완성도를 높여가는 중!
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -84,7 +86,7 @@ https://user-images.githubusercontent.com/74173976/220026714-540d982c-2e78-47a4-
 
 FE : &nbsp; <img src="https://img.shields.io/badge/html5-e44d26?style=flat&logo=HTML5&logoColor=white"/> <img src="https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-f7df1e?style=flat&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/node.JS-73AA63?style=flat&logo=node.JS&logoColor=white"/> <img src="https://img.shields.io/badge/vite-646CFF?style=flat&logo=vite&logoColor=white"/>
 
-BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=openjdk&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-5cb230?style=flat&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=Jenkins&logoColor=white"/> <img src="https://img.shields.io/badge/NGINX-009639?style=flat&logo=NGINX&logoColor=white"/> <img src="https://img.shields.io/badge/REDIS-DC382D?style=flat&logo=REDIS&logoColor=white"/> <img src="https://img.shields.io/badge/mysql-4479A1?style=flat&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/amazon EC2-FF9900?style=flat&logo=amazon EC2&logoColor=white"/> <img src="https://img.shields.io/badge/Selenium-43B02A?style=flat&logo=selenium&logoColor=white"/> <img src="https://img.shields.io/badge/docker-2496ED?style=flat&logo=docker&logoColor=white"/>  <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=flat&logo=GitHub Actions&logoColor=white"/>  <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/>
+BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=openjdk&logoColor=white"/> <img src="https://img.shields.io/badge/Spring-5cb230?style=flat&logo=spring&logoColor=white"/> <img src="https://img.shields.io/badge/NGINX-009639?style=flat&logo=NGINX&logoColor=white"/> <img src="https://img.shields.io/badge/REDIS-DC382D?style=flat&logo=REDIS&logoColor=white"/> <img src="https://img.shields.io/badge/mysql-4479A1?style=flat&logo=mysql&logoColor=white"/> <img src="https://img.shields.io/badge/amazon EC2-FF9900?style=flat&logo=amazon EC2&logoColor=white"/> <img src="https://img.shields.io/badge/Selenium-43B02A?style=flat&logo=selenium&logoColor=white"/> <img src="https://img.shields.io/badge/docker-2496ED?style=flat&logo=docker&logoColor=white"/>  <img src="https://img.shields.io/badge/GitHub Actions-2088FF?style=flat&logo=GitHub Actions&logoColor=white"/>  <img src="https://img.shields.io/badge/Amazon S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

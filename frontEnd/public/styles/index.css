@@ -3042,13 +3042,15 @@ a {
     border-bottom: 1px solid rgba(211, 211, 211, 0.4);
     line-height: 30px;
     height: 30px;
-    color: #14bd72;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Url img {
     width: 20px;
     height: 20px;
     margin-right: 3px;
     margin-bottom: -3px;
+  }
+  .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Basic .main__GSTdetail__Contents__Basic__Url a {
+    color: #1ede88;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__OilPriceTable {
     background-color: white;
