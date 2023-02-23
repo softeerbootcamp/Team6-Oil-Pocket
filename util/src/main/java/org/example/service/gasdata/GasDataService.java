@@ -80,7 +80,7 @@ public class GasDataService {
                 //System.out.println(key);
 
 
-                GasStation gasStation = GasStation.parseGasStation(attribute);
+                GasStation gasStation = GasStation.parseNowGasStation(attribute);
                 int index = dbGasStations.indexOf(gasStation);
                 if (index == -1) {
                     newGasStations.add(gasStation);

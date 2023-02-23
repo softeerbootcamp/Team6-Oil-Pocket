@@ -13,6 +13,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @NoArgsConstructor
@@ -63,11 +65,36 @@ public class GasDetail {
         List<GasDetail> list = new ArrayList<>();
         for (StationAndDetailSet stationAndDetailSet : notYetList) {
             if (stationAndDetailSet.isLpg()) {
-                list.add(parseLpgGasDetail(stationAndDetailSet.getGasStation(), stationAndDetailSet.getAttribute(), stationAndDetailSet.getDate()));
+                GasDetail gasDetail = parseLpgGasDetail(stationAndDetailSet.getGasStation(), stationAndDetailSet.getAttribute(), stationAndDetailSet.getDate());
+                if (list.contains(gasDetail)) continue;
+                list.add(gasDetail);
                 continue;
             }
-            list.addAll(parseListGasDetail(stationAndDetailSet.getGasStation(), stationAndDetailSet.getAttribute(), stationAndDetailSet.getDate()));
+            List<GasDetail> gasDetails = parseListGasDetail(stationAndDetailSet.getGasStation(), stationAndDetailSet.getAttribute(), stationAndDetailSet.getDate());
+            if (list.containsAll(gasDetails)) continue;
+            list.addAll(gasDetails);
         }
         return list;
+    }
+
+    public static String setToCsv(Set<GasDetail> gasDetailSet) {
+        StringBuilder sb = new StringBuilder();
+        for (GasDetail gasDetail : gasDetailSet) {
+            sb.append(gasDetail.getStationNo() + "," + gasDetail.getGasType() + "," + gasDetail.getPrice() + "," + gasDetail.getDate().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + "\n");
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GasDetail gasDetail = (GasDetail) o;
+        return price == gasDetail.price && Objects.equals(stationNo, gasDetail.stationNo) && gasType == gasDetail.gasType && Objects.equals(date, gasDetail.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(stationNo, price, gasType, date);
     }
 }
