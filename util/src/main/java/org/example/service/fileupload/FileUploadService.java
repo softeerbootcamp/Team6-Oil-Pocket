@@ -3,6 +3,7 @@ package org.example.service.fileupload;
 import lombok.RequiredArgsConstructor;
 import org.example.dao.GasDetailDao;
 import org.example.dao.GasStationDao;
+import org.example.domain.GasDetail;
 import org.example.domain.GasStation;
 import org.example.enums.AttributeIndex;
 import org.example.enums.GasType;
@@ -10,10 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -88,6 +86,7 @@ public class FileUploadService {
             br.readLine(); //두줄은 데이터 제목들이어서 건너뜁니다.
 
             String line = null;
+            Set<GasDetail> gasDetailSet = new HashSet<>();
             while ((line = br.readLine()) != null) {
                 line = removeDoubleQuotationMarks(line);
                 String[] attribute = line.split(",");
@@ -100,13 +99,16 @@ public class FileUploadService {
 
                 GasStation dbGasStation = gasStations.get(index);
                 if (lpg) {
-                    bw.write(toCsv(dbGasStation, attribute, GasType.LPG, AttributeIndex.LPG));
+                    gasDetailSet.add(GasDetail.parseLpgGasDetail(dbGasStation, attribute));
+                    //bw.write(toCsv(dbGasStation, attribute, GasType.LPG, AttributeIndex.LPG));
                     continue;
                 }
-                bw.write(toCsv(dbGasStation, attribute, GasType.PREMIUM_GASOLINE, AttributeIndex.PREMIUM_GASOLINE));
-                bw.write(toCsv(dbGasStation, attribute, GasType.GASOLINE, AttributeIndex.GASOLINE));
-                bw.write(toCsv(dbGasStation, attribute, GasType.DIESEL, AttributeIndex.DIESEL));
+                gasDetailSet.addAll(GasDetail.parseListGasDetail(dbGasStation, attribute));
+                //bw.write(toCsv(dbGasStation, attribute, GasType.PREMIUM_GASOLINE, AttributeIndex.PREMIUM_GASOLINE));
+                //bw.write(toCsv(dbGasStation, attribute, GasType.GASOLINE, AttributeIndex.GASOLINE));
+                //bw.write(toCsv(dbGasStation, attribute, GasType.DIESEL, AttributeIndex.DIESEL));
             }
+            bw.write(GasDetail.setToCsv(gasDetailSet));
             br.close();
         } catch (FileNotFoundException e) {
             System.out.println("파일을 찾을 수 없습니다.");

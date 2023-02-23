@@ -3135,9 +3135,12 @@ a {
     height: 40%;
   }
   .main .main__ForMap .main__SearchBarnDetailTab .main__GSTDetailTab .main__GSTdetail .main__GSTdetail__Contents .main__GSTdetail__Contents__Chart #nocharterr {
-    margin-top: 5%;
-    width: 100%;
+    display: flex;
+    margin-top: 100px;
+    align-items: center;
+    justify-content: center;
     height: 40%;
+    line-height: 20px;
     color: rgb(170, 170, 170);
     font-size: 18px;
     font-weight: 400;
@@ -6710,6 +6713,24 @@ a {
     background-color: #80E3C3;
     z-index: 10;
   }
+  .oilInfoArea .oilInput__failModal {
+    top: 0;
+    left: 40%;
+    transition: 0.8s;
+    position: absolute;
+    width: 20%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000;
+    border-radius: 1vh;
+    top: -30%;
+    background-color: #80E3C3;
+    z-index: 10;
+  }
   .oilInfoArea .oilInput__preferModal {
     transition: 0.5s;
     z-index: 5;
@@ -7313,6 +7334,7 @@ a {
     height: 90%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox .oilInfoArea__ban {
+    opacity: 1;
     display: none;
     position: absolute;
     width: 100%;

@@ -59,9 +59,6 @@ const getMapContentTemplate = () => `
                                     <button id="sort_GG">경유</button>
                                     <button id="sort_LL">LPG</button>
                                 </div>
-                                <!-- <div class="main__CurrentLocation">
-                                    <span>현재위치</span>
-                                </div> -->
                                 <div class="main__CurrentLocationAddress">
                                     현재 위치를 계산 중입니다....
                                 </div>
@@ -78,7 +75,6 @@ const getMapContentTemplate = () => `
                         </button>
                         <div class="main__GSTdetail">
                             <div class="main__GSTdetail__Title">
-                                <!-- <img class="main__GSTdetail__Title_LOGO" src="img/GasStation_Image/hyundai.png"> -->
                                 <span id="GSTdetail__Name"></span>                          
                             </div>
                             <div class="main__GSTdetail__Contents">

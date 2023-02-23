@@ -1,5 +1,6 @@
 let DetailTabDisplay = false;
 let SideBarDisplay = true;
+
 function ShowDetailTab(){
     const GSTDetailTab = document.getElementsByClassName("main__GSTDetailTab");
     GSTDetailTab[0].style.marginLeft = "0vw";
@@ -9,7 +10,14 @@ function ShowDetailTab(){
 }
 
 function appendNewChart(){
-    document.getElementById('myChart').remove();
+    if(document.getElementById('myChart')){
+        document.getElementById('myChart').remove();
+    }
+    if(document.getElementById('nocharterr')){
+        document.getElementById('nocharterr').remove();
+    }
+    // const ChartArea = document.getElementsByClassName('main__GSTdetail__Contents__Chart');
+    // ChartArea[0].innerHTML = "";
     const newChart = document.createElement('canvas');
     newChart.id= 'myChart'; 
 
@@ -39,7 +47,8 @@ function ShowSideBar(){
 
     SideBar[0].style.marginLeft = "0vw";
     SideBarDisplay = true;
-    HideSideBarButton.innerHTML = "<img src='img/🦆 icon _chevron left_.svg'>";
+    console.log('보인다');
+    HideSideBarButton[0].innerHTML = "<img src='./public/img/🦆 icon _chevron left_.svg'>";
 }
 
 function HideSideBar(){
@@ -49,11 +58,11 @@ function HideSideBar(){
         SideBar[0].style.marginLeft = "-44vw";
     }
     else {
+        console.log('안보인다');
         SideBar[0].style.marginLeft = "-22vw";
     }
     SideBarDisplay = false;
-    HideSideBarButton.innerHTML = "<img src='img/🦆 icon _chevron right_.svg'>";
-
+    HideSideBarButton[0].innerHTML = "<img src='./public/img/🦆 icon _chevron right_.svg'>";
 }
 
 export {ShowDetailTab, appendNewChart, closeDetailTab, DetailTabDisplay, MoveSideBar, ShowSideBar, HideSideBar, SideBarDisplay}

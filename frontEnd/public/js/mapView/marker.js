@@ -31,8 +31,8 @@ function SetMarkerofMapCenter(){
 function SetHGmarker(markerPosition, Resultelem){
     marker = new Tmapv3.Marker({
         position : markerPosition,
-        iconHTML: `<div class='Map_Marker_HG' id='${Resultelem.name}'><div class='tmarker'><img class='img_HG'><span id="H">${Resultelem.hhPrice}</span>
-                    <span id='G'>${Resultelem.ggPrice}</span></div></div>`,
+        iconHTML: `<div class='Map_Marker_HG' id='${Resultelem.name}'><div class='tmarker'><img class='img_HG'><span id="H">${Resultelem.hhPrice == 0 ? '-' : Resultelem.hhPrice}</span>
+                    <span id='G'>${Resultelem.ggPrice == 0 ? '-' : Resultelem.ggPrice}</span></div></div>`,
         iconSize : Tmapv3.Size(10, 20),
         map:map
     });
@@ -62,7 +62,7 @@ function SetGmarker(markerPosition, Resultelem){
 function SetLPGmarker(markerPosition, Resultelem){
     marker = new Tmapv3.Marker({
         position : markerPosition,
-        iconHTML: `<div class='Map_Marker_LPG' id='${Resultelem.name}'><div class='tmarker'><img class='img_LPG'><span id="LL">${Resultelem.llPrice}</span></div></div>`,
+        iconHTML: `<div class='Map_Marker_LPG' id='${Resultelem.name}'><div class='tmarker'><img class='img_LPG'><span id="LL">${Resultelem.llPrice == 0 ? '-' : Resultelem.llPrice}</span></div></div>`,
         iconSize : Tmapv3.Size(10, 20),
         map:map
     });

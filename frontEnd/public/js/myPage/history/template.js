@@ -19,7 +19,7 @@ const getHistoryTemplate = () => `
             <div class="oilInfoArea__contentArea">
                 <div class="oilInfoArea__oilHistoryContainer">
                     <div class="oilInfoArea__oilHistorytitle">
-                        <h2>이번 달 주유 기록</h2>
+                        <h2>주유 기록</h2>
                     </div>
                     <div class="oilInfoArea__oilHistoryTable">
                         <div>
@@ -36,7 +36,7 @@ const getHistoryRowTemplate = (date, imgSrc, gasStationName, gasType, gasAmount,
         <span>${date}</span>
         <span><img src="${imgSrc}" alt="주유소 브랜드 이미지"></span>
         <span>${gasStationName}</span>
-        <span>${gasType} ${gasAmount}</span>
+        <span>${gasType}<br>약 ${gasAmount}</span>
         <span>${spendPrice}</span>
         <span>${savePrice}</span>
     </div>
