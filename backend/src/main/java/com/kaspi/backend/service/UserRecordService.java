@@ -38,21 +38,25 @@ public class UserRecordService {
     /**
      * 사용자로 부터 받은 주유금액, 유종과 주유소 정보로 얼마만큼 넣었는지 계산하는 로직
      */
-    public Long calTodayUserGasAmount(UserGasRecordReqDto userGasRecordReqDto, GasStation gasStation) {
+    public double calTodayUserGasAmount(UserGasRecordReqDto userGasRecordReqDto, GasStation gasStation) {
         Optional<Long> todayGasPrice = gasDetailDao.findTodayGasPrice(gasStation.getStationNo(),
                 userGasRecordReqDto.getGasType().name(),
                 GasDetail.getNowDateToStr());//오늘 날짜로 계산
-        if (todayGasPrice.isEmpty() || todayGasPrice.get() == 0) {
-            log.error("DB에 오늘날짜에 해당되는 주유 가격 정보가 존재하지 않음 가스타입:{}, 주유소PK:{}", userGasRecordReqDto.getGasType().name(), gasStation.getStationNo());
-            throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
-        }
-        Long userGasAmount = (long) Math.round(userGasRecordReqDto.getRefuelingPrice() / todayGasPrice.get());
+        validTodayGasPrice(userGasRecordReqDto, gasStation, todayGasPrice);
+        double userGasAmount = (double)userGasRecordReqDto.getRefuelingPrice() / todayGasPrice.get();
         log.info("사용자가 주유한 가스타입:{}, 주유량:{}", userGasRecordReqDto.getGasType().name(), userGasAmount);
         return userGasAmount;
     }
 
-    public Long calUserSavingAmount(Long userRefuelingPrice, Long userGasAmount, Long nationalAvgOilPrice) {
-        return nationalAvgOilPrice * userGasAmount-userRefuelingPrice;
+    private static void validTodayGasPrice(UserGasRecordReqDto userGasRecordReqDto, GasStation gasStation, Optional<Long> todayGasPrice) {
+        if (todayGasPrice.isEmpty() || todayGasPrice.get() == 0) {
+            log.error("DB에 오늘날짜에 해당되는 주유 가격 정보가 존재하지 않음 가스타입:{}, 주유소PK:{}", userGasRecordReqDto.getGasType().name(), gasStation.getStationNo());
+            throw new SqlNotFoundException(ErrorCode.SQL_NOT_FOUND);
+        }
+    }
+
+    public Long calUserSavingAmount(Long userRefuelingPrice, double userGasAmount, Long nationalAvgOilPrice) {
+        return (long) (nationalAvgOilPrice * userGasAmount-userRefuelingPrice);
     }
 
 
