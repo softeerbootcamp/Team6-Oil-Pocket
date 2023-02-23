@@ -125,8 +125,6 @@ const makeComparisonCards = ($container, userOilPrice, averageEcoPrice, userSave
     makeCommonSaveCard($commonSaveCard, age, gender, averageEcoPrice);
     makeChartCard($chartBox, userSavePrice, averageEcoPrice, userID, age, gender);
     setImageByName($compareImage, getImageName(Math.abs(userSavePrice)));
-
-    console.log(userSavePrice)
     
     if(userSavePrice < 0) {
         const $banImage = _$(".oilInfoArea__ban", $container);

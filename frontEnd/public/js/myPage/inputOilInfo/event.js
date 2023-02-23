@@ -12,6 +12,7 @@ const eventToOilSelectArea = ($container) => {
     const $oilSelectText = _$(".oilInfoArea__oilSelect > span", $container);
     const $oilSelectImg = _$(".oilInfoArea__oilSelect > img", $container);
     const $oilValues = _$_ALL(".oilInfoArea__oilValue", $container);
+    const $priceInput = _$(".oilInfoArea__oilPriceInput", $container);
     const $gasStationInput = _$(".oilInfoArea__searchInput", $container);
 
     addEvent($oilSelect, [
@@ -40,6 +41,7 @@ const eventToOilSelectArea = ($container) => {
         () => changeArrayCSS($oilValues, "outline", "none"),
         () => $gasStationInput.value = "",
         () => $gasStationInput.disabled = false,
+        () => $priceInput.value = ""
     ]));
 }
 
