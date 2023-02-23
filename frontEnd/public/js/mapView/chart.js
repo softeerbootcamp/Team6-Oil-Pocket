@@ -13,7 +13,13 @@ function getChartData(Resultelem){
             withCredentials: true
         },
         success:function(response) {
-            ShowChart(response);
+            console.log(response);
+            if(Resultelem.hhPrice ==0 && Resultelem.ggPrice ==0 && Resultelem.llPrice ==0){
+                ShowErrorMessageAtChartArea();
+            }
+            else {
+                ShowChart(response);
+            }
         },
         error:function(request, error){
             ShowErrorMessageAtChartArea();
@@ -51,8 +57,9 @@ function ShowChart(response){
         else Preflag=1;
     }
 
-    if(GasolineData.length == 0){
-        for(var k =0;k<PriceInformation.length;k++){
+    console.log(PriceInformation.length/30);
+    if(LPGData.length != 0){
+        for(var k =0;k<PriceInformation.length;k+=parseInt(PriceInformation.length/30)){
             dateLabels.push(PriceInformation[k].date.slice(-2));
         }
         data = {
@@ -143,8 +150,15 @@ function ShowChart(response){
 
 
 function ShowErrorMessageAtChartArea(){
-    document.getElementById('myChart').remove();
+    if(document.getElementById('myChart')){
+        document.getElementById('myChart').remove();
+    }
+    if(document.getElementById('nocharterr')){
+        document.getElementById('nocharterr').remove();
+    }
     const ChartArea = document.getElementsByClassName('main__GSTdetail__Contents__Chart');
+    // ChartArea[0].innerHTML = "";
+
     const errorMessage = document.createElement('span');
     errorMessage.id = 'nocharterr';
     errorMessage.innerHTML = '현재 데이터를 준비중입니다.';

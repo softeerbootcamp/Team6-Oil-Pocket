@@ -109,9 +109,9 @@ function ShowResult(ResultArray, positionBounds){
     const resultArea = document.querySelector(".main__SearchResult");
     resultArea.innerHTML = "";
     for(var k in ResultArray){
-        if(ResultArray[k].hhPrice==0 && ResultArray[k].ggPrice==0 && ResultArray[k].llPrice==0){
-            continue;
-        }
+        // if(ResultArray[k].hhPrice==0 && ResultArray[k].ggPrice==0 && ResultArray[k].llPrice==0){
+        //     continue;
+        // }
 
         ResultHtml += SelectStIdLogo(ResultArray[k].stId, ResultArray[k].name, ResultArray[k].radius);
 
@@ -367,28 +367,6 @@ function addmouseOverEventtoMarker() {
 }
 
 function addClickEventToMarker(ResultArray){
-    // if(searchOption==0){
-    //     const HGmapmarkerarr = document.getElementsByClassName('img_HG');
-    //     const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
-    //     for(var k=0;k<HGmapmarkerarr.length;k++){
-    //         HGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-    //     }
-    //     for(var k=0;k<LPGmapmarkerarr.length;k++){
-    //         LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-    //     }
-    // }
-    // else if(searchOption==1 || searchOption ==2){
-    //     const HnGmapmarkerarr = document.getElementsByClassName('img_HnG');
-    //     for(var k=0;k<HnGmapmarkerarr.length;k++){
-    //         HnGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-    //     }
-    // }
-    // else if(searchOption==3){
-    //     const LPGmapmarkerarr = document.getElementsByClassName('img_LPG');
-    //     for(var k=0;k<LPGmapmarkerarr.length;k++){
-    //         LPGmapmarkerarr[k].addEventListener('click', (e) => ShowGSTDetailByMarker(e, ResultArray));
-    //     }
-    // }
     const mArray = document.getElementsByClassName('tmarker');
     console.log(mArray);
     for(var k=0;k<mArray.length;k++){
@@ -460,6 +438,10 @@ function MoveToinitialPoint(){
     }
     const resultArea = document.querySelector(".main__SearchResult");
     resultArea.innerHTML = "";
+
+    if(DetailTabDisplay){
+        closeDetailTab();
+    }
 
     SetMarkerofMapCenter();
 }
