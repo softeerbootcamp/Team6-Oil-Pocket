@@ -129,9 +129,9 @@ BE : &nbsp; <img src="https://img.shields.io/badge/Java-A8B9CC?style=flat&logo=o
 |:-:|:-:|:-:|:-:|
 |<img src="https://user-images.githubusercontent.com/74173976/216749262-407cb3a3-f74b-4021-aea3-99cda8540be7.png" width=130>|<img src="https://user-images.githubusercontent.com/74173976/216749372-fe3715b9-9249-4e89-b43b-3bf8198c9b0b.png" width=130>|<img src="https://user-images.githubusercontent.com/74173976/216749451-eaa4cdc6-4a8d-4449-8a67-590d87ad5c6d.png" width=130>|<img src="https://user-images.githubusercontent.com/74173976/216749380-2937f315-24b6-4ddd-9b97-784de587d7b8.png" width=130>|
 |[@gyuturn](https://github.com/gyuturn)|[@Moon-GD](https://github.com/Moon-GD)| [@ajongs](https://github.com/ajongs) |[@jaewonjjang](https://github.com/jaewonjjang)|
-
-❗️ 누가 어떤 기능 담당했는지 마지막에 작성할 것!
-
+|회원가입/로그인 API|메인화면|유가 데이터 자동 다운로드|지도 API 통신|
+|마이페이지/주유기록 API|로그인/회원가입|유가 조회/유저 절약 정보 API|지도 상세 텝|
+|CI/CD 및 인프라 관리|마이페이지|과거 유가 데이터 csv 파일 변환 프로그램||
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
