@@ -12,6 +12,7 @@ const eventToOilSelectArea = ($container) => {
     const $oilSelectText = _$(".oilInfoArea__oilSelect > span", $container);
     const $oilSelectImg = _$(".oilInfoArea__oilSelect > img", $container);
     const $oilValues = _$_ALL(".oilInfoArea__oilValue", $container);
+    const $gasStationInput = _$(".oilInfoArea__searchInput", $container);
 
     addEvent($oilSelect, [
         () => {
@@ -36,7 +37,9 @@ const eventToOilSelectArea = ($container) => {
         () => changeCSS($oilSelectText, "color", "#000"),
         () => changeCSS($oilSelectImg, "transform", "rotate(0deg"),
         () => changeArrayCSS($oilValues, "top", 0),
-        () => changeArrayCSS($oilValues, "outline", "none")
+        () => changeArrayCSS($oilValues, "outline", "none"),
+        () => $gasStationInput.value = "",
+        () => $gasStationInput.disabled = false,
     ]));
 }
 
@@ -90,7 +93,7 @@ const eventToSearchValue = ($searchValue) => {
         () => $searchInput.value = $gasNameSection.innerHTML,
         () => $searchInput.dataset.stationNo = $gasNameSection.closest(".oilInfoArea__oilSearchValue").dataset.stationNo,
         () => $searchResultBox.innerHTML = ``,
-        () => $searchInput.disabled = true
+        () => $searchInput.disabled = true,
     ]);
 }
 

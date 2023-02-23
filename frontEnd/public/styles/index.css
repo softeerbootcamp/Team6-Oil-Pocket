@@ -7325,6 +7325,7 @@ a {
     height: 90%;
   }
   .oilInfoArea .oilInfoArea__background .oilInfoArea__contentArea .oilInfoArea__contentBody .oilInfoArea__compareArea .oilInfoArea__compareContent .oilInfoArea__compareImgBox .oilInfoArea__ban {
+    opacity: 1;
     display: none;
     position: absolute;
     width: 100%;
