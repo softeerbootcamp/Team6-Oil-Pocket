@@ -1,6 +1,6 @@
 import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/utils.js";
 import { fetchGasStationSearch, fetchOilRegister, fetchRecentGasStation } from "./fetch.js";
-import { parseOilPriceIntoKorean } from "./helperFunction.js";
+import { animateOilImage, parseOilPriceIntoKorean } from "./helperFunction.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 let debounceTimer = "";
@@ -14,6 +14,8 @@ const eventToOilSelectArea = ($container) => {
     const $oilValues = _$_ALL(".oilInfoArea__oilValue", $container);
     const $priceInput = _$(".oilInfoArea__oilPriceInput", $container);
     const $gasStationInput = _$(".oilInfoArea__searchInput", $container);
+    const $parsedMoneyArea = _$(".oilInfoArea__oilPrice > span", $container);
+    const $effectImage = $container.querySelector(".oilInfoArea__effectImage");
 
     addEvent($oilSelect, [
         () => {
@@ -41,7 +43,9 @@ const eventToOilSelectArea = ($container) => {
         () => changeArrayCSS($oilValues, "outline", "none"),
         () => $gasStationInput.value = "",
         () => $gasStationInput.disabled = false,
-        () => $priceInput.value = ""
+        () => $priceInput.value = "",
+        () => $parsedMoneyArea.innerHTML = "",
+        () => animateOilImage($effectImage, 0)
     ]));
 }
 
