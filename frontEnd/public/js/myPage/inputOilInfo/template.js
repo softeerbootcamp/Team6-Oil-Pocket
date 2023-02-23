@@ -28,6 +28,9 @@ const getInputOilInfoTemplate = () => `
         <div class="oilInput__successModal">
             성공적으로 입력되었습니다.
         </div>
+        <div class="oilInput__failModal">
+            올바르지 않은 입력입니다.
+        </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
                 ${tabObjArray.map(({choosed, text, path}) => `

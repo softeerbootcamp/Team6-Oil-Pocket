@@ -80,7 +80,7 @@ const validateGasName = ($gasText) => {
 }
 
 const validateGasPrice = ($gasPrice) => {
-    return !($gasPrice.value === "");
+    return !($gasPrice.value === "" || $gasPrice.value === "0");
 }
 
 const validateStationName = ($gasStationText) => {

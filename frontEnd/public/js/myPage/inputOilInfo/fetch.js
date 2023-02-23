@@ -58,7 +58,14 @@ const fetchOilRegister = ($container) => {
         })
     }
     else {
-        // error modal
+        const $failModal = _$(".oilInput__failModal", $container);
+        changeCSS($failModal, "top", 0);
+        setTimeout(() => {
+            changeCSS($failModal, "top", "-30%")
+        }, 1000);
+        setTimeout(() => {
+            location.assign("/inputOilInfo");
+        }, 1800);
     }
 }
 
