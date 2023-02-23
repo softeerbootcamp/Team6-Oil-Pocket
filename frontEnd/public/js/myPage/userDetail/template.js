@@ -26,7 +26,7 @@ const getUserDetailTemplate = () => `
             <div class="oilInfoArea__contentArea">
                 <div class="oilInfoArea__profileContainer">
                     <div class="oilInfoArea__profileTitleBox">
-                        <h2>주행자</h2>
+                        <h2>ID</h2>
                         <span>${userId ? userId : ""}</span>
                     </div>
                     <div class="oilInfoArea__profileContentBox">

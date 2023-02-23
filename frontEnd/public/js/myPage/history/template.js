@@ -36,7 +36,7 @@ const getHistoryRowTemplate = (date, imgSrc, gasStationName, gasType, gasAmount,
         <span>${date}</span>
         <span><img src="${imgSrc}" alt="주유소 브랜드 이미지"></span>
         <span>${gasStationName}</span>
-        <span>${gasType}<br>약 ${gasAmount}</span>
+        <span>${gasType}<br> ${parseInt(gasAmount) < 1 ? '' : '약'} ${parseInt(gasAmount) < 1 ? '1L 이하' : gasAmount}</span>
         <span>${spendPrice}</span>
         <span>${savePrice}</span>
     </div>
