@@ -73,7 +73,7 @@ class UserRecordServiceTest {
                 GasDetail.getNowDateToStr())) // 항상 오늘날짜로 기준
                 .thenReturn(Optional.of(gasolinePerLiterPrice));//가솔린 1L당 1000원
         //when
-        Long userGasAmount = userRecordService.calTodayUserGasAmount(userGasRecordReqDto, gasStation);
+        double userGasAmount = userRecordService.calTodayUserGasAmount(userGasRecordReqDto, gasStation);
         //then
         assertEquals(5L, userGasAmount);
     }
