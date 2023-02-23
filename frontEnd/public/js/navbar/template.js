@@ -12,6 +12,6 @@ const getMemberNavBarTemplate = (userID) => `
         <span> | </span>
         <strong class="navbar__myPageBtn">로그아웃</a></strong>
     </div>
-`
+`;
 
 export { getNonMemberNavBarTemplate, getMemberNavBarTemplate }

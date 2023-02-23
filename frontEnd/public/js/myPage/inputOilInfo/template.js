@@ -1,10 +1,16 @@
 const tabObjArray = [
     {choosed: false, text: "프로필 수정", path: "/userDetail"},
-    {choosed: true, text: "주유 기록 입력", path: "/inputOilInfo"},
+    {choosed: true, text: "주유 입력", path: "/inputOilInfo"},
     {choosed: false, text: "이번 달 분석", path: "/comparison"},
-    {choosed: false, text: "월별 비교", path: "/chart"},
+    {choosed: false, text: "평균 유가 비교", path: "/chart"},
     {choosed: false, text: "주유 기록 열람", path: "/history"}
 ];
+
+const getRecentGasStationRow = (brandURL, gasStationName, location) => `
+    <img src="${brandURL}" alt="브랜드 이미지">
+    <h2>${gasStationName}</h2>
+    <span>${location}</span>
+`
 
 const getInputOilInfoTemplate = () => `
     <section class="oilInfoArea">
@@ -14,27 +20,16 @@ const getInputOilInfoTemplate = () => `
                     <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
                     <h1>최근 본 주유소</h1>
                     <ul class="oilInput__preferContentBox">
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
-                        <li>
-                            <img src="" alt="브랜드 이미지">
-                            <h2>주유소 이름</h2>
-                            <span>주유소 위치</span>
-                        </li>
+                        <h3>정보를 불러오고 있습니다.</h3>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="oilInput__successModal">
             성공적으로 입력되었습니다.
+        </div>
+        <div class="oilInput__failModal">
+            올바르지 않은 입력입니다.
         </div>
         <section class="oilInfoArea__background">
             <div class="oilInfoArea__tabArea">
@@ -120,25 +115,10 @@ const preferModalTemplate = () => `
             <img class="preferModal__closeBtn" src="./img/main/chatBot/closeBtn.png" alt="chatBotCloseBtn">
             <h1>선호 주유소</h1>
             <ul class="oilInput__preferContentBox">
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
-                <li>
-                    <img src="" alt="브랜드 이미지">
-                    <h2>주유소 이름</h2>
-                    <span>주유소 위치</span>
-                </li>
             </ul>
         </div>
     </div>
 `;
  
 
-export { getInputOilInfoTemplate, getSearchTemplate, preferModalTemplate }
+export { getInputOilInfoTemplate, getRecentGasStationRow, getSearchTemplate, preferModalTemplate }

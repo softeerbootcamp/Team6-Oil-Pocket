@@ -42,7 +42,10 @@ const getImageName = (savePrice) => {
     }
 }
 
-const setImageByName = ($image, imageName) => $image.setAttribute("src", imageLocationMapper[imageName]);
+const setImageByName = ($image, imageName) => {
+    $image.setAttribute("src", imageLocationMapper[imageName]);
+    changeCSS($image, "opacity", 1);
+};
 
 const adjustChartsOnCard = (myPrice, commonPrice, $container) => {
     const $myChart = myPrice > 0 ?
@@ -122,7 +125,7 @@ const makeComparisonCards = ($container, userOilPrice, averageEcoPrice, userSave
     makeCommonSaveCard($commonSaveCard, age, gender, averageEcoPrice);
     makeChartCard($chartBox, userSavePrice, averageEcoPrice, userID, age, gender);
     setImageByName($compareImage, getImageName(Math.abs(userSavePrice)));
-
+    
     if(userSavePrice < 0) {
         const $banImage = _$(".oilInfoArea__ban", $container);
         changeCSS($banImage, "display", "block");

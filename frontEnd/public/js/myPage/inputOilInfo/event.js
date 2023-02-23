@@ -1,6 +1,6 @@
 import { _$, _$_ALL, addEvent, changeArrayCSS, changeCSS, makeLighter } from "../../common/utils.js";
-import { fetchGasStationSearch, fetchOilRegister } from "./fetch.js";
-import { parseOilPriceIntoKorean } from "./helperFunction.js";
+import { fetchGasStationSearch, fetchOilRegister, fetchRecentGasStation } from "./fetch.js";
+import { animateOilImage, parseOilPriceIntoKorean } from "./helperFunction.js";
 
 NodeList.prototype.forEach = Array.prototype.forEach;
 let debounceTimer = "";
@@ -12,6 +12,10 @@ const eventToOilSelectArea = ($container) => {
     const $oilSelectText = _$(".oilInfoArea__oilSelect > span", $container);
     const $oilSelectImg = _$(".oilInfoArea__oilSelect > img", $container);
     const $oilValues = _$_ALL(".oilInfoArea__oilValue", $container);
+    const $priceInput = _$(".oilInfoArea__oilPriceInput", $container);
+    const $gasStationInput = _$(".oilInfoArea__searchInput", $container);
+    const $parsedMoneyArea = _$(".oilInfoArea__oilPrice > span", $container);
+    const $effectImage = $container.querySelector(".oilInfoArea__effectImage");
 
     addEvent($oilSelect, [
         () => {
@@ -36,7 +40,12 @@ const eventToOilSelectArea = ($container) => {
         () => changeCSS($oilSelectText, "color", "#000"),
         () => changeCSS($oilSelectImg, "transform", "rotate(0deg"),
         () => changeArrayCSS($oilValues, "top", 0),
-        () => changeArrayCSS($oilValues, "outline", "none")
+        () => changeArrayCSS($oilValues, "outline", "none"),
+        () => $gasStationInput.value = "",
+        () => $gasStationInput.disabled = false,
+        () => $priceInput.value = "",
+        () => $parsedMoneyArea.innerHTML = "",
+        () => animateOilImage($effectImage, 0)
     ]));
 }
 
@@ -90,7 +99,7 @@ const eventToSearchValue = ($searchValue) => {
         () => $searchInput.value = $gasNameSection.innerHTML,
         () => $searchInput.dataset.stationNo = $gasNameSection.closest(".oilInfoArea__oilSearchValue").dataset.stationNo,
         () => $searchResultBox.innerHTML = ``,
-        () => $searchInput.disabled = true
+        () => $searchInput.disabled = true,
     ]);
 }
 
@@ -103,18 +112,36 @@ const eventToPreferBtn = ($container) => {
     const $preferBtn = _$(".oilInfoArea__preferModalBtn", $container);
     const $preferModal = _$(".oilInput__preferModal", $container);
 
-    addEvent($preferBtn, [() => changeCSS($preferModal, "top", 0)]);
+    addEvent($preferBtn, [
+        () => fetchRecentGasStation($container),
+        () => changeCSS($preferModal, "top", 0)
+    ]);
 }
 
-const eventToPreferModalCloseBtn = ($container) => {
+const eventToPreferModalCloseBtn = async ($container) => {
     const $closeBtn = _$(".preferModal__closeBtn", $container);
     const $preferModal = _$(".oilInput__preferModal", $container);
 
     addEvent($closeBtn, [() => changeCSS($preferModal, "top", "-100%")]);
 }
 
+const eventToRecentRow = ($parent, $recentRow) => {
+    const $container = $parent.closest(".oilInfoArea");
+    const $modal = _$(".oilInput__preferModal", $container);
+    const $searchInput = $container.querySelector(".oilInfoArea__searchInput");
+    const gasStationName = $recentRow.querySelector("h2").innerHTML;
+
+    addEvent($recentRow, [
+        () => changeCSS($modal, "top", "-100%"),
+        () => $searchInput.dataset.stationNo = $recentRow.dataset.stationNo,
+        () => $searchInput.value = gasStationName,
+        () => $searchInput.disabled = true
+    ])
+}
+
 export { 
     eventToOilSelectArea, eventToOilPriceInput, eventToOilSearchInput, 
     eventToSearchValue, eventToRegisterBtn, 
-    eventToPreferBtn, eventToPreferModalCloseBtn
+    eventToPreferBtn, eventToPreferModalCloseBtn,
+    eventToRecentRow
 }

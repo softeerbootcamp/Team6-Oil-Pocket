@@ -14,10 +14,13 @@ import com.kaspi.backend.service.OpinetService;
 import com.kaspi.backend.service.UserRecordService;
 import com.kaspi.backend.util.response.CommonResponseDto;
 import com.kaspi.backend.util.response.code.DefaultCode;
+import com.kaspi.backend.util.response.code.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -37,12 +40,15 @@ public class UserGasRecordController {
 
     @PostMapping("/user/gas-record")
     public ResponseEntity<CommonResponseDto> postUserGasRecord(@RequestBody UserGasRecordReqDto userGasRecordReqDto) {
-
+//        if (bindingResult.hasErrors()) {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+//                    .body(CommonResponseDto.toResponse(ErrorCode.PARAMETER_ERROR));
+//        }
         //주유소 객체 얻기
         GasStation gasStation = gasStationService.getGasStationByNo(userGasRecordReqDto.getGasStationNo());
 
         //유저의 주유량
-        Long userGasAmount = userRecordService.calTodayUserGasAmount(userGasRecordReqDto, gasStation);
+        double userGasAmount = userRecordService.calTodayUserGasAmount(userGasRecordReqDto, gasStation);
 
         //전국 유가 평균 받기
         Long nationalAvgOilPrice = opinetService.nationalAvgOilPrice(userGasRecordReqDto.getGasType());
@@ -57,7 +63,7 @@ public class UserGasRecordController {
         //유저 최종 저장
         userRecordService.saveUserGasRecord(userGasRecordReqDto,
                 gasStation,
-                userGasAmount,
+                (long) userGasAmount,
                 usersSavingPrice);
 
         return ResponseEntity.status(HttpStatus.CREATED)

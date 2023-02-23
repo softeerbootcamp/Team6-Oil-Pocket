@@ -6,8 +6,6 @@ import {
 import { getRegisterTemplate } from "./template.js";
 
 const registerView = async () => {
-    await routerCheckLogin();
-
     const $registerContainer = document.createElement("section");
     $registerContainer.classList.add("main");
     $registerContainer.innerHTML = getRegisterTemplate();

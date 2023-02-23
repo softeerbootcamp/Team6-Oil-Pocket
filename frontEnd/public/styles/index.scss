@@ -353,7 +353,6 @@ a {
     100% { opacity: 1; }
 }
 
-
 /* main */
 // extra small - 모바일 및 소형 기기
 @media(max-width:575.98px) {
@@ -471,7 +470,7 @@ a {
                     & span {
                         width: 90%;
                         text-align: center;
-                        font-size: 0.85rem;
+                        font-size: 0.65rem;
                         font-weight: 600;
                     }
                 }
@@ -492,7 +491,7 @@ a {
                     cursor: pointer;
         
                     & span {
-                        font-size: 0.9rem;
+                        font-size: 0.7rem;
                         font-weight: 600;
                         line-height: 1.2;
                     }
@@ -506,7 +505,7 @@ a {
                 & .chatBotArea__answer {
                     transition: 0.5s;
                     margin: 1.5vh auto;
-                    padding: 0.5vh 1.5vw;
+                    padding: 1vh 1.5vw;
                     width: 85%;
                     height: 5vh;
                     background-color: #14BD7E;
@@ -518,7 +517,7 @@ a {
                     opacity: 0;
     
                     & span {
-                        font-size: 0.8rem;
+                        font-size: 0.7rem;
                         font-weight: 600;
                         line-height: 1.2;
     
@@ -837,7 +836,7 @@ a {
                             background-color:white;
                             border: 2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
+                            width:calc(15vw - 2px);
                             height:4vh;
                             margin-left:2vw;
                             margin-top:2vh;
@@ -2150,7 +2149,7 @@ a {
                     width:180px;
                     height:50px;
     
-                    & #img_HG {
+                    & .img_HG {
                         margin-left: 65px;
                         margin-bottom : 25px;
                     }
@@ -2629,7 +2628,7 @@ a {
                         background-color: transparent;
                         & .main__SearchFromCurrentLocation {
                             display:flex;
-                            margin-top: 3vh;
+                            margin-top: 5vh;
                             width:3vw;
                             height:5vh;
                             background-color: #14BD7E;
@@ -2639,17 +2638,19 @@ a {
                             align-items: center;
                             justify-content: center;
                             & #Option1 {
+                                display:flex;
                                 transition: 0.5s;
                                 transition-timing-function: linear;
-                                width:10px;
-                                height:10px;
+                                font-size: 30px;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
         
                         & .main__SearchFromRoute {
                             display:flex;
-                            width:1.9vw;
-                            height:4.6vh;
+                            width:3vw;
+                            height:5vh;
                             background-color: white;
                             box-shadow: 1px 0 2px -1px ;
                             transition: 0.4s;
@@ -2657,10 +2658,12 @@ a {
                             align-items: center;
                             justify-content: center;
                             & #Option2 {
+                                display:flex;
                                 transition: 0.5s;
                                 transition-timing-function: linear;
-                                width:10px;
-                                height:10px;
+                                font-size:25px;
+                                justify-content: center;
+                                align-items: center;
                             }
                         }
                     }
@@ -2683,7 +2686,26 @@ a {
                             align-items: center;
 
                             & .main__Radius{
+                                display:flex;
+                                flex-direction: row;
                                 width:20%;
+                                height:100%;
+                                //border:1px solid black;
+                                margin-top: 10px;
+                                font-size: 13px;
+                                color:#808080;
+
+                                & .main__Radius__number {
+                                    width:40%;
+                                    height:100%;
+                                    font-size:15px;
+                                    background-color: #008000;
+                                    color:white;
+                                    border-radius: 10px;
+                                    margin-left:2px;
+                                    margin-top: -3px;
+                                    padding-top: 1px;
+                                }
                             }
 
                             & .main__AdjustBar {
@@ -2765,7 +2787,7 @@ a {
                             background-color:white;
                             border: 2px solid #14BD7E;
                             border-radius: 5px;
-                            width:15vw;
+                            width:calc(15vw - 4px);
                             height:4vh;
                             margin-left:2vw;
                             margin-top:0;
@@ -2967,12 +2989,12 @@ a {
                             align-items: center;
                             width:100%;
                             height:3vh;
-                            font-size:30px;
-                            font-weight: 500;
+                            font-size:22px;
+                            font-weight: 700;
                             line-height: 3vh;
                             margin-bottom: 10px;
                             background-color: white;
-                            margin-top: -0.5vh;
+                            margin-top: 20px;
                         }
     
                         & .main__GSTdetail__Contents {
@@ -3023,22 +3045,6 @@ a {
                                     border-bottom: 1px solid rgba(211, 211, 211, 0.4);
                                     line-height: 30px;
                                     height:30px;
-                                    & img {
-                                        width:20px;
-                                        height:20px;
-                                        margin-right: 3px;
-                                        margin-bottom: -3px;
-                                    }
-                                }
-                                & .main__GSTdetail__Contents__Basic__Time {
-                                    font-size:16px;
-                                    font-weight: 350;
-                                    margin-top: 10px;
-                                    margin-bottom: 3px;
-                                    border-bottom: 1px solid rgba(211, 211, 211, 0.4);
-                                    line-height: 30px;
-                                    height:30px;
-                                    color:lightgrey;
                                     & img {
                                         width:20px;
                                         height:20px;
@@ -3097,7 +3103,7 @@ a {
                                         background-color: #1ad18e;
                                         outline: 0.05vh solid #14BD7E;
                                         color : white;
-                                        font-size:15px;
+                                        font-size:16px;
                                         font-weight: 400;
                                         width:calc(30.75% - 0.05vh);
                                         text-align: center;
@@ -3105,7 +3111,7 @@ a {
                                     }
                                     & .main__GSTdetail__Contents__OilPriceTable__TableHead_Price{
                                         background-color: #1ad18e;
-                                        font-size:15px;
+                                        font-size:16px;
                                         font-weight: 400;
                                         width:71%;
                                         text-align: center;
@@ -3130,7 +3136,7 @@ a {
                                             align-items: center;
                                             border-right: none;
                                             width:calc(30% - 0.05vh);
-                                            font-size: 15px;
+                                            font-size: 16px;
                                             font-weight: 400;
                                             text-align: center;
                                             outline: 0.05vh solid #14BD7E;
@@ -3140,7 +3146,7 @@ a {
                                             display: flex;
                                             justify-content: center;
                                             align-items: center;
-                                            font-size: 15px;
+                                            font-size: 16px;
                                             font-weight: 400;
                                             width:calc(70% - 0.05vh);
                                             text-align:center;
@@ -3162,6 +3168,30 @@ a {
                                     width:100%;
                                     height:40%;
                                 }
+                                & #nocharterr {
+                                    margin-top:5%;
+                                    width:100%;
+                                    height:40%;
+                                    color : rgb(170, 170, 170);
+                                    font-size: 18px;
+                                    font-weight: 400;
+                                }
+                            }
+
+                            & .main__addOilingInfo {
+                                width:150px;
+                                height:30px;
+                                position :fixed;
+                                display:flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-top : 650px;
+                                border-radius: 20px;
+                                border:1px solid #14BD72;
+                                background-color: #14BD7E;
+                                font-size: 1rem;
+                                color:white;
+                                display:none;
                             }
                         }
                     }
@@ -3182,86 +3212,213 @@ a {
             }
             & .main__MapDiv {
                 position:absolute;
-                background-color: #14BD7E;
+                background-color: transparent;
                 width:100vw;
                 height:82vh;
-    
-                // & div {
-                //     width:120px;
-                //     height:40px;
-                // }
+
                 & .Map_Marker_HG{
                     width:180px;
                     height:50px;
     
-                    & #img_HG {
+                    & .tmarker {
+                        height:40px;
+                        width:180px;
                         margin-left: 65px;
-                        margin-bottom : 25px;
-                    }
-                    & #H {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:100px;
-                    }
-
-                    & #G {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left: 180px;
-                    }
-
-                    // & #Name {
-                    //     overflow: hidden;
-                    //     width:162px;
-                    //     font-size: 1.2rem;
-                    //     font-weight: 500;
-                    //     display:block;
-                    //     padding-left:70px;
-                    //     line-height: 30px;
-                    //     margin-top:-70px;
-                    //     white-space: nowrap;
-                    //     text-overflow: ellipsis;
-                    // }
+                        & .img_HG {
+                            content : url(/public/img/marker_HG.png);
+                            margin-bottom : 25px;
+                        }
+                        & #H {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-140px;
+                        }
+    
+                        & #G {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        }
+                    }   
                 }
 
                 & .Map_Marker_LPG {
                     width:120px;
                     height:50px;
-                    & #img_LPG {
+
+                    & .tmarker {
+                        width:120px;
+                        height:40px;
                         margin-left: 35px;
-                        margin-bottom : 25px;
+                        & .img_LPG {
+                            content : url(/public/img/marker_LPG.png);
+                            //margin-left: 35px;
+                            margin-bottom : 25px;
+                        }
+                        & #LL {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-45px;
+                        } 
                     }
-                    & #LL {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:105px;
-                    } 
                 }
 
-                & .Map_Marker_HGprice {
+                & .Map_Marker_hprice {
                     width:100px;
                     height:50px;
-                    & #img_HnG {
-                        margin-left: 25px;
-                        margin-bottom : 25px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_hPrice.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        } 
                     }
-                    & #Price {
-                        position:absolute;
-                        width:40px;
-                        font-size: 20px;
-                        font-weight: 350;
-                        margin-top:-70px;
-                        margin-left:70px;
-                    } 
+                }
+
+                & .Map_Marker_gprice {
+                    width:100px;
+                    height:50px;
+
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_gPrice.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                        } 
+                    }
+                }
+
+                & .selected__Map_Marker_HG {
+                    width:180px;
+                    height:50px;
+    
+                    & .tmarker {
+                        height:40px;
+                        width:180px;
+                        margin-left: 65px;
+                        & .img_HG {
+                            content : url(/public/img/marker_HG_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #H {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-140px;
+                            color:white;
+                        }
+    
+                        & #G {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left: -60px;
+                            color:white;
+                        }
+                    }
+                    
+
+                }
+                & .selected__Map_Marker_hprice{
+                    width:100px;
+                    height:50px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_hPrice_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                            color:white;
+                        } 
+                    }
+                }
+
+                & .selected__Map_Marker_gprice{
+                    width:100px;
+                    height:50px;
+                    & .tmarker {
+                        width:100px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_HnG {
+                            content : url(/public/img/marker_gPrice_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #Price {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-60px;
+                            color:white;
+                        } 
+                    }
+                }
+
+                & .selected__Map_Marker_LPG{
+                    width:120px;
+                    height:50px;
+                    & .tmarker {
+                        width:120px;
+                        height:40px;
+                        margin-left: 35px;
+                        & .img_LPG {
+                            content : url(/public/img/marker_LPG_sel.png);
+                            margin-bottom : 25px;
+                        }
+                        & #LL {
+                            position:absolute;
+                            width:40px;
+                            font-size: 20px;
+                            font-weight: 350;
+                            margin-top:10px;
+                            margin-left:-45px;
+                            color:white;
+                        } 
+                    }
                 }
             }
     
@@ -4830,6 +4987,25 @@ a {
     
         & .myPage__SuccessModal {
             top: 0;
+            left: 20%;
+            transition: 0.8s;
+            position: absolute;
+            width: 60%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
+        & .oilInput__successModal {
+            top: 0;
             left: 40%;
             transition: 0.8s;
             position: absolute;
@@ -4847,6 +5023,116 @@ a {
             z-index: 10;
         }
 
+        & .oilInput__preferModal {
+            transition: 0.5s;
+            z-index: 5;
+            background-color: rgba(0, 0, 0, 0.15);
+            position: fixed;
+            left: 0;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+
+            & .oilInput__preferContent {
+                background-color: #fff;
+                position: absolute;
+                left: 10%;
+                top: 5%;
+                width: 80%;
+                height: 60%;
+
+                & .oilInput__preferContentBackGround {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    align-items: center;
+                    margin: 0 auto;
+                    width: 70%;
+                    height: 100%;
+
+                    & .preferModal__closeBtn {
+                        position: absolute;
+                        right: 2%;
+                        top: 2%;
+                        cursor: pointer;
+
+                        &:hover {
+                            transform: rotate(180deg);
+                        }
+                    }
+
+                    & h1 {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        height: 15%;
+                        font-size: 1.5rem;
+                        font-weight: 700;
+                    }
+
+                    & ul.oilInput__preferContentBox {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        overflow-y: scroll;
+                        padding: 2% 0;
+                        width: 100%;
+                        height: 80%;
+
+                        &::-webkit-scrollbar {
+                            width: 0;
+                        }
+
+                        & li {
+                            padding: 1% 0;
+                            width: 95%;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+                            height: 10%;
+                            outline: 0.2vh solid #14BD72;
+                            border-radius: 0.5vh;
+                            margin-bottom: 3%;
+                            cursor: pointer;
+
+                            & img {
+                                width: 5%;
+                            }
+
+                            & h2 {
+                                font-size: 0.5rem;
+                                font-weight: 500;
+                                width: 65%;
+                                text-align: left;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+
+                            & span {
+                                font-size: 0.4rem;
+                                font-weight: 400;
+                                width: 25%;
+                                text-align: right;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        & h3 {
+                            margin-top: 20%;
+                            font-size: 1.8rem;
+                            color: #14BD72;
+                            font-weight: 700;
+                        }
+                    }
+                }
+            }
+        }
+
         & .oilInfoArea__background {
             width: 90%;
             height: 100%;
@@ -4860,27 +5146,27 @@ a {
                 
                 & .oilInfoArea__tab {
                     height: 80%;
-                    width: 16%;
+                    width: 20%;
                     border-radius: 1vh 1vh 0 0;
                     background-color: #14BD7E;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     cursor: pointer;
-                    font-size: 0.55rem;
-                    padding: 0 1vw;
+                    font-size: 0.5rem;
+                    padding: 0 0.5vw;
                     color: #fff;
-                    font-weight: 600;
+                    font-weight: 500;
                     border: 0.05vh solid #FAFAFB;
     
                     & a {
-                        width: 100%;
+                        width: 90%;
                         height: 100%;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         color: #fff;
-    
+
                         &:visited {
                             color: #fff;
                         }
@@ -4889,7 +5175,8 @@ a {
                     &.oilInfoArea__choosedTab {
                         color:#000;
                         height: 90%;
-                        font-size: 0.65rem;
+                        width: 20%;
+                        font-size: 0.5rem;
                         margin: 0 -0.25vw;
                         background-color: #fff;
                         box-shadow: 0 -0.5vh 0.5vw 0 #D4D4D4;
@@ -4911,7 +5198,23 @@ a {
                 height: 45%;
                 box-shadow: 0 0.5vh 1vw 0 #D4D4D4;
                 border-radius: 0 1.5vh 0 0;
+                position: relative;
     
+                & .oilInfoArea__preferBtnArea {
+                    position: absolute;
+                    top: 1.5vh;
+                    right: 5.8vw;
+                    
+                    & button {
+                        padding: 0.5vh 0.5vw;
+                        font-size: 0.4rem;
+                        font-weight: 700;
+                        border-radius: 1vw;
+                        color: #fff;
+                        background-color: #4BC0C0;
+                    }
+                }
+
                 & .oilInfoArea__contentTitle {
                     height: 15%;
                     width: 100%;
@@ -5067,17 +5370,26 @@ a {
                                     align-items: center;
                                     padding: 0 1vw;
                                     width: 90%;
-                                    height: 20%;
+                                    height: 30%;
                                     border-bottom: 0.2vh solid #000;
                                     cursor: pointer;
     
+                                    & img {
+                                        width: 10%;
+                                    }
+
                                     & h1 {
+                                        width: 85%;
+                                        white-space: nowrap;
                                         font-size: 0.5rem;
+                                        font-weight: 400;
                                         overflow: hidden;
                                         text-overflow: ellipsis;
                                     }
     
                                     & span {
+                                        display: none;
+                                        width: 30%;
                                         font-size: 0.5rem;
                                     }
                                 }
@@ -5380,9 +5692,17 @@ a {
                                 }
     
                                 & img {
+                                    opacity: 0;
                                     transition: 0.5s;
                                     width: 70%;
                                     height: 70%;
+                                }
+
+                                & .oilInfoArea__ban {
+                                    display: none;
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
                                 }
                             }
                         }
@@ -5646,19 +5966,13 @@ a {
                                 }
     
                                 & img {
-                                    width: 40%;
-                                    height: 40%;
+                                    width: 20%;
+                                    height: 20%;
                                 }
     
-                                &:nth-child(2n + 1) {
+                                &:nth-child(n) {
                                     & :last-child {
                                         color: #3181F6;
-                                    }
-                                }
-    
-                                &:nth-child(2n) {
-                                    & :last-child {
-                                        color: red;
                                     }
                                 }
                             }
@@ -6433,6 +6747,7 @@ a {
                                 }
     
                                 & img {
+                                    opacity: 0;
                                     transition: 0.5s;
                                     width: 90%;
                                     height: 90%;
@@ -6960,6 +7275,25 @@ a {
             z-index: 10;
         }
 
+        & .oilInput__failModal {
+            top: 0;
+            left: 40%;
+            transition: 0.8s;
+            position: absolute;
+            width: 20%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #000;
+            border-radius: 1vh;
+            top: -30%;
+            background-color: #80E3C3;
+            z-index: 10;
+        }
+
         & .oilInput__preferModal {
             transition: 0.5s;
             z-index: 5;
@@ -7013,10 +7347,17 @@ a {
                         flex-direction: column;
                         justify-content: flex-start;
                         align-items: center;
+                        overflow-y: scroll;
+                        padding: 2% 0;
                         width: 100%;
-                        height: 85%;
+                        height: 80%;
+
+                        &::-webkit-scrollbar {
+                            width: 0;
+                        }
 
                         & li {
+                            padding: 1% 0;
                             width: 60%;
                             display: flex;
                             justify-content: space-around;
@@ -7028,7 +7369,7 @@ a {
                             cursor: pointer;
 
                             & img {
-                                width: 10%;
+                                width: 6.5%;
                             }
 
                             & h2 {
@@ -7044,6 +7385,13 @@ a {
                                 width: 30%;
                                 text-align: center;
                             }
+                        }
+
+                        & h3 {
+                            margin-top: 20%;
+                            font-size: 1.8rem;
+                            color: #14BD72;
+                            font-weight: 700;
                         }
                     }
                 }
@@ -7623,12 +7971,14 @@ a {
                                 }
     
                                 & img {
+                                    opacity: 0;
                                     transition: 0.5s;
                                     width: 90%;
                                     height: 90%;
                                 }
 
                                 & .oilInfoArea__ban {
+                                    opacity: 1;
                                     display: none;
                                     position: absolute;
                                     width: 100%;
@@ -7931,6 +8281,7 @@ a {
                     width: 95%;
                     height: 100%;
                     margin: 0 auto;
+                    position: relative;
     
                     & .oilInfoArea__oilCharttitle {
                         width: 100%;
@@ -8099,6 +8450,15 @@ a {
                                 width: 10%;
                             }
                         }
+                    }
+
+                    & .oilinfoArea__chartInfoText {
+                        color: rgb(170, 170, 170);
+                        font-weight: 700;
+                        font-size: 0.9rem;
+                        position: absolute;
+                        bottom: 0.2vw;
+                        right: 0.2vw;
                     }
                 }
             }
