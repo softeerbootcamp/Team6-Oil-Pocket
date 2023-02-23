@@ -77,7 +77,7 @@ class UserGasRecordControllerTest {
 
         when(gasStationService.getGasStationByNo(userGasRecordReqDto.getGasStationNo())).thenReturn(gasStation);
         when(userRecordService.calTodayUserGasAmount(userGasRecordReqDto, gasStation))
-                .thenReturn(userGasAmount);// 유저가 총 넣은 가스 리터 수
+                .thenReturn(Double.valueOf(userGasAmount));// 유저가 총 넣은 가스 리터 수
         when(opinetService.nationalAvgOilPrice(userGasRecordReqDto.getGasType())).thenReturn(
                 nationalGasAvg);//전국 리터당 평균 가격
         when(userRecordService.calUserSavingAmount(userGasRecordReqDto.getRefuelingPrice(),

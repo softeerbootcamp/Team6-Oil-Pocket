@@ -4,8 +4,8 @@ import { fetchChart } from "./fetch.js";
 import { makeChart } from "./helperFunction.js";
 import { getChartTemplate } from "./template.js";
 
-let userOilArray = [100_000, 220_000, 300_000, 290_000, 100_000, 80_000, 85_000, 80_000, 70_000, 105_000];
-let commonOilArray = [150_000, 120_000, 280_000, 190_000, 130_000, 90_000, 89_000, 73_000, 86_000, 90_000];
+let userOilArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+let commonOilArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 let monthArray = [];
 
 const chartView = async () => {

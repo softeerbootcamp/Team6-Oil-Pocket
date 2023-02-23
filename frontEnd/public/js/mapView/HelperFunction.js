@@ -368,7 +368,6 @@ function addmouseOverEventtoMarker() {
 
 function addClickEventToMarker(ResultArray){
     const mArray = document.getElementsByClassName('tmarker');
-    console.log(mArray);
     for(var k=0;k<mArray.length;k++){
         mArray[k].addEventListener('click', (e) => {
             e.preventDefault();
